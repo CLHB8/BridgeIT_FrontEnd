@@ -1,4 +1,4 @@
-# sebamaster-movie-frontend application
+# BridgeIT-FrontEnd application
 Movies example application based on React. Backend can be found [here](https://github.com/CLHB8/BridgeIT_Backend)
 
 ## Prerequisites
