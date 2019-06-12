@@ -1,5 +1,5 @@
 # sebamaster-movie-frontend application
-Movies example application based on React. Backend can be found [here](https://github.com/sebischair/sebamaster-movie-backend)
+Movies example application based on React. Backend can be found [here](https://github.com/CLHB8/BridgeIT_Backend)
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ Both for the front end and the back end check:
 
 ## Getting Started
 
-To get you started you can simply clone the [sebamaster-movie-frontend](https://github.com/sebischair/sebamaster-movie-frontend/) repository and install all its dependencies:
+To get you started you can simply clone the [BridgIT-Frontend](https://github.com/CLHB8/BridgeIT_Frontend) repository and install all its dependencies:
 
 ### Prerequisites
 
