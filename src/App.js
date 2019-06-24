@@ -18,7 +18,7 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            title: 'Movie Example App',
+            title: 'BridgeIT',
             routes: [
                 { component: MovieListView , path: '/', exact: true},
                 { component: MovieDetailView , path: '/show/:id'},

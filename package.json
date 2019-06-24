@@ -1,18 +1,15 @@
 {
-  "name": "sebamaster-movie-frontend",
+  "name": "bridge-it-frontend",
   "version": "0.0.1",
-  "description": "SEBAMaster Movie Frontend Application React",
+  "description": "Frontend for online platform BridgeIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/sebischair/sebamaster-movie-frontend"
+    "url": "https://github.com/CLHB8/BridgeIT_FrontEnd.git"
   },
-  "author": "sebis",
+  "author": "Team23",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sebischair/sebamaster-movie-frontend/issues"
-  },
-  "homepage": "https://github.com/sebischair/sebamaster-movie-frontend#readme",
+  "homepage": "https://github.com/CLHB8/BridgeIT_FrontEnd.git#readme",
   "engines": {
     "node": ">=4.3"
   },
