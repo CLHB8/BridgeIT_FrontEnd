@@ -3,7 +3,7 @@
 import React from 'react';
 
 //import Header from './Header';
-import StudentHeader from './g_StudentHeader';
+import StudentHeader from './g_GenericHeader';
 import { Footer } from './Footer';
 
 

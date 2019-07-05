@@ -23,7 +23,7 @@ render(){
                     <img onClick={() => this.props.history.push('/')} src={"https://i.imgur.com/0ig5Y7g.png"}/>
                 </div>
                 <div className="HeaderNav">
-                        <button className="SHButton"><i class="material-icons">home</i>home</button>
+                        <button className="SHButton"><i class="material-icons">home</i>Home</button>
                         <button className="SHButton"><i class="material-icons">view_list</i>All Requests</button>
                         <button className="SHButton"><i class="material-icons">view_list</i>My offers</button>
                         <img src={this.props.imagesrc}/><button className="SHButton">{this.props.title}</button>
