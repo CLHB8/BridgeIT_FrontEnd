@@ -13,20 +13,23 @@ class G_SeniorHeader extends React.Component {
 
     render() {
         return (
-            <Toolbar>
+            <div className="SeniorHeader">
 
-                <div className="media-left">
-                    <img src="https://i.imgur.com/0ig5Y7g.png" className="media-object" style={{width: 246, height: 66}}/>
+                <div className="firstLine">
+                    <span><img onClick={() => this.props.history.push('/')} src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 143, height: 44}}/></span>
+                    <span><button className="SHButton"><i className="material-icons">play_circle_filled</i>Have this read aloud!</button></span>
+                    <span><button className="SHButton"><i className="material-icons">account_circle</i>Your Profile</button></span>
                 </div>
 
-                <span flex></span>
-
-                <div className="media-right">
-                    <Button onClick={() => this.props.history.push('/')} icon>home</Button>
-                    <h2>Your Profile</h2>
+                <div className="secondLine">
+                    <span><button className="SHButton"><i className="material-icons">home</i>Back</button></span>
+                    <span><button className="SHButton"><i className="material-icons">home</i>Start Page</button></span>
+                    <span><button className="SHButton"><i className="material-icons">view_list</i>Add a new Request</button></span>
+                    <span><button className="SHButton"><i className="material-icons">view_list</i>View my Requests</button></span>
+                    <span><button className="SHButton"><i className="material-icons">view_list</i>Help</button></span>
                 </div>
 
-            </Toolbar>
+            </div>
         );
     }
 };
