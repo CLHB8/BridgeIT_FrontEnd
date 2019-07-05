@@ -18,9 +18,9 @@ export default class Page extends React.Component {
     }
 
     componentDidMount(){
-       this.setState({
-           title: document.title
-       });
+        this.setState({
+            title: document.title
+        });
     }
 
     render() {
