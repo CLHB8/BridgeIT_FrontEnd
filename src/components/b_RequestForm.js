@@ -1,11 +1,11 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, FontIcon, TextField } from 'react-md';
+import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
 import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import SeniorPage from './SeniorPage';
 
 const style = { maxWidth: 500 };
 
@@ -64,8 +64,9 @@ class RequestForm extends React.Component {
 
     render() {
         return (
-            <Page>
-                <Card style={style} className="md-block-centered">
+            <SeniorPage>
+                <Card style={style} className="md-block-right">
+                    <CardTitle title="PC/Laptop Coaching"/>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
                             label="Title"
@@ -102,7 +103,7 @@ class RequestForm extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </SeniorPage>
         );
     }
 }
