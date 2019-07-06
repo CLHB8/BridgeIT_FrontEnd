@@ -28,14 +28,14 @@ export default class App extends React.Component {
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
-                            return (<MovieFormView {... props} />)
+                            return (<RequestFormView {... props} />)
                         }
                         else {
                             return (<Redirect to={'/login'}/>)
                         }} , path: '/edit/:id'},
                 { render: (props) => {
                     if(UserService.isAuthenticated()) {
-                        return (<MovieFormView {... props} />)
+                        return (<RequestFormView {... props} />)
                     }
                     else {
                         return (<Redirect to={'/login'}/>)
@@ -43,7 +43,6 @@ export default class App extends React.Component {
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
                 { component: WelcomePageStudentView, path: '/WelcomePageStudent'},
-                { component: RequestFormView, path: '/sen/request'}
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'}
             ]
