@@ -18,7 +18,6 @@ class Header extends React.Component {
             <Toolbar
                 colored
                 nav={<Button onClick={() => this.props.history.push('/')} icon>home</Button>}
-                nav={<button className="btn btn-primary" type="submit">Bootstrap Button</button>}
                 title={this.props.title}
                 actions={<KebabMenu id="toolbar-colored-kebab-menu" />}>
             </Toolbar>
