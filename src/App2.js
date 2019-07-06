@@ -76,8 +76,4 @@ export default class App2 extends React.Component {
         };
     }
 
-
-
-
-
 }

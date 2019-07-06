@@ -76,6 +76,12 @@
     width: 100%;
 }
 
+div.md-grid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 div.firstLine{
     display: table;
     width: 100%;

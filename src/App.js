@@ -8,9 +8,11 @@ import { MovieDetailView }   from './views/MovieDetailView';
 import { MovieFormView }   from './views/MovieFormView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
+import { RequestFormView } from "./views/RequestFormView";
+import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
+
 
 import UserService from "./services/UserService";
-import {WelcomePageStudentView} from "./views/WelcomePageStudentView";
 
 
 export default class App extends React.Component {
@@ -39,7 +41,8 @@ export default class App extends React.Component {
                     }}, path: '/add',},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
-                { component: WelcomePageStudentView, path: '/request'}
+                { component: WelcomePageStudentView, path: '/WelcomePageStudent'},
+                { component: RequestFormView, path: '/sen/request'}
             ]
         };
     }
