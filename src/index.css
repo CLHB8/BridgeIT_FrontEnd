@@ -87,6 +87,10 @@ div.firstLine{
     width: 100%;
     table-layout: fixed;    /* For cells of equal size */
 }
+#submit {
+    background-color: blue;
+    color: white;
+}
 
 div.firstLine span{
     display: table-cell;

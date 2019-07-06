@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, FontIcon, TextField, CardTitle } from 'react-md';
+import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
 import { AlertMessage } from './AlertMessage';
@@ -65,47 +65,6 @@ class RequestForm extends React.Component {
     render() {
         return (
             <SeniorPage>
-                <h2>Here you can choose the task you need help for!</h2>
-                <h2>Submit your request by filling out the corresponding form!</h2>
-                <div className="md-grid">
-                <Card style={style} className="md-block-right">
-                    <CardTitle title="Smartphone Coaching"/>
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <TextField
-                            label="Title"
-                            id="TitleField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.title}
-                            onChange={this.handleChangeTitle}
-                            errorText="Title is required"/>
-                        <TextField
-                            label="Category"
-                            id="CategoryField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.category}
-                            onChange={this.handleChangeCategory}
-                            errorText="Category is required"/>
-                        <TextField
-                            label="Specification"
-                            id="SpecificationField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.specification}
-                            onChange={this.handleChangeSpecification}
-                            errorText="Specification is required"/>
-
-                        <Button id="submit" type="submit"
-                                disabled={this.state.title == undefined || this.state.title == '' || this.state.category == undefined || this.state.category == '' || this.state.specification == undefined || this.state.specification == ''}
-                                raised primary className="md-cell md-cell--2">Save</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                    </form>
-                </Card>
                 <Card style={style} className="md-block-right">
                     <CardTitle title="PC/Laptop Coaching"/>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
@@ -144,121 +103,6 @@ class RequestForm extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-                <Card style={style} className="md-block-left">
-                    <CardTitle title="TV Coaching"/>
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <TextField
-                            label="Title"
-                            id="TitleField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.title}
-                            onChange={this.handleChangeTitle}
-                            errorText="Title is required"/>
-                        <TextField
-                            label="Category"
-                            id="CategoryField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.category}
-                            onChange={this.handleChangeCategory}
-                            errorText="Category is required"/>
-                        <TextField
-                            label="Specification"
-                            id="SpecificationField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.specification}
-                            onChange={this.handleChangeSpecification}
-                            errorText="Specification is required"/>
-
-                        <Button id="submit" type="submit"
-                                disabled={this.state.title == undefined || this.state.title == '' || this.state.category == undefined || this.state.category == '' || this.state.specification == undefined || this.state.specification == ''}
-                                raised primary className="md-cell md-cell--2">Save</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                    </form>
-                </Card>
-                <Card style={style} className="md-block-right">
-                    <CardTitle title="Printer Coaching"/>
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <TextField
-                            label="Title"
-                            id="TitleField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.title}
-                            onChange={this.handleChangeTitle}
-                            errorText="Title is required"/>
-                        <TextField
-                            label="Category"
-                            id="CategoryField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.category}
-                            onChange={this.handleChangeCategory}
-                            errorText="Category is required"/>
-                        <TextField
-                            label="Specification"
-                            id="SpecificationField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.specification}
-                            onChange={this.handleChangeSpecification}
-                            errorText="Specification is required"/>
-
-                        <Button id="submit" type="submit"
-                                disabled={this.state.title == undefined || this.state.title == '' || this.state.category == undefined || this.state.category == '' || this.state.specification == undefined || this.state.specification == ''}
-                                raised primary className="md-cell md-cell--2">Save</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                    </form>
-                </Card>
-                    <Card style={style} className="md-block-right">
-                        <CardTitle title="Individual Task"/>
-                        <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                            <TextField
-                                label="Title"
-                                id="TitleField"
-                                type="text"
-                                className="md-row"
-                                required={true}
-                                value={this.state.title}
-                                onChange={this.handleChangeTitle}
-                                errorText="Title is required"/>
-                            <TextField
-                                label="Category"
-                                id="CategoryField"
-                                type="text"
-                                className="md-row"
-                                required={true}
-                                value={this.state.category}
-                                onChange={this.handleChangeCategory}
-                                errorText="Category is required"/>
-                            <TextField
-                                label="Specification"
-                                id="SpecificationField"
-                                type="text"
-                                className="md-row"
-                                required={true}
-                                value={this.state.specification}
-                                onChange={this.handleChangeSpecification}
-                                errorText="Specification is required"/>
-
-                            <Button id="submit" type="submit"
-                                    disabled={this.state.title == undefined || this.state.title == '' || this.state.category == undefined || this.state.category == '' || this.state.specification == undefined || this.state.specification == ''}
-                                    raised primary className="md-cell md-cell--2">Save</Button>
-                            <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                            <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                        </form>
-                    </Card>
-                </div>
             </SeniorPage>
         );
     }
