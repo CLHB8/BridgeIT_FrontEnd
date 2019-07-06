@@ -5,7 +5,7 @@ import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom';
 
 
-class G_SeniorHeader extends React.Component {
+class SeniorHeader extends React.Component {
 
     constructor(props) {
         super(props);
@@ -34,4 +34,4 @@ class G_SeniorHeader extends React.Component {
     }
 };
 
-export default withRouter(G_SeniorHeader);
+export default withRouter(SeniorHeader);

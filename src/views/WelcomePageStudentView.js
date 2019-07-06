@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { WelcomePageStudent } from '../components/WelcomePageStudent';
+import MovieService from "../services/MovieService";
 
 export class WelcomePageStudentView extends React.Component {
 
@@ -15,12 +16,28 @@ export class WelcomePageStudentView extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentWillMount(){
         this.setState({
             loading: true
         });
-        //tbd: was soll er laden? Eigentlich gar nix... dann return... xyz
+
+        MovieService.getMovies().then((data) => {
+            this.setState({
+                data: [...data],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
     }
 
-//tbd: export
+    render() {
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>);
+        }
+
+        return (
+            <WelcomePageStudent data={this.state.data} />
+        );
+    }
 }
