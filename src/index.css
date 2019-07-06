@@ -8,33 +8,11 @@
     height: 6rem;;
 
 }
-.GenericHeader{
+.HeaderNav{
 
-    font-size: 3rem;
-    display: block;
-    width: 100%;
-    height: 3rem;;
+display: block;
+float: right;
 
-}
-.HeaderNav {
-
-    display: block;
-    float: right;
-}
-.HeaderLogIn {
-
-    position: absolute;
-    right: 20px;
-    top: 0rem;
-
-}
-
-.HeaderReadOut{
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: bottom;
 }
 .SHButton{
     font-size: 20px;
@@ -43,14 +21,7 @@
     background: none;
 
 }
-.SignInButton{
-    font-size: 20px;
-    margin-left: 1rem;
-    border: none;
-    background: none;
-
-}
 .logo{
-    height: 5rem;
+    height: 6rem;
     float: left;
 }

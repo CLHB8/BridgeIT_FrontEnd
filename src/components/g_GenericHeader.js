@@ -20,12 +20,11 @@ class Header extends React.Component {
                     <img onClick={() => this.props.history.push('/')} src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 143, height: 44}}/>
                 </div>
                 <div className="HeaderReadOut">
-                    <button className="SHButton"><i className="material-icons">play_circle_filled</i>Have this read aloud!</button>
+                    <button className="SHButton"><i className="material-icons">play_circle_filled</i> Have this read aloud!</button>
                 </div>
                 <div className="HeaderLogIn">
-                    <button className="SignInButton"><i className="material-icons">input</i>Log In</button>
+                    <button className="SignInButton"><i className="material-icons">input</i> Log In</button>
                 </div>
-
             </div>
         );
     }
