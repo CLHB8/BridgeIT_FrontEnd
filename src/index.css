@@ -1,3 +1,4 @@
+
 /*TODO: Add styles here */
 
 .StudentHeader{
@@ -8,11 +9,43 @@
     height: 6rem;;
 
 }
-.HeaderNav{
 
-display: block;
-float: right;
+.SeniorHeader{
 
+    font-size: 2rem;
+    display: block;
+    width: 100%;
+    height: 8rem;
+
+}
+
+.GenericHeader{
+
+    font-size: 3rem;
+    display: block;
+    width: 100%;
+    height: 3rem;;
+
+}
+.HeaderNav {
+
+    display: block;
+    float: right;
+}
+.HeaderLogIn {
+
+    position: absolute;
+    right: 20px;
+    top: 0;
+
+}
+
+.HeaderReadOut{
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: bottom;
 }
 .SHButton{
     font-size: 20px;
@@ -21,7 +54,53 @@ float: right;
     background: none;
 
 }
+.SignInButton{
+    font-size: 20px;
+    margin-left: 1rem;
+    border: none;
+    background: none;
+
+}
 .logo{
-    height: 6rem;
+    height: 5rem;
     float: left;
+}
+
+.firstLine {
+    display: block;
+    width: 100%;
+}
+
+.secondLine {
+    display: block;
+    width: 100%;
+}
+
+div.firstLine{
+    display: table;
+    width: 100%;
+    table-layout: fixed;    /* For cells of equal size */
+}
+
+div.firstLine span{
+    display: table-cell;
+    text-align: center;
+}
+
+div.firstLine span:first-child {
+    text-align: left;
+}
+div.firstLine span:last-child {
+    text-align: right;
+}
+
+div.secondLine{
+    display: table;
+    width: 100%;
+    table-layout: fixed;    /* For cells of equal size */
+}
+
+div.secondLine span{
+    display: table-cell;
+    text-align: center;
 }
