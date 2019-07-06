@@ -9,6 +9,7 @@ import { MovieFormView }   from './views/MovieFormView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
+import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 
 import UserService from "./services/UserService";
 
@@ -39,7 +40,8 @@ export default class App extends React.Component {
                     }}, path: '/add',},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
-                { component: WelcomePageStudentView, path: '/WelcomePageStudent'}
+                { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
+                { component: WelcomePageSeniorView, path: '/sen/WelcomePage'}
             ]
         };
     }
