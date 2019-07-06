@@ -13,7 +13,7 @@ export class RequestFormView extends React.Component {
     }
 
     componentWillMount(){
-        if(this.props.history.location.pathname == '/add') {
+        if(this.props.history.location.pathname == '/sen/add') {
             this.setState({
                 loading: false,
                 request: undefined,

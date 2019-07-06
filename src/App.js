@@ -33,13 +33,7 @@ export default class App extends React.Component {
                         else {
                             return (<Redirect to={'/login'}/>)
                         }} , path: '/edit/:id'},
-                { render: (props) => {
-                    if(UserService.isAuthenticated()) {
-                        return (<RequestFormView {... props} />)
-                    }
-                    else {
-                        return (<Redirect to={'/login'}/>)
-                    }}, path: '/add',},
+                { component: RequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
                 { component: WelcomePageStudentView, path: '/WelcomePageStudent'},
