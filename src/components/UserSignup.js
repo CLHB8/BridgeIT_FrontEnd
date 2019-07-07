@@ -4,6 +4,16 @@ import React from 'react';
 import { Card, Button, TextField } from 'react-md';
 import { withRouter } from 'react-router-dom';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+
 import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 
@@ -35,7 +45,7 @@ class UserSignup extends React.Component {
         this.setState(Object.assign({}, this.state, {password: value}));
     }
 
-    handleSubmit(event) {
+   handleSubmit(event) {
         event.preventDefault();
 
         let user = {
@@ -69,7 +79,29 @@ class UserSignup extends React.Component {
                             value={this.state.password}
                             onChange={this.handleChangePassword}
                             errorText="Password is required"/>
+{/*
+                        <FormControl className="md-row">
+                            <InputLabel shrink htmlFor="isSenior-label-placeholder">
+                                isSenior
+                            </InputLabel>
+                            <Select
+                                value={this.state.isSenior}
+                                onChange={this.handleChangeIsSenior}
 
+                                displayEmpty
+                                name="isSenior"
+                                className="md-row"
+                                type="isSenior"
+                            >
+                                <MenuItem value="">
+                                    <em>Please select</em>
+                                </MenuItem>
+                                <MenuItem value={true}>Yes</MenuItem>
+                                <MenuItem value={false}>No</MenuItem>
+                            </Select>
+                            <FormHelperText>Are you a senior?</FormHelperText>
+                        </FormControl>
+*/}
                         <Button id="submit" type="submit"
                                 disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
                                 raised primary className="md-cell md-cell--2">Register</Button>

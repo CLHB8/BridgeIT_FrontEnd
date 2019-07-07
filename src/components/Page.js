@@ -4,6 +4,8 @@ import React from 'react';
 
 import Header from './Header';
 import StudentHeader from './g_GenericHeader';
+//import Header from './Header';
+import SeniorHeader from './g_SeniorHeader';
 import { Footer } from './Footer';
 
 

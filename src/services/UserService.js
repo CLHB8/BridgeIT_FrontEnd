@@ -9,12 +9,11 @@ export default class UserService {
 
     static baseURL() {return "http://localhost:3000/auth"; }
 
-    static register(user, pass, isSenior) {
+    static register(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/register`, {
                 username: user,
-                password: pass,
-                isSenior: isSenior
+                password: pass
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
@@ -56,8 +55,4 @@ export default class UserService {
         return !!window.localStorage['jwtToken'];
     }
 
-    //trying to access the isSenior variable
-    static isSenior() {
-        return  this.getCurrentUser().isSenior;
-    }
 }

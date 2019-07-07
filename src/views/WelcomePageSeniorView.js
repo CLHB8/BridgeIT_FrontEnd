@@ -2,11 +2,10 @@
 
 import React from 'react';
 
-import { WelcomePageStudent } from '../components/WelcomePageStudent';
+import { WelcomePageSenior } from '../components/WelcomePageSenior';
 import MovieService from "../services/MovieService";
-import RequestService from "../services/RequestService";
 
-export class WelcomePageStudentView extends React.Component {
+export class WelcomePageSeniorView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,7 +20,7 @@ export class WelcomePageStudentView extends React.Component {
         this.setState({
             loading: true
         });
-
+    /* MovieService has to be deleted at some point here!! */
         MovieService.getMovies().then((data) => {
             this.setState({
                 data: [...data],
@@ -38,7 +37,7 @@ export class WelcomePageStudentView extends React.Component {
         }
 
         return (
-            <WelcomePageStudent data={this.state.data} />
+            <WelcomePageSenior data={this.state.data} />
         );
     }
 }

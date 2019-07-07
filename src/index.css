@@ -1,4 +1,3 @@
-
 /*TODO: Add styles here */
 
 .StudentHeader{
@@ -6,7 +5,9 @@
     font-size: 3rem;
     display: block;
     width: 100%;
-    height: 6rem;;
+    height: 6rem;
+    border-bottom: 1rem;
+    background-color: #E0E0E0;
 
 }
 
@@ -68,8 +69,8 @@
     float: bottom;
 }
 .SHButton{
-    font-size: 20px;
-    margin-left: 1rem;
+    font-size: 18px;
+    margin-left: 3px;
     border: none;
     background: none;
 
@@ -82,45 +83,12 @@
 
 }
 .logo{
-    height: 5rem;
+    display: block;
+    height: 5rem !important;
     float: left;
 }
 
-.firstLine {
-    display: block;
-    width: 100%;
-}
-
-.secondLine {
-    display: block;
-    width: 100%;
-}
-
-div.firstLine{
-    display: table;
-    width: 100%;
-    table-layout: fixed;    /* For cells of equal size */
-}
-
-div.firstLine span{
-    display: table-cell;
-    text-align: center;
-}
-
-div.firstLine span:first-child {
-    text-align: left;
-}
-div.firstLine span:last-child {
-    text-align: right;
-}
-
-div.secondLine{
-    display: table;
-    width: 100%;
-    table-layout: fixed;    /* For cells of equal size */
-}
-
-div.secondLine span{
-    display: table-cell;
-    text-align: center;
-}
+#submit {
+     background-color: blue;
+     color: white;
+ }

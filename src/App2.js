@@ -54,7 +54,7 @@ export default class App2 extends React.Component {
                         } else {
                             return (<Redirect to={'/login'}/>)
                         }
-                    }, path: '/sen/addRequest'
+                    }, path: '/sen/add'
                 },
 
                 {
@@ -75,9 +75,5 @@ export default class App2 extends React.Component {
             ]
         };
     }
-
-
-
-
 
 }

@@ -1,11 +1,11 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, FontIcon, TextField } from 'react-md';
+import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
 import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import SeniorPage from './SeniorPage';
 
 const style = { maxWidth: 500 };
 
@@ -14,11 +14,11 @@ class RequestForm extends React.Component {
     constructor(props) {
         super(props);
 
-        if (this.props.SeniorRequest != undefined) {
+        if (this.props.request != undefined) {
             this.state = {
-                title: props.SeniorRequest.title,
-                category: props.SeniorRequest.category,
-                specification: props.SeniorRequest.specification
+                title: props.request.title,
+                category: props.request.category,
+                specification: props.request.specification
             };
         } else {
             this.state = {
@@ -50,22 +50,23 @@ class RequestForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        let SeniorRequest = this.props.SeniorRequest;
-        if(SeniorRequest == undefined) {
-            SeniorRequest = {};
+        let request = this.props.request;
+        if(request == undefined) {
+            request = {};
         }
 
-        SeniorRequest.title = this.state.title;
-        SeniorRequest.category = this.state.category;
-        SeniorRequest.specification = this.state.specification;
+        request.title = this.state.title;
+        request.category = this.state.category;
+        request.specification = this.state.specification;
 
-        this.props.onSubmit(SeniorRequest);
+        this.props.onSubmit(request);
     }
 
     render() {
         return (
-            <Page>
-                <Card style={style} className="md-block-centered">
+            <SeniorPage>
+                <Card style={style} className="md-block-right">
+                    <CardTitle title="PC/Laptop Coaching"/>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
                             label="Title"
@@ -102,7 +103,7 @@ class RequestForm extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </SeniorPage>
         );
     }
 }
