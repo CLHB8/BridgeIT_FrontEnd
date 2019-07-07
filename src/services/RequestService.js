@@ -2,7 +2,7 @@
 
 import HttpService from './HttpService';
 
-export default class MovieService {
+export default class RequestService{
 
     constructor() {
     }
@@ -11,17 +11,15 @@ export default class MovieService {
         return "http://localhost:3000/requests"
     }
 
-    static createRequest(seniorRequest){
+    static createRequest(seniorRequest) {
         seniorRequest.id = Math.floor((Math.random() * 100000000) + 1).toString();
 
         return new Promise((resolve, reject) => {
-            HttpService.post(RequestService.baseURL(), seniorRequest, function(data) {
+            HttpService.post(RequestService.baseURL(), seniorRequest, function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
-
-
 }

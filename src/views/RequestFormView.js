@@ -16,7 +16,7 @@ export class RequestFormView extends React.Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             loading: true
         });
@@ -37,7 +37,7 @@ export class RequestFormView extends React.Component {
         }
 
         return (
-            <RequestForm data={this.state.data} />
+            <RequestForm data={this.state.data} onSubmit={(request) => this.createRequest(request)}/>
         );
     }
 }
