@@ -10,6 +10,7 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { RequestFormView } from "./views/RequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
+import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 
 
 import UserService from "./services/UserService";
@@ -27,22 +28,17 @@ export default class App extends React.Component {
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
-                            return (<MovieFormView {... props} />)
+                            return (<RequestFormView {... props} />)
                         }
                         else {
                             return (<Redirect to={'/login'}/>)
                         }} , path: '/edit/:id'},
-                { render: (props) => {
-                    if(UserService.isAuthenticated()) {
-                        return (<MovieFormView {... props} />)
-                    }
-                    else {
-                        return (<Redirect to={'/login'}/>)
-                    }}, path: '/add',},
+                { component: RequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
                 { component: WelcomePageStudentView, path: '/WelcomePageStudent'},
-                { component: RequestFormView, path: '/sen/request'}
+                { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
+                { component: WelcomePageSeniorView, path: '/sen/WelcomePage'}
             ]
         };
     }
