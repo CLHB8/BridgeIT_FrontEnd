@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 import { AlertMessage } from './AlertMessage';
 import SeniorPage from './SeniorPage';
+import UserService from "../services/UserService";
 
 const style = { maxWidth: 500 };
 
@@ -16,21 +17,26 @@ class RequestForm extends React.Component {
 
         if (this.props.request != undefined) {
             this.state = {
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
                 title: props.request.title,
                 category: props.request.category,
-                specification: props.request.specification
+                specification: props.request.specification,
+                byUser: props.request.byUser
             };
         } else {
             this.state = {
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
                 title: '',
                 category: '',
-                specification: ''
+                specification: '',
+                byUser: ''
             };
         }
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
         this.handleChangeSpecification = this.handleChangeSpecification.bind(this);
+        this.handleChangeByUser = this.handleChangeByUser.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -47,6 +53,10 @@ class RequestForm extends React.Component {
         this.setState(Object.assign({}, this.state, {specification: value}));
     }
 
+    handleChangeByUser(value) {
+        this.setState(Object.assign({}, this.state, {byUser: value}));
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -58,6 +68,7 @@ class RequestForm extends React.Component {
         request.title = this.state.title;
         request.category = this.state.category;
         request.specification = this.state.specification;
+        request.byUser = this.state.user.username;
 
         this.props.onSubmit(request);
     }
