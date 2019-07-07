@@ -25,7 +25,7 @@ class SeniorHeader extends React.Component {
                     <span><button className="SHButton"><i className="material-icons">home</i>Back</button></span>
                     <span><button className="SHButton" onClick={() => this.props.history.push('/sen/WelcomePage')}><i className="material-icons">home</i>Start Page</button></span>
                     <span><button className="SHButton" onClick={() => this.props.history.push('/sen/add')}><i className="material-icons">view_list</i>Add a new Request</button></span>
-                    <span><button className="SHButton"><i className="material-icons">view_list</i>View my Requests</button></span>
+                    <span><button className="SHButton" onClick={() => this.props.history.push('/sen/myRequests')}><i className="material-icons">view_list</i>View my Requests</button></span>
                     <span><button className="SHButton"><i className="material-icons">view_list</i>Help</button></span>
                 </div>
 
