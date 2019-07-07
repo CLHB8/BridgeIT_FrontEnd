@@ -10,6 +10,7 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 
 import UserService from "./services/UserService";
+import {StartPageView} from "./views/StartPageView";
 
 
 export default class App extends React.Component {
@@ -20,7 +21,9 @@ export default class App extends React.Component {
         this.state = {
             title: 'BridgeIT',
             routes: [
-                { component: MovieListView , path: '/', exact: true},
+                /*{ component: MovieListView , path: '/', exact: true},*/
+                /*{ component: StartPageView , path: '/', exact: true},*/
+                { component: StartPageView , path: '/', exact: true},
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {

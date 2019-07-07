@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import Header from './Header';
-import StudentHeader from './g_StudentHeader';
+import Header from './Header'
+import GenericHeader from './g_GenericHeader';
 import { Footer } from './Footer';
 
 
@@ -26,7 +26,7 @@ export default class Page extends React.Component {
     render() {
         return (
             <section>
-                {<Header title={this.state.title} />}
+                {<GenericHeader title={this.state.title} />}
                 {this.props.children}
                 <Footer />
             </section>

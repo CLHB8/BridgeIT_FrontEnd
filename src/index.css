@@ -40,6 +40,26 @@
 
 }
 
+.StartPageImage{
+    border-radius: 50%;
+    width:200px;
+    height:130px;
+}
+
+.ContinueButton{
+    background: green;
+    color: white;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 40px;
+    font-size : 20px;
+}
+
+.wrapper_continue {
+    text-align: center;
+    align-items: center;
+}
+
 .HeaderReadOut{
     height: 2em;
     display: flex;
