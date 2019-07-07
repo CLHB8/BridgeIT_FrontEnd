@@ -11,9 +11,11 @@ import { UserSignupView } from "./views/UserSignupView";
 import { RequestFormView } from "./views/RequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
+import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
 
 
 import UserService from "./services/UserService";
+import {StartPageView} from "./views/StartPageView";
 
 
 export default class App extends React.Component {
@@ -24,7 +26,9 @@ export default class App extends React.Component {
         this.state = {
             title: 'BridgeIT',
             routes: [
-                { component: MovieListView , path: '/', exact: true},
+                /*{ component: MovieListView , path: '/', exact: true},*/
+                /*{ component: StartPageView , path: '/', exact: true},*/
+                { component: StartPageView , path: '/', exact: true},
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
@@ -36,9 +40,9 @@ export default class App extends React.Component {
                 { component: RequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
-                { component: WelcomePageStudentView, path: '/WelcomePageStudent'},
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
-                { component: WelcomePageSeniorView, path: '/sen/WelcomePage'}
+                { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
+                { component: SenMyRequestsListView, path: '/sen/myRequests'}
             ]
         };
     }

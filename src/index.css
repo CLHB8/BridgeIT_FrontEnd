@@ -42,6 +42,26 @@
 
 }
 
+.StartPageImage{
+    border-radius: 50%;
+    width:200px;
+    height:130px;
+}
+
+.ContinueButton{
+    background: green;
+    color: white;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 40px;
+    font-size : 20px;
+}
+
+.wrapper_continue {
+    text-align: center;
+    align-items: center;
+}
+
 .HeaderReadOut{
     height: 2em;
     display: flex;
@@ -64,12 +84,55 @@
 
 }
 .logo{
-    display: block;
-    height: 5rem !important;
+    height: 5rem;
     float: left;
 }
 
+.firstLine {
+    display: block;
+    width: 100%;
+}
+
+.secondLine {
+    display: block;
+    width: 100%;
+}
+
+div.md-grid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.firstLine{
+    display: table;
+    width: 100%;
+    table-layout: fixed;    /* For cells of equal size */
+}
 #submit {
-     background-color: blue;
-     color: white;
- }
+    background-color: blue;
+    color: white;
+}
+
+div.firstLine span{
+    display: table-cell;
+    text-align: center;
+}
+
+div.firstLine span:first-child {
+    text-align: left;
+}
+div.firstLine span:last-child {
+    text-align: right;
+}
+
+div.secondLine{
+    display: table;
+    width: 100%;
+    table-layout: fixed;    /* For cells of equal size */
+}
+
+div.secondLine span{
+    display: table-cell;
+    text-align: center;
+}
