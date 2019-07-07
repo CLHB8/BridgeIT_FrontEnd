@@ -36,7 +36,18 @@ class StudentHeader extends React.Component {
                 
                 
                 </div>
-                <OfferPopup visibility={this.state.showPopup}></OfferPopup>
+                
+                <OfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </OfferPopup>
+                
+                
+                {/* {this.state.showPopup? 
+                <OfferPopup
+                    visibility={this.state.showPopup}
+                    closePopup={this.popupHandler.bind(this)}
+                    >Close this popup</OfferPopup>
+                    :null
+                } */}
+
                 </div>
                 );
         }

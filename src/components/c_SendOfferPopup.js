@@ -4,36 +4,32 @@ import React from 'react';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
-/* class Popup extends React.Component{
-
-
-    constructor(props) {
-        super(props);
-        this.state= {showPopup:false};
-    }
-    render(){
-        return(
-            <div className="popup">
-                
-
-
-
-            </div>
-        );
-    }
-} */
-
-
 const OfferPopup = (props) => {
     
     if(props.visibility==true){
         return(
 
-        <div>
-            <p>This is a generic popup </p>
+        <div className="popuplayer">
+            <div className="popup">
+            <div className="">
+                
+                <div className="popupHead"><h3>Send Offer</h3>{props.children}</div>
+            </div>
+            {/* <button onClick={props.closePopup}>{props.children}</button> */}
             
-            <button>close</button>
+            <div className="popupContainer">
+                <h2>{props.offerName}</h2>
+                <p>{props.description}</p>
+            </div>
+            <form>
+                    <textarea type="text" name="offerText" placeholder="Write a short introductory message.."></textarea>
+                    <input type="submit" value="Submit"></input>
+            </form>
+            
+
+
             {console.log('It works!')}
+            </div>
         </div>
 
     )}
