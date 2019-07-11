@@ -1,6 +1,7 @@
 "use strict";
 
 import HttpService from './HttpService';
+import UserService from './UserService';
 
 export default class RequestService {
 
@@ -13,7 +14,7 @@ export default class RequestService {
 
     static getRequests(){
         return new Promise((resolve, reject) => {
-            HttpService.get(this.baseURL(), function(data) {
+            HttpService.get(`${RequestService.baseURL()}/${id}`, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
@@ -63,7 +64,7 @@ export default class RequestService {
 
     static createRequest(request) {
         request.id = Math.floor((Math.random() * 100000000) + 1).toString();
-
+        request.userId = UserService.getCurrentUser().id;
         return new Promise((resolve, reject) => {
             HttpService.post(RequestService.baseURL(), request, function(data) {
                 resolve(data);

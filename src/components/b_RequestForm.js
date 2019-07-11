@@ -18,13 +18,15 @@ class RequestForm extends React.Component {
             this.state = {
                 title: props.request.title,
                 category: props.request.category,
-                specification: props.request.specification
+                specification: props.request.specification,
+                userId: props.request.userId
             };
         } else {
             this.state = {
                 title: '',
                 category: '',
-                specification: ''
+                specification: '',
+                userId: ''
             };
         }
 
@@ -58,6 +60,7 @@ class RequestForm extends React.Component {
         request.title = this.state.title;
         request.category = this.state.category;
         request.specification = this.state.specification;
+        request.userId = '';
 
         this.props.onSubmit(request);
     }

@@ -43,6 +43,7 @@ export default class App extends React.Component {
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
                 { component: SenMyRequestsListView, path: '/sen/myRequests'}
+
             ]
         };
     }
