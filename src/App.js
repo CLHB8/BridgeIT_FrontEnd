@@ -16,6 +16,8 @@ import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
 
 import UserService from "./services/UserService";
 import {StartPageView} from "./views/StartPageView";
+import {SeniorSignupView} from "./views/SeniorSignupView";
+import {StudentSignupView} from "./views/StudentSignupView";
 
 
 export default class App extends React.Component {
@@ -40,6 +42,11 @@ export default class App extends React.Component {
                 { component: RequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'},
+
+                { component: SeniorSignupView, path: '/sen/register'},
+                { component: StudentSignupView, path: '/stu/register'},
+
+
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
                 { component: SenMyRequestsListView, path: '/sen/myRequests'}
