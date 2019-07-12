@@ -15,7 +15,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 
 import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import StartPage from './StartPage';
 
 
 const style = { maxWidth: 500 };
@@ -58,7 +58,7 @@ class UserSignup extends React.Component {
 
     render() {
         return (
-            <Page>
+            <StartPage>
                 <Card style={style} className="md-block-centered">
 
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
@@ -88,7 +88,7 @@ class UserSignup extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </StartPage>
         );
     }
 };

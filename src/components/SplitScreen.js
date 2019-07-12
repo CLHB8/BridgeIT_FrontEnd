@@ -80,7 +80,7 @@ class SplitScreen extends React.Component {
                         <div className="wrapper_continue">
                             <Link to={`/stu/register`}>
                                 <button type="button" className="ContinueButton">
-                                    Continue as Senior<FontIcon>arrow_forward_ios</FontIcon>
+                                    Continue as Student<FontIcon>arrow_forward_ios</FontIcon>
                                 </button>
                             </Link>
                         </div>
