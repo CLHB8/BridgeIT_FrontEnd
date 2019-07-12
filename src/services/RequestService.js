@@ -14,7 +14,17 @@ export default class RequestService {
 
     static getRequests(){
         return new Promise((resolve, reject) => {
-            HttpService.get(`${RequestService.baseURL()}/${id}`, function(data) {
+            HttpService.get(this.baseURL(), function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getRequestsUser(){
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${RequestService.baseURL()}/${UserService.getCurrentUser().id}`, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
