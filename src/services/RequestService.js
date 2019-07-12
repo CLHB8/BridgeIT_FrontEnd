@@ -21,6 +21,16 @@ export default class RequestService {
         });
     }
 
+    static getMyRequests(){
+        return new Promise((resolve, reject) => {
+            HttpService.get(this.baseURL(), function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static getRequest(id) {
         return new Promise((resolve, reject) => {
             HttpService.get(`${RequestService.baseURL()}/${id}`, function(data) {

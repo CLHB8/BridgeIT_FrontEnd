@@ -12,6 +12,8 @@ import { RequestFormView } from "./views/RequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
+import { SenRequestDetailView } from "./views/SenRequestDetailView";
+
 
 
 import UserService from "./services/UserService";
@@ -29,7 +31,7 @@ export default class App extends React.Component {
                 /*{ component: MovieListView , path: '/', exact: true},*/
                 /*{ component: StartPageView , path: '/', exact: true},*/
                 { component: StartPageView , path: '/', exact: true},
-                { component: MovieDetailView , path: '/show/:id'},
+                /*{ component: MovieDetailView , path: '/show/:id'},*/
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
                             return (<RequestFormView {... props} />)
@@ -42,7 +44,8 @@ export default class App extends React.Component {
                 { component: UserSignupView, path: '/register'},
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
-                { component: SenMyRequestsListView, path: '/sen/myRequests'}
+                { component: SenMyRequestsListView, path: '/sen/myRequests'},
+                { component: SenRequestDetailView, path: '/show/:id'}
             ]
         };
     }

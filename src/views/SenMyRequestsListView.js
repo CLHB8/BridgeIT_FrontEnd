@@ -18,6 +18,8 @@ export class SenMyRequestsListView extends React.Component {
         };
     }
 
+
+
     componentWillMount(){
         this.setState({
             loading: true
@@ -32,6 +34,8 @@ export class SenMyRequestsListView extends React.Component {
             console.error(e);
         });
     }
+
+
 
     deleteRequest(id) {
         this.setState({
