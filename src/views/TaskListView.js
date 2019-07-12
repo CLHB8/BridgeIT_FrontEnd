@@ -4,7 +4,9 @@ import React from 'react';
 
 import { TaskList } from '../components/TaskList';
 
-import MovieService from '../services/MovieService';
+import RequestService from '../services/RequestService';
+import UserService from "../services/UserService";
+import {Redirect} from "react-router-dom";
 
 
 export class TaskListView extends React.Component {
@@ -23,7 +25,7 @@ export class TaskListView extends React.Component {
             loading: true
         });
 
-        MovieService.getMovies().then((data) => {
+        RequestService.getRequests().then((data) => {
             this.setState({
                 data: [...data],
                 loading: false
@@ -33,19 +35,19 @@ export class TaskListView extends React.Component {
         });
     }
 
-    deleteMovie(id) {
+    deleteRequest(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
         });
-        MovieService.deleteMovie(id).then((message) => {
+        RequestService.deleteRequest(id).then((message) => {
 
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let movies = this.state.data;
-            movies.splice(movieIndex, 1);
+            let requestIndex = this.state.data.map(request => request['_id']).indexOf(id);
+            let requests = this.state.data;
+            requests.splice(requestIndex, 1);
             this.setState({
-               data: [...movies],
-               loading: false
+                data: [...requests],
+                loading: false
             });
         }).catch((e) => {
             console.error(e);
@@ -60,7 +62,7 @@ export class TaskListView extends React.Component {
         return (
             
             
-            <TaskList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
+            <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }

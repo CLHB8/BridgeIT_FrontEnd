@@ -44,7 +44,7 @@ export const TaskList = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((movie, i) => <TaskListRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}
+                {data.map((request, i) => <TaskListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
             <TablePagination rowsPerPageLabel ="Items Per Page" />
         </DataTable>
