@@ -28,13 +28,24 @@ class StudentHeader extends React.Component {
                         <button className="SHButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">send</i>Test</button>
                         
                         <button className="SHButton" onClick={() => this.props.history.push('/stu/WelcomePage')}><i class="material-icons">home</i>Home</button>
-                        <button className="SHButton"><i class="material-icons">view_list</i>All Requests</button>
+                        <button className="SHButton" onClick={() => this.props.history.push('/stu/TaskListView')}><i class="material-icons">view_list</i>All Requests</button>
                         <button className="SHButton"><i class="material-icons">view_list</i>My offers</button>
                         <button className="SHButton"><i class="material-icons">account_circle</i>My Account</button>
                 
                 
                 </div>
-                <OfferPopup visibility={this.state.showPopup}></OfferPopup>
+                
+                <OfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </OfferPopup>
+                
+                
+                {/* {this.state.showPopup? 
+                <OfferPopup
+                    visibility={this.state.showPopup}
+                    closePopup={this.popupHandler.bind(this)}
+                    >Close this popup</OfferPopup>
+                    :null
+                } */}
+
                 </div>
                 );
         }
