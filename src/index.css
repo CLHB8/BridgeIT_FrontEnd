@@ -18,7 +18,6 @@
     width: 100%;
     height: 8rem;
 
-
 }
 
 .GenericHeader{
@@ -43,6 +42,12 @@
 }
 
 .StartPageImage{
+    border-radius: 50%;
+    width:200px;
+    height:130px;
+}
+
+.SignupPageImage{
     border-radius: 50%;
     width:200px;
     height:130px;
@@ -285,3 +290,49 @@ div.secondLine span{
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-weight: bold;
   }
+
+body {
+    margin: 10px;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 100px 100px 100px;
+    background-color: #fff;
+    color: #444;
+}
+
+.box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+
+}
+
+.a {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.b {
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+}
+.c {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.d {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.e {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.f {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}

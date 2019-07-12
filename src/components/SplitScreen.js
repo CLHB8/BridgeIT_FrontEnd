@@ -28,7 +28,7 @@ class SplitScreen extends React.Component {
                 <Grid container spacing={2}>
                     <Card style={style} className="md-block-centered">
                         <CardTitle
-                            title={<div><h1>Seniors</h1><h5>You need an easy and inex-<br />pensive solution for your<br />technical problems?</h5></div>}
+                            title={<div><h1>Seniors</h1><h5>You need an easy and inexpensive solution for your technical problems?</h5></div>}
                             avatar={<img className="StartPageImage" src="https://www.manitobaseniorcentres.com/wp-content/uploads/2012/05/strengths.jpg" alt="Image of Senior"/>}/>
                         <CardText>
                             <h5>More Information</h5>
@@ -48,7 +48,7 @@ class SplitScreen extends React.Component {
 
                         </CardText>
                         <div className="wrapper_continue">
-                            <Link to={`/login`}>
+                            <Link to={`/sen/register`}>
                                 <button type="button" className="ContinueButton">
                                     Continue as Senior<FontIcon>arrow_forward_ios</FontIcon>
                                 </button>
@@ -58,7 +58,7 @@ class SplitScreen extends React.Component {
 
                     <Card style={style} className="md-block-centered">
                         <CardTitle
-                            title={<div><h1>Students</h1><h5>You need an easy and inex-<br />pensive solution for your<br />technical problems?</h5></div>}
+                            title={<div><h1>Students</h1><h5>You need an easy and inexpensive solution for your technical problems?</h5></div>}
                             avatar={<img className="StartPageImage" src="https://www.gesundheitsstadt-berlin.de/fileadmin/_processed_/9/2/csm_student-kopfschmerz_5f65cc65e2.jpg" alt="Image of Student"/>}/>
                         <CardText>
                             <h5>More Information</h5>
@@ -78,7 +78,7 @@ class SplitScreen extends React.Component {
 
                         </CardText>
                         <div className="wrapper_continue">
-                            <Link to={`/login`}>
+                            <Link to={`/stu/register`}>
                                 <button type="button" className="ContinueButton">
                                     Continue as Senior<FontIcon>arrow_forward_ios</FontIcon>
                                 </button>
