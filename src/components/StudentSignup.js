@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Button, TextField } from 'react-md';
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
@@ -15,7 +15,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 
 import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import StartPage from './StartPage';
 
 
 const style = { maxWidth: 500 };
@@ -45,7 +45,7 @@ class UserSignup extends React.Component {
         this.setState(Object.assign({}, this.state, {password: value}));
     }
 
-   handleSubmit(event) {
+    handleSubmit(event) {
         event.preventDefault();
 
         let user = {
@@ -58,8 +58,9 @@ class UserSignup extends React.Component {
 
     render() {
         return (
-            <Page>
+            <StartPage>
                 <Card style={style} className="md-block-centered">
+
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
                             label="Username"
@@ -79,37 +80,15 @@ class UserSignup extends React.Component {
                             value={this.state.password}
                             onChange={this.handleChangePassword}
                             errorText="Password is required"/>
-{/*
-                        <FormControl className="md-row">
-                            <InputLabel shrink htmlFor="isSenior-label-placeholder">
-                                isSenior
-                            </InputLabel>
-                            <Select
-                                value={this.state.isSenior}
-                                onChange={this.handleChangeIsSenior}
-
-                                displayEmpty
-                                name="isSenior"
-                                className="md-row"
-                                type="isSenior"
-                            >
-                                <MenuItem value="">
-                                    <em>Please select</em>
-                                </MenuItem>
-                                <MenuItem value={true}>Yes</MenuItem>
-                                <MenuItem value={false}>No</MenuItem>
-                            </Select>
-                            <FormHelperText>Are you a senior?</FormHelperText>
-                        </FormControl>
-*/}
                         <Button id="submit" type="submit"
                                 disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
                                 raised primary className="md-cell md-cell--2">Register</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
+                        <Link to={'/login'} className="md-cell">Already registered?</Link>
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </StartPage>
         );
     }
 };

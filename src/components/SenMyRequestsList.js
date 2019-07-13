@@ -3,15 +3,15 @@
 import React from 'react';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
 
-import { MovieListRow } from './MovieListRow';
-import Page from './Page';
+import { SenMyRequestsListRow } from './SenMyRequestsListRow';
+import SeniorPage from './SeniorPage';
 
 const dataTableStyle = {
-  'margin-bottom': '36px'
+    'margin-bottom': '36px'
 };
 
-export const MovieList = ({data, onDelete}) => (
-    <Page>
+export const SenMyRequestsList = ({data, onDelete}) => (
+    <SeniorPage>
         <DataTable plain style={dataTableStyle}>
             <TableHeader>
                 <TableRow>
@@ -22,9 +22,10 @@ export const MovieList = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((movie, i) => <MovieListRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}
+                {data.map((request, i) => <SenMyRequestsListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
+
             </TableBody>
         </DataTable>
-    </Page>
+    </SeniorPage>
 );
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button, TablePagination } from 'react-md';
 
 import { TaskListRow } from './TaskListRow';
-import Page from './Page'
+import StudentPage from './StudentPage'
 import CatSideBar from './CatSideBar';
 
 
@@ -14,7 +14,7 @@ const dataTableStyle = {
 
 
 export const TaskList = ({data, onDelete}) => (
-    <Page>
+    <StudentPage>
         <div className="gridContainer">
         <CatSideBar ad="3" className="catSideBar"/>
         <DataTable plain style={dataTableStyle} className="taskList">
@@ -44,11 +44,11 @@ export const TaskList = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((movie, i) => <TaskListRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}
+                {data.map((request, i) => <TaskListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
             <TablePagination rowsPerPageLabel ="Items Per Page" />
         </DataTable>
         </div>
-    </Page>
+    </StudentPage>
 );
 
