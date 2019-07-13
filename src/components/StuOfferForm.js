@@ -1,16 +1,17 @@
 "use strict";
 
 import React from 'react';
-import { Link } from 'react-router-dom'
-import { Avatar, Card, CardTitle, CardText, CardActions, Media, MediaOverlay, Grid, Cell, Button, FontIcon } from 'react-md';
+import {Card, Button, FontIcon, TextField, CardTitle, CardText, Grid, Cell, Avatar, CardActions} from 'react-md';
+import { withRouter } from 'react-router-dom';
 
-import SeniorPage from './SeniorPage';
-
-import RequestService from '../services/RequestService';
+import { AlertMessage } from './AlertMessage';
+import StudentPage from './StudentPage';
+import UserService from "../services/UserService";
+import SeniorPage from "./SeniorPage";
 
 const style = { maxWidth: 900 };
 
-export class SenRequestDetail extends React.Component {
+export class StuOfferForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ export class SenRequestDetail extends React.Component {
 
     render() {
         return (
-            <SeniorPage>
+            <StudentPage>
                 <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={12}>
@@ -55,7 +56,7 @@ export class SenRequestDetail extends React.Component {
 
 
                 </Card>
-            </SeniorPage>
+            </StudentPage>
         );
     }
 }

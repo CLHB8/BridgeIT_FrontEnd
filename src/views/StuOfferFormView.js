@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import { SenRequestDetail } from '../components/SenRequestDetail';
+import { StuOfferForm } from "../components/StuOfferForm";
 
-import RequestService from '../services/RequestService';
+import RequestService from "../services/RequestService";
 
-export class SenRequestDetailView extends React.Component {
+export class StuOfferFormView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,13 +30,6 @@ export class SenRequestDetailView extends React.Component {
 
     }
 
-    deleteRequest(id) {
-        RequestService.deleteRequest(id).then((message) => {
-            this.props.history.push('/');
-        }).catch((e) => {
-            console.log(e);
-        });
-    }
 
     render() {
         if (this.state.loading) {
@@ -44,7 +37,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <StuOfferForm request={this.state.request}/>
         );
     }
 }

@@ -9,6 +9,7 @@ import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
 import { SenRequestDetailView } from "./views/SenRequestDetailView";
+import { StuOfferFormView } from "./views/StuOfferFormView";
 
 
 import { TaskListView} from "./views/TaskListView"
@@ -48,7 +49,8 @@ export default class App extends React.Component {
                 { component: SenMyRequestsListView, path: '/sen/myRequests'},
                 { component: SenRequestDetailView, path: '/show/:id'},
                 { component: UserSignupView, path: '/register'},
-                { component: TaskListView, path: '/stu/TaskListView'}
+                { component: TaskListView, path: '/stu/TaskListView'},
+                { component: StuOfferFormView, path: '/stu/addOffer/:id'}
             ]
         };
     }

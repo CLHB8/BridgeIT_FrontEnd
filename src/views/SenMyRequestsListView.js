@@ -24,7 +24,7 @@ export class SenMyRequestsListView extends React.Component {
         this.setState({
             loading: true
         });
-            RequestService.getRequestsUser().then((data) => {
+            RequestService.getMyRequests().then((data) => {
                 this.setState({
                     data: [...data],
                     loading: false
