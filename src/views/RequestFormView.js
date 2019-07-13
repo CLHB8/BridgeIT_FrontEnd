@@ -19,6 +19,7 @@ export class RequestFormView extends React.Component {
                 request: undefined,
                 error: undefined
             });
+            console.log('1');
         }
         else if(this.props.location.state != undefined && this.props.location.state.request != undefined) {
             this.setState({
@@ -26,12 +27,14 @@ export class RequestFormView extends React.Component {
                 request: this.props.location.state.request,
                 error: undefined
             });
+            console.log('2');
         }
         else {
             this.setState({
                 loading: true,
                 error: undefined
             });
+            console.log('3');
 
             let id = this.props.match.params.id;
 

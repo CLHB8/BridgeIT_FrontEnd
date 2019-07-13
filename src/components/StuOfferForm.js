@@ -15,7 +15,50 @@ export class StuOfferForm extends React.Component {
 
     constructor(props) {
         super(props);
+
+        if (this.props.stuOffer != undefined) {
+            this.state = {
+                requestId: props.stuOffer.requestId,
+                seniorId: props.stuOffer.seniorId,
+                studentId: props.stuOffer.studentId,
+                introMsg: props.stuOffer.introMsg,
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+            };
+        } else {
+            this.state = {
+                requestId: '',
+                seniorId: '',
+                studentId: '',
+                introMsg: '',
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+            };
+        }
+
+        this.handleChangeIntroMsg = this.handleChangeIntroMsg.bind(this);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    handleChangeIntroMsg(value) {
+        this.setState(Object.assign({}, this.state, {introMsg: value}));
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        let stuOffer = this.props.stuOffer;
+        if(stuOffer == undefined) {
+            stuOffer = {};
+        }
+
+        stuOffer.requestId = this.props.request.id;
+        stuOffer.seniorId = this.props.request.userId;
+        stuOffer.studentId = this.state.user.id;
+        stuOffer.introMsg = this.state.introMsg;
+
+        this.props.onSubmit(stuOffer);
+    }
+
 
     render() {
         return (
@@ -23,8 +66,8 @@ export class StuOfferForm extends React.Component {
                 <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={12}>
-                            <h3>Here is the request you posted.</h3>
-                            <h3>You can now choose between all the students that replied to your request.</h3>
+                            <h3>This request was posted by {this.props.request.senUserName}.</h3>
+                            <h3>Send an offer by submitting the form below!</h3>
                         </Cell>
                         <Cell size={12}>
                             <Card style={{maxWidth: 800}} className="md-block-centered">
@@ -33,23 +76,27 @@ export class StuOfferForm extends React.Component {
                                     subtitle={this.props.request.category}
                                     avatar={<Avatar src={"https://s3.euronics.ee/UserFiles/Products/Images/147086-iphone7-plus-gold-1.png"} role="presentation" />}
                                 />
-                                <CardActions expander>
-                                    <Button flat>Edit</Button>
-                                    <Button flat>Delete</Button>
-                                </CardActions>
-                                <CardText expandable>
-                                    <p>
-                                        {this.props.request.specification}
-                                    </p>
-                                </CardText>
                             </Card>
                         </Cell>
-                        <Cell size={3}>
-                            <h3>Our recommended students:</h3>
-                        </Cell>
+
                         <Cell size={12}>
                             <Card style={{maxWidth: 800}} className="md-block-centered">
-                                <CardTitle title={this.props.request.title} subtitle={this.props.request.category} />
+                                <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                                    <TextField
+                                        label="Your Message"
+                                        id="introMsgField"
+                                        type="text"
+                                        className="md-row"
+                                        required={true}
+                                        value={this.state.introMsg}
+                                        onChange={this.handleChangeIntroMsg}
+                                        errorText="Please write a short message introducing yourself."/>
+                                    <Button id="submit" type="submit"
+                                            disabled={this.state.introMsg == undefined || this.state.introMsg == ''}
+                                            raised primary className="md-cell md-cell--2">Send</Button>
+                                    <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
+                                    <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                                </form>
                             </Card>
                         </Cell>
                     </Grid>
@@ -60,3 +107,5 @@ export class StuOfferForm extends React.Component {
         );
     }
 }
+
+export default withRouter(StuOfferForm);

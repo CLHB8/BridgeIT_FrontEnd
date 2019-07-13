@@ -75,9 +75,8 @@ export default class StuOfferService {
 
     static createStuOffer(stuOffer) {
         stuOffer.id = Math.floor((Math.random() * 100000000) + 1).toString();
-        stuOffer.studentId = UserService.getCurrentUser().id;
         return new Promise((resolve, reject) => {
-            HttpService.post(RequestService.baseURL(), stuOffer, function(data) {
+            HttpService.post(StuOfferService.baseURL(), stuOffer, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
