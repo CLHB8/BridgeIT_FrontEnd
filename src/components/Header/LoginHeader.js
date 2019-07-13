@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
-    grow: {
+    gap: {
         flexGrow: 1,
     },
     playButton: {
@@ -25,14 +25,14 @@ export default function LoginHeader() {
     const classes = useStyles();
 
     return (
-        <div className={classes.grow}>
+        <div className={classes.gap}>
             <AppBar position="static" style={{background: "white"}}>
                 <Toolbar>
                     {/*Neil: enter here path when clicked it will be redirected to this path*/}
                     <Link to={`/`}>
                         <img src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 143, height: 44}}/>
                     </Link>
-                    <div className={classes.grow}/>
+                    <div className={classes.gap}/>
 
 
                     <IconButton
@@ -49,7 +49,7 @@ export default function LoginHeader() {
                         </Typography>
                     </IconButton>
 
-                    <div className={classes.grow}/>
+                    <div className={classes.gap}/>
 
                     {/*Neil: enter here path when clicked it will be redirected to this path*/}
                     <Link to={`/`} style={{height: 35}}>

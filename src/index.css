@@ -18,6 +18,11 @@
 
 }
 
+/*Neil: Remove underline when mouse moves over link */
+a:hover {
+    text-decoration: none;
+}
+
 .GenericHeader{
 
     font-size: 3rem;
@@ -32,11 +37,9 @@
     float: right;
 }
 .HeaderLogIn {
-
     position: absolute;
     right: 20px;
     top: 0;
-
 }
 
 .StartPageImage{

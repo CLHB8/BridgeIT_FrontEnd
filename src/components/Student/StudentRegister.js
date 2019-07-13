@@ -1,16 +1,16 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, TextField} from 'react-md';
+import {Card, Button, TextField, Grid} from 'react-md';
 import {Link, withRouter} from 'react-router-dom';
 
-import { AlertMessage } from '../AlertMessage';
-import StudentRegisterPage from 'StudentRegisterPage';
-import x from 'StudentRegisterPage'
+import {AlertMessage} from '../AlertMessage';
+import StudentRegisterPage from './StudentRegisterPage';
 import CardTitle from "react-md/lib/Cards/CardTitle";
+import Page from "../StartPage";
 
 
-const style = { maxWidth: 800 };
+const style = {maxWidth: 800};
 
 
 class StudentRegiser extends React.Component {
@@ -19,9 +19,9 @@ class StudentRegiser extends React.Component {
         super(props);
 
         this.state = {
-            firstname : '',
-            lastname : '',
-            password : '',
+            firstname: '',
+            lastname: '',
+            password: '',
             reentered_password: '',
             student_mail: '',
             phone_number: '',
@@ -50,7 +50,7 @@ class StudentRegiser extends React.Component {
         this.setState(Object.assign({}, this.state, {password: value}));
     }
 
-    handleCheckReenteredPassword(value){
+    handleCheckReenteredPassword(value) {
         this.setState(Object.assign({}, this.state, {error: ""}));
         this.setState(Object.assign({}, this.state, {reentered_password: value}));
     }
@@ -58,21 +58,27 @@ class StudentRegiser extends React.Component {
     handleChangeFirstname(value) {
         this.setState(Object.assign({}, this.state, {firstname: value}));
     }
+
     handleChangeLastname(value) {
         this.setState(Object.assign({}, this.state, {lastname: value}));
     }
+
     handleChangeEmail(value) {
         this.setState(Object.assign({}, this.state, {mail: value}));
     }
+
     handleChangePhoneNumber(value) {
         this.setState(Object.assign({}, this.state, {phone_number: value}));
     }
+
     handleChangeStreetname(value) {
         this.setState(Object.assign({}, this.state, {streetname: value}));
     }
+
     handleChangeStreetnumber(value) {
         this.setState(Object.assign({}, this.state, {streetnumber: value}));
     }
+
     handleChangeCityname(value) {
         this.setState(Object.assign({}, this.state, {cityname: value}));
     }
@@ -85,7 +91,7 @@ class StudentRegiser extends React.Component {
         event.preventDefault();
 
         // check if entered password matches the reentered_password, throw error and dont send form if they don't match
-        if (this.state.password !== this.state.reentered_password){
+        if (this.state.password !== this.state.reentered_password) {
             this.setState(Object.assign({}, this.state, {reentered_password: ''}));
             this.setState(Object.assign({}, this.state, {error: "Passwords don't match! Please re-enter your password"}));
         } else {
@@ -112,142 +118,151 @@ class StudentRegiser extends React.Component {
     render() {
         return (
             <StudentRegisterPage>
-                <Card style={style} className="md-block-centered">
-                    <CardTitle
-                        title={<div><h1>Create a New Account</h1><h5>Place two requests a month for free.</h5></div>}
-                        avatar={<img className="SignupPageImage" src="https://www.gesundheitsstadt-berlin.de/fileadmin/_processed_/9/2/csm_student-kopfschmerz_5f65cc65e2.jpg" alt="Image of Student"/>}/>
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <h4 className="md-cell md-cell--12">Personal Information</h4>
+                <Grid container spacing={1}>
+                    <Card style={style} className="md-block-centered">
+                        <CardTitle
+                            title={<div><h1>Create a New Account</h1><h5>Place two requests a month for free.</h5>
+                            </div>}
+                            avatar={<img className="SignupPageImage"
+                                         src="https://www.gesundheitsstadt-berlin.de/fileadmin/_processed_/9/2/csm_student-kopfschmerz_5f65cc65e2.jpg"
+                                         alt="Image of Student"/>}/>
+                        <form className="md-grid" onSubmit={this.handleSubmit}
+                              onReset={() => this.props.history.goBack()}>
+                            <h4 className="md-cell md-cell--12">Personal Information</h4>
 
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="First name"
-                            id="FirstNameField"
-                            type="text"
-                            required={true}
-                            value={this.state.firstname}
-                            onChange={this.handleChangeFirstname}
-                            errorText="First Name is required"
-                            placeholder="Prename"/>
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="First name"
+                                id="FirstNameField"
+                                type="text"
+                                required={true}
+                                value={this.state.firstname}
+                                onChange={this.handleChangeFirstname}
+                                errorText="First Name is required"
+                                placeholder="Prename"/>
 
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Last name"
-                            id="LastNameField"
-                            type="text"
-                            required={true}
-                            value={this.state.lastname}
-                            onChange={this.handleChangeLastname}
-                            errorText="Last Name is required"
-                            placeholder="Surname"/>
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Last name"
+                                id="LastNameField"
+                                type="text"
+                                required={true}
+                                value={this.state.lastname}
+                                onChange={this.handleChangeLastname}
+                                errorText="Last Name is required"
+                                placeholder="Surname"/>
 
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Email"
-                            id="EmailField"
-                            type="email"
-                            required={true}
-                            value={this.state.mail}
-                            onChange={this.handleChangeEmail}
-                            errorText="Mail is required"
-                            placeholder="jane.doe@example.com"/>
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Email"
+                                id="EmailField"
+                                type="email"
+                                required={true}
+                                value={this.state.mail}
+                                onChange={this.handleChangeEmail}
+                                errorText="Mail is required"
+                                placeholder="jane.doe@example.com"/>
 
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Phone number"
-                            id="NumberField"
-                            type="tel"
-                            required={false}
-                            value={this.state.phone_number}
-                            onChange={this.handleChangePhoneNumber}
-                            placeholder="017646699119"/>
-
-
-                        <h4 className="md-cell md-cell--12">Password</h4>
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Password"
-                            id="PasswordField"
-                            type="password"
-                            required={true}
-                            value={this.state.password}
-                            onChange={this.handleChangePassword}
-                            errorText="Password is required"/>
-
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Re-enter Password"
-                            id="ReenterPasswordField"
-                            type="password"
-                            required={true}
-                            value={this.state.reentered_password}
-                            onChange={this.handleCheckReenteredPassword}
-                            errorText="Please re-enter your password"/>
-
-                        <h4 className="md-cell md-cell--12">Address</h4>
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Street name"
-                            id="StreetNameField"
-                            type="text"
-                            required={true}
-                            value={this.state.streetname}
-                            onChange={this.handleChangeStreetname}
-                            errorText="Street Name is required"
-                            placeholder="Jump Street"/>
-
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Street number"
-                            id="StreetNumberField"
-                            type="number"
-                            required={true}
-                            value={this.state.streetnumber}
-                            onChange={this.handleChangeStreetnumber}
-                            errorText="Street Number is required"
-                            placeholder="21"/>
-
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="City name"
-                            id="CityNameField"
-                            type="text"
-                            required={true}
-                            value={this.state.cityname}
-                            onChange={this.handleChangeCityname}
-                            errorText="City Name is required"
-                            placeholder="Osgiliath"/>
-
-                        <TextField
-                            className="md-cell md-cell--6"
-                            label="Postal code"
-                            id="PostalCodeField"
-                            type="text"
-                            required={true}
-                            value={this.state.postalcode}
-                            onChange={this.handleChangePostalCode}
-                            errorText="Postal code is required"
-                            placeholder="66981"/>
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Phone number"
+                                id="NumberField"
+                                type="tel"
+                                required={false}
+                                value={this.state.phone_number}
+                                onChange={this.handleChangePhoneNumber}
+                                placeholder="017646699119"/>
 
 
-                        <Button id="submit" type="submit"
-                                disabled={this.state.firstname == undefined || this.state.firstname == ''
-                                || this.state.password == undefined || this.state.password == ''
-                                || this.state.reentered_password == undefined || this.state.reentered_password == ''
-                                || this.state.lastname == undefined || this.state.lastname == ''
-                                || this.state.mail == undefined || this.state.mail == ''
-                                || this.state.streetname == undefined || this.state.streetname == ''
-                                || this.state.streetnumber == undefined || this.state.streetnumber == ''
-                                || this.state.cityname == undefined || this.state.cityname == ''
-                                || this.state.postalcode == undefined || this.state.postalcode == ''
-                                || this.state.password == undefined || this.state.password == '' ? true : false}
-                                raised primary className="md-cell md-cell--6">Register</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--6">Back</Button>
-                        <Link to={'/login'} className="md-cell md-cell--6">Are you already registered?</Link>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                        <AlertMessage className="md-row md-full-width" >{this.state.error ? `${this.state.error}` : ''}</AlertMessage>
-                    </form>
-                </Card>
+                            <h4 className="md-cell md-cell--12">Password</h4>
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Password"
+                                id="PasswordField"
+                                type="password"
+                                required={true}
+                                value={this.state.password}
+                                onChange={this.handleChangePassword}
+                                errorText="Password is required"/>
+
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Re-enter Password"
+                                id="ReenterPasswordField"
+                                type="password"
+                                required={true}
+                                value={this.state.reentered_password}
+                                onChange={this.handleCheckReenteredPassword}
+                                errorText="Please re-enter your password"/>
+
+                            <h4 className="md-cell md-cell--12">Address</h4>
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Street name"
+                                id="StreetNameField"
+                                type="text"
+                                required={true}
+                                value={this.state.streetname}
+                                onChange={this.handleChangeStreetname}
+                                errorText="Street Name is required"
+                                placeholder="Jump Street"/>
+
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Street number"
+                                id="StreetNumberField"
+                                type="number"
+                                required={true}
+                                value={this.state.streetnumber}
+                                onChange={this.handleChangeStreetnumber}
+                                errorText="Street Number is required"
+                                placeholder="21"/>
+
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="City name"
+                                id="CityNameField"
+                                type="text"
+                                required={true}
+                                value={this.state.cityname}
+                                onChange={this.handleChangeCityname}
+                                errorText="City Name is required"
+                                placeholder="Osgiliath"/>
+
+                            <TextField
+                                className="md-cell md-cell--6"
+                                label="Postal code"
+                                id="PostalCodeField"
+                                type="text"
+                                required={true}
+                                value={this.state.postalcode}
+                                onChange={this.handleChangePostalCode}
+                                errorText="Postal code is required"
+                                placeholder="66981"/>
+
+
+                            <Button id="submit" type="submit"
+                                    disabled={this.state.firstname == undefined || this.state.firstname == ''
+                                    || this.state.password == undefined || this.state.password == ''
+                                    || this.state.reentered_password == undefined || this.state.reentered_password == ''
+                                    || this.state.lastname == undefined || this.state.lastname == ''
+                                    || this.state.mail == undefined || this.state.mail == ''
+                                    || this.state.streetname == undefined || this.state.streetname == ''
+                                    || this.state.streetnumber == undefined || this.state.streetnumber == ''
+                                    || this.state.cityname == undefined || this.state.cityname == ''
+                                    || this.state.postalcode == undefined || this.state.postalcode == ''
+                                    || this.state.password == undefined || this.state.password == '' ? true : false}
+                                    raised primary className="md-cell md-cell--6">Register</Button>
+                            <Button id="reset" type="reset" raised secondary
+                                    className="md-cell md-cell--6">Back</Button>
+                            <Link to={'/login'} className="md-cell md-cell--6">Are you already registered?</Link>
+                            <AlertMessage
+                                className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                            <AlertMessage
+                                className="md-row md-full-width">{this.state.error ? `${this.state.error}` : ''}</AlertMessage>
+                        </form>
+                    </Card>
+                </Grid>
             </StudentRegisterPage>
         );
     }
