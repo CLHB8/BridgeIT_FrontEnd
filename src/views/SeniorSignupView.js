@@ -25,9 +25,20 @@ export class SeniorSignupView extends React.Component {
         })
     }
 
+    signupNew(user) {
+        UserService.registerNew(user).then((data) => {
+            this.props.history.push('/');
+        }).catch((e) => {
+            console.error(e);
+            this.setState({
+                error: e
+            });
+        })
+    }
+
     render() {
         return (
-            <SeniorSignup onSubmit={(user) => this.signup(user)} error={this.state.error}></SeniorSignup>
+            <SeniorSignup onSubmit={(user) => this.signupNew(user)} error={this.state.error}></SeniorSignup>
         );
     }
 }

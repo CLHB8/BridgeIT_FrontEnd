@@ -22,6 +22,29 @@ export default class UserService {
         });
     }
 
+    static registerNew(user) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${UserService.baseURL()}/register`, {
+                password: user.password,
+                reentered_password: user.reentered_password,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                mail: user.senior_mail,
+                phone_number: user.phone_number,
+                streetname: user.streetname,
+                streetnumber: user.streetnumber,
+                cityname: user.cityname,
+                postalcode: user.postalcode,
+                username: user.senior_mail,
+                isSenior: user.is_senior
+            }, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static login(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/login`, {

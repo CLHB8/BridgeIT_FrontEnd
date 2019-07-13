@@ -117,6 +117,7 @@ class UserSignup extends React.Component {
             streetnumber: this.state.streetnumber,
             cityname: this.state.cityname,
             postalcode: this.state.postalcode,
+            is_senior: true,
         };
 
         this.props.onSubmit(user);
