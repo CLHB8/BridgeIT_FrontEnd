@@ -38,19 +38,14 @@ class SplitScreen extends React.Component {
                                 cursus porta. Vivamus nisl odio, maximus vel lacinia non, suscipit quis nibh. Sed et
                                 lacus tempor, interdum nisl ornare, feugiat arcu. Suspendisse aliquam malesuada dui,
                                 in dignissim velit maximus vitae. Cras ac mattis libero. Proin feugiat justo nec nisi
-                                sodales, et gravida augue faucibus. Maecenas quis porttitor nunc. Suspendisse congue
-                                ipsum arcu, id aliquam ante dignissim non. Donec maximus, sapien in faucibus molestie,
-                                eros nisi ornare neque, et vulputate augue velit vel ante. Phasellus rhoncus, elit
-                                cursus accumsan viverra, mi lectus dictum elit, non vehicula diam nunc non lectus.
-                                Sed elementum, risus eget fermentum accumsan, nunc ante commodo diam, eget pulvinar
-                                risus velit eu sapien. Nunc vitae pellentesque nisl.
+                                sodales, et gravida augue faucibus.
                             </p>
 
                         </CardText>
                         <div className="wrapper_continue">
                             <Link to={`/sen/register`}>
                                 <button type="button" className="ContinueButton">
-                                    Continue as Senior<FontIcon>arrow_forward_ios</FontIcon>
+                                    Register as Senior<FontIcon>arrow_forward_ios</FontIcon>
                                 </button>
                             </Link>
                         </div>
@@ -68,19 +63,14 @@ class SplitScreen extends React.Component {
                                 cursus porta. Vivamus nisl odio, maximus vel lacinia non, suscipit quis nibh. Sed et
                                 lacus tempor, interdum nisl ornare, feugiat arcu. Suspendisse aliquam malesuada dui,
                                 in dignissim velit maximus vitae. Cras ac mattis libero. Proin feugiat justo nec nisi
-                                sodales, et gravida augue faucibus. Maecenas quis porttitor nunc. Suspendisse congue
-                                ipsum arcu, id aliquam ante dignissim non. Donec maximus, sapien in faucibus molestie,
-                                eros nisi ornare neque, et vulputate augue velit vel ante. Phasellus rhoncus, elit
-                                cursus accumsan viverra, mi lectus dictum elit, non vehicula diam nunc non lectus.
-                                Sed elementum, risus eget fermentum accumsan, nunc ante commodo diam, eget pulvinar
-                                risus velit eu sapien. Nunc vitae pellentesque nisl.
+                                sodales, et gravida augue faucibus.
                             </p>
 
                         </CardText>
                         <div className="wrapper_continue">
                             <Link to={`/stu/register`}>
                                 <button type="button" className="ContinueButton">
-                                    Continue as Senior<FontIcon>arrow_forward_ios</FontIcon>
+                                    Register as Student<FontIcon>arrow_forward_ios</FontIcon>
                                 </button>
                             </Link>
                         </div>
@@ -92,19 +82,3 @@ class SplitScreen extends React.Component {
 };
 
 export default withRouter(SplitScreen);
-
-
-/*
-<div className="image_senior">
-
-    <div>
-        <img onClick={() => this.props.history.push('/')} src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 143, height: 44}}/>
-        <h1>Seniors</h1>
-    </div>
-
-</div>
-
-
-<p>You need an easy and inexpensive solution for your technical problems?</p>
-<Link to={`/login`}>Continue as Student<FontIcon>arrow_forward_ios</FontIcon></Link>
-*/

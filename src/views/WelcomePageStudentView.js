@@ -2,9 +2,8 @@
 
 import React from 'react';
 
-import { WelcomePageStudent } from '../components/WelcomePageStudent';
+import { WelcomePageStudent } from '../components/Student/WelcomePageStudent';
 import MovieService from "../services/MovieService";
-import RequestService from "../services/RequestService";
 
 export class WelcomePageStudentView extends React.Component {
 

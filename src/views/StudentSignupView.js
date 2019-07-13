@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import StudentSignup from '../components/StudentSignup';
+import StudentSignup from '../components/Student/StudentRegister';
 
 import UserService from '../services/UserService';
 
@@ -14,9 +14,9 @@ export class StudentSignupView extends React.Component {
         this.state = {};
     }
 
-    signup(user) {
-        UserService.register(user.username, user.password).then((data) => {
-            this.props.history.push('/');
+    register(user) {
+        UserService.register(user).then((data) => {
+            this.props.history.push('/stu/WelcomePage');
         }).catch((e) => {
             console.error(e);
             this.setState({
@@ -27,7 +27,7 @@ export class StudentSignupView extends React.Component {
 
     render() {
         return (
-            <StudentSignup onSubmit={(user) => this.signup(user)} error={this.state.error}></StudentSignup>
+            <StudentSignup onSubmit={(user) => this.register(user)} error={this.state.error}></StudentSignup>
         );
     }
 }

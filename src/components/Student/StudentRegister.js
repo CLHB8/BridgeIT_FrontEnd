@@ -1,33 +1,19 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, TextField,    FontIcon,
-    SVGIcon} from 'react-md';
+import { Card, Button, TextField} from 'react-md';
 import {Link, withRouter} from 'react-router-dom';
 
-
-
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-
-import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import { AlertMessage } from '../AlertMessage';
+import StudentRegisterPage from 'StudentRegisterPage';
+import x from 'StudentRegisterPage'
 import CardTitle from "react-md/lib/Cards/CardTitle";
-import CardText from "react-md/lib/Cards/CardText";
-import Grid from "@material-ui/core/Grid";
 
 
 const style = { maxWidth: 800 };
 
 
-class UserSignup extends React.Component {
+class StudentRegiser extends React.Component {
 
     constructor(props) {
         super(props);
@@ -37,14 +23,13 @@ class UserSignup extends React.Component {
             lastname : '',
             password : '',
             reentered_password: '',
-            senior_mail: '',
+            student_mail: '',
             phone_number: '',
             streetname: '',
             streetnumber: '',
             cityname: '',
             postalcode: '',
             error: '',
-
         };
 
         this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -57,7 +42,6 @@ class UserSignup extends React.Component {
         this.handleChangeStreetnumber = this.handleChangeStreetnumber.bind(this);
         this.handleChangeCityname = this.handleChangeCityname.bind(this);
         this.handleChangePostalCode = this.handleChangePostalCode.bind(this);
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -69,7 +53,6 @@ class UserSignup extends React.Component {
     handleCheckReenteredPassword(value){
         this.setState(Object.assign({}, this.state, {error: ""}));
         this.setState(Object.assign({}, this.state, {reentered_password: value}));
-
     }
 
     handleChangeFirstname(value) {
@@ -79,7 +62,7 @@ class UserSignup extends React.Component {
         this.setState(Object.assign({}, this.state, {lastname: value}));
     }
     handleChangeEmail(value) {
-        this.setState(Object.assign({}, this.state, {senior_mail: value}));
+        this.setState(Object.assign({}, this.state, {mail: value}));
     }
     handleChangePhoneNumber(value) {
         this.setState(Object.assign({}, this.state, {phone_number: value}));
@@ -101,37 +84,38 @@ class UserSignup extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
+        // check if entered password matches the reentered_password, throw error and dont send form if they don't match
         if (this.state.password !== this.state.reentered_password){
             this.setState(Object.assign({}, this.state, {reentered_password: ''}));
             this.setState(Object.assign({}, this.state, {error: "Passwords don't match! Please re-enter your password"}));
         } else {
             this.setState(Object.assign({}, this.state, {error: ''}));
-        let user = {
-            password: this.state.password,
-            reentered_password: this.state.reentered_password,
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            senior_mail: this.state.senior_mail,
-            phone_number: this.state.phone_number,
-            streetname: this.state.streetname,
-            streetnumber: this.state.streetnumber,
-            cityname: this.state.cityname,
-            postalcode: this.state.postalcode,
-            is_senior: true,
-        };
+            let user = {
+                password: this.state.password,
+                reentered_password: this.state.reentered_password,
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                mail: this.state.mail,
+                phone_number: this.state.phone_number,
+                streetname: this.state.streetname,
+                streetnumber: this.state.streetnumber,
+                cityname: this.state.cityname,
+                postalcode: this.state.postalcode,
+                is_senior: false,
+            };
 
-        this.props.onSubmit(user);
+            this.props.onSubmit(user);
         }
     }
 
 
     render() {
         return (
-            <Page>
+            <StudentRegisterPage>
                 <Card style={style} className="md-block-centered">
                     <CardTitle
                         title={<div><h1>Create a New Account</h1><h5>Place two requests a month for free.</h5></div>}
-                        avatar={<img className="SignupPageImage" src="https://www.manitobaseniorcentres.com/wp-content/uploads/2012/05/strengths.jpg" alt="Image of Senior"/>}/>
+                        avatar={<img className="SignupPageImage" src="https://www.gesundheitsstadt-berlin.de/fileadmin/_processed_/9/2/csm_student-kopfschmerz_5f65cc65e2.jpg" alt="Image of Student"/>}/>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <h4 className="md-cell md-cell--12">Personal Information</h4>
 
@@ -163,7 +147,7 @@ class UserSignup extends React.Component {
                             id="EmailField"
                             type="email"
                             required={true}
-                            value={this.state.senior_mail}
+                            value={this.state.mail}
                             onChange={this.handleChangeEmail}
                             errorText="Mail is required"
                             placeholder="jane.doe@example.com"/>
@@ -247,7 +231,16 @@ class UserSignup extends React.Component {
 
 
                         <Button id="submit" type="submit"
-                                disabled={this.state.firstname == undefined || this.state.firstname == '' || this.state.password == undefined || this.state.password == '' ? true : false}
+                                disabled={this.state.firstname == undefined || this.state.firstname == ''
+                                || this.state.password == undefined || this.state.password == ''
+                                || this.state.reentered_password == undefined || this.state.reentered_password == ''
+                                || this.state.lastname == undefined || this.state.lastname == ''
+                                || this.state.mail == undefined || this.state.mail == ''
+                                || this.state.streetname == undefined || this.state.streetname == ''
+                                || this.state.streetnumber == undefined || this.state.streetnumber == ''
+                                || this.state.cityname == undefined || this.state.cityname == ''
+                                || this.state.postalcode == undefined || this.state.postalcode == ''
+                                || this.state.password == undefined || this.state.password == '' ? true : false}
                                 raised primary className="md-cell md-cell--6">Register</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--6">Back</Button>
                         <Link to={'/login'} className="md-cell md-cell--6">Are you already registered?</Link>
@@ -255,9 +248,9 @@ class UserSignup extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.state.error ? `${this.state.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </StudentRegisterPage>
         );
     }
 };
 
-export default withRouter(UserSignup);
+export default withRouter(StudentRegiser);
