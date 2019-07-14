@@ -45,10 +45,6 @@ export default class App extends React.Component {
                 { component: StudentSignupView, path: '/stu/register'},
                 { component: UserSignupView, path: '/register'},
 
-
-                { component: WelcomePageStudentView, path: '/stu'},
-                { component: WelcomePageSeniorView, path: '/sen'},
-
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
 

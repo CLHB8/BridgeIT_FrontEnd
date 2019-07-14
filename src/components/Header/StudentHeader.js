@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Toolbar, Button } from 'react-md';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import OfferPopup from '../c_SendOfferPopup'
 class StudentHeader extends React.Component {
 
@@ -31,7 +31,6 @@ class StudentHeader extends React.Component {
                         <button className="SHButton" onClick={() => this.props.history.push('/stu/TaskListView')}><i class="material-icons">view_list</i>All Requests</button>
                         <button className="SHButton"><i class="material-icons">view_list</i>My offers</button>
                         <button className="SHButton"><i class="material-icons">account_circle</i>My Account</button>
-                
                 
                 </div>
                 

@@ -23,6 +23,7 @@ export class StuOfferForm extends React.Component {
                 introMsg: props.stuOffer.introMsg,
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
             };
+            console.log('stuOffer not undefined');
         } else {
             this.state = {
                 requestId: '',
@@ -31,6 +32,7 @@ export class StuOfferForm extends React.Component {
                 introMsg: '',
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
             };
+            console.log('stuOffer undefined');
         }
 
         this.handleChangeIntroMsg = this.handleChangeIntroMsg.bind(this);
@@ -50,7 +52,7 @@ export class StuOfferForm extends React.Component {
             stuOffer = {};
         }
 
-        stuOffer.requestId = this.props.request.id;
+        stuOffer.requestId = this.props.request._id;
         stuOffer.seniorId = this.props.request.userId;
         stuOffer.studentId = this.state.user.id;
         stuOffer.introMsg = this.state.introMsg;

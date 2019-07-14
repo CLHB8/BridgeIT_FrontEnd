@@ -4,9 +4,9 @@ import React from 'react';
 import { TableRow, TableColumn, FontIcon, Button } from 'react-md';
 import { Link } from 'react-router-dom';
 
-import { SimpleLink } from './SimpleLink';
+import { SimpleLink } from '../SimpleLink';
 
-import UserService from '../services/UserService';
+import UserService from '../../services/UserService';
 
 
 export class SenMyRequestsListRow extends React.Component {

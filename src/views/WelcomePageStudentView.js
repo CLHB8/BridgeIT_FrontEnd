@@ -5,7 +5,7 @@ import React from 'react';
 import { WelcomePageStudent } from '../components/Student/WelcomePageStudent';
 import MovieService from "../services/MovieService";
 import RequestService from "../services/RequestService";
-import {SenMyRequestsList} from "../components/SenMyRequestsList";
+import {SenMyRequestsList} from "../components/Senior/SenMyRequestsList";
 
 export class WelcomePageStudentView extends React.Component {
 

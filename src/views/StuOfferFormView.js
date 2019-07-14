@@ -5,7 +5,7 @@ import React from 'react';
 import StuOfferForm  from "../components/Student/StuOfferForm";
 
 import RequestService from "../services/RequestService";
-import RequestForm from "../components/b_RequestForm";
+import RequestForm from "../components/Senior/SenRequestForm";
 
 import StuOfferService from "../services/StuOfferService";
 
@@ -13,27 +13,29 @@ export class StuOfferFormView extends React.Component {
 
     constructor(props) {
         super(props);
-    }
+        }
+
 
     componentWillMount(){
-        this.setState({
-            stuOffer: undefined,
-            loading: true,
-        });
-        console.log('1.1');
-
-        let id = this.props.match.params.id;
-
-        RequestService.getRequest(id).then((data) => {
             this.setState({
-                request: data,
-                loading: false,
+                loading: true,
+                stuOffer: undefined,
                 error: undefined
             });
-        }).catch((e) => {
-            console.error(e);
-        });
-        console.log('1.2');
+            console.log('setState');
+
+            let id = this.props.match.params.id;
+
+            RequestService.getRequest(id).then((data) => {
+                this.setState({
+                    request: data,
+                    loading: false,
+                    error: undefined
+                });
+            }).catch((e) => {
+                console.error(e);
+            });
+            console.log('gotRequest');
     }
 
     updateStuOffer(stuOffer) {
