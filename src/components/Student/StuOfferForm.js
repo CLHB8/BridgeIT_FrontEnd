@@ -18,6 +18,7 @@ export class StuOfferForm extends React.Component {
         if (this.props.stuOffer != undefined) {
             this.state = {
                 requestId: props.stuOffer.requestId,
+                requestTitle: props.stuOffer.requestTitle,
                 seniorId: props.stuOffer.seniorId,
                 studentId: props.stuOffer.studentId,
                 introMsg: props.stuOffer.introMsg,
@@ -27,6 +28,7 @@ export class StuOfferForm extends React.Component {
         } else {
             this.state = {
                 requestId: '',
+                requestTitle: '',
                 seniorId: '',
                 studentId: '',
                 introMsg: '',
@@ -53,6 +55,7 @@ export class StuOfferForm extends React.Component {
         }
 
         stuOffer.requestId = this.props.request._id;
+        stuOffer.requestTitle = this.props.request.title;
         stuOffer.seniorId = this.props.request.userId;
         stuOffer.studentId = this.state.user.id;
         stuOffer.introMsg = this.state.introMsg;

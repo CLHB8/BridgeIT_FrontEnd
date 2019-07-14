@@ -16,9 +16,9 @@ export const StuMyOffers = ({data, onDelete}) => (
             <TableHeader>
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn>Name</TableColumn>
-                    <TableColumn>Edit</TableColumn>
-                    <TableColumn>Remove</TableColumn>
+                    <TableColumn>Request Name</TableColumn>
+                    <TableColumn>Your Message</TableColumn>
+                    <TableColumn>Withdraw offer</TableColumn>
                 </TableRow>
             </TableHeader>
             <TableBody>
