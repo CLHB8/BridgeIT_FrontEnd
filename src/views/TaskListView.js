@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { TaskList } from '../components/TaskList';
+import { TaskList } from '../components/Student/TaskList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";

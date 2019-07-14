@@ -3,7 +3,7 @@
 import React from 'react';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
-import OfferPopup from './c_SendOfferPopup'
+import OfferPopup from '../c_SendOfferPopup'
 class StudentHeader extends React.Component {
 
     constructor(props) {

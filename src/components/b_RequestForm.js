@@ -5,7 +5,7 @@ import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md
 import { withRouter } from 'react-router-dom';
 
 import { AlertMessage } from './AlertMessage';
-import SeniorPage from './SeniorPage';
+import SeniorPage from './Senior/SeniorPage';
 import UserService from "../services/UserService";
 
 

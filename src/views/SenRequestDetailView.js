@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { SenRequestDetail } from '../components/SenRequestDetail';
+import { SenRequestDetail } from '../components/Senior/SenRequestDetail';
 
 import RequestService from '../services/RequestService';
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import StudentPage from './StudentPage';
-import OfferPopup from './c_SendOfferPopup';
+import OfferPopup from '../c_SendOfferPopup';
 import {Card, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, TableHeader, TableRow} from "react-md";
 import CardTitle from "react-md/lib/Cards/CardTitle";
 import CardText from "react-md/lib/Cards/CardText";

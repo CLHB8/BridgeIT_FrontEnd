@@ -9,11 +9,34 @@ export default class UserService {
 
     static baseURL() {return "http://localhost:3000/auth"; }
 
-    static register(user, pass) {
+    static registerMovieApp(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/register`, {
                 username: user,
                 password: pass
+            }, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static register(user) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${UserService.baseURL()}/register`, {
+                password: user.password,
+                reentered_password: user.reentered_password,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                mail: user.mail,
+                phone_number: user.phone_number,
+                streetname: user.streetname,
+                streetnumber: user.streetnumber,
+                cityname: user.cityname,
+                postalcode: user.postalcode,
+                username: user.mail,
+                isSenior: user.is_senior
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {

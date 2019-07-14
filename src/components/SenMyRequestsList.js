@@ -4,7 +4,7 @@ import React from 'react';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
 
 import { SenMyRequestsListRow } from './SenMyRequestsListRow';
-import SeniorPage from './SeniorPage';
+import SeniorPage from './Senior/SeniorPage';
 
 const dataTableStyle = {
     'margin-bottom': '36px'

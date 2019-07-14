@@ -4,11 +4,11 @@ import React from 'react';
 import { TableRow, TableColumn, FontIcon, Button } from 'react-md';
 import { Link } from 'react-router-dom';
 
-import { SimpleLink } from './SimpleLink';
-import OfferPopup from './c_SendOfferPopup';
+import { SimpleLink } from '../SimpleLink';
+import OfferPopup from '../c_SendOfferPopup';
 
-import UserService from '../services/UserService';
-import MovieForm from "./MovieForm";
+import UserService from '../../services/UserService';
+import MovieForm from "../MovieForm";
 
 var details = "";
 var requestTitle = "";

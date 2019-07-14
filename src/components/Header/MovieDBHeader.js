@@ -4,11 +4,11 @@ import React from 'react';
 import {Toolbar, Button, Grid} from 'react-md';
 import { withRouter } from 'react-router-dom'
 
-import KebabMenu from './KebabMenu';
-import StartPage from "./StartPage";
+import KebabMenu from '../KebabMenu';
+import StartPage from "../StartPage";
 
 
-class Header extends React.Component {
+class MovieDBHeader extends React.Component {
 
     constructor(props) {
         super(props);
@@ -27,4 +27,4 @@ class Header extends React.Component {
     }
 };
 
-export default withRouter(Header);
+export default withRouter(MovieDBHeader);

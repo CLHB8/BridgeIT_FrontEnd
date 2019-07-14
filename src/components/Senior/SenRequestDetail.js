@@ -6,7 +6,7 @@ import { Avatar, Card, CardTitle, CardText, CardActions, Media, MediaOverlay, Gr
 
 import SeniorPage from './SeniorPage';
 
-import RequestService from '../services/RequestService';
+import RequestService from '../../services/RequestService';
 
 const style = { maxWidth: 900 };
 

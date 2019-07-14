@@ -2,11 +2,8 @@
 
 import React from 'react';
 
-import Header from './Header';
-import StudentHeader from './g_GenericHeader';
-//import Header from './Header';
-import SeniorHeader from './g_SeniorHeader';
-import { Footer } from './Footer';
+import Header from './Header/MovieDBHeader';
+import Footer from './Footer';
 
 
 export default class Page extends React.Component {
@@ -30,7 +27,7 @@ export default class Page extends React.Component {
             <section>
                 {<Header title={this.state.title} />}
                 {this.props.children}
-                <Footer />
+                {<Footer />}
             </section>
         );
     }

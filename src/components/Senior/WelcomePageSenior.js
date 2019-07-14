@@ -3,7 +3,7 @@
 import React from 'react';
 import SeniorPage from './SeniorPage';
 import {Card, Cell, Grid, Media, Button, FontIcon} from "react-md";
-import UserService from "../services/UserService";
+import UserService from "../../services/UserService";
 import { withRouter } from 'react-router-dom';
 
 const style = { maxWidth: 900 };

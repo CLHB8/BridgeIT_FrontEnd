@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import StartPageHeader from './Header/StartPageHeader'
+import Header from './Header/LoginHeader';
 import Footer from './Footer';
 
 
-export default class Page extends React.Component {
+export default class LoginPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ export default class Page extends React.Component {
     render() {
         return (
             <section>
-                {<StartPageHeader title={this.state.title} />}
+                {<Header title={this.state.title} />}
                 {this.props.children}
                 {<Footer />}
             </section>

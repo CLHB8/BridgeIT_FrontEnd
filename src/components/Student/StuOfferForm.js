@@ -4,10 +4,9 @@ import React from 'react';
 import {Card, Button, FontIcon, TextField, CardTitle, CardText, Grid, Cell, Avatar, CardActions} from 'react-md';
 import { withRouter } from 'react-router-dom';
 
-import { AlertMessage } from './AlertMessage';
+import { AlertMessage } from '../AlertMessage';
 import StudentPage from './StudentPage';
-import UserService from "../services/UserService";
-import SeniorPage from "./SeniorPage";
+import UserService from "../../services/UserService";
 
 const style = { maxWidth: 900 };
 

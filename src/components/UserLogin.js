@@ -1,11 +1,12 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, TextField } from 'react-md';
+import {Card, Button, TextField, Grid} from 'react-md';
 import { withRouter, Link } from 'react-router-dom';
 
 import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import Page from './LoginPage';
+import StartPage from "./StartPage";
 
 
 const style = { maxWidth: 500 };
@@ -49,6 +50,7 @@ class UserLogin extends React.Component {
     render() {
         return (
             <Page>
+                <Grid container spacing={1}>
                 <Card style={style} className="md-block-centered">
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
@@ -74,10 +76,11 @@ class UserLogin extends React.Component {
                                 disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
                                 raised primary className="md-cell md-cell--2">Login</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <Link to={'/register'} className="md-cell">Not registered yet?</Link>
+                        <Link to={'/'} className="md-cell">Not registered yet?</Link>
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
+                </Grid>
             </Page>
         );
     }

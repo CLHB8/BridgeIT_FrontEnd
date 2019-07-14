@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import StuOfferForm  from "../components/StuOfferForm";
+import StuOfferForm  from "../components/Student/StuOfferForm";
 
 import RequestService from "../services/RequestService";
 import RequestForm from "../components/b_RequestForm";

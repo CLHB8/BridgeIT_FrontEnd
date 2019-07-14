@@ -5,7 +5,7 @@ import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button, Table
 
 import { TaskListRow } from './TaskListRow';
 import StudentPage from './StudentPage'
-import CatSideBar from './CatSideBar';
+import CatSideBar from '../CatSideBar';
 
 
 const dataTableStyle = {
