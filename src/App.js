@@ -10,7 +10,7 @@ import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
 import { SenRequestDetailView } from "./views/SenRequestDetailView";
 import { StuOfferFormView } from "./views/StuOfferFormView";
-
+import { StuMyOffersView } from "./views/StuMyOffersView";
 
 import { TaskListView} from "./views/TaskListView"
 
@@ -56,7 +56,9 @@ export default class App extends React.Component {
 
 
                 { component: TaskListView, path: '/stu/TaskListView'},
-                { component: StuOfferFormView, path: '/stu/addOffer/:id'}
+                { component: StuOfferFormView, path: '/stu/addOffer/:id'},
+                { component: StuMyOffersView, path: '/stu/myOffers'},
+
             ]
         };
     }

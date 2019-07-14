@@ -23,7 +23,17 @@ export default class StuOfferService {
         });
     }
 
-    static getStuffersToRequest(){
+    static getMyStuOffers(){
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${StuOfferService.baseURL()}/my/${UserService.getCurrentUser().id}`, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getStuOffersToRequest(){
         return new Promise((resolve, reject) => {
             HttpService.get(`${StuOfferService.baseURL()}/${RequestService.getRequest(id).id}`, function(data) {
                 resolve(data);

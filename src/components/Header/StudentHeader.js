@@ -29,7 +29,7 @@ class StudentHeader extends React.Component {
                         
                         <button className="SHButton" onClick={() => this.props.history.push('/stu/WelcomePage')}><i class="material-icons">home</i>Home</button>
                         <button className="SHButton" onClick={() => this.props.history.push('/stu/TaskListView')}><i class="material-icons">view_list</i>All Requests</button>
-                        <button className="SHButton"><i class="material-icons">view_list</i>My offers</button>
+                        <button className="SHButton" onClick={() => this.props.history.push('/stu/myOffers')}><i class="material-icons">view_list</i>My offers</button>
                         <button className="SHButton"><i class="material-icons">account_circle</i>My Account</button>
                 
                 </div>
