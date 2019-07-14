@@ -33,9 +33,9 @@ export default class StuOfferService {
         });
     }
 
-    static getStuOffersToRequest(){
+    static getStuOffersToRequest(id){
         return new Promise((resolve, reject) => {
-            HttpService.get(`${StuOfferService.baseURL()}/${RequestService.getRequest(id).id}`, function(data) {
+            HttpService.get(`${StuOfferService.baseURL()}/req/${id}`, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);

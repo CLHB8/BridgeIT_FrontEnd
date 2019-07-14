@@ -5,6 +5,7 @@ import React from 'react';
 import { SenRequestDetail } from '../components/Senior/SenRequestDetail';
 
 import RequestService from '../services/RequestService';
+import StuOfferService from "../services/StuOfferService";
 
 export class SenRequestDetailView extends React.Component {
 
@@ -19,15 +20,24 @@ export class SenRequestDetailView extends React.Component {
 
         let id = this.props.match.params.id;
 
-        RequestService.getRequest(id).then((data) => {
+        RequestService.getRequest(id).then((reqData) => {
             this.setState({
-                request: data,
-                loading: false
+                request: reqData
             });
         }).catch((e) => {
             console.error(e);
         });
+        console.log("gotRequest success");
 
+        StuOfferService.getStuOffersToRequest(id).then((offersData) => {
+            this.setState({
+                stuOffers: [...offersData],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        })
+        console.log("getStuOffersToRequest success");
     }
 
     deleteRequest(id) {
@@ -44,7 +54,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }
