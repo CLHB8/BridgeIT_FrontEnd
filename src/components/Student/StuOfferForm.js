@@ -22,6 +22,8 @@ export class StuOfferForm extends React.Component {
                 seniorId: props.stuOffer.seniorId,
                 studentId: props.stuOffer.studentId,
                 introMsg: props.stuOffer.introMsg,
+                seniorUsername: props.stuOffer.seniorUsername,
+                studentUsername: props.stuOffer.studentUsername,
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
             };
             console.log('stuOffer not undefined');
@@ -32,6 +34,8 @@ export class StuOfferForm extends React.Component {
                 seniorId: '',
                 studentId: '',
                 introMsg: '',
+                seniorUsername: '',
+                studentUsername: '',
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
             };
             console.log('stuOffer undefined');
@@ -58,6 +62,8 @@ export class StuOfferForm extends React.Component {
         stuOffer.requestTitle = this.props.request.title;
         stuOffer.seniorId = this.props.request.userId;
         stuOffer.studentId = this.state.user.id;
+        stuOffer.seniorUsername = this.props.request.senUserName;
+        stuOffer.studentUsername = this.state.user.username;
         stuOffer.introMsg = this.state.introMsg;
 
         this.props.onSubmit(stuOffer);

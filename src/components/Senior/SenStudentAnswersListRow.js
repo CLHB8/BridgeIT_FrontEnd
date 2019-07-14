@@ -19,10 +19,10 @@ export class SenStudentAnswersListRow extends React.Component {
         return (
             <TableRow key={this.props.key}>
                 <TableColumn><FontIcon>user</FontIcon></TableColumn>
-                <TableColumn>{this.props.stuOffer.studentId}</TableColumn>
+                <TableColumn>{this.props.stuOffer.studentUsername}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
                 {UserService.isAuthenticated() ?
-                    <TableColumn><Button onClick={() => this.props.onDelete(this.props.stuOffer._id)} icon>delete</Button></TableColumn>
+                    <TableColumn><Button onClick={() => this.props.onDelete(this.props.stuOffer._id)} icon>check_circle</Button></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
 
