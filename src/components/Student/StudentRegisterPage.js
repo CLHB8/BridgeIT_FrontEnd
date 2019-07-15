@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import StudentHeader from './g_StudentHeader';
-import { Footer } from './Footer';
+import StudentRegisterHeader from '../Header/StudentRegisterHeader'
+import Footer from '../Footer';
 
 
-export default class Page extends React.Component {
+export default class StudentRegisterPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,9 +25,9 @@ export default class Page extends React.Component {
     render() {
         return (
             <section>
-                <StudentHeader title={this.state.title} />
+                {<StudentRegisterHeader title={this.state.title} />}
                 {this.props.children}
-                <Footer />
+                {<Footer />}
             </section>
         );
     }

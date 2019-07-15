@@ -2,14 +2,14 @@
 
 import React from 'react';
 
-import { SenMyRequestsList } from '../components/Senior/SenMyRequestsList';
+import { TaskList } from '../components/Student/TaskList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
 import {Redirect} from "react-router-dom";
 
 
-export class SenMyRequestsListView extends React.Component {
+export class TaskListView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,19 +20,20 @@ export class SenMyRequestsListView extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentWillMount(){
         this.setState({
             loading: true
         });
-            RequestService.getMyRequests().then((data) => {
-                this.setState({
-                    data: [...data],
-                    loading: false
-                });
-            }).catch((e) => {
-                console.error(e);
-            })
-        }
+
+        RequestService.getRequests().then((data) => {
+            this.setState({
+                data: [...data],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
+    }
 
     deleteRequest(id) {
         this.setState({
@@ -54,14 +55,15 @@ export class SenMyRequestsListView extends React.Component {
     }
 
     render() {
-        if (UserService.isAuthenticated()) {
-            return (
-                <SenMyRequestsList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
-            );
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>);
         }
-        else
-            {
-                return (<Redirect to={'../login'}/>)
-            }
-        }
+
+        return (
+            
+            
+            <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+            
+        );
+    }
 }

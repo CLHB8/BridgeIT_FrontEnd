@@ -23,6 +23,7 @@ export const SenMyRequestsList = ({data, onDelete}) => (
             </TableHeader>
             <TableBody>
                 {data.map((request, i) => <SenMyRequestsListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
+
             </TableBody>
         </DataTable>
     </SeniorPage>

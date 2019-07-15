@@ -2,10 +2,12 @@
 
 import React from 'react';
 import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
-import { AlertMessage } from './AlertMessage';
+import { AlertMessage } from '../AlertMessage';
 import SeniorPage from './SeniorPage';
+import UserService from "../../services/UserService";
+
 
 const style = { maxWidth: 500 };
 
@@ -18,13 +20,19 @@ class RequestForm extends React.Component {
             this.state = {
                 title: props.request.title,
                 category: props.request.category,
-                specification: props.request.specification
+                specification: props.request.specification,
+                userId: props.request.userId,
+                senUserName: props.request.senUserName,
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
             };
         } else {
             this.state = {
                 title: '',
                 category: '',
-                specification: ''
+                specification: '',
+                userId: '',
+                senUserName:'',
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
             };
         }
 
@@ -58,6 +66,8 @@ class RequestForm extends React.Component {
         request.title = this.state.title;
         request.category = this.state.category;
         request.specification = this.state.specification;
+        request.userId = '';
+        request.senUserName = this.state.user.username;
 
         this.props.onSubmit(request);
     }

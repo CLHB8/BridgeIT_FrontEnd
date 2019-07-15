@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { WelcomePageSenior } from '../components/WelcomePageSenior';
+import { WelcomePageSenior } from '../components/Senior/WelcomePageSenior';
 import MovieService from "../services/MovieService";
 
 export class WelcomePageSeniorView extends React.Component {

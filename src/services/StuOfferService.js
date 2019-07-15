@@ -2,17 +2,18 @@
 
 import HttpService from './HttpService';
 import UserService from './UserService';
+import RequestService from './RequestService';
 
-export default class RequestService {
+export default class StuOfferService {
 
     constructor() {
     }
 
     static baseURL() {
-        return "http://localhost:3000/requests"
+        return "http://localhost:3000/stuOffers"
     }
 
-    static getRequests(){
+    static getStuOffers(){
         return new Promise((resolve, reject) => {
             HttpService.get(this.baseURL(), function(data) {
                 resolve(data);
@@ -22,9 +23,9 @@ export default class RequestService {
         });
     }
 
-    static getMyRequests(){
+    static getMyStuOffers(){
         return new Promise((resolve, reject) => {
-            HttpService.get(`${RequestService.baseURL()}/my/${UserService.getCurrentUser().id}`, function(data) {
+            HttpService.get(`${StuOfferService.baseURL()}/my/${UserService.getCurrentUser().id}`, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
@@ -32,14 +33,24 @@ export default class RequestService {
         });
     }
 
-    static getRequest(id) {
+    static getStuOffersToRequest(id){
         return new Promise((resolve, reject) => {
-            HttpService.get(`${RequestService.baseURL()}/${id}`, function(data) {
+            HttpService.get(`${StuOfferService.baseURL()}/req/${id}`, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getStuOffer(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${StuOfferService.baseURL()}/${id}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
-                    reject('Error while retrieving request');
+                    reject('Error while retrieving stuOffer');
                 }
             }, function(textStatus) {
                 reject(textStatus);
@@ -47,9 +58,9 @@ export default class RequestService {
         });
     }
 
-    static deleteRequest(id) {
+    static deleteStuOffer(id) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${RequestService.baseURL()}/${id}`, function(data) {
+            HttpService.remove(`${StuOfferService.baseURL()}/${id}`, function(data) {
                 if(data.message != undefined) {
                     resolve(data.message);
                 }
@@ -62,9 +73,9 @@ export default class RequestService {
         });
     }
 
-    static updateRequest(request) {
+    static updateStuOffer(stuOffer) {
         return new Promise((resolve, reject) => {
-            HttpService.put(`${this.baseURL()}/${request._id}`, request, function(data) {
+            HttpService.put(`${this.baseURL()}/${stuOffer._id}`, stuOffer, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
@@ -72,11 +83,10 @@ export default class RequestService {
         });
     }
 
-    static createRequest(request) {
-        request.id = Math.floor((Math.random() * 100000000) + 1).toString();
-        request.userId = UserService.getCurrentUser().id;
+    static createStuOffer(stuOffer) {
+        stuOffer.id = Math.floor((Math.random() * 100000000) + 1).toString();
         return new Promise((resolve, reject) => {
-            HttpService.post(RequestService.baseURL(), request, function(data) {
+            HttpService.post(StuOfferService.baseURL(), stuOffer, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);

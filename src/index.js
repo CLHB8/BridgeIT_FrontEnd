@@ -11,8 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
 
-
-// Uncommented by Neil
 WebFontLoader.load({
     google: {
         families: ['Roboto:300,400,500,700', 'Material Icons'],

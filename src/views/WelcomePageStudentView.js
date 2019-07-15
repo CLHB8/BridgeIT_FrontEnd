@@ -2,9 +2,10 @@
 
 import React from 'react';
 
-import { WelcomePageStudent } from '../components/WelcomePageStudent';
+import { WelcomePageStudent } from '../components/Student/WelcomePageStudent';
 import MovieService from "../services/MovieService";
 import RequestService from "../services/RequestService";
+import {SenMyRequestsList} from "../components/Senior/SenMyRequestsList";
 
 export class WelcomePageStudentView extends React.Component {
 
@@ -30,6 +31,14 @@ export class WelcomePageStudentView extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
+        RequestService.getRequests().then((data) => {
+            this.setState({
+                data: [...data],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
     }
 
     render() {
@@ -38,7 +47,8 @@ export class WelcomePageStudentView extends React.Component {
         }
 
         return (
-            <WelcomePageStudent data={this.state.data} />
+            <WelcomePageStudent data={this.state.data}>
+            </WelcomePageStudent>
         );
     }
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { Toolbar, Button } from 'react-md';
+import { Toolbar, Button, Grid } from 'react-md';
 import { withRouter } from 'react-router-dom';
 
 
@@ -24,7 +24,7 @@ class SeniorHeader extends React.Component {
                 <div className="secondLine">
                     <span><button className="SHButton" onClick={() => this.props.history.goBack()}><i className="material-icons">keyboard_backspace</i>Back</button></span>
                     <span><button className="SHButton" onClick={() => this.props.history.push('/sen/WelcomePage')}><i className="material-icons">home</i>Start Page</button></span>
-                    <span><button className="SHButton" onClick={() => this.props.history.push('/sen/add')}><i className="material-icons">view_list</i>Add a new Request</button></span>
+                    <span><button className="SHButton" onClick={() => this.props.history.push('/sen/add')}><i className="material-icons">library_add</i>Add a new Request</button></span>
                     <span><button className="SHButton" onClick={() => this.props.history.push('/sen/myRequests')}><i className="material-icons">view_list</i>View my Requests</button></span>
                     <span><button className="SHButton"><i className="material-icons">view_list</i>Help</button></span>
                 </div>
@@ -32,6 +32,6 @@ class SeniorHeader extends React.Component {
             </div>
         );
     }
-}
+};
 
 export default withRouter(SeniorHeader);
