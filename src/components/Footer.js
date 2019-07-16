@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 // Neil: Code from https://mdbootstrap.com/docs/react/navigation/footer/
 const FooterPage = () => {
     return (
-        <MDBFooter color="blue" className="font-small pt-4 mt-4">
+        <MDBFooter color="white" className="font-small" style={{background: "white"}}>
             <div className="footer-copyright text-center py-3">
                 <MDBContainer fluid>
                     <MDBRow>

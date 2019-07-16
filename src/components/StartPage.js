@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import StartPageHeader from './Header/StartPageHeader'
+import StartPageHeader from './Header/Header'
 import Footer from './Footer';
 
 
@@ -24,11 +24,11 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <section>
+            <div className="main-container" style={{background: "whitesmoke"}}>
                 {<StartPageHeader title={this.state.title} />}
                 {this.props.children}
-                {<Footer />}
-            </section>
+                {<Footer style={{background: "white"}}/>}
+            </div>
         );
     }
 }

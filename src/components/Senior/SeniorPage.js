@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import SeniorHeader from '../Header/SeniorHeader';
+import Header from '../Header/Header';
 import Footer from '../Footer';
 
 
@@ -16,7 +16,7 @@ export default class Page extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             title: document.title
         });
@@ -24,11 +24,13 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <section>
-                <SeniorHeader title={this.state.title} />
-                {this.props.children}
-                {<Footer />}
-            </section>
+            <div className="main-container">
+                <section>
+                    <Header title={this.state.title}/>
+                    {this.props.children}
+                    {<Footer/>}
+                </section>
+            </div>
         );
     }
 }

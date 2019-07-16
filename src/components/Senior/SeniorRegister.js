@@ -1,12 +1,13 @@
 "use strict";
 
 import React from 'react';
-import {Card, Button, TextField, Grid} from 'react-md';
+import {Card, Button, TextField, Grid, FontIcon} from 'react-md';
 import {Link, withRouter} from 'react-router-dom';
 
 import {AlertMessage} from '../AlertMessage';
 import Page from '../StartPage';
 import CardTitle from "react-md/lib/Cards/CardTitle";
+import {IoMdArrowRoundForward, IoIosArrowBack, IoMdArrowRoundBack} from "react-icons/io";
 
 
 const style = {maxWidth: 800};
@@ -108,7 +109,8 @@ class UserSignup extends React.Component {
                 streetnumber: this.state.streetnumber,
                 cityname: this.state.cityname,
                 postalcode: this.state.postalcode,
-                is_senior: true,
+                isSenior: true,
+                isPremium: false,
             };
 
             this.props.onSubmit(user);
@@ -130,7 +132,6 @@ class UserSignup extends React.Component {
                         <form className="md-grid" onSubmit={this.handleSubmit}
                               onReset={() => this.props.history.goBack()}>
                             <h4 className="md-cell md-cell--12">Personal Information</h4>
-
                             <TextField
                                 className="md-cell md-cell--6"
                                 label="First name"
@@ -140,7 +141,8 @@ class UserSignup extends React.Component {
                                 value={this.state.firstname}
                                 onChange={this.handleChangeFirstname}
                                 errorText="First Name is required"
-                                placeholder="Prename"/>
+                                placeholder="Prename"
+                            />
 
                             <TextField
                                 className="md-cell md-cell--6"
@@ -176,6 +178,8 @@ class UserSignup extends React.Component {
 
 
                             <h4 className="md-cell md-cell--12">Password</h4>
+
+
                             <TextField
                                 className="md-cell md-cell--6"
                                 label="Password"
@@ -242,21 +246,36 @@ class UserSignup extends React.Component {
                                 placeholder="66981"/>
 
 
-                            <Button id="submit" type="submit"
-                                    disabled={this.state.firstname == undefined || this.state.firstname == ''
-                                    || this.state.password == undefined || this.state.password == ''
-                                    || this.state.reentered_password == undefined || this.state.reentered_password == ''
-                                    || this.state.lastname == undefined || this.state.lastname == ''
-                                    || this.state.mail == undefined || this.state.mail == ''
-                                    || this.state.streetname == undefined || this.state.streetname == ''
-                                    || this.state.streetnumber == undefined || this.state.streetnumber == ''
-                                    || this.state.cityname == undefined || this.state.cityname == ''
-                                    || this.state.postalcode == undefined || this.state.postalcode == ''
-                                    || this.state.password == undefined || this.state.password == '' ? true : false}
-                                    raised primary className="md-cell md-cell--6">Register</Button>
-                            <Button id="reset" type="reset" raised secondary
-                                    className="md-cell md-cell--6">Back</Button>
-                            <Link to={'/login'} className="md-cell md-cell--6">Are you already registered?</Link>
+                            <div className="md-cell--6" style={{
+                                "text-align": "center",
+                                "align-items": "center"
+                            }}>
+                                <Button id="submit" type="submit" style={{background: "darkblue", margin: 0}}
+                                        disabled={this.state.firstname == undefined || this.state.firstname == ''
+                                        || this.state.password == undefined || this.state.password == ''
+                                        || this.state.reentered_password == undefined || this.state.reentered_password == ''
+                                        || this.state.lastname == undefined || this.state.lastname == ''
+                                        || this.state.mail == undefined || this.state.mail == ''
+                                        || this.state.streetname == undefined || this.state.streetname == ''
+                                        || this.state.streetnumber == undefined || this.state.streetnumber == ''
+                                        || this.state.cityname == undefined || this.state.cityname == ''
+                                        || this.state.postalcode == undefined || this.state.postalcode == ''
+                                        || this.state.password == undefined || this.state.password == '' ? true : false}
+                                        className="RegisterButton"><b>Register</b><IoMdArrowRoundForward
+                                    id="middleXLargeIcons"/></Button>
+                            </div>
+
+
+                            <div className="md-cell--6" style={{
+                                "text-align": "center",
+                                "align-items": "center"
+                            }}>
+                                <Button id="reset" type="reset" style={{background: "darkred", margin: 0}}
+                                        className="RegisterButton"><IoMdArrowRoundBack
+                                    id="middleXLargeIcons"/><b>Back</b></Button>
+                            </div>
+                            <Link to={'/login'} className="md-cell md-cell--6"
+                                  style={{"text-align": "center", "margin-top": 20}}>Are you already registered?</Link>
                             <AlertMessage
                                 className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                             <AlertMessage

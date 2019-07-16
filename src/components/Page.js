@@ -24,11 +24,13 @@ export default class Page extends React.Component {
 
     render() {
         return (
+            <div className="main-container">
             <section>
                 {<Header title={this.state.title} />}
                 {this.props.children}
                 {<Footer />}
             </section>
+            </div>
         );
     }
 }

@@ -5,7 +5,7 @@ import {Card, Button, TextField, FontIcon, Grid, Subheader} from 'react-md';
 import {withRouter, Link} from 'react-router-dom';
 
 import {AlertMessage} from './AlertMessage';
-import Page from './LoginPage';
+import Page from './StartPage';
 import CardTitle from "react-md/lib/Cards/CardTitle";
 import CardText from "react-md/lib/Cards/CardText";
 import CardActions from "react-md/lib/Cards/CardActions";
