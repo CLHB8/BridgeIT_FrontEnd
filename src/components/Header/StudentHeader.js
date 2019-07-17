@@ -9,6 +9,7 @@ import {Button, Cell, FontIcon, TableColumn, TableRow, SVGIcon} from "react-md";
 import KebabMenu from "../KebabMenu";
 import {IoIosLogIn, IoIosLogOut, IoMdHome} from "react-icons/io";
 import {makeStyles} from "@material-ui/core";
+import AccountMenu from "../AccountMenu";
 
 const style = {"margin-bottom": 0};
 
@@ -103,9 +104,9 @@ class StudentHeader extends React.Component {
 
         if (UserService.isAuthenticated()) {
             if (UserService.isSenior()) {
-                loginOrKebabMenue = <KebabMenu id="toolbar-colored-kebab-menu"/>;
+                loginOrKebabMenue = <AccountMenu/>;
             } else {
-                loginOrKebabMenue = <KebabMenu id="toolbar-colored-kebab-menu"/>;
+                loginOrKebabMenue = <AccountMenu/>;
             }
         } else {
             if (!(this.props.location.pathname === "/login"))
@@ -145,7 +146,7 @@ class StudentHeader extends React.Component {
                 <AppBar position="static" style={{background: "white"}}>
                     <Toolbar>
                         {/*Neil: enter here path when clicked it will be redirected to this path*/}
-                        <Link to={`/`}>
+                        <Link to={'/stu/WelcomePage'}>
                             <img src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 143, height: 44}}/>
                         </Link>
                         <div style={{flexGrow: "1"}}/>
@@ -171,6 +172,16 @@ class StudentHeader extends React.Component {
 
                         <div style={{flexGrow: "1"}}/>
 
+                        <button className="SHButton" onClick={() => this.props.history.push('/stu/WelcomePage')}><i
+                            className="material-icons">home</i>Home
+                        </button>
+                        <button className="SHButton" onClick={() => this.props.history.push('/stu/TaskListView')}><i
+                            className="material-icons">view_list</i>All Requests
+                        </button>
+                        <button className="SHButton" onClick={() => this.props.history.push('/stu/myOffers')}><i
+                            className="material-icons">view_list</i>My offers
+                        </button>
+                        <div style={{flexGrow: "0.05"}}/>
                         {homeButton}
                         {homeButtonDiv}
                         {loginOrKebabMenue}
