@@ -4,9 +4,9 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { Card, CardTitle, CardText, Media, MediaOverlay, Grid, Cell, Button, FontIcon } from 'react-md';
 
-import Page from './Page';
+import MoviePage from './MoviePage';
 
-import UserService from '../services/UserService';
+import UserService from '../../services/UserService';
 
 const style = { maxWidth: 500 };
 
@@ -18,7 +18,7 @@ export class MovieDetail extends React.Component {
 
     render() {
         return (
-            <Page>
+            <MoviePage>
                 <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={3}>
@@ -52,7 +52,7 @@ export class MovieDetail extends React.Component {
                         </p>
                     </CardText>
                 </Card>
-            </Page>
+            </MoviePage>
         );
     }
 }

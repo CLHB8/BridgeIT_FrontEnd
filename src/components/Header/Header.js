@@ -111,9 +111,9 @@ class Header extends React.Component {
         if (!(this.props.location.pathname === "/login"))
         loginOrKebabMenue =
         <Link to={`/login`} style={{height: 35}}>
-        <button type="button" className="signButtonGreen">
-        Login<IoIosLogIn/>
-        </button>
+            <button type="button" className="signButtonGreen">
+                <b>Login</b><IoIosLogIn id="middleXLargeIcons"/>
+            </button>
         </Link>
     }
 

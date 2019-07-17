@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import StudentHeader from '../Header/StudentHeaderDeprecated';
+import Header from '../Header/MovieDBHeader';
 import Footer from '../Footer';
 
 
-export default class Page extends React.Component {
+export default class MoviePage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,16 +17,16 @@ export default class Page extends React.Component {
     }
 
     componentDidMount(){
-        this.setState({
-            title: document.title
-        });
+       this.setState({
+           title: document.title
+       });
     }
 
     render() {
         return (
             <div className="main-container">
             <section>
-                <StudentHeader title={this.state.title} />
+                {<Header title={this.state.title} />}
                 {this.props.children}
                 {<Footer />}
             </section>

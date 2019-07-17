@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Header from './Header/MovieDBHeader';
+import StartPageHeader from './Header/Header'
 import Footer from './Footer';
 
 
@@ -17,19 +17,17 @@ export default class Page extends React.Component {
     }
 
     componentDidMount(){
-       this.setState({
-           title: document.title
-       });
+        this.setState({
+            title: document.title
+        });
     }
 
     render() {
         return (
-            <div className="main-container">
-            <section>
-                {<Header title={this.state.title} />}
+            <div className="main-container" style={{background: "whitesmoke"}}>
+                {<StartPageHeader title={this.state.title} />}
                 {this.props.children}
-                {<Footer />}
-            </section>
+                {<Footer style={{background: "white"}}/>}
             </div>
         );
     }

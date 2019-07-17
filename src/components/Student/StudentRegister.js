@@ -5,7 +5,7 @@ import {Card, Button, TextField, Grid} from 'react-md';
 import {Link, withRouter} from 'react-router-dom';
 
 import {AlertMessage} from '../AlertMessage';
-import Page from '../StartPage';
+import Page from '../Page';
 import CardTitle from "react-md/lib/Cards/CardTitle";
 import {IoMdArrowRoundForward, IoIosArrowBack, IoMdArrowRoundBack} from "react-icons/io";
 
@@ -270,8 +270,7 @@ class StudentRegiser extends React.Component {
                                 "align-items": "center"
                             }}>
                                 <Button id="reset" type="reset" style={{background: "darkred", margin: 0}}
-                                        className="RegisterButton"><IoMdArrowRoundBack
-                                    id="middleXLargeIcons"/><b>Back</b></Button>
+                                        className="RegisterButton"><b>Back</b></Button>
                             </div>
                             <Link to={'/login'} className="md-cell md-cell--6" style={{"text-align": "center", "margin-top": 20}}>Are you already registered?</Link>
                             <AlertMessage

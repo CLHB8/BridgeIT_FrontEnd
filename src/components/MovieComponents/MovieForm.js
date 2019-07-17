@@ -4,8 +4,8 @@ import React from 'react';
 import { Card, Button, FontIcon, TextField } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
-import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import { AlertMessage } from '../AlertMessage';
+import MoviePage from './MoviePage';
 
 
 const style = { maxWidth: 500 };
@@ -74,7 +74,7 @@ class MovieForm extends React.Component {
 
     render() {
         return (
-            <Page>
+            <MoviePage>
                 <Card style={style} className="md-block-centered">
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
@@ -122,7 +122,7 @@ class MovieForm extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </MoviePage>
         );
     }
 }

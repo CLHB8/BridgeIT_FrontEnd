@@ -3,7 +3,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { UserLoginView } from "./views/UserLoginView";
-import { UserSignupView } from "./views/UserSignupView";
 import { RequestFormView } from "./views/RequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
@@ -39,11 +38,9 @@ export default class App extends React.Component {
                         }} , path: '/edit/:id'},
                 { component: RequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
-                { component: UserSignupView, path: '/register'},
 
                 { component: SeniorSignupView, path: '/sen/register'},
                 { component: StudentSignupView, path: '/stu/register'},
-                { component: UserSignupView, path: '/register'},
 
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},

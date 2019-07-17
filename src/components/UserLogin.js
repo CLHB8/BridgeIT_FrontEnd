@@ -5,8 +5,8 @@ import {Card, Button, TextField, Grid} from 'react-md';
 import {withRouter, Link} from 'react-router-dom';
 
 import {AlertMessage} from './AlertMessage';
-import Page from './StartPage';
-import StartPage from "./StartPage";
+import Page from './Page';
+import StartPage from "./Page";
 import {IoIosLogIn, IoMdArrowRoundBack} from "react-icons/io";
 
 
@@ -75,14 +75,13 @@ class UserLogin extends React.Component {
                                 errorText="Password is required"/>
 
 
-                                <Button id="submit" type="submit"
+                                <Button id="submit" type="submit" style={{background: "darkblue"}}
                                         disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
-                                        className="BackAndLoginButtonLoginView"><b>Login</b><IoIosLogIn/></Button>
+                                        className="BackAndLoginButtonLoginView"><b>Login</b><IoIosLogIn id="middleXLargeIcons"/></Button>
 
 
                             <Button id="reset" type="reset" style={{background: "darkred"}}
-                                    className="BackAndLoginButtonLoginView"><IoMdArrowRoundBack
-                                id="middleXLargeIcons"/><b>Back</b></Button>
+                                    className="BackAndLoginButtonLoginView"><b>Back</b></Button>
 
 
                             <Link to={'/'} className="md-cell">Not registered yet?</Link>

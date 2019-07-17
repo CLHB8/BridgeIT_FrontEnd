@@ -111,7 +111,7 @@ a:hover {
 }
 
 .BackAndLoginButtonLoginView{
-    background: darkgreen;
+    background: darkblue;
     font-size: x-large;
     color: white;
     border: none;
@@ -122,7 +122,7 @@ a:hover {
 }
 
 .signButtonGreen {
-    background: darkgreen;
+    background: darkblue;
     font-size: x-large;
     color: white;
     border: none;
