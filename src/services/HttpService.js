@@ -65,6 +65,7 @@ export default class HttpService {
             else {
                 if(resp.hasOwnProperty('token')) {
                     window.localStorage['jwtToken'] = resp.token;
+                    window.localStorage['isSenior'] = resp.isSenior;
                 }
                 onSuccess(resp);
             }

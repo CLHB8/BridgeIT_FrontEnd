@@ -45,6 +45,7 @@ export default class UserService {
         });
     }
 
+
     static login(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/login`, {
@@ -56,6 +57,9 @@ export default class UserService {
                 reject(textStatus);
             });
         });
+    }
+    static isSenior(){
+        return window.localStorage['isSenior'];
     }
 
     static logout(){
