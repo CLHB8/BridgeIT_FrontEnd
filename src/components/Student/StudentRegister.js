@@ -43,6 +43,8 @@ class StudentRegiser extends React.Component {
         this.handleChangeCityname = this.handleChangeCityname.bind(this);
         this.handleChangePostalCode = this.handleChangePostalCode.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.validateEmail = this.validateEmail.bind(this);
+        this.passwordsMatch = this.passwordsMatch.bind(this);
     }
 
 
@@ -67,8 +69,58 @@ class StudentRegiser extends React.Component {
         this.setState(Object.assign({}, this.state, {mail: value}));
     }
 
+    checkIfValueIsEmpty(){
+
+    }
+
+    validateEmail(){
+        // Neil: Gets the current state (current mail text) and checks if it fullfills the requirements (regex) if not false is returned and error text is shown
+        let currentMailValue = this.state.mail;
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (currentMailValue == undefined || currentMailValue == ""){
+            return true;
+        }
+        if (reg.test(currentMailValue) == false)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    passwordsMatch(){
+        // Neil: Gets the current state (current mail text) and checks if it fullfills the requirements (regex) if not false is returned and error text is shown
+        let currentPassword = this.state.password;
+        let currentReenteredPassword = this.state.reentered_password;
+
+
+
+        if (currentReenteredPassword == undefined || currentReenteredPassword == "" || currentPassword == undefined || currentPassword == ""){
+            return true;
+        }
+
+        // TODO: Neil: I uncommented regex due to testing purposes, no password requirements
+        if(currentPassword === currentReenteredPassword)/*&& /(?=^.{6,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])/.test(currentPassword))*/{
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    passwordErrorText(){
+        if(!(this.passwordsMatch())){
+            console.log("Passwords dont Match")
+            return("Passwords don't match")
+        }else{
+            console.log("Password is required")
+            return("Passwords is required")
+        }
+    }
+
     handleChangePhoneNumber(value) {
-        this.setState(Object.assign({}, this.state, {phone_number: value}));
+        if (/^\d+$/.test(value) || value === "") {
+            this.setState(Object.assign({}, this.state, {phone_number: value}));
+        }
     }
 
     handleChangeStreetname(value) {
@@ -76,7 +128,9 @@ class StudentRegiser extends React.Component {
     }
 
     handleChangeStreetnumber(value) {
-        this.setState(Object.assign({}, this.state, {streetnumber: value}));
+        if (/^\d+$/.test(value) || value === "") {
+            this.setState(Object.assign({}, this.state, {streetnumber: value}));
+        }
     }
 
     handleChangeCityname(value) {
@@ -116,7 +170,6 @@ class StudentRegiser extends React.Component {
         }
     }
 
-
     render() {
         return (
             <Page>
@@ -126,7 +179,7 @@ class StudentRegiser extends React.Component {
                             title={<div><h1>Create a New Account</h1><h5>Place two requests a month for free.</h5>
                             </div>}
                             avatar={<img className="SignupPageImage"
-                                         src="https://www.gesundheitsstadt-berlin.de/fileadmin/_processed_/9/2/csm_student-kopfschmerz_5f65cc65e2.jpg"
+                                         src="https://fee.org/media/32732/econ.jpg?anchor=center&mode=crop&width=1920&rnd=131971368770000000"
                                          alt="Image of Student"/>}/>
                         <form className="md-grid" onSubmit={this.handleSubmit}
                               onReset={() => this.props.history.goBack()}>
@@ -162,14 +215,15 @@ class StudentRegiser extends React.Component {
                                 required={true}
                                 value={this.state.mail}
                                 onChange={this.handleChangeEmail}
-                                errorText="Mail is required"
+                                error={!(this.validateEmail())}
+                                errorText="Not a proper mail address format (field is required)!"
                                 placeholder="jane.doe@example.com"/>
 
                             <TextField
                                 className="md-cell md-cell--6"
                                 label="Phone number"
                                 id="NumberField"
-                                type="tel"
+                                type="text"
                                 required={false}
                                 value={this.state.phone_number}
                                 onChange={this.handleChangePhoneNumber}
@@ -196,8 +250,9 @@ class StudentRegiser extends React.Component {
                                 type="password"
                                 required={true}
                                 value={this.state.reentered_password}
+                                error={!(this.passwordsMatch())}
                                 onChange={this.handleCheckReenteredPassword}
-                                errorText="Please re-enter your password"/>
+                                errorText={this.passwordErrorText()}/>
 
                             <h4 className="md-cell md-cell--12">Address</h4>
                             <TextField
@@ -215,11 +270,11 @@ class StudentRegiser extends React.Component {
                                 className="md-cell md-cell--6"
                                 label="Street number"
                                 id="StreetNumberField"
-                                type="number"
+                                type="text"
                                 required={true}
                                 value={this.state.streetnumber}
                                 onChange={this.handleChangeStreetnumber}
-                                errorText="Street Number is required"
+                                errorText="Street Number is required and should contain only integers"
                                 placeholder="21"/>
 
                             <TextField
@@ -250,7 +305,7 @@ class StudentRegiser extends React.Component {
                                 "align-items": "center"
                             }}>
                                 <Button id="submit" type="submit" style={{background: "darkblue", margin: 0}}
-                                        disabled={this.state.firstname == undefined || this.state.firstname == ''
+                                        disabled={!(this.passwordsMatch()) || !(this.validateEmail()) || this.state.firstname == undefined || this.state.firstname == ''
                                         || this.state.password == undefined || this.state.password == ''
                                         || this.state.reentered_password == undefined || this.state.reentered_password == ''
                                         || this.state.lastname == undefined || this.state.lastname == ''
@@ -272,7 +327,8 @@ class StudentRegiser extends React.Component {
                                 <Button id="reset" type="reset" style={{background: "darkred", margin: 0}}
                                         className="RegisterButton"><b>Back</b></Button>
                             </div>
-                            <Link to={'/login'} className="md-cell md-cell--6" style={{"text-align": "center", "margin-top": 20}}>Are you already registered?</Link>
+                            <Link to={'/login'} className="md-cell md-cell--6"
+                                  style={{"text-align": "center", "margin-top": 20}}>Are you already registered?</Link>
                             <AlertMessage
                                 className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                             <AlertMessage
