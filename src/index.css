@@ -1,17 +1,50 @@
 /*TODO: Add styles here */
 
-.StudentHeader{
+* {margin: 0; padding: 0;}
 
+#splitscreenList {
+    margin: 20px;
+    text-align: justify;
+}
+
+ul {
+    list-style-type: none;
+    width: auto;
+}
+
+h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+li img {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+li p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+    padding: 10px;
+    overflow: auto;
+}
+
+li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.StudentHeader {
     font-size: 3rem;
     display: block;
     width: 100%;
     height: 6rem;
     border-bottom: 2px solid black;
-
-
+    background-color: #E0E0E0;
 }
 
-.SeniorHeader{
+.SeniorHeader {
 
     font-size: 2rem;
     display: block;
@@ -20,7 +53,12 @@
 
 }
 
-.GenericHeader{
+/*Neil: Remove underline when mouse moves over link */
+a:hover {
+    text-decoration: none;
+}
+
+.GenericHeader {
 
     font-size: 3rem;
     display: block;
@@ -28,38 +66,68 @@
     height: 3rem;;
 
 }
+
 .HeaderNav {
 
     display: block;
     float: right;
 }
-.HeaderLogIn {
 
+.HeaderLogIn {
     position: absolute;
     right: 20px;
     top: 0;
-
 }
 
-.StartPageImage{
+.StartPageImage {
     border-radius: 50%;
-    width:200px;
-    height:130px;
+    width: 200px;
+    height: 130px;
 }
 
-.SignupPageImage{
+.SignupPageImage {
     border-radius: 50%;
-    width:200px;
-    height:130px;
+    width: 200px;
+    height: 130px;
 }
 
-.ContinueButton{
-    background: green;
+.RegisterButton {
+    background: darkblue;
+    font-size: x-large;
     color: white;
     margin-bottom: 20px;
-    width: 200px;
+    border: none;
     height: 40px;
-    font-size : 20px;
+    border-radius: 10px;
+    min-width: 280px;
+}
+
+.signButtonBlue {
+    background: white;
+    font-size: x-large;
+    color: black;
+    border: none;
+    border-radius: 10px;
+}
+
+.BackAndLoginButtonLoginView{
+    background: darkblue;
+    font-size: x-large;
+    color: white;
+    border: none;
+    margin-right: 10px;
+    border-radius: 10px;
+    min-width: 110px;
+    height: 35px;
+}
+
+.signButtonGreen {
+    background: darkblue;
+    font-size: x-large;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    min-width: 110px;
 }
 
 .wrapper_continue {
@@ -67,14 +135,15 @@
     align-items: center;
 }
 
-.HeaderReadOut{
+.HeaderReadOut {
     height: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
     float: bottom;
 }
-.SHButton{
+
+.SHButton {
     font-size: 18px;
     margin-left: 3px;
     border: none;
@@ -83,20 +152,29 @@
 
 }
 
-.SHButton i{
+.SHButton i {
     vertical-align: middle;
     font-size: 20px;
     padding: 2px;
 }
 
-.SignInButton{
+.SignInButton {
     font-size: 20px;
     margin-left: 1rem;
-    border: none;
-    background: none;
-
+    background: green;
+    color: white;
+    border-color: black;
 }
-.logo{
+
+.HomeButton {
+    font-size: 20px;
+    margin-left: 1rem;
+    background: blue;
+    color: white;
+    border-color: black;
+}
+
+.logo {
     height: 5rem;
     float: left;
 }
@@ -111,23 +189,65 @@
     width: 100%;
 }
 
-div.md-grid{
+div.md-grid {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-div.firstLine{
+div.firstLine {
     display: table;
     width: 100%;
-    table-layout: fixed;    /* For cells of equal size */
-}
-#submit {
-    background-color: blue;
-    color: white;
+    table-layout: fixed; /* For cells of equal size */
 }
 
-div.firstLine span{
+#submit {
+    background-color: darkgreen;
+    color: white;
+    font-size: large;
+    text-align: center;
+    padding: 0;
+}
+
+#registerForwardIcon {
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+    position: absolute;
+    top: 25%;
+}
+
+#splitscreenIcons{
+    vertical-align: middle;
+    font-size: x-large;
+}
+
+#middleXLargeIcons{
+    vertical-align: middle;
+    font-size: x-large;
+}
+
+#test {
+    color: white;
+    vertical-align: middle;
+}
+
+#landingPageForwardIcon {
+    color: white;
+    vertical-align: middle;
+    font-size: x-large;
+}
+
+
+#reset {
+    background-color: darkred;
+    color: white;
+    font-size: large;
+    text-align: center;
+    padding: 0px;
+}
+
+div.firstLine span {
     display: table-cell;
     text-align: center;
 }
@@ -135,17 +255,18 @@ div.firstLine span{
 div.firstLine span:first-child {
     text-align: left;
 }
+
 div.firstLine span:last-child {
     text-align: right;
 }
 
-div.secondLine{
+div.secondLine {
     display: table;
     width: 100%;
-    table-layout: fixed;    /* For cells of equal size */
+    table-layout: fixed; /* For cells of equal size */
 }
 
-div.secondLine span{
+div.secondLine span {
     display: table-cell;
     text-align: center;
 }
@@ -159,18 +280,19 @@ div.secondLine span{
     right: 0;
     bottom: 0;
     margin: auto;
-    background-color: rgba(0,0,0, 0.5);
-  }
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-  .popuplayer form textarea{
+.popuplayer form textarea {
 
     width: 100%;
     min-height: 150px;
     font-size: 14px;
     vertical-align: 0;
 
-  }
-  .popuplayer form input[type="submit"]{
+}
+
+.popuplayer form input[type="submit"] {
 
     font-size: 18px;
     background: none;
@@ -178,9 +300,9 @@ div.secondLine span{
     float: right;
     margin-top: 5px;
 
-  }
+}
 
-  .popup {
+.popup {
     position: absolute;
     left: 33%;
     right: 33%;
@@ -191,73 +313,79 @@ div.secondLine span{
     padding: 15px;
     height: auto;
     min-height: 500px;
-  }
-  .popupHead{
+}
+
+.popupHead {
 
     display: block;
     width: 100%;
     height: 18px;
-  }
-  .popupHead h3{float: left;}
-  .closeButton{
+}
+
+.popupHead h3 {
+    float: left;
+}
+
+.closeButton {
 
     display: block;
     background: none;
     float: right;
-    border:none;
-  }
-  .closeButton i{
+    border: none;
+}
 
-  }
-  .closeButton:hover{
+.closeButton i {
+
+}
+
+.closeButton:hover {
 
     background-color: #F44336;
-  }
-  .popupContainer{
+}
+
+.popupContainer {
 
     width: 100%;
     display: block;
-    overflow:hidden;
+    overflow: hidden;
 
-  }
-  .taskCategories {
-        display: inline-block;
-        height: 100%;
-        width: 20%;
+}
 
-  }
+.taskCategories {
+    display: inline-block;
+    height: 100%;
+    width: 20%;
 
-  .gridContainer {
+}
+
+.gridContainer {
     display: grid;
     width: 100%;
     height: 90%;
     grid-template-columns: 20% 1fr 1fr;
     grid-template-rows: 100% 1fr 1fr 100px;
     grid-gap: 1rem;
-    grid-template-areas:
+    grid-template-areas: "catSideBar takList takList" "catSideBar takList takList" "catSideBar takList takList" "catSideBar takList takList" "catSideBar takList takList";
+}
 
-        "catSideBar takList takList"
-        "catSideBar takList takList"
-        "catSideBar takList takList"
-        "catSideBar takList takList"
-        "catSideBar takList takList";
-  }
- ul{
-      list-style: none;
-  }
-  li:hover{
-      background-color: #E0E0E0;
-  }
+ul {
+    list-style: none;
+}
 
-  .catSideBar {
+li:hover {
+    background-color: #E0E0E0;
+}
+
+.catSideBar {
     grid-area: catSideBar;
-  }
+}
 
-  .taskList {
+.taskList {
     grid-area: takList;
     border-left: 2px solid black;
-  }
-  .categories button{
+}
+
+.categories button {
 
     border: none;
     font-size: 18px;
@@ -268,31 +396,53 @@ div.secondLine span{
     font-weight: bold;
 
 
-  }
-  .categories {
-      margin-top: 40px;
-  }
-  .categories h2{
-      margin-left: 5%;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
+}
 
-  .subscriptionAd{
+.categories {
+    margin-top: 40px;
+}
+
+.categories h2 {
+    margin-left: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.subscriptionAd {
 
 
     border: 2px solid #F44336;
     background-color: #FFF9C4;
     padding: 10px;
     margin: 10px;
-  }
-  .subscriptionAd p{
-      font-size: 20px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-weight: bold;
-  }
+}
 
+.subscriptionAd p {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+html,
 body {
-    margin: 10px;
+    height: 100%;
+    position: relative;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.md-list-item {
+    padding: 0px;
+}
+.main-container {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; /* height of your footer */
 }
 
 .wrapper {
@@ -316,22 +466,27 @@ body {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
+
 .b {
     grid-column: 2 / 2;
     grid-row: 2 / 3;
 }
+
 .c {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
+
 .d {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
+
 .e {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
+
 .f {
     grid-column: 1 / 2;
     grid-row: 1 / 2;

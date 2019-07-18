@@ -2,8 +2,11 @@
 
 import React from 'react';
 
-import { WelcomePageSenior } from '../components/WelcomePageSenior';
+import { WelcomePageSenior } from '../components/Senior/WelcomePageSenior';
 import MovieService from "../services/MovieService";
+import UserService from "../services/UserService";
+import {StuMyOffers} from "../components/Student/StuMyOffers";
+import {Redirect} from "react-router-dom";
 
 export class WelcomePageSeniorView extends React.Component {
 
@@ -35,9 +38,18 @@ export class WelcomePageSeniorView extends React.Component {
         if (this.state.loading) {
             return (<h2>Loading...</h2>);
         }
-
-        return (
-            <WelcomePageSenior data={this.state.data} />
-        );
+        if (UserService.isAuthenticated()) {
+            if(UserService.isSenior()){
+                return (
+                    <WelcomePageSenior data={this.state.data} />
+                );
+            }else{
+                return (<Redirect to={'/stu/WelcomePage'}/>)
+            }
+        }
+        else
+        {
+            return (<Redirect to={'/login'}/>)
+        }
     }
 }

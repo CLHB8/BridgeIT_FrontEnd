@@ -3,14 +3,13 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { UserLoginView } from "./views/UserLoginView";
-import { UserSignupView } from "./views/UserSignupView";
 import { RequestFormView } from "./views/RequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
 import { SenRequestDetailView } from "./views/SenRequestDetailView";
 import { StuOfferFormView } from "./views/StuOfferFormView";
-
+import { StuMyOffersView } from "./views/StuMyOffersView";
 
 import { TaskListView} from "./views/TaskListView"
 
@@ -18,6 +17,7 @@ import UserService from "./services/UserService";
 import {StartPageView} from "./views/StartPageView";
 import {SeniorSignupView} from "./views/SeniorSignupView";
 import {StudentSignupView} from "./views/StudentSignupView";
+import {FAQView} from "./views/FAQView";
 
 
 export default class App extends React.Component {
@@ -38,19 +38,24 @@ export default class App extends React.Component {
                         }} , path: '/edit/:id'},
                 { component: RequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
-                { component: UserSignupView, path: '/register'},
 
                 { component: SeniorSignupView, path: '/sen/register'},
                 { component: StudentSignupView, path: '/stu/register'},
 
-
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
+
+                { component: FAQView, path: '/help'},
+                { component: FAQView, path: '/faq'},
+
                 { component: SenMyRequestsListView, path: '/sen/myRequests'},
                 { component: SenRequestDetailView, path: '/show/:id'},
-                { component: UserSignupView, path: '/register'},
+
+
                 { component: TaskListView, path: '/stu/TaskListView'},
-                { component: StuOfferFormView, path: '/stu/addOffer/:id'}
+                { component: StuOfferFormView, path: '/stu/addOffer/:id'},
+                { component: StuMyOffersView, path: '/stu/myOffers'},
+
             ]
         };
     }

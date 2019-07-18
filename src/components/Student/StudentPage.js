@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import StartPageHeader from './Header/Header'
-import Footer from './Footer';
+import StudentHeader from '../Header/StudentHeader';
+import Footer from '../Footer';
 
 
 export default class Page extends React.Component {
@@ -24,10 +24,12 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <div className="main-container" style={{background: "whitesmoke"}}>
-                {<StartPageHeader title={this.state.title} />}
+            <div className="main-container">
+            <section>
+                <StudentHeader title={this.state.title} />
                 {this.props.children}
-                {<Footer style={{background: "white"}}/>}
+                {<Footer />}
+            </section>
             </div>
         );
     }

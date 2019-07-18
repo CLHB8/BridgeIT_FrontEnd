@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { SenMyRequestsList } from '../components/SenMyRequestsList';
+import { SenMyRequestsList } from '../components/Senior/SenMyRequestsList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";

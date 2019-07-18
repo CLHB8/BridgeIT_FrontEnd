@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import StartPageHeader from './Header/Header'
-import Footer from './Footer';
+import Header from '../Header/SeniorHeader';
+import Footer from '../Footer';
 
 
 export default class Page extends React.Component {
@@ -16,7 +16,7 @@ export default class Page extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             title: document.title
         });
@@ -24,10 +24,12 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <div className="main-container" style={{background: "whitesmoke"}}>
-                {<StartPageHeader title={this.state.title} />}
-                {this.props.children}
-                {<Footer style={{background: "white"}}/>}
+            <div className="main-container">
+                <section>
+                    <Header title={this.state.title}/>
+                    {this.props.children}
+                    {<Footer/>}
+                </section>
             </div>
         );
     }

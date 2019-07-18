@@ -1,34 +1,31 @@
-"use strict";
+import React from "react";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import {Link} from "react-router-dom";
 
-import React from 'react';
-import Styled from 'styled-components';
 
+// Neil: Code from https://mdbootstrap.com/docs/react/navigation/footer/
+const FooterPage = () => {
+    return (
+        <MDBFooter color="white" className="font-small" style={{background: "white"}}>
+            <div className="footer-copyright text-center py-3">
+                <MDBContainer fluid>
+                    <MDBRow>
+                        <MDBCol md="4">
+                            <Link to={'/help'}>Help</Link>
+                        </MDBCol>
+                        <MDBCol md="4">
+                            &copy; {new Date().getFullYear()} Copyright: <a href="https://www.google.com"> BridgeIT.com </a>
+                        </MDBCol>
+                        <MDBCol md="4">
+                            <a href="https://www.google.com"> About Us</a>
+                        </MDBCol>
+                    </MDBRow>
 
-class PlainFooter extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className={this.props.className}>
-                <hr/>
-                <p>© {new Date().getFullYear()} sebis. All rights reserved.</p>
+                </MDBContainer>
             </div>
-        );
-    }
+        </MDBFooter>
+    );
 }
 
-export const Footer = Styled(PlainFooter)`
-    max-height: 35px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    background: white;
-    > p {
-        text-align: center;
-        margin-top: 4px;
-    }
-`;
+export default FooterPage;
+

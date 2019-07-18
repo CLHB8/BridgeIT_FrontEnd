@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import SeniorSignup from '../components/SeniorSignup';
+import SeniorSignup from '../components/Senior/SeniorRegister';
 
 import UserService from '../services/UserService';
 
@@ -14,9 +14,9 @@ export class SeniorSignupView extends React.Component {
         this.state = {};
     }
 
-    signup(user) {
-        UserService.register(user.username, user.password).then((data) => {
-            this.props.history.push('/');
+    register(user) {
+        UserService.register(user).then((data) => {
+            this.props.history.push('/sen/WelcomePage');
         }).catch((e) => {
             console.error(e);
             this.setState({
@@ -27,7 +27,7 @@ export class SeniorSignupView extends React.Component {
 
     render() {
         return (
-            <SeniorSignup onSubmit={(user) => this.signup(user)} error={this.state.error}></SeniorSignup>
+            <SeniorSignup onSubmit={(user) => this.register(user)} error={this.state.error}></SeniorSignup>
         );
     }
 }

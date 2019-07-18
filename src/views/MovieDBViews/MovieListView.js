@@ -2,14 +2,12 @@
 
 import React from 'react';
 
-import { TaskList } from '../components/Student/TaskList';
+import { MovieList } from '../../components/MovieComponents/MovieList';
 
-import RequestService from '../services/RequestService';
-import UserService from "../services/UserService";
-import {Redirect} from "react-router-dom";
+import MovieService from '../../services/MovieService';
 
 
-export class TaskListView extends React.Component {
+export class MovieListView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,7 +23,7 @@ export class TaskListView extends React.Component {
             loading: true
         });
 
-        RequestService.getRequests().then((data) => {
+        MovieService.getMovies().then((data) => {
             this.setState({
                 data: [...data],
                 loading: false
@@ -35,19 +33,19 @@ export class TaskListView extends React.Component {
         });
     }
 
-    deleteRequest(id) {
+    deleteMovie(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
         });
-        RequestService.deleteRequest(id).then((message) => {
+        MovieService.deleteMovie(id).then((message) => {
 
-            let requestIndex = this.state.data.map(request => request['_id']).indexOf(id);
-            let requests = this.state.data;
-            requests.splice(requestIndex, 1);
+            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
+            let movies = this.state.data;
+            movies.splice(movieIndex, 1);
             this.setState({
-                data: [...requests],
-                loading: false
+               data: [...movies],
+               loading: false
             });
         }).catch((e) => {
             console.error(e);
@@ -60,10 +58,7 @@ export class TaskListView extends React.Component {
         }
 
         return (
-            
-            
-            <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
-            
+            <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
         );
     }
 }

@@ -9,11 +9,35 @@ export default class UserService {
 
     static baseURL() {return "http://localhost:3000/auth"; }
 
-    static register(user, pass) {
+    static registerMovieApp(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/register`, {
                 username: user,
                 password: pass
+            }, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static register(user) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${UserService.baseURL()}/register`, {
+                password: user.password,
+                reentered_password: user.reentered_password,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                mail: user.mail,
+                phone_number: user.phone_number,
+                streetname: user.streetname,
+                streetnumber: user.streetnumber,
+                cityname: user.cityname,
+                postalcode: user.postalcode,
+                username: user.mail,
+                isSenior: user.isSenior,
+                isPremium: user.isPremium,
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
@@ -39,6 +63,8 @@ export default class UserService {
         window.localStorage.removeItem('jwtToken');
     }
 
+
+
     static getCurrentUser() {
         let token = window.localStorage['jwtToken'];
         if (!token) return {};
@@ -55,4 +81,11 @@ export default class UserService {
         return !!window.localStorage['jwtToken'];
     }
 
+    static isSenior() {
+        return window.localStorage['isSenior'] === "true";
+    }
+
+    static isPremium() {
+        return window.localStorage['isPremium'] === "true";
+    }
 }
