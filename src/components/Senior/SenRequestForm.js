@@ -1,13 +1,12 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md';
+import { Card, Button, FontIcon, TextField, CardTitle, CardText, Grid, Cell } from 'react-md';
 import { withRouter } from 'react-router-dom';
 
 import { AlertMessage } from '../AlertMessage';
 import SeniorPage from './SeniorPage';
 import UserService from "../../services/UserService";
-
 
 const style = { maxWidth: 500 };
 
@@ -119,6 +118,76 @@ class RequestForm extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
+
+                <Grid className="md-block-centered">
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="1: Smartphone Coaching"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="2: Laptop Coaching"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="3: TV Coaching"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="4: Printer Coaching"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                </Grid>
+
+                <Grid className="md-block-centered">
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="1.1: Which Smartphone to buy"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="1.2: Introduction into general functionality"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="1.3: Focus on online purchases"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                    <Cell size={3}>
+                        <Card className="md-block-centered">
+                            <CardTitle title="1.4: Focus on interation with others"/>
+                            <form className="md-grid" onSubmit={this.handleSubmit} >
+                                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                            </form>
+                        </Card>
+                    </Cell>
+                </Grid>
             </SeniorPage>
         );
     }

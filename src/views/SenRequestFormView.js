@@ -2,11 +2,13 @@
 
 import React from 'react';
 
-import RequestForm from "../components/Senior/SenRequestForm";
+import NewSenRequestForm from "../components/Senior/NewSenRequestForm";
+
+
 
 import RequestService from "../services/RequestService";
 
-export class RequestFormView extends React.Component {
+export class SenRequestFormView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -73,6 +75,6 @@ export class RequestFormView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return (<RequestForm request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
+        return (<NewSenRequestForm request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
     }
 }
