@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import NewSenRequestForm from "../components/Senior/NewSenRequestForm";
+import SenRequestForm from "../components/Senior/SenRequestForm";
 
 
 
@@ -75,6 +75,6 @@ export class SenRequestFormView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return (<NewSenRequestForm request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
+        return (<SenRequestForm request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
     }
 }
