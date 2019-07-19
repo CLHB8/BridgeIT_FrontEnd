@@ -19,7 +19,8 @@ export class SenMyRequestsListRow extends React.Component {
         return (
             <TableRow key={this.props.key}>
                 <TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>image</FontIcon></Link></TableColumn>
-                <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.title}</SimpleLink></TableColumn>
+                <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
+                <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
                 {UserService.isAuthenticated() ?
                     <TableColumn><Link to={`/edit/${this.props.request._id}`}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
