@@ -5,13 +5,16 @@ import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from
 
 import { SenMyRequestsListRow } from './SenMyRequestsListRow';
 import SeniorPage from './SeniorPage';
+import { border } from '@material-ui/system';
 
 const dataTableStyle = {
-    'margin-bottom': '36px'
+    'margin-bottom': '36px',
+    
+    'box-shadow': '2px 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19)'
 };
 
 export const SenMyRequestsList = ({data, onDelete}) => (
-    <SeniorPage>
+    
         <DataTable plain style={dataTableStyle}>
             <TableHeader>
                 <TableRow>
@@ -26,6 +29,6 @@ export const SenMyRequestsList = ({data, onDelete}) => (
 
             </TableBody>
         </DataTable>
-    </SeniorPage>
+    
 );
 
