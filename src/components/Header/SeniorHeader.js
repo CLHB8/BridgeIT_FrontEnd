@@ -181,7 +181,7 @@ class Header extends React.Component {
 
                     </Toolbar>
                 </AppBar>
-                <AppBar position="static" style={{background: "white"}}>
+                <AppBar position="static" style={{background: "white", boxShadow: "none", borderBottom: "2px solid black"}}>
                     <Toolbar>
                         <div className="secondLine">
                             <span><button className="SHButton" onClick={() => this.props.history.goBack()}><i className="material-icons">keyboard_backspace</i>Back</button></span>
