@@ -22,7 +22,7 @@ export const TaskList = ({data, onDelete}) => (
                 
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn>Name</TableColumn>
+                    <TableColumn>Category</TableColumn>
                     <TableColumn>Items Per Page: 
                     <select>
                             <option value="5">5</option>

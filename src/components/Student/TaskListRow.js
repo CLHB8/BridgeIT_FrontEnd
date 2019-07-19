@@ -37,8 +37,26 @@ export class TaskListRow extends React.Component {
     render() {
         return (
             <TableRow key={this.props.key}>
-                <TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>image</FontIcon></Link></TableColumn>
-                <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>{this.props.request.title}</SimpleLink>
+                {(this.props.request.category === "Mobile Phone Coaching") ?
+                    (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>phone_iphone</FontIcon></Link></TableColumn>)
+                    : ( (this.props.request.category === "Computer Coaching") ?
+                            (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>computer</FontIcon></Link></TableColumn>)
+                            : ( (this.props.request.category === "TV Coaching") ?
+                                    (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>tv</FontIcon></Link></TableColumn>)
+                                    : ( (this.props.request.category === "Printer Coaching") ?
+                                            (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>print</FontIcon></Link></TableColumn>)
+                                            : ( (this.props.request.category === "Purchase Advice") ?
+                                                    (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                                    : ((  this.props.request.category === "Purchase Advice") ?
+                                                            (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                                            : (<TableColumn><Link to={`/stu/addOffer/${this.props.request._id}`}><FontIcon>person_add</FontIcon></Link></TableColumn>)
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+                }
+                <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>{this.props.request.category}</SimpleLink>
                 
                 </TableColumn>
                 <TableColumn>{this.props.request.senUserName}
