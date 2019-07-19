@@ -23,7 +23,9 @@ class RequestForm extends React.Component {
                 specification: props.request.specification,
                 userId: props.request.userId,
                 senUserName: props.request.senUserName,
-                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+                isAssigned: props.request.isAssigned,
+                assignedStudent: props.request.assignedStudent,
             };
         } else {
             this.state = {
@@ -32,7 +34,9 @@ class RequestForm extends React.Component {
                 specification: '',
                 userId: '',
                 senUserName:'',
-                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+                isAssigned: '',
+                assignedStudent: ''
             };
         }
 
@@ -68,6 +72,8 @@ class RequestForm extends React.Component {
         request.specification = this.state.specification;
         request.userId = '';
         request.senUserName = this.state.user.username;
+        request.isAssigned = false;
+        request.assignedStudent = null;
 
         this.props.onSubmit(request);
     }
@@ -76,7 +82,7 @@ class RequestForm extends React.Component {
         return (
             <SeniorPage>
                 <Card style={style} className="md-block-right">
-                    <CardTitle title="PC/Laptop Coaching"/>
+                    <CardTitle title="Add request here"/>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
                             label="Title"
