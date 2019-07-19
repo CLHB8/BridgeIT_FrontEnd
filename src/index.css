@@ -491,3 +491,9 @@ footer {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
+
+
+.slick-slide:focus { outline: none; }
+input:focus {
+    outline:none !important;
+}

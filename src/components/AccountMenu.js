@@ -39,7 +39,7 @@ class AccountMenu extends React.Component {
         return (
 
             <DropdownMenu
-                id={this.props.id}
+                id="HeaderDropdownMenu"
                 menuItems={[
                     <ListItem id="AccountMenu" key={1} leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
                               primaryText={this.state.user.username} onClick={() => {
@@ -88,7 +88,6 @@ class AccountMenu extends React.Component {
 
 
 AccountMenu.propTypes = {
-    id: PropTypes.string.isRequired,
     className: PropTypes.string,
     menuItems: PropTypes.array
 };

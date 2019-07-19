@@ -11,7 +11,7 @@ import {IoIosLogIn, IoIosLogOut, IoMdHome} from "react-icons/io";
 import {makeStyles} from "@material-ui/core";
 import AccountMenu from "../AccountMenu";
 
-const style = {"margin-bottom": 0};
+const style = {"marginBottom": 0};
 
 const classes = makeStyles(theme => ({
     gap: {

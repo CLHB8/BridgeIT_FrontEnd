@@ -7,6 +7,7 @@ import {Card, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, Ta
 import CardTitle from "react-md/lib/Cards/CardTitle";
 import CardText from "react-md/lib/Cards/CardText";
 import {Link} from "react-router-dom";
+import Rating from "../rateStudent"
 
 const style = { maxWidth: 500 };
 
@@ -64,8 +65,8 @@ export class WelcomePageStudent extends React.Component {
                                 Sed elementum, risus eget fermentum accumsan, nunc ante commodo diam, eget pulvinar
                                 risus velit eu sapien. Nunc vitae pellentesque nisl.
                             </p>
-
                         </CardText>
+                        <Rating></Rating>
                         <div className="wrapper_continue">
                                 <button type="button" className="RegisterButton" style={{backgroundColor: "blue"}} onClick={this.popupHandler.bind(this)}>
                                     Rate
