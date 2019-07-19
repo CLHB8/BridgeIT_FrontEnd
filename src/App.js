@@ -12,6 +12,7 @@ import { StuOfferFormView } from "./views/StuOfferFormView";
 import { StuMyOffersView } from "./views/StuMyOffersView";
 
 import { TaskListView} from "./views/TaskListView"
+import TaskListMiniView from "./views/TaskListMiniView"
 
 import UserService from "./services/UserService";
 import {StartPageView} from "./views/StartPageView";
@@ -53,6 +54,7 @@ export default class App extends React.Component {
 
 
                 { component: TaskListView, path: '/stu/TaskListView'},
+                { component: TaskListMiniView, path: '/stu/TaskListMiniView'},
                 { component: StuOfferFormView, path: '/stu/addOffer/:id'},
                 { component: StuMyOffersView, path: '/stu/myOffers'},
 

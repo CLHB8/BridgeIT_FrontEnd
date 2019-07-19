@@ -63,7 +63,7 @@ export class WelcomePageSenior extends React.Component {
                         <div className="catSideBar" border="none">
 
                                 <div className="seniorProfile">
-                                <h3>Welcome to the dashboard</h3>
+                                <h4>Welcome to the dashboard</h4>
                                 <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
                                 <h4>{this.state.user.username}</h4>
                                 {/* <Rating value={3.5} precision={0.5} readOnly /> */}
@@ -94,17 +94,18 @@ export class WelcomePageSenior extends React.Component {
                             
                             
                         </div>
+                        <Divider />
                         <div className="currentRequests">
-                            <h4 >If you already posted one or more requests and want to check on their status, see below:</h4>
+                            <h4 >If you already posted one or more requests {<br/>} and want to check on their status, see below:</h4>
                             <SenReq></SenReq>
 
 
                         </div>
-
+                        <Divider />
                         <div className="previousTasks">
                         <h4 >Here is your task history. Don't forget to rate the students!</h4>
 
-                            <List className="md-cell--6 md-paper md-paper--1">
+                            <List className="md-cell--9 md-paper md-paper--1">
                                         <Subheader primaryText="Task History" primary />
                                         <ListItem
                                             leftAvatar={<Avatar suffix="deep-purple">AC</Avatar>}
@@ -131,18 +132,6 @@ export class WelcomePageSenior extends React.Component {
 
                         </div>
 
-                            {/* <Paper className={classes.tabs}>
-                                <Tabs
-                                    
-                                    indicatorColor="primary"
-                                    textColor="primary"
-                                    centered
-                                >
-                                    <Tab label="Ongoing Tasks" />
-                                    <Tab label="Current Requests" />
-                                    <Tab label="Previous tasks" />
-                                </Tabs>
-                                </Paper> */}
 
                         </Container></div>
                     </div>

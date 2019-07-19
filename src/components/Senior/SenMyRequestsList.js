@@ -16,7 +16,7 @@ const dataTableStyle = {
 
 export const SenMyRequestsList = ({data, onDelete}) => (
     
-        <DataTable plain className="md-cell--6 md-paper md-paper--1" style={dataTableStyle}>
+        <DataTable plain className="md-cell--9 md-paper md-paper--1" style={dataTableStyle}>
             <TableHeader >
                 <TableRow>
                     <TableColumn></TableColumn>

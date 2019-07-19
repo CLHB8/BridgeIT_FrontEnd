@@ -2,14 +2,14 @@
 
 import React from 'react';
 
-import { TaskList } from '../components/Student/TaskList';
+import { TaskListMini } from '../components/Student/TaskListMini';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
 import {Redirect, withRouter} from "react-router-dom";
 
 
-export class TaskListView extends React.Component {
+export class TaskListMiniView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -56,16 +56,16 @@ export class TaskListView extends React.Component {
 
     render() {
         if (this.state.loading) {
-            return (<h2>Loading...</h2>);
+            return (<h2>Loading...</h2>
+                
+                );
+            
         }
-
-        return (
-            
-            
-            <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+return(                 
+            <TaskListMini data={this.state.data.slice(0,5)} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }
 }
 
-export default withRouter(TaskListView);
+export default withRouter(TaskListMiniView);

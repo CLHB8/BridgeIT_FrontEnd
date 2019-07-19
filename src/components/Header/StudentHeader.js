@@ -172,15 +172,12 @@ class StudentHeader extends React.Component {
 
                         <div style={{flexGrow: "1"}}/>
 
-                        <button className="SHButton" onClick={() => this.props.history.push('/stu/WelcomePage')}><i
-                            className="material-icons">home</i>Home
-                        </button>
-                        <button className="SHButton" onClick={() => this.props.history.push('/stu/TaskListView')}><i
-                            className="material-icons">view_list</i>All Requests
-                        </button>
-                        <button className="SHButton" onClick={() => this.props.history.push('/stu/myOffers')}><i
-                            className="material-icons">view_list</i>My offers
-                        </button>
+                        <Button flat primary iconChildren="home" onClick={() => this.props.history.push('/stu/WelcomePage')}>Home
+                        </Button>
+                        <Button flat primary iconChildren="list" onClick={() => this.props.history.push('/stu/TaskListView')}>All Requests
+                        </Button>
+                        <Button flat primary iconChildren="assignment" onClick={() => this.props.history.push('/stu/myOffers')}>My offers
+                        </Button>
                         <div style={{flexGrow: "0.05"}}/>
                         {homeButton}
                         {homeButtonDiv}

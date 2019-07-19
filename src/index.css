@@ -379,11 +379,13 @@ li:hover {
 
 .catSideBar {
     grid-area: catSideBar;
+    border-right: 2px solid black;
 }
 
 .taskList {
     grid-area: takList;
-    border-left: 2px solid black;
+    
+    margin-left: 5px;
 }
 
 .categories button {
