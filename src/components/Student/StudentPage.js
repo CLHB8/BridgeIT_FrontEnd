@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import StudentHeader from '../Header/StudentHeaderDeprecated';
+import StudentHeader from '../Header/StudentHeader';
 import Footer from '../Footer';
 
 

@@ -6,7 +6,7 @@ import { MenuButton, ListItem, Avatar, FontIcon } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
 import UserService from  '../services/UserService';
-
+import {IoIosLogOut} from "react-icons/io";
 
 class KebabMenu extends React.Component {
 
@@ -39,14 +39,15 @@ class KebabMenu extends React.Component {
                 id={this.props.id}
                 icon
                 className={this.props.className}
+                menu
                 menuItems={[
                     <ListItem key={1} leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>} primaryText={this.state.user.username} onClick={() => this.props.history.push('/')}/>,
                     // TODO: needs to be implemented
-                    //<ListItem key={2} leftAvatar={<Avatar icon={<FontIcon>add</FontIcon>}/>} primaryText="Add Movie" onClick={() => this.props.history.push('/edit:id')}/>,
-                    <ListItem style={{background: "red", color: "white"}} key={3} primaryText="Logout" onClick={() => this.logout()}/>
+                    <ListItem key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>} primaryText="Edit Profile" onClick={() => this.props.history.push('/sen/WelcomePage')}/>,
+                    <ListItem key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>} primaryText="Logout" onClick={() => this.logout()}/>
                 ]}
             >
-                more_vert
+                account_circle
             </MenuButton>
         );
     }

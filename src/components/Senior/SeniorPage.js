@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Header from '../Header/Header';
+import Header from '../Header/SeniorHeader';
 import Footer from '../Footer';
 
 
