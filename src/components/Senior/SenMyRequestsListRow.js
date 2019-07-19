@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button, SVGIcon } from 'react-md';
+import { TableRow, TableColumn, FontIcon, Button, SVGIcon, Avatar } from 'react-md';
 import { Link } from 'react-router-dom';
 
 import { SimpleLink } from '../SimpleLink';
@@ -18,7 +18,28 @@ export class SenMyRequestsListRow extends React.Component {
     render() {
         return (
             <TableRow key={this.props.key}>
-                <TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>image</FontIcon></Link></TableColumn>
+
+                {(this.props.request.category === "Mobile Phone Coaching") ?
+                    (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>phone_iphone</FontIcon></Link></TableColumn>)
+                    : ( (this.props.request.category === "Computer Coaching") ?
+                        (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>computer</FontIcon></Link></TableColumn>)
+                        : ( (this.props.request.category === "TV Coaching") ?
+                                (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>tv</FontIcon></Link></TableColumn>)
+                                : ( (this.props.request.category === "Printer Coaching") ?
+                                    (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>print</FontIcon></Link></TableColumn>)
+                                    : ( (this.props.request.category === "Purchase Advice") ?
+                                        (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                        : ((  this.props.request.category === "Purchase Advice") ?
+                                            (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                            : (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>person_add</FontIcon></Link></TableColumn>)
+                                    )
+                                )
+                            )
+                        )
+                    )
+                }
+
+
                 <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
                 <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
                 {UserService.isAuthenticated() ?
