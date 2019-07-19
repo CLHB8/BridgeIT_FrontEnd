@@ -40,7 +40,7 @@ export class WelcomePageStudent extends React.Component {
                         avatar={<img className="StartPageImage" src="https://www.noventiz.de/wp-content/uploads/2018/01/Aufgaben_Zentrale_Stelle.png" alt="Task list"/>}/>
                         <div className="wrapper_continue">
                             <Link to={'/sen/myRequests'}>
-                                <button type="button" className="ContinueButton" style={{backgroundColor: "blue"}}>
+                                <button type="button" className="RegisterButton" style={{backgroundColor: "blue"}}>
                                     Got to Requests
                                 </button>
                             </Link>
@@ -67,7 +67,7 @@ export class WelcomePageStudent extends React.Component {
 
                         </CardText>
                         <div className="wrapper_continue">
-                                <button type="button" className="ContinueButton" style={{backgroundColor: "blue"}} onClick={this.popupHandler.bind(this)}>
+                                <button type="button" className="RegisterButton" style={{backgroundColor: "blue"}} onClick={this.popupHandler.bind(this)}>
                                     Rate
                                 </button>
                             <OfferPopup visibility={this.state.showPopup}></OfferPopup>

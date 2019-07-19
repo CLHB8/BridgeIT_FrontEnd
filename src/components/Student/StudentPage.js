@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import StudentHeader from '../Header/StudentHeader';
+import StudentHeader from '../Header/StudentHeaderDeprecated';
 import Footer from '../Footer';
 
 
@@ -24,11 +24,13 @@ export default class Page extends React.Component {
 
     render() {
         return (
+            <div className="main-container">
             <section>
                 <StudentHeader title={this.state.title} />
                 {this.props.children}
                 {<Footer />}
             </section>
+            </div>
         );
     }
 }

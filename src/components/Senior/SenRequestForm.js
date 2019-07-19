@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { AlertMessage } from '../AlertMessage';
 import SeniorPage from './SeniorPage';
 import UserService from "../../services/UserService";
-
+import DropdownTitleSelection from "./DropdownMenu";
 
 const style = { maxWidth: 500 };
 
@@ -75,53 +75,38 @@ class RequestForm extends React.Component {
     render() {
         return (
             <SeniorPage>
-                <h2>Here you can choose the task you need help for!</h2>
-                <h2>Submit your request by filling out the corresponding form!</h2>
-                <div className="md-grid">
-                    <Card style={style} className="md-block-right">
-                        <CardTitle title="Smartphone Coaching"/>
-                        <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                            <CardText>
-                                You need help with your mobilephone or have general questions about it?
-                            </CardText>
-                            <TextField
-                                label="Title"
-                                id="TitleField"
-                                type="text"
-                                className="md-row"
-                                required={true}
-                                value={this.state.title}
-                                onChange={this.handleChangeTitle}
-                                errorText="Title is required"/>
-                            <TextField
-                                label="Category"
-                                id="CategoryField"
-                                type="text"
-                                className="md-row"
-                                required={true}
-                                value={this.state.category}
-                                onChange={this.handleChangeCategory}
-                                errorText="Category is required"/>
-                            <TextField
-                                label="Specification"
-                                id="SpecificationField"
-                                type="text"
-                                className="md-row"
-                                required={true}
-                                value={this.state.specification}
-                                onChange={this.handleChangeSpecification}
-                                errorText="Specification is required"/>
+                <Card style={style} className="md-block-right">
+                    <CardTitle title="PC/Laptop Coaching"/>
+                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                        <DropdownTitleSelection
+                        value = {this.state.title}/>
 
-                            <Button id="submit" type="submit"
-                                    disabled={this.state.title == undefined || this.state.title == ''}
-                                    value = {'Smartphone Coaching'}
-                                    raised primary className="md-cell md-cell--2"
-                                    onClick={() => this.history.push('/')}>Choose</Button>
-                            <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                            <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                        </form>
-                    </Card>
-                </div>
+                        <TextField
+                            label="Category"
+                            id="CategoryField"
+                            type="text"
+                            className="md-row"
+                            required={false}
+                            value={this.state.category}
+                            onChange={this.handleChangeCategory}
+                            errorText="Category is required"/>
+                        <TextField
+                            label="Specification"
+                            id="SpecificationField"
+                            type="text"
+                            className="md-row"
+                            required={false}
+                            value={this.state.specification}
+                            onChange={this.handleChangeSpecification}
+                            errorText="Specification is required"/>
+
+                        <Button id="submit" type="submit"
+                                disabled={this.state.title == undefined || this.state.title == ''}
+                                raised primary className="md-cell md-cell--2">Save</Button>
+                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
+                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                    </form>
+                </Card>
             </SeniorPage>
         );
     }

@@ -36,7 +36,8 @@ export default class UserService {
                 cityname: user.cityname,
                 postalcode: user.postalcode,
                 username: user.mail,
-                isSenior: user.is_senior
+                isSenior: user.isSenior,
+                isPremium: user.isPremium,
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
@@ -66,6 +67,8 @@ export default class UserService {
         window.localStorage.removeItem('jwtToken');
     }
 
+
+
     static getCurrentUser() {
         let token = window.localStorage['jwtToken'];
         if (!token) return {};
@@ -82,4 +85,11 @@ export default class UserService {
         return !!window.localStorage['jwtToken'];
     }
 
+    static isSenior() {
+        return window.localStorage['isSenior'] === "true";
+    }
+
+    static isPremium() {
+        return window.localStorage['isPremium'] === "true";
+    }
 }

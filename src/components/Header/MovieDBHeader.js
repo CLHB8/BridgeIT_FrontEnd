@@ -5,7 +5,7 @@ import {Toolbar, Button, Grid} from 'react-md';
 import { withRouter } from 'react-router-dom'
 
 import KebabMenu from '../KebabMenu';
-import StartPage from "../StartPage";
+import StartPage from "../Page";
 
 
 class MovieDBHeader extends React.Component {
