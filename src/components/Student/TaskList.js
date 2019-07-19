@@ -9,7 +9,7 @@ import CatSideBar from '../CatSideBar';
 
 
 const dataTableStyle = {
-  'margin-bottom': '36px'
+  'margin-top': '20px',
 };
 
 
@@ -17,19 +17,14 @@ export const TaskList = ({data, onDelete}) => (
     <StudentPage>
         <div className="gridContainer">
         <CatSideBar ad="3" className="catSideBar"/>
-        <DataTable plain style={dataTableStyle} className="taskList">
+        <div className="taskList">
+        <DataTable plain responsive style={dataTableStyle} className="md-cell--12 md-paper md-paper--1">
             <TableHeader>
                 
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn>Name</TableColumn>
-                    <TableColumn>Items Per Page: 
-                    <select>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            </select>
+                    <TableColumn>Request Name</TableColumn>
+                    <TableColumn>Senior's name: 
                     </TableColumn>
                     <TableColumn>Sort By: 
                         <select>
@@ -46,8 +41,9 @@ export const TaskList = ({data, onDelete}) => (
             <TableBody>
                 {data.map((request, i) => <TaskListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
-            <TablePagination rowsPerPageLabel ="Items Per Page" />
+            {/* <TablePagination rowsPerPageLabel ="Items Per Page" /> */}
         </DataTable>
+        </div>
         </div>
     </StudentPage>
 );

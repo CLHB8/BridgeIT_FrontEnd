@@ -7,12 +7,12 @@ import { StuMyOffersRow } from './StuMyOffersRow';
 import StudentPage from './StudentPage';
 
 const dataTableStyle = {
-    'margin-bottom': '36px'
+    'margin-top': '20px',
 };
 
 export const StuMyOffers = ({data, onDelete}) => (
     <StudentPage>
-        <DataTable plain style={dataTableStyle}>
+        <DataTable plain resposive style={dataTableStyle} className="md-cell--12 md-paper md-paper--1">
             <TableHeader>
                 <TableRow>
                     <TableColumn></TableColumn>

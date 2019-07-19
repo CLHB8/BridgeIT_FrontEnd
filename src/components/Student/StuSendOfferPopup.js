@@ -2,16 +2,16 @@
 
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-import RequestFormView from "../../views/RequestFormView";
+import StuOfferFormView from "../../views/StuOfferFormView";
 
 
-const SenAddOfferPopup = (props) => {
+const StuSendOfferPopup = (props) => {
   
     if(props.visibility==true){
         return(
             <div className="popuplayer">
             <div className="popup">
-                <RequestFormView >{console.log('It works!')}</RequestFormView>
+                <StuOfferFormView>{console.log('It works!')}</StuOfferFormView>
             </div>
             </div>
 
@@ -22,4 +22,4 @@ const SenAddOfferPopup = (props) => {
 
 }
 
-export default withRouter(SenAddOfferPopup);
+export default withRouter(StuSendOfferPopup);

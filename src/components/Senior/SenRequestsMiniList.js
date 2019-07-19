@@ -10,12 +10,12 @@ import { border } from '@material-ui/system';
 const dataTableStyle = {
     'margin-bottom': '36px',
     
-    'box-shadow': '2px 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19)'
+    // 'box-shadow': '2px 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19)'
 
 };
 
-export const SenMyRequestsList = ({data, onDelete}) => (
-    <SeniorPage>
+export const SenRequestsMiniList = ({data, onDelete}) => (
+    
         <DataTable plain className="md-cell--9 md-paper md-paper--1" style={dataTableStyle}>
             <TableHeader >
                 <TableRow>
@@ -30,6 +30,8 @@ export const SenMyRequestsList = ({data, onDelete}) => (
 
             </TableBody>
         </DataTable>
-        </SeniorPage>
+        
 );
+
+
 

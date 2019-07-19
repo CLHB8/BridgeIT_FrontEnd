@@ -2,7 +2,7 @@
 
 import React from 'react';
 import SeniorPage from './SeniorPage';
-import SenReq from '../../views/SenMyRequestsListView'
+import SenReq from '../../views/SenRequestsMiniView'
 import UserService from "../../services/UserService";
 import {makeStyles, Drawer, Container, Divider, Tab, Tabs, Paper, Fab} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';

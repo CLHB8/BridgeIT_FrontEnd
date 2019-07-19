@@ -7,7 +7,7 @@ import { TaskListRow } from './TaskListRow';
 
 
 const dataTableStyle = {
-  'margin-bottom': '36px'
+  'margin-bottom': '20px',
 
 };
 
@@ -17,19 +17,14 @@ export const TaskListMini = ({data, onDelete}) => (
 
         
     
-        <DataTable plain style={dataTableStyle} className="md-cell--9 md-paper md-paper--1">
+        <DataTable plain resposive style={dataTableStyle} className="md-cell--9 md-paper md-paper--1">
             <TableHeader >
                 
                 <TableRow>
                     <TableColumn></TableColumn>
                     <TableColumn >Request Name</TableColumn>
                     <TableColumn>Senior's Name 
-                    {/* <select>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            </select> */}
+                    
                     </TableColumn>
                     <TableColumn>Sort By: 
                         <select>

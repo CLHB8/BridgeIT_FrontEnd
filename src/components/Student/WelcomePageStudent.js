@@ -9,6 +9,7 @@ import CardText from "react-md/lib/Cards/CardText";
 import {Link} from "react-router-dom";
 import TaskListMiniView from "../../views/TaskListMiniView";
 import { SimpleLink } from '../SimpleLink';
+import StuSendOfferPopup from './StuSendOfferPopup';
 
 const style = { maxWidth: 500 };
 
@@ -60,8 +61,8 @@ export class WelcomePageStudent extends React.Component {
                                 <Divider />
                                 <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
                                 
-                                {/* <SenAddOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </SenAddOfferPopup> */}
-                                
+                                {/* <StuSendOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </StuSendOfferPopup> */}
+
                                 </div>
                     
                     
