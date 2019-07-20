@@ -37,41 +37,63 @@ export class SenMyRequestsListRow extends React.Component {
     }
 
     render() {
-        return (
-            <TableRow key={this.props.key}>
+        if (this.props.request == null || this.props.request == undefined || this.props.request == "undefined") {
+            return (
+                <TableRow>
+                    <TableColumn/>
+                    <TableColumn/>
+                    <TableColumn><SimpleLink to={`/sen/add`}>Click here to add a new request.</SimpleLink></TableColumn>
+                    <TableColumn/>
+                    <TableColumn/>
+                    <TableColumn/>
+                </TableRow>
+            )
+        } else {
+            return (
+                <TableRow key={this.props.key}>
 
-                {(this.props.request.category === "Mobile Phone Coaching") ?
-                    (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>phone_iphone</FontIcon></Link></TableColumn>)
-                    : ( (this.props.request.category === "Computer Coaching") ?
-                        (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>computer</FontIcon></Link></TableColumn>)
-                        : ( (this.props.request.category === "TV Coaching") ?
-                                (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>tv</FontIcon></Link></TableColumn>)
-                                : ( (this.props.request.category === "Printer Coaching") ?
-                                    (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>print</FontIcon></Link></TableColumn>)
-                                    : ( (this.props.request.category === "Purchase Advice") ?
-                                        (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
-                                        : ((  this.props.request.category === "Purchase Advice") ?
-                                            (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
-                                            : (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>person_add</FontIcon></Link></TableColumn>)
-                                    )
+                    {(this.props.request.category === "Mobile Phone Coaching") ?
+                        (
+                            <TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>phone_iphone</FontIcon></Link></TableColumn>)
+                        : ((this.props.request.category === "Computer Coaching") ?
+                                (<TableColumn><Link to={`/show/${this.props.request._id}`}><FontIcon>computer</FontIcon></Link></TableColumn>)
+                                : ((this.props.request.category === "TV Coaching") ?
+                                        (<TableColumn><Link
+                                            to={`/show/${this.props.request._id}`}><FontIcon>tv</FontIcon></Link></TableColumn>)
+                                        : ((this.props.request.category === "Printer Coaching") ?
+                                                (<TableColumn><Link
+                                                    to={`/show/${this.props.request._id}`}><FontIcon>print</FontIcon></Link></TableColumn>)
+                                                : ((this.props.request.category === "Purchase Advice") ?
+                                                        (<TableColumn><Link
+                                                            to={`/show/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                                        : ((this.props.request.category === "Purchase Advice") ?
+                                                                (<TableColumn><Link
+                                                                    to={`/show/${this.props.request._id}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                                                : (<TableColumn><Link
+                                                                    to={`/show/${this.props.request._id}`}><FontIcon>person_add</FontIcon></Link></TableColumn>)
+                                                        )
+                                                )
+                                        )
                                 )
-                            )
                         )
-                    )
-                }
-                <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
-                <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
-                <TableColumn>{this.state.daysSince}</TableColumn>
-                {UserService.isAuthenticated() ?
-                    <TableColumn><Link to={`/edit/${this.props.request._id}`}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
-                    : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
-                }
-                {UserService.isAuthenticated() ?
-                    <TableColumn><Button secondary onClick={() => this.props.onDelete(this.props.request._id)} icon>delete</Button></TableColumn>
-                    : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
-                }
+                    }
+                    <TableColumn><SimpleLink
+                        to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
+                    <TableColumn><SimpleLink
+                        to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
+                    <TableColumn>{this.state.daysSince}</TableColumn>
+                    {UserService.isAuthenticated() ?
+                        <TableColumn><Link to={`/edit/${this.props.request._id}`}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
+                        : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
+                    }
+                    {UserService.isAuthenticated() ?
+                        <TableColumn><Button secondary onClick={() => this.props.onDelete(this.props.request._id)}
+                                             icon>delete</Button></TableColumn>
+                        : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
+                    }
 
-            </TableRow>
-        );
+                </TableRow>
+            );
+        }
     }
 }

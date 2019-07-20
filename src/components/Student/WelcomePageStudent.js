@@ -3,10 +3,11 @@
 import React from 'react';
 import StudentPage from './StudentPage';
 import OfferPopup from '../c_SendOfferPopup';
-import {Card, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, TableHeader, TableRow} from "react-md";
+import {Card, Button, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, TableHeader, TableRow} from "react-md";
 import CardTitle from "react-md/lib/Cards/CardTitle";
 import CardText from "react-md/lib/Cards/CardText";
 import {Link} from "react-router-dom";
+import Rating from "../rateStudent"
 
 const style = { maxWidth: 500 };
 
@@ -15,9 +16,16 @@ export class WelcomePageStudent extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            showPopup:false
+            showPopup:false,
+            user: this.props.user
         };
+        this.handlePremiumChange = this.handlePremiumChange.bind(this);
     }
+
+    handlePremiumChange() {
+        this.props.onPremiumChange();
+    }
+
     popupHandler() {
         this.setState({
             showPopup: !this.state.showPopup}
@@ -26,7 +34,7 @@ export class WelcomePageStudent extends React.Component {
 
     render() {
         return (
-            <StudentPage>
+            <StudentPage user = {this.props.user} onPremiumChange={this.handlePremiumChange}>
                 <Card style={style} className="md-block-centered">
                     <Grid className="grid-example">
                         <img src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 286, height: 88}}/>
@@ -64,8 +72,8 @@ export class WelcomePageStudent extends React.Component {
                                 Sed elementum, risus eget fermentum accumsan, nunc ante commodo diam, eget pulvinar
                                 risus velit eu sapien. Nunc vitae pellentesque nisl.
                             </p>
-
                         </CardText>
+                        <Rating user={this.props.user}/>
                         <div className="wrapper_continue">
                                 <button type="button" className="RegisterButton" style={{backgroundColor: "blue"}} onClick={this.popupHandler.bind(this)}>
                                     Rate

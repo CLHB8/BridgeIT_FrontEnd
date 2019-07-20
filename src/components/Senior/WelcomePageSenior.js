@@ -8,6 +8,7 @@ import {makeStyles, Drawer, Container, Divider, Tab, Tabs, Paper, Fab} from "@ma
 import AddIcon from '@material-ui/icons/Add';
 import {Avatar, FontIcon, List, ListItem, Subheader, Button,} from 'react-md';
 import {SenTaskHistoryListView} from "../../views/SenTaskHistoryListView";
+import SenAddOfferPopup from "../Senior/SenAddOfferPopup";
 
 const style = { maxWidth: 900 };
 const StarIcon = () => <FontIcon>star</FontIcon>;
@@ -38,7 +39,8 @@ export class WelcomePageSenior extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+            user: this.props.user,
+            showPopup: false
         }
     }
 
@@ -47,10 +49,17 @@ export class WelcomePageSenior extends React.Component {
             title: document.title
         });
     }
-
+    popupHandler() {
+        this.setState({
+            showPopup: !this.state.showPopup},
+            );
+    }
     render() {
+
         return (
-            <SeniorPage>
+            <SeniorPage user={this.state.user}>
+
+
                     <div className="gridContainer">
 
                         <div className="catSideBar" border="none">
@@ -63,12 +72,15 @@ export class WelcomePageSenior extends React.Component {
                                 <h5>Your rating: 4.5/5 stars</h5>
                                 <Divider />
                                 <br/>
-                                <Fab variant="extended" color="primary" aria-label="Add" className={classes.fab}>
+                                <Fab variant="extended" color="primary" aria-label="Add" onClick={this.popupHandler.bind(this)} className={classes.fab}>
                                     <AddIcon className={classes.extendedIcon}/> Add Request
                                 </Fab>
                                 <br/>
                                 <br/>
                                 <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
+
+                                <SenAddOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </SenAddOfferPopup>
+
                                 </div>
 
 

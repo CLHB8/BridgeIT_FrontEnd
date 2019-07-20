@@ -84,9 +84,12 @@ export default class RatingsService {
         });
     }
 
-    static updateStuOffer(stuOffer) {
+    static updateRating(requestId, ratingUpdate) {
         return new Promise((resolve, reject) => {
-            HttpService.put(`${this.baseURL()}/${stuOffer._id}`, stuOffer, function(data) {
+            console.log(requestId);
+            console.log(ratingUpdate);
+            HttpService.put(`${this.baseURL()}/${requestId}`, ratingUpdate
+                , function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);

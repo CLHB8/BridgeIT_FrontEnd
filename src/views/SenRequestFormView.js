@@ -7,6 +7,7 @@ import SenRequestForm from "../components/Senior/SenRequestForm";
 
 
 import RequestService from "../services/RequestService";
+import {withRouter} from 'react-router-dom';
 
 export class SenRequestFormView extends React.Component {
 
@@ -22,6 +23,15 @@ export class SenRequestFormView extends React.Component {
                 error: undefined
             });
             console.log('1');
+        }
+
+        else if (this.props.history.location.pathname == '/sen/WelcomePage') {
+            this.setState({
+                loading: false,
+                request: undefined,
+                error: undefined
+            });
+            console.log('4');
         }
         else if(this.props.location.state != undefined && this.props.location.state.request != undefined) {
             this.setState({
@@ -78,3 +88,5 @@ export class SenRequestFormView extends React.Component {
         return (<SenRequestForm request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
     }
 }
+
+export default withRouter(SenRequestFormView);

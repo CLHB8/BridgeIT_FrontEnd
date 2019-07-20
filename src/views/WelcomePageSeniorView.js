@@ -14,14 +14,29 @@ export class WelcomePageSeniorView extends React.Component {
         super(props);
 
         this.state = {
-            loading: false,
+            loading: true,
             data: []
         };
     }
 
     componentWillMount(){
         this.setState({
-            loading: false
+            loading: true
+        });
+        UserService.isPremium().then((isPremium) => {
+            let tmpUser = UserService.getCurrentUser();
+            let user = {
+                isPremium: isPremium,
+                id: tmpUser.id,
+                username: tmpUser.username
+            }
+            console.log(user);
+            this.setState({
+                user: user,
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
         });
     }
 
@@ -32,7 +47,7 @@ export class WelcomePageSeniorView extends React.Component {
         if (UserService.isAuthenticated()) {
             if(UserService.isSenior()){
                 return (
-                    <WelcomePageSenior data={this.state.data} />
+                    <WelcomePageSenior user={this.state.user}/>
                 );
             }else{
                 return (<Redirect to={'/stu/WelcomePage'}/>)

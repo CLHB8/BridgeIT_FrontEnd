@@ -63,8 +63,6 @@ export default class UserService {
         window.localStorage.removeItem('jwtToken');
     }
 
-
-
     static getCurrentUser() {
         let token = window.localStorage['jwtToken'];
         if (!token) return {};
@@ -85,7 +83,31 @@ export default class UserService {
         return window.localStorage['isSenior'] === "true";
     }
 
+    static goPremium(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(`${this.baseURL()}/${id}`, {isPremium: true}, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+
     static isPremium() {
-        return window.localStorage['isPremium'] === "true";
+        let user = this.getCurrentUser();
+
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${user.id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data.isPremium);
+                }
+                else {
+                    reject('Error while retrieving information if user is Premium');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
     }
 }
