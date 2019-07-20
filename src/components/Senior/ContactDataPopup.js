@@ -14,7 +14,7 @@ const ContactDataPopup = (props) => {
         return(
             <div className="popuplayer">
                 <div className="popup">
-                    <SenRequestFormView >{console.log('It works!')}</SenRequestFormView>
+                    <ContactData >{console.log('It works!')}</ContactData>
                 </div>
             </div>
 
