@@ -169,7 +169,7 @@ class SenRequestForm extends React.Component {
 
     render() {
         return (
-            <SeniorPage>
+            <SeniorPage user={this.state.user}>
                 <Grid className="md-block-centered">
                     <Cell size={12}>
                         <h3>On this page you can add a new request based on your needs.</h3>

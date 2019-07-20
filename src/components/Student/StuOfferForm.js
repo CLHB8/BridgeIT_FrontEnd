@@ -73,7 +73,7 @@ export class StuOfferForm extends React.Component {
 
     render() {
         return (
-            <StudentPage>
+            <StudentPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
                 <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={12}>

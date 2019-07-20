@@ -40,7 +40,7 @@ export class SenRequestDetail extends React.Component {
 
     render() {
         return (
-            <SeniorPage>
+            <SeniorPage user={this.props.user}>
                 <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={12}>
@@ -69,7 +69,7 @@ export class SenRequestDetail extends React.Component {
                             <h3>Our recommended students:</h3>
                         </Cell>
                         <Cell size={12}>
-                            <SenStudentAnswersList stuOffers={this.props.stuOffers} />
+                            <SenStudentAnswersList user={this.props.user} stuOffers={this.props.stuOffers} />
                         </Cell>
                     </Grid>
 
