@@ -19,11 +19,11 @@ export class SenStudentAnswersListRow extends React.Component {
 
     updateRequest() {
         console.log(this.props.stuOffer.studentId)
-        let updateRquest = {
+        let updateRequest = {
             assignedStudent: this.props.stuOffer.studentId,
             isAssigned: true,
         }
-        RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRquest).then((data) => {
+        RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRequest).then((data) => {
             console.log(data);
         }).catch((e) => {
             console.error(e);
@@ -34,7 +34,7 @@ export class SenStudentAnswersListRow extends React.Component {
     render() {
         return (
             <TableRow key={this.props.key}>
-                <TableColumn><FontIcon>user</FontIcon></TableColumn>
+                <TableColumn><FontIcon>person</FontIcon></TableColumn>
                 <TableColumn>{this.props.stuOffer.studentUsername}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
                 <TableColumn><DisplayRating studentId={this.props.stuOffer.studentId}/></TableColumn>

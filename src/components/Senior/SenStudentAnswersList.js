@@ -20,7 +20,7 @@ export const SenStudentAnswersList = ({stuOffers}) => (
                     <TableColumn>Student Name</TableColumn>
                     <TableColumn>Message</TableColumn>
                     <TableColumn>Rating</TableColumn>
-                    <TableColumn>Choose Student</TableColumn>
+                    <TableColumn>Choose</TableColumn>
                 </TableRow>
             </TableHeader>
             <TableBody>
