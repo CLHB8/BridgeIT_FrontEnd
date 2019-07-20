@@ -1,18 +1,23 @@
 "use strict";
 
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button } from 'react-md';
-import { Link } from 'react-router-dom';
+import { TableRow, TableColumn, FontIcon, Button, SVGIcon } from 'react-md';
+import {Link, withRouter} from 'react-router-dom';
 
+import PopupDelete from '../PopupDelete';
 import { SimpleLink } from '../SimpleLink';
 
 import UserService from '../../services/UserService';
-
 
 export class SenMyRequestsListRow extends React.Component {
 
     constructor(props) {
         super(props);
+        this.delete = this.delete.bind(this);
+    }
+
+    delete(value){
+        this.props.onDelete(value)
     }
 
     render() {
@@ -25,11 +30,12 @@ export class SenMyRequestsListRow extends React.Component {
                     : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                 }
                 {UserService.isAuthenticated() ?
-                    <TableColumn><Button onClick={() => this.props.onDelete(this.props.request._id)} icon>delete</Button></TableColumn>
+                    <TableColumn><PopupDelete delete={this.delete} id={this.props.request._id}></PopupDelete></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
-
             </TableRow>
         );
     }
 }
+
+export default withRouter(SenMyRequestsListRow);

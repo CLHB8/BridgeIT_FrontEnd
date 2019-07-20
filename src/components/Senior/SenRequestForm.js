@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import {Card, Button, FontIcon, TextField, CardTitle, CardText, ListItem, Avatar, DropdownMenu} from 'react-md';
+import { Card, Button, FontIcon, TextField, CardTitle, CardText } from 'react-md';
 import { withRouter } from 'react-router-dom';
 
 import { AlertMessage } from '../AlertMessage';
@@ -23,20 +23,20 @@ class RequestForm extends React.Component {
                 specification: props.request.specification,
                 userId: props.request.userId,
                 senUserName: props.request.senUserName,
-                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+                isAssigned: props.request.isAssigned,
+                assignedStudent: props.request.assignedStudent,
             };
         } else {
             this.state = {
-                title: '56',
+                title: '',
                 category: '',
                 specification: '',
                 userId: '',
                 senUserName:'',
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
-                title1: 'Smartphone Coaching',
-                title2: 'Pc/Laptop Coaching',
-                title3: 'Printer Problems',
-                title4: 'Individual task',
+                isAssigned: '',
+                assignedStudent: ''
             };
         }
 
@@ -44,10 +44,7 @@ class RequestForm extends React.Component {
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
         this.handleChangeSpecification = this.handleChangeSpecification.bind(this);
 
-        this.handleSubmit1 = this.handleSubmit1.bind(this);
-        this.handleSubmit2 = this.handleSubmit2.bind(this);
-        this.handleSubmit3 = this.handleSubmit3.bind(this);
-        this.handleSubmit4 = this.handleSubmit4.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChangeTitle(value) {
@@ -62,7 +59,7 @@ class RequestForm extends React.Component {
         this.setState(Object.assign({}, this.state, {specification: value}));
     }
 
-    handleSubmit1(event) {
+    handleSubmit(event) {
         event.preventDefault();
 
         let request = this.props.request;
@@ -70,66 +67,61 @@ class RequestForm extends React.Component {
             request = {};
         }
 
-        request.title = this.state.title1;
-        request.category = '';
-        request.specification = 'Affe';
+        request.title = this.state.title;
+        request.category = this.state.category;
+        request.specification = this.state.specification;
         request.userId = '';
         request.senUserName = this.state.user.username;
+        request.isAssigned = false;
+        request.assignedStudent = null;
 
-        if(request.category==''){
-            this.state.category2= 'Fisch';
-            request.category = this.state.category2;
-        }
         this.props.onSubmit(request);
     }
-    handleSubmit2(event) {
-        event.preventDefault();}
-    handleSubmit3(event) {
-        event.preventDefault();}
-    handleSubmit4(event) {
-        event.preventDefault();}
 
     render() {
         return (
             <SeniorPage>
                 <Card style={style} className="md-block-right">
-                    <CardTitle title={this.state.title1}/>
-                    <form className="md-grid" onSubmit={this.handleSubmit1} onReset={() => this.props.history.goBack()}>
-                        <CardText>Do you need help with your Smartphone? Than choose a category and Submit your Request.</CardText>
+                    <CardTitle title="Add request here"/>
+                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                        <TextField
+                            label="Title"
+                            id="TitleField"
+                            type="text"
+                            className="md-row"
+                            required={true}
+                            value={this.state.title}
+                            onChange={this.handleChangeTitle}
+                            errorText="Title is required"/>
+                        <TextField
+                            label="Category"
+                            id="CategoryField"
+                            type="text"
+                            className="md-row"
+                            required={true}
+                            value={this.state.category}
+                            onChange={this.handleChangeCategory}
+                            errorText="Category is required"/>
+                        <TextField
+                            label="Specification"
+                            id="SpecificationField"
+                            type="text"
+                            className="md-row"
+                            required={true}
+                            value={this.state.specification}
+                            onChange={this.handleChangeSpecification}
+                            errorText="Specification is required"/>
 
                         <Button id="submit" type="submit"
-                                raised primary className="md-cell md-cell--2">Choose</Button>
-                    </form>
-                </Card>
-                <Card style={style} className="md-block-right">
-                    <CardTitle title={this.state.title2}/>
-                    <form className="md-grid" onSubmit={this.handleSubmit2} onReset={() => this.props.history.goBack()}>
-                        <CardText>Do you need help with your Smartphone? Than choose a category and Submit your Request.</CardText>
-
-                        <Button id="submit" type="submit"
-                                raised primary className="md-cell md-cell--2">Choose</Button>
-                    </form>
-                </Card>
-                <Card style={style} className="md-block-right">
-                    <CardTitle title={this.state.title3}/>
-                    <form className="md-grid" onSubmit={this.handleSubmit3} onReset={() => this.props.history.goBack()}>
-                        <CardText>Do you need help with your Smartphone? Than choose a category and Submit your Request.</CardText>
-
-                        <Button id="submit" type="submit"
-                                raised primary className="md-cell md-cell--2">Choose</Button>
-                    </form>
-                </Card>
-                <Card style={style} className="md-block-right">
-                    <CardTitle title={this.state.title4}/>
-                    <form className="md-grid" onSubmit={this.handleSubmit4} onReset={() => this.props.history.goBack()}>
-                        <CardText>Do you need help with your Smartphone? Than choose a category and Submit your Request.</CardText>
-
-                        <Button id="submit" type="submit"
-                                raised primary className="md-cell md-cell--2">Choose</Button>
+                                disabled={this.state.title == undefined || this.state.title == '' || this.state.category == undefined || this.state.category == '' || this.state.specification == undefined || this.state.specification == ''}
+                                raised primary className="md-cell md-cell--2">Save</Button>
+                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
+                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
             </SeniorPage>
         );
     }
 }
+
 export default withRouter(RequestForm);

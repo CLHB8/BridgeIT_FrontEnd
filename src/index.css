@@ -490,3 +490,30 @@ footer {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
+
+.senDrawer{
+    width: 20%;
+
+
+}
+
+
+.seniorProfile{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+.seniorProfile img{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.seniorProfile h3{
+    display: block;
+
+}
+.ongoingTasks{
+    margin-top: 10px;
+}
