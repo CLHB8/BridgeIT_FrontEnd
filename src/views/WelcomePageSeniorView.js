@@ -21,16 +21,7 @@ export class WelcomePageSeniorView extends React.Component {
 
     componentWillMount(){
         this.setState({
-            loading: true
-        });
-    /* MovieService has to be deleted at some point here!! */
-        MovieService.getMovies().then((data) => {
-            this.setState({
-                data: [...data],
-                loading: false
-            });
-        }).catch((e) => {
-            console.error(e);
+            loading: false
         });
     }
 

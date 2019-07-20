@@ -29,6 +29,7 @@ export class SenTaskHistoryListView extends React.Component {
                 data: [...data],
                 loading: false
             });
+
         }).catch((e) => {
             console.error(e);
         })
