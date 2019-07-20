@@ -7,6 +7,7 @@ import UserService from "../../services/UserService";
 import {makeStyles, Drawer, Container, Divider, Tab, Tabs, Paper, Fab} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import {Avatar, FontIcon, List, ListItem, Subheader, Button,} from 'react-md';
+import {SenTaskHistoryListView} from "../../views/SenTaskHistoryListView";
 import SenAddOfferPopup from "../Senior/SenAddOfferPopup";
 import {withRouter} from 'react-router-dom';
 
@@ -39,7 +40,7 @@ export class WelcomePageSenior extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+            user: this.props.user,
             showPopup: false
         }
     }
@@ -54,23 +55,11 @@ export class WelcomePageSenior extends React.Component {
             showPopup: !this.state.showPopup},
             );
     }
-
-    logout() {
-        UserService.logout();
-        this.state = {
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
-        };
-        if (this.props.location.pathname != '/') {
-            this.props.history.push('/');
-        
-        } else {
-            window.location.reload();
-        }
-    }
     render() {
+
         return (
-            <SeniorPage>
-                
+            <SeniorPage user={this.state.user}>
+
 
                     <div className="gridContainer">
 
@@ -89,10 +78,10 @@ export class WelcomePageSenior extends React.Component {
                                 </Fab>
                                 <br/>
                                 <br/>
-                                <Button raised primary swapTheming onClick={() => this.logout()}>Log out</Button> {/* doesn't reload the page */}
-                                
+                                <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
+
                                 <SenAddOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </SenAddOfferPopup>
-                                
+
                                 </div>
 
 
@@ -118,32 +107,7 @@ export class WelcomePageSenior extends React.Component {
                         <Divider />
                         <div className="previousTasks">
                         <h4 >Here is your task history. Don't forget to rate the students!</h4>
-
-                            <List className="md-cell--9 md-paper md-paper--1">
-                                        <Subheader primaryText="Task History" primary />
-                                        <ListItem
-                                            leftAvatar={<Avatar suffix="deep-purple">AC</Avatar>}
-                                            rightIcon={<StarIcon />}
-                                            primaryText="PC/Laptop Coaching"
-                                            secondaryText={'Ali Connors\n3 days ago'}
-                                            threeLines
-                                        />
-                                        <ListItem
-                                            leftAvatar={<Avatar suffix="green">AS</Avatar>}
-                                            rightIcon={<StarIcon />}
-                                            primaryText="Smartphone coaching"
-                                            secondaryText={'Alex Scott\n1 week ago'}
-                                            threeLines
-                                        />
-                                        <ListItem
-                                            leftAvatar={<Avatar suffix="orange">SA</Avatar>}
-                                            rightIcon={<StarIcon />}
-                                            primaryText="Printer Coaching"
-                                            secondaryText={'Sandra Adams \n 2 months ago'}
-                                            threeLines
-                                        />
-                                        </List>
-
+                            <SenTaskHistoryListView></SenTaskHistoryListView>
                         </div>
 
 

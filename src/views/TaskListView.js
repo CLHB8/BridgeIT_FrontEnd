@@ -16,7 +16,8 @@ export class TaskListView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
         };
     }
 
@@ -60,9 +61,7 @@ export class TaskListView extends React.Component {
         }
 
         return (
-            
-            
-            <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+            <TaskList user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }

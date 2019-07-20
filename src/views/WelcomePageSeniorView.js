@@ -14,7 +14,7 @@ export class WelcomePageSeniorView extends React.Component {
         super(props);
 
         this.state = {
-            loading: false,
+            loading: true,
             data: []
         };
     }
@@ -23,10 +23,16 @@ export class WelcomePageSeniorView extends React.Component {
         this.setState({
             loading: true
         });
-    /* MovieService has to be deleted at some point here!! */
-        MovieService.getMovies().then((data) => {
+        UserService.isPremium().then((isPremium) => {
+            let tmpUser = UserService.getCurrentUser();
+            let user = {
+                isPremium: isPremium,
+                id: tmpUser.id,
+                username: tmpUser.username
+            }
+            console.log(user);
             this.setState({
-                data: [...data],
+                user: user,
                 loading: false
             });
         }).catch((e) => {
@@ -39,9 +45,10 @@ export class WelcomePageSeniorView extends React.Component {
             return (<h2>Loading...</h2>);
         }
         if (UserService.isAuthenticated()) {
+            console.log("WelcomPAGESENIOR isSENIOR?", UserService.isSenior());
             if(UserService.isSenior()){
                 return (
-                    <WelcomePageSenior data={this.state.data} />
+                    <WelcomePageSenior user={this.state.user}/>
                 );
             }else{
                 return (<Redirect to={'/stu/WelcomePage'}/>)

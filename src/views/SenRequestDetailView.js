@@ -6,6 +6,7 @@ import { SenRequestDetail } from '../components/Senior/SenRequestDetail';
 
 import RequestService from '../services/RequestService';
 import StuOfferService from "../services/StuOfferService";
+import UserService from "../services/UserService";
 
 export class SenRequestDetailView extends React.Component {
 
@@ -15,7 +16,8 @@ export class SenRequestDetailView extends React.Component {
 
     componentWillMount(props){
         this.setState({
-            loading: true
+            loading: true,
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
         });
 
         let id = this.props.match.params.id;
@@ -54,7 +56,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail user={this.state.user}stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }

@@ -16,7 +16,8 @@ export class SenMyRequestsListView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
         };
     }
 
@@ -56,7 +57,7 @@ export class SenMyRequestsListView extends React.Component {
     render() {
         if (UserService.isAuthenticated()) {
             return (
-                <SenMyRequestsList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+                <SenMyRequestsList user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
             );
         }
         else

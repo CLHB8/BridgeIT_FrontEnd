@@ -8,6 +8,7 @@ import RequestService from "../services/RequestService";
 import RequestForm from "../components/Senior/SenRequestForm";
 
 import StuOfferService from "../services/StuOfferService";
+import UserService from "../services/UserService";
 
 export class StuOfferFormView extends React.Component {
 
@@ -20,7 +21,8 @@ export class StuOfferFormView extends React.Component {
             this.setState({
                 loading: true,
                 stuOffer: undefined,
-                error: undefined
+                error: undefined,
+                user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
             });
             console.log('setState');
 
@@ -63,7 +65,7 @@ export class StuOfferFormView extends React.Component {
         }
 
         return (
-            <StuOfferForm stuOffer={this.state.stuOffer} request={this.state.request} onSubmit={(stuOffer) => this.updateStuOffer(stuOffer)} error={this.state.error} />
+            <StuOfferForm user={this.props.user} stuOffer={this.state.stuOffer} request={this.state.request} onSubmit={(stuOffer) => this.updateStuOffer(stuOffer)} error={this.state.error} />
         );
     }
 }

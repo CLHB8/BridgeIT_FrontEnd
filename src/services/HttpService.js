@@ -65,6 +65,7 @@ export default class HttpService {
             else {
                 if(resp.hasOwnProperty('token')) {
                     window.localStorage['jwtToken'] = resp.token;
+                    window.localStorage['isSenior'] = resp.isSenior;
                 }
                 onSuccess(resp);
             }
@@ -94,6 +95,7 @@ export default class HttpService {
                 return resp.json();
             }
         }).then((resp) => {
+            console.log(resp)
             if(resp.error) {
                 onError(resp.error);
             }
@@ -101,7 +103,6 @@ export default class HttpService {
                 if(resp.hasOwnProperty('token')) {
                     window.localStorage['jwtToken'] = resp.token;
                     window.localStorage['isSenior'] = resp.isSenior;
-                    window.localStorage['isPremium'] = resp.isPremium;
                 }
 
                 onSuccess(resp);
@@ -147,5 +148,4 @@ export default class HttpService {
         }
         return false;
     }
-
 }

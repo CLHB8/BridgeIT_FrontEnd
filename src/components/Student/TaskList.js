@@ -6,6 +6,7 @@ import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button, Table
 import { TaskListRow } from './TaskListRow';
 import StudentPage from './StudentPage'
 import CatSideBar from '../CatSideBar';
+import UserService from "../../services/UserService";
 
 
 const dataTableStyle = {
@@ -14,7 +15,7 @@ const dataTableStyle = {
 
 
 export const TaskList = ({data, onDelete}) => (
-    <StudentPage>
+    <StudentPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
         <div className="gridContainer">
         <CatSideBar ad="3" className="catSideBar"/>
         <div className="taskList">
@@ -23,8 +24,8 @@ export const TaskList = ({data, onDelete}) => (
                 
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn>Request Name</TableColumn>
-                    <TableColumn>Senior's name: 
+                    <TableColumn>Category</TableColumn>
+                    <TableColumn>Senior's name:
                     </TableColumn>
                     <TableColumn>Sort By: 
                         <select>
@@ -39,7 +40,7 @@ export const TaskList = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((request, i) => <TaskListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
+                {data.map((request, i) => <TaskListRow user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} request={request} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
             {/* <TablePagination rowsPerPageLabel ="Items Per Page" /> */}
         </DataTable>

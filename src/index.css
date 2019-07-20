@@ -1,7 +1,6 @@
 /*TODO: Add styles here */
 
 * {margin: 0; padding: 0;}
-
 #splitscreenList {
     margin: 20px;
     text-align: justify;
@@ -54,6 +53,19 @@ li:hover {
 }
 
 button:focus {outline:0 !important;}
+
+#Popup{
+    background: darkblue;
+    font-size: large;
+    color: white;
+    margin-bottom: 15px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    min-width: 80px;
+    justify-items: center;
+    align-items: center;
+}
 
 /*Neil: Remove underline when mouse moves over link */
 a:hover {
@@ -386,7 +398,7 @@ li:hover {
 
 .taskList {
     grid-area: takList;
-    
+
     margin-left: 5px;
 }
 

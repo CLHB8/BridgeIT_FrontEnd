@@ -5,15 +5,15 @@ import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from
 
 import { StuMyOffersRow } from './StuMyOffersRow';
 import StudentPage from './StudentPage';
+import UserService from "../../services/UserService";
 
 const dataTableStyle = {
     'margin-top': '20px',
 };
 
 export const StuMyOffers = ({data, onDelete}) => (
-    <StudentPage>
-        
-        <DataTable plain resposive style={dataTableStyle} className="md-cell--12 md-paper md-paper--1">
+    <StudentPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
+        <DataTable plain style={dataTableStyle}>
             <TableHeader>
                 <TableRow>
                     <TableColumn></TableColumn>
@@ -23,7 +23,7 @@ export const StuMyOffers = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((stuOffer, i) => <StuMyOffersRow key={i} stuOffer={stuOffer} onDelete={(id) => onDelete(id)} />)}
+                {data.map((stuOffer, i) => <StuMyOffersRow user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} stuOffer={stuOffer} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
         </DataTable>
     </StudentPage>

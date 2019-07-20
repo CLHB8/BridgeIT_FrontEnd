@@ -36,7 +36,7 @@ class Header extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {user: this.props.user};
     }
 
     render() {
@@ -94,7 +94,6 @@ class Header extends React.Component {
         let headerText;
         let loginOrKebabMenue;
         let landingPageWelcomeText;
-        let accountMenu;
 
         if (this.props.location.pathname === "/") {
             landingPageWelcomeText = "Welcome to " + this.props.title
@@ -105,9 +104,9 @@ class Header extends React.Component {
 
         if (UserService.isAuthenticated()) {
             if (UserService.isSenior()) {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.state.user}/>;
             } else {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.state.user}/>;
             }
         } else {
             if (!(this.props.location.pathname === "/login"))
@@ -176,7 +175,6 @@ class Header extends React.Component {
                         {homeButton}
                         {homeButtonDiv}
                         {loginOrKebabMenue}
-                        {accountMenu}
 
 
                     </Toolbar>

@@ -46,6 +46,22 @@ export default class UserService {
         });
     }
 
+    static editProfile() {
+        let id = this.getCurrentUser().id;
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static login(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/login`, {
@@ -54,16 +70,18 @@ export default class UserService {
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
+                console.log(textStatus);
                 reject(textStatus);
             });
         });
+    }
+    static isSenior(){
+        return window.localStorage['isSenior'];
     }
 
     static logout(){
         window.localStorage.removeItem('jwtToken');
     }
-
-
 
     static getCurrentUser() {
         let token = window.localStorage['jwtToken'];
@@ -85,7 +103,30 @@ export default class UserService {
         return window.localStorage['isSenior'] === "true";
     }
 
+    static goPremium(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(`${this.baseURL()}/${id}`, {isPremium: true}, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static isPremium() {
-        return window.localStorage['isPremium'] === "true";
+        let user = this.getCurrentUser();
+
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${user.id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data.isPremium);
+                }
+                else {
+                    reject('Error while retrieving information if user is Premium');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
     }
 }
