@@ -21,9 +21,8 @@ class RatingStudent extends React.Component {
     }
 
     componentWillMount() {
+        let id = this.props.request._id;
         if(this.state.isSenior){
-            let id = this.props.request._id;
-
             RatingsService.getRatingById(id).then((ratingsData) => {
                 console.log("WILL MOUNT", ratingsData[0]);
                 this.setState({
@@ -38,9 +37,18 @@ class RatingStudent extends React.Component {
                 console.error(e);
             })
         }else{
-            this.setState({
-                rating: 0,
-            loading: false})
+            RatingsService.getRatingById(id).then((ratingsData) => {
+                console.log("WILL MOUNT", ratingsData[0]);
+                this.setState({
+                    rating: ratingsData[0].RatingByStudent,
+                    loading: false
+                });
+            }).catch((e) => {
+                this.setState({
+                    rating: 0,
+                    loading: false});
+                console.error(e);
+            })
         }
     }
 
@@ -122,7 +130,7 @@ class RatingStudent extends React.Component {
             <Rating
                 value={this.state.rating}
                 max={5}
-                disabled={(this.state.user.isPremium)}
+                disabled={!(this.state.user.isPremium)}
                 onChange={(value) => this.updateRating(value)}
             />
         );

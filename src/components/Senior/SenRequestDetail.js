@@ -52,7 +52,7 @@ export class SenRequestDetail extends React.Component {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {this.props.request.title}
+                                {}
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h3">
                                 Category: {this.props.request.category}

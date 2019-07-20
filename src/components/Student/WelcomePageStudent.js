@@ -11,6 +11,7 @@ import TaskListMiniView from "../../views/TaskListMiniView";
 import { SimpleLink } from '../SimpleLink';
 import StuSendOfferPopup from './StuSendOfferPopup';
 import DisplayRating from "../DisplayRating";
+import StuMyAssignedRequest from "../Student/StuMyAssignedRequests";
 
 const style = { maxWidth: 500 };
 
@@ -95,6 +96,7 @@ export class WelcomePageStudent extends React.Component {
                         <div className="ratingSummary">
 
                             <h4>Don't forget to rate your recent experience with the seniors:</h4>
+                            <StuMyAssignedRequest user={this.state.user}></StuMyAssignedRequest>
 
 
                         </div>
