@@ -4,6 +4,7 @@ import React from 'react';
 import { TableRow, TableColumn, FontIcon, Button, SVGIcon, Avatar } from 'react-md';
 import { Link } from 'react-router-dom';
 
+import PopupDelete from '../PopupDelete';
 import { SimpleLink } from '../SimpleLink';
 
 import UserService from '../../services/UserService';
@@ -14,8 +15,14 @@ export class SenMyRequestsListRow extends React.Component {
         super(props);
         this.state = {
             daysSince: '',
+
         }
+        this.delete = this.delete.bind(this);
         this.timedifference(this.props.request.createdAt);
+    }
+
+    delete(value){
+        this.props.onDelete(value);
     }
 
      timedifference(value) {
@@ -87,8 +94,7 @@ export class SenMyRequestsListRow extends React.Component {
                         : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                     }
                     {UserService.isAuthenticated() ?
-                        <TableColumn><Button secondary onClick={() => this.props.onDelete(this.props.request._id)}
-                                             icon>delete</Button></TableColumn>
+                        <TableColumn><PopupDelete delete={this.delete} id={this.props.request._id}></PopupDelete></TableColumn>
                         : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                     }
 

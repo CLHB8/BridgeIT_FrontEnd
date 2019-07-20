@@ -69,7 +69,7 @@ export class SenRequestFormView extends React.Component {
     updateRequest(request) {
         if(this.state.request == undefined) {
             RequestService.createRequest(request).then((data) => {
-                this.props.history.push('/');
+                this.props.history.push('/sen/WelcomePage');
             }).catch((e) => {
                 console.error(e);
                 this.setState(Object.assign({}, this.state, {error: 'Error while creating request'}));
