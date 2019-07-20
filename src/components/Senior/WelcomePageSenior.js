@@ -8,7 +8,7 @@ import {makeStyles, Drawer, Container, Divider, Tab, Tabs, Paper, Fab} from "@ma
 import AddIcon from '@material-ui/icons/Add';
 import {Avatar, FontIcon, List, ListItem, Subheader, Button,} from 'react-md';
 import {SenTaskHistoryListView} from "../../views/SenTaskHistoryListView";
-import SenAddOfferPopup from "../Senior/SenAddOfferPopup";
+import { SimpleLink } from '../SimpleLink';
 import {withRouter} from 'react-router-dom';
 
 const style = { maxWidth: 900 };
@@ -50,11 +50,6 @@ export class WelcomePageSenior extends React.Component {
             title: document.title
         });
     }
-    popupHandler() {
-        this.setState({
-            showPopup: !this.state.showPopup},
-            );
-    }
     render() {
 
         return (
@@ -73,14 +68,12 @@ export class WelcomePageSenior extends React.Component {
                                 <h5>Your rating: 4.5/5 stars</h5>
                                 <Divider />
                                 <br/>
-                                <Fab variant="extended" color="primary" aria-label="Add" onClick={this.popupHandler.bind(this)} className={classes.fab}>
+                                <SimpleLink to={'add'}><Fab variant="extended" color="primary" aria-label="Add" className={classes.fab}>
                                     <AddIcon className={classes.extendedIcon}/> Add Request
-                                </Fab>
+                                </Fab></SimpleLink>
                                 <br/>
                                 <br/>
-                                <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
-
-                                <SenAddOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </SenAddOfferPopup>
+                                <h4 align="center"><SimpleLink to={'WelcomePage'}><Button raised primary swapTheming onClick={() => UserService.logout()}>Log out</Button></SimpleLink></h4>
 
                                 </div>
 

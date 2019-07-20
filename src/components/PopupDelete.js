@@ -11,6 +11,7 @@ class PopupDelete extends React.Component{
     }
     handleClick(){
         this.props.delete(this.props.id)
+        close
     }
     handleClickRep(){
         this.props.delete(this.props.id)

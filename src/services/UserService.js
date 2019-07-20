@@ -75,9 +75,6 @@ export default class UserService {
             });
         });
     }
-    static isSenior(){
-        return window.localStorage['isSenior'];
-    }
 
     static logout(){
         window.localStorage.removeItem('jwtToken');

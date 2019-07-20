@@ -43,7 +43,7 @@ export class StuOfferFormView extends React.Component {
     updateStuOffer(stuOffer) {
         if(this.state.stuOffer == undefined) {
             StuOfferService.createStuOffer(stuOffer).then((data) => {
-                this.props.history.push('/');
+                this.props.history.push('/stu/WelcomePage');
             }).catch((e) => {
                 console.error(e);
                 this.setState(Object.assign({}, this.state, {error: 'Error while creating stuOffer'}));

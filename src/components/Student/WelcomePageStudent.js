@@ -2,14 +2,13 @@
 
 import React from 'react';
 import StudentPage from './StudentPage';
-import OfferPopup from '../c_SendOfferPopup';
 import {Button, Divider, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, TableHeader, TableRow} from "react-md";
 import UserService from "../../services/UserService";
 import {Link} from "react-router-dom";
 import Rating from "../rateStudent"
 import TaskListMiniView from "../../views/TaskListMiniView";
 import { SimpleLink } from '../SimpleLink';
-import StuSendOfferPopup from './StuSendOfferPopup';
+
 
 const style = { maxWidth: 500 };
 
@@ -33,6 +32,9 @@ export class WelcomePageStudent extends React.Component {
             showPopup: !this.state.showPopup},
 
         );
+    }
+    onClickHandler(){
+        UserService.logout();
     }
 
     render() {
@@ -63,7 +65,7 @@ export class WelcomePageStudent extends React.Component {
                             </div>
                             <br/>
                             <Divider />
-                            <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
+                            <h4 align="center"><SimpleLink to={'/'}><Button raised primary swapTheming onClick={() => this.onClickHandler()}>Log out</Button></SimpleLink></h4>
 
                             {/* <StuSendOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </StuSendOfferPopup> */}
 
