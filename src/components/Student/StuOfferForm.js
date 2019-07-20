@@ -1,14 +1,31 @@
 "use strict";
 
 import React from 'react';
-import {Card, Button, FontIcon, TextField, CardTitle, CardText, Grid, Cell, Avatar, CardActions} from 'react-md';
+import {TextField, Button} from 'react-md';
+import {Card, CardActions, CardActionArea, CardContent, CardMedia, Typography, Divider } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { AlertMessage } from '../AlertMessage';
 import StudentPage from './StudentPage';
 import UserService from "../../services/UserService";
 
-const style = { maxWidth: 900 };
+const style = { 
+    maxWidth: 900,
+    marginTop: 20,
+
+
+
+};
+
+const useStyles = makeStyles({
+    card: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 140,
+    },
+  });
 
 export class StuOfferForm extends React.Component {
 
@@ -49,6 +66,7 @@ export class StuOfferForm extends React.Component {
     handleChangeIntroMsg(value) {
         this.setState(Object.assign({}, this.state, {introMsg: value}));
     }
+    
 
     handleSubmit(event) {
         event.preventDefault();
@@ -68,12 +86,56 @@ export class StuOfferForm extends React.Component {
 
         this.props.onSubmit(stuOffer);
     }
-
+    
 
     render() {
         return (
             <StudentPage>
-                <Card style={style} className="md-block-centered">
+
+                    <Card className="genericCard">
+                        <CardActionArea>
+                            <CardMedia
+                            className="cardMedia"
+                            image="https://i.imgur.com/dv1LM2R.jpg"
+                            title="Smartphones"
+                            />
+                            <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {this.props.request.title}
+                            </Typography>
+                            <Typography gutterBottom variant="h6" component="h3">
+                                By {this.props.request.senUserName}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {this.props.request.category}
+                            </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                        <form className="md-cell md-cell--12" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                            <Divider/>
+                                    <TextField
+                                        label="Your Message"
+                                        id="introMsgField"
+                                        type="text"
+                                        fullWidth
+                                        className="md-row"
+                                        required={true}
+                                        value={this.state.introMsg}
+                                        onChange={this.handleChangeIntroMsg}
+                                        errorText="Please write a short message introducing yourself."/>
+                                    <div className="formButton">
+                                    <Button type="submit"
+                                            disabled={this.state.introMsg == undefined || this.state.introMsg == ''}
+                                            raised primary className="md-cell md-cell--3">Send</Button>
+                                    <Button type="reset" raised secondary className="md-cell md-cell--3">Dismiss</Button></div>
+                                    <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        </form>
+                        </CardActions>
+                        </Card>
+
+
+                {/* <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={12}>
                             <h3>This request was posted by {this.props.request.senUserName}.</h3>
@@ -112,7 +174,7 @@ export class StuOfferForm extends React.Component {
                     </Grid>
 
 
-                </Card>
+                </Card> */}
             </StudentPage>
         );
     }
