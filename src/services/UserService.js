@@ -54,8 +54,11 @@ export default class UserService {
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
-                console.log(textStatus);
-                reject(textStatus);
+                if(!console.log(textStatus)){
+                    reject("Password or username not correct");
+                }else{
+                    reject(textStatus);
+                }
             });
         });
     }
