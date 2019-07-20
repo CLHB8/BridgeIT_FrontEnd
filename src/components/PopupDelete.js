@@ -12,6 +12,9 @@ class PopupDelete extends React.Component{
     handleClick(){
         this.props.delete(this.props.id)
     }
+    handleClickRep(){
+        this.props.delete(this.props.id)
+    }
 
     render(){
     return(
@@ -20,7 +23,6 @@ class PopupDelete extends React.Component{
                 <Card><h5>Do you really want to delete this request?</h5></Card>
                 <Card>
                     <Button id="Popup" onClick={() => this.handleClick()}><FontIcon style={{color: 'white'}}  className='material-icons'>delete</FontIcon>Delete</Button>
-                    <Button id="Popup" onClick={() => this.handleClick()}><FontIcon style={{color: 'white'}} className='material-icons'>accept</FontIcon>Keep</Button>
                 </Card>
             </Grid>
         </Popup>

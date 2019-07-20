@@ -61,6 +61,8 @@ li:hover {
     height: 30px;
     border-radius: 5px;
     min-width: 80px;
+    justify-items: center;
+    align-items: center;
 }
 
 /*Neil: Remove underline when mouse moves over link */
