@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 import { SimpleLink } from '../SimpleLink';
 import OfferPopup from '../c_SendOfferPopup';
 
-import UserService from '../../services/UserService';
-import MovieForm from "../MovieForm";
-
 var details = "";
 var requestTitle = "";
 

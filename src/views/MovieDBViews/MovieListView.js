@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { MovieList } from '../components/MovieList';
+import { MovieList } from '../../components/MovieComponents/MovieList';
 
-import MovieService from '../services/MovieService';
+import MovieService from '../../services/MovieService';
 
 
 export class MovieListView extends React.Component {

@@ -16,6 +16,7 @@ export const SenStudentAnswersList = ({stuOffers}) => (
                     <TableColumn></TableColumn>
                     <TableColumn>Student Name</TableColumn>
                     <TableColumn>Message</TableColumn>
+                    <TableColumn>Rating</TableColumn>
                     <TableColumn>Choose Student</TableColumn>
                 </TableRow>
             </TableHeader>

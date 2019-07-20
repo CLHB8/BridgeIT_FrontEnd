@@ -60,8 +60,6 @@ export class TaskListView extends React.Component {
         }
 
         return (
-            
-            
             <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
             
         );

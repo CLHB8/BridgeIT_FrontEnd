@@ -147,7 +147,7 @@ class Header extends React.Component {
                 <AppBar position="static" style={{background: "white"}}>
                     <Toolbar>
                         {/*Neil: enter here path when clicked it will be redirected to this path*/}
-                        <Link to={UserService.isAuthenticated() ?  '/sen/WelcomePage' : '/'}>
+                        <Link to={`/`}>
                             <img src={"https://i.imgur.com/0ig5Y7g.png"} style={{width: 143, height: 44}}/>
                         </Link>
                         <div style={{flexGrow: "1"}}/>
@@ -181,20 +181,7 @@ class Header extends React.Component {
 
                     </Toolbar>
                 </AppBar>
-                <AppBar position="static" style={{background: "white"}}>
-                    <Toolbar>
-                        <div className="secondLine">
-                            <span><button className="SHButton" onClick={() => this.props.history.goBack()}><i className="material-icons">keyboard_backspace</i>Back</button></span>
-                            <span><button className="SHButton" onClick={() => this.props.history.push('/sen/WelcomePage')}><i className="material-icons">home</i>Start Page</button></span>
-                            <span><button className="SHButton" onClick={() => this.props.history.push('/sen/add')}><i className="material-icons">library_add</i>Add a new Request</button></span>
-                            <span><button className="SHButton" onClick={() => this.props.history.push('/sen/myRequests')}><i className="material-icons">view_list</i>View my Requests</button></span>
-                            <span><button className="SHButton"><i className="material-icons">view_list</i>Help</button></span>
-                        </div>
-
-                    </Toolbar>
-                </AppBar>
             </div>
-
         );
     }
 };

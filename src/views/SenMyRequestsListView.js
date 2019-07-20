@@ -6,7 +6,7 @@ import { SenMyRequestsList } from '../components/Senior/SenMyRequestsList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
-import {Redirect} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 
 
 export class SenMyRequestsListView extends React.Component {
@@ -65,3 +65,5 @@ export class SenMyRequestsListView extends React.Component {
             }
         }
 }
+
+export default withRouter(SenMyRequestsListView);

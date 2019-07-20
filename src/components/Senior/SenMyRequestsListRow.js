@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button } from 'react-md';
+import { TableRow, TableColumn, FontIcon, Button, SVGIcon } from 'react-md';
 import { Link } from 'react-router-dom';
 
 import { SimpleLink } from '../SimpleLink';
@@ -25,7 +25,7 @@ export class SenMyRequestsListRow extends React.Component {
                     : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                 }
                 {UserService.isAuthenticated() ?
-                    <TableColumn><Button onClick={() => this.props.onDelete(this.props.request._id)} icon>delete</Button></TableColumn>
+                    <TableColumn><Button secondary onClick={() => this.props.onDelete(this.props.request._id)} icon>delete</Button></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
 

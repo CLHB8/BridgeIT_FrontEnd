@@ -6,7 +6,7 @@ import { MenuButton, ListItem, Avatar, FontIcon } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
 import UserService from  '../services/UserService';
-
+import {IoIosLogOut} from "react-icons/io";
 
 class KebabMenu extends React.Component {
 
@@ -15,6 +15,9 @@ class KebabMenu extends React.Component {
         this.state = {
             user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
         }
+        console.log(this.state.user.isSenior)
+        console.log(this.state.user.isSenior)
+        console.log(this.state.user)
     }
 
     logout() {
@@ -36,13 +39,15 @@ class KebabMenu extends React.Component {
                 id={this.props.id}
                 icon
                 className={this.props.className}
-                menuItems={this.state.user ? [
-                    <ListItem key={1} leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>} primaryText={this.state.user.username}/>,
-                    <ListItem key={2} leftAvatar={<Avatar icon={<FontIcon>add</FontIcon>}/>} primaryText="Add Movie" onClick={() => this.props.history.push('/add')}/>,
-                    <ListItem key={3} primaryText="Logout" onClick={() => this.logout()}/>
-                ]: [<ListItem key={1} primaryText="Login" onClick={() => this.props.history.push('/login')}/>]}
+                menu
+                menuItems={[
+                    <ListItem key={1} leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>} primaryText={this.state.user.username} onClick={() => this.props.history.push('/')}/>,
+                    // TODO: needs to be implemented
+                    <ListItem key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>} primaryText="Edit Profile" onClick={() => this.props.history.push('/sen/WelcomePage')}/>,
+                    <ListItem key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>} primaryText="Logout" onClick={() => this.logout()}/>
+                ]}
             >
-                more_vert
+                account_circle
             </MenuButton>
         );
     }

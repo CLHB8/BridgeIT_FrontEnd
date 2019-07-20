@@ -2,14 +2,15 @@
 
 import React from 'react';
 import {Card, Button, TextField, Grid} from 'react-md';
-import { withRouter, Link } from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
-import { AlertMessage } from './AlertMessage';
-import Page from './LoginPage';
-import StartPage from "./StartPage";
+import {AlertMessage} from './AlertMessage';
+import Page from './Page';
+import StartPage from "./Page";
+import {IoIosLogIn, IoMdArrowRoundBack} from "react-icons/io";
 
 
-const style = { maxWidth: 500 };
+const style = {maxWidth: 500};
 
 
 class UserLogin extends React.Component {
@@ -18,8 +19,8 @@ class UserLogin extends React.Component {
         super(props);
 
         this.state = {
-            username : '',
-            password : ''
+            username: '',
+            password: ''
         };
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -51,35 +52,43 @@ class UserLogin extends React.Component {
         return (
             <Page>
                 <Grid container spacing={1}>
-                <Card style={style} className="md-block-centered">
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <TextField
-                            label="Login"
-                            id="LoginField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.username}
-                            onChange={this.handleChangeUsername}
-                            errorText="Login is required"/>
-                        <TextField
-                            label="Password"
-                            id="PasswordField"
-                            type="password"
-                            className="md-row"
-                            required={true}
-                            value={this.state.password}
-                            onChange={this.handleChangePassword}
-                            errorText="Password is required"/>
+                    <Card style={style} className="md-block-centered">
+                        <form className="md-grid" onSubmit={this.handleSubmit}
+                              onReset={() => this.props.history.goBack()}>
+                            <TextField
+                                label="Login"
+                                id="LoginField"
+                                type="text"
+                                className="md-row"
+                                required={true}
+                                value={this.state.username}
+                                onChange={this.handleChangeUsername}
+                                errorText="Login is required"/>
+                            <TextField
+                                label="Password"
+                                id="PasswordField"
+                                type="password"
+                                className="md-row"
+                                required={true}
+                                value={this.state.password}
+                                onChange={this.handleChangePassword}
+                                errorText="Password is required"/>
 
-                        <Button id="submit" type="submit"
-                                disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
-                                raised primary className="md-cell md-cell--2">Login</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <Link to={'/'} className="md-cell">Not registered yet?</Link>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
-                    </form>
-                </Card>
+
+                                <Button id="submit" type="submit" style={{background: "darkblue"}}
+                                        disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
+                                        className="BackAndLoginButtonLoginView"><b>Login</b><IoIosLogIn id="middleXLargeIcons"/></Button>
+
+
+                            <Button id="reset" type="reset" style={{background: "darkred"}}
+                                    className="BackAndLoginButtonLoginView"><b>Back</b></Button>
+
+
+                            <Link to={'/'} className="md-cell">Not registered yet?</Link>
+                            <AlertMessage
+                                className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        </form>
+                    </Card>
                 </Grid>
             </Page>
         );

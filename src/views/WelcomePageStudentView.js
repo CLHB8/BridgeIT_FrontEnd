@@ -6,6 +6,9 @@ import { WelcomePageStudent } from '../components/Student/WelcomePageStudent';
 import MovieService from "../services/MovieService";
 import RequestService from "../services/RequestService";
 import {SenMyRequestsList} from "../components/Senior/SenMyRequestsList";
+import UserService from "../services/UserService";
+import {WelcomePageSenior} from "../components/Senior/WelcomePageSenior";
+import {Redirect} from "react-router-dom";
 
 export class WelcomePageStudentView extends React.Component {
 
@@ -46,9 +49,18 @@ export class WelcomePageStudentView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return (
-            <WelcomePageStudent data={this.state.data}>
-            </WelcomePageStudent>
-        );
+        if (UserService.isAuthenticated()) {
+            if(UserService.isSenior()){
+                return (<Redirect to={'/sen/WelcomePage'}/>)
+            }else{
+                return (
+                    <WelcomePageStudent data={this.state.data}/>
+                );
+            }
+        }
+        else
+        {
+            return (<Redirect to={'/login'}/>)
+        }
     }
 }

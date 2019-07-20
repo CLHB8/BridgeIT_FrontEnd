@@ -5,6 +5,8 @@ import React from 'react';
 import UserLogin from '../components/UserLogin';
 
 import UserService from '../services/UserService';
+import {WelcomePageSenior} from "../components/Senior/WelcomePageSenior";
+import {Redirect} from "react-router-dom";
 
 
 export class UserLoginView extends React.Component {
@@ -16,7 +18,11 @@ export class UserLoginView extends React.Component {
 
     login(user) {
         UserService.login(user.username, user.password).then((data) => {
-            this.props.history.push('/');
+            if(UserService.isSenior()){
+                this.props.history.push('/sen/WelcomePage');
+            }else{
+                this.props.history.push('/stu/WelcomePage');
+            }
         }).catch((e) => {
             console.error(e);
             this.setState({
@@ -26,8 +32,23 @@ export class UserLoginView extends React.Component {
     }
 
     render() {
-        return (
-          <UserLogin onSubmit={(user) => this.login(user)} error={this.state.error}></UserLogin>
-        );
+
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>);
+        }
+        if (UserService.isAuthenticated()) {
+            if(UserService.isSenior()){
+                return (<Redirect to={'/sen/WelcomePage'}/>)
+            }else{
+                return (<Redirect to={'/stu/WelcomePage'}/>)
+            }
+        }
+        else
+        {
+            return (
+                <UserLogin onSubmit={(user) => this.login(user)} error={this.state.error}></UserLogin>
+            );
+        }
+
     }
 }

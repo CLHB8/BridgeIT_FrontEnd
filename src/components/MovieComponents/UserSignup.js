@@ -14,8 +14,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 
-import { AlertMessage } from './AlertMessage';
-import Page from './Page';
+import { AlertMessage } from '../AlertMessage';
+import MoviePage from './MoviePage';
 
 
 const style = { maxWidth: 500 };
@@ -58,7 +58,7 @@ class UserSignup extends React.Component {
 
     render() {
         return (
-            <Page>
+            <MoviePage>
                 <Card style={style} className="md-block-centered">
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
@@ -109,7 +109,7 @@ class UserSignup extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </Page>
+            </MoviePage>
         );
     }
 };

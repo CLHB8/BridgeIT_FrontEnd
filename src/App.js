@@ -3,8 +3,7 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { UserLoginView } from "./views/UserLoginView";
-import { UserSignupView } from "./views/UserSignupView";
-import { RequestFormView } from "./views/RequestFormView";
+import { SenRequestFormView } from "./views/SenRequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
@@ -32,18 +31,16 @@ export default class App extends React.Component {
                 { component: StartPageView , path: '/', exact: true},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
-                            return (<RequestFormView {... props} />)
+                            return (<SenRequestFormView {... props} />)
                         }
                         else {
                             return (<Redirect to={'/login'}/>)
                         }} , path: '/edit/:id'},
-                { component: RequestFormView, path: '/sen/add'},
+                { component: SenRequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
-                { component: UserSignupView, path: '/register'},
 
                 { component: SeniorSignupView, path: '/sen/register'},
                 { component: StudentSignupView, path: '/stu/register'},
-                { component: UserSignupView, path: '/register'},
 
                 { component: WelcomePageStudentView, path: '/stu/WelcomePage'},
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},

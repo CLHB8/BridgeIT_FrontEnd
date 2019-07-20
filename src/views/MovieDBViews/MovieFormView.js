@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import MovieForm from './../components/MovieForm';
+import MovieForm from '../../components/MovieComponents/MovieForm';
 
-import MovieService from '../services/MovieService';
+import MovieService from '../../services/MovieService';
 
 
 export class MovieFormView extends React.Component {
