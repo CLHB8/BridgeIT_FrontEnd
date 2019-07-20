@@ -94,6 +94,7 @@ export default class HttpService {
                 return resp.json();
             }
         }).then((resp) => {
+            console.log(resp)
             if(resp.error) {
                 onError(resp.error);
             }

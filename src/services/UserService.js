@@ -54,6 +54,7 @@ export default class UserService {
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
+                console.log(textStatus);
                 reject(textStatus);
             });
         });
@@ -92,7 +93,6 @@ export default class UserService {
             });
         });
     }
-
 
     static isPremium() {
         let user = this.getCurrentUser();

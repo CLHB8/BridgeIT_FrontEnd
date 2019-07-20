@@ -45,6 +45,7 @@ export class WelcomePageSeniorView extends React.Component {
             return (<h2>Loading...</h2>);
         }
         if (UserService.isAuthenticated()) {
+            console.log("WelcomPAGESENIOR isSENIOR?", UserService.isSenior());
             if(UserService.isSenior()){
                 return (
                     <WelcomePageSenior user={this.state.user}/>
