@@ -62,7 +62,7 @@ export class TaskListMiniView extends React.Component {
             
         }
 return(                 
-            <TaskListMini data={this.state.data.slice(0,5)} onDelete={(id) => this.deleteRequest(id)}/>
+            <TaskListMini data={this.state.data.reverse().slice(0,5)} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }

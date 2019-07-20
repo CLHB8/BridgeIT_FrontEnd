@@ -12,6 +12,7 @@ const dataTableStyle = {
 
 export const StuMyOffers = ({data, onDelete}) => (
     <StudentPage>
+        
         <DataTable plain resposive style={dataTableStyle} className="md-cell--12 md-paper md-paper--1">
             <TableHeader>
                 <TableRow>

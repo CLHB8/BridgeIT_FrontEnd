@@ -53,6 +53,8 @@ li:hover {
 
 }
 
+button:focus {outline:0 !important;}
+
 /*Neil: Remove underline when mouse moves over link */
 a:hover {
     text-decoration: none;
@@ -536,4 +538,9 @@ footer {
 }
 .formButton{
     float: right;
+    margin-top: 5px;
+}
+.formButton button {
+
+    margin: 4px;
 }

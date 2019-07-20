@@ -8,6 +8,7 @@ import {makeStyles, Drawer, Container, Divider, Tab, Tabs, Paper, Fab} from "@ma
 import AddIcon from '@material-ui/icons/Add';
 import {Avatar, FontIcon, List, ListItem, Subheader, Button,} from 'react-md';
 import SenAddOfferPopup from "../Senior/SenAddOfferPopup";
+import {withRouter} from 'react-router-dom';
 
 const style = { maxWidth: 900 };
 const StarIcon = () => <FontIcon>star</FontIcon>;
@@ -53,6 +54,19 @@ export class WelcomePageSenior extends React.Component {
             showPopup: !this.state.showPopup},
             );
     }
+
+    logout() {
+        UserService.logout();
+        this.state = {
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+        };
+        if (this.props.location.pathname != '/') {
+            this.props.history.push('/');
+        
+        } else {
+            window.location.reload();
+        }
+    }
     render() {
         return (
             <SeniorPage>
@@ -75,7 +89,7 @@ export class WelcomePageSenior extends React.Component {
                                 </Fab>
                                 <br/>
                                 <br/>
-                                <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
+                                <Button raised primary swapTheming onClick={() => this.logout()}>Log out</Button> {/* doesn't reload the page */}
                                 
                                 <SenAddOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </SenAddOfferPopup>
                                 

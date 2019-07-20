@@ -2,13 +2,14 @@
 
 import React from 'react';
 import {TextField, Button} from 'react-md';
-import {Card, CardActions, CardActionArea, CardContent, CardMedia, Typography, Divider } from '@material-ui/core';
+import {Card, CardActions, CardActionArea, CardContent, CardMedia, Typography, Divider, Icon, Chip } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { AlertMessage } from '../AlertMessage';
 import StudentPage from './StudentPage';
 import UserService from "../../services/UserService";
+import { IoIosReturnRight } from 'react-icons/io';
 
 const style = { 
     maxWidth: 900,
@@ -17,15 +18,12 @@ const style = {
 
 
 };
+const chipStyle = {
+    margin: 5,
 
-const useStyles = makeStyles({
-    card: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 140,
-    },
-  });
+};
+
+
 
 export class StuOfferForm extends React.Component {
 
@@ -100,14 +98,22 @@ export class StuOfferForm extends React.Component {
                             title="Smartphones"
                             />
                             <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {this.props.request.title}
+                           <Typography gutterBottom variant="h5" component="h2">
+                                <span>{this.props.request.title}</span>
+                                <Chip 
+                                label={this.props.request.category}
+                                icon={<Icon>category</Icon> }
+                                color="primary"
+                                style={chipStyle}
+                                className="md-cell md-cell--2"
+                                />
+                                
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h3">
                                 By {this.props.request.senUserName}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                {this.props.request.category}
+                                {this.props.request.specification}
                             </Typography>
                             </CardContent>
                         </CardActionArea>
