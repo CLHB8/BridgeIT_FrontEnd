@@ -37,6 +37,7 @@ export class StuMyOffersRow extends React.Component {
                     )
                 }
                 <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.stuOffer.requestId}`}>{this.props.stuOffer.requestCategory}</SimpleLink></TableColumn>
+                <TableColumn>{this.props.stuOffer.seniorUsername}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
                 {UserService.isAuthenticated() ?
                     <TableColumn><Button onClick={() => this.props.onDelete(this.props.stuOffer._id)} icon>delete</Button></TableColumn>
