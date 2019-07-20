@@ -6,7 +6,7 @@ import { TaskList } from '../components/Student/TaskList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
-import {Redirect} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 
 
 export class TaskListView extends React.Component {
@@ -66,3 +66,5 @@ export class TaskListView extends React.Component {
         );
     }
 }
+
+export default withRouter(TaskListView);

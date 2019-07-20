@@ -53,6 +53,8 @@ li:hover {
 
 }
 
+button:focus {outline:0 !important;}
+
 /*Neil: Remove underline when mouse moves over link */
 a:hover {
     text-decoration: none;
@@ -379,11 +381,13 @@ li:hover {
 
 .catSideBar {
     grid-area: catSideBar;
+    border-right: 2px solid black;
 }
 
 .taskList {
     grid-area: takList;
-    border-left: 2px solid black;
+
+    margin-left: 5px;
 }
 
 .categories button {
@@ -518,4 +522,25 @@ footer {
 }
 .ongoingTasks{
     margin-top: 10px;
+}
+
+.genericCard{
+
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.cardMedia{
+
+    height: 200px;
+}
+.formButton{
+    float: right;
+    margin-top: 5px;
+}
+.formButton button {
+
+    margin: 4px;
 }

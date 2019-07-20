@@ -7,11 +7,13 @@ import { SenStudentAnswersListRow } from './SenStudentAnswersListRow';
 import UserService from "../../services/UserService";
 
 const dataTableStyle = {
-    'margin-bottom': '36px'
+    'margin-bottom': '36px',
+    'border-left': '4px solid #0D47A1',
+    'background-color': '#F5F5F5',
 };
 
 export const SenStudentAnswersList = ({stuOffers}) => (
-        <DataTable plain style={dataTableStyle}>
+        <DataTable plain style={dataTableStyle} className="md-cell md-cell--12">
             <TableHeader>
                 <TableRow>
                     <TableColumn></TableColumn>

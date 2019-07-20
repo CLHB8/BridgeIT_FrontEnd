@@ -2,38 +2,38 @@
 
 import React from 'react';
 
-import { SenMyRequestsList } from '../components/Senior/SenMyRequestsList';
+import { TaskListMini } from '../components/Student/TaskListMini';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
 import {Redirect, withRouter} from "react-router-dom";
 
 
-export class SenMyRequestsListView extends React.Component {
+export class TaskListMiniView extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             loading: false,
-            data: [],
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+            data: []
         };
     }
 
-    componentWillMount() {
+    componentWillMount(){
         this.setState({
             loading: true
         });
-            RequestService.getMyRequests().then((data) => {
-                this.setState({
-                    data: [...data],
-                    loading: false
-                });
-            }).catch((e) => {
-                console.error(e);
-            })
-        }
+
+        RequestService.getRequests().then((data) => {
+            this.setState({
+                data: [...data],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
+    }
 
     deleteRequest(id) {
         this.setState({
@@ -55,16 +55,17 @@ export class SenMyRequestsListView extends React.Component {
     }
 
     render() {
-        if (UserService.isAuthenticated()) {
-            return (
-                <SenMyRequestsList user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
-            );
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>
+                
+                );
+            
         }
-        else
-            {
-                return (<Redirect to={'../login'}/>)
-            }
-        }
+return(                 
+            <TaskListMini data={this.state.data.reverse().slice(0,5)} onDelete={(id) => this.deleteRequest(id)}/>
+            
+        );
+    }
 }
 
-export default withRouter(SenMyRequestsListView);
+export default withRouter(TaskListMiniView);

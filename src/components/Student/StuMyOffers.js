@@ -8,7 +8,7 @@ import StudentPage from './StudentPage';
 import UserService from "../../services/UserService";
 
 const dataTableStyle = {
-    'margin-bottom': '36px'
+    'margin-top': '20px',
 };
 
 export const StuMyOffers = ({data, onDelete}) => (

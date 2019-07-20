@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Avatar, Card, CardTitle, CardText, CardActions, Media, MediaOverlay, Grid, Cell, Button, FontIcon } from 'react-md';
+import {Card, CardActions, Icon, CardActionArea, CardContent, CardMedia, Typography, Divider, Button, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary} from '@material-ui/core';
 
 import SeniorPage from './SeniorPage';
 import { SenStudentAnswersList } from './SenStudentAnswersList';
@@ -41,7 +41,75 @@ export class SenRequestDetail extends React.Component {
     render() {
         return (
             <SeniorPage user={this.props.user}>
-                <Card style={style} className="md-block-centered">
+
+
+                <Card className="genericCard">
+                    <CardActionArea>
+                        <CardMedia
+                            className="cardMedia"
+                            image="https://i.imgur.com/dv1LM2R.jpg"
+                            title="Smartphones"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {this.props.request.title}
+                            </Typography>
+                            <Typography gutterBottom variant="h6" component="h3">
+                                Category: {this.props.request.category}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {this.props.request.specification}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <div className="md-cell md-cell--12">
+
+                            <div className="formButton">
+                                <Link to={`/edit/${this.props.request._id}`}><Button className="md-cell md-cell--3" color="primary" variant="contained">Edit</Button></Link>
+                                <Button className="md-cell md-cell--3" color="secondary" variant="contained">Delete</Button>
+                            </div></div>
+                    </CardActions>
+
+                    <CardContent>
+                        <Divider/>
+
+                        <Typography gutterBottom variant="h6" component="h3">
+                            Our recommended Student is: {/* Enter Best Student Name and option to choose him*/}
+                        </Typography>
+
+
+                        <ExpansionPanel>
+                            <ExpansionPanelSummary
+                                expandIcon={<Icon>arrow_drop_down_circle</Icon>}
+                            >
+                                Don't like it?<br/>
+                                View offers from other students below:
+
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+
+                                <SenStudentAnswersList user={this.props.user} stuOffers={this.props.stuOffers} />
+
+                            </ExpansionPanelDetails>
+
+
+
+                        </ExpansionPanel>
+
+
+
+                    </CardContent>
+
+
+
+                </Card>
+
+
+
+
+
+                {/* <Card style={style} className="md-block-centered">
                     <Grid className="grid-example" >
                         <Cell size={12}>
                             <h3>Here is the request you posted.</h3>
@@ -69,12 +137,12 @@ export class SenRequestDetail extends React.Component {
                             <h3>Our recommended students:</h3>
                         </Cell>
                         <Cell size={12}>
-                            <SenStudentAnswersList user={this.props.user} stuOffers={this.props.stuOffers} />
+                            <SenStudentAnswersList stuOffers={this.props.stuOffers} />
                         </Cell>
-                    </Grid>
+                    </Grid> */}
 
 
-                </Card>
+                {/* </Card> */}
             </SeniorPage>
         );
     }

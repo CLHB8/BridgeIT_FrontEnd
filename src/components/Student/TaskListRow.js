@@ -1,11 +1,11 @@
 "use strict";
 
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button } from 'react-md';
+import { TableRow, TableColumn, FontIcon, Button, SVGIcon } from 'react-md';
 import { Link } from 'react-router-dom';
 
 import { SimpleLink } from '../SimpleLink';
-import OfferPopup from '../c_SendOfferPopup';
+
 
 var details = "";
 var requestTitle = "";
@@ -63,10 +63,10 @@ export class TaskListRow extends React.Component {
 
                 </TableColumn>
 
-                <TableColumn>
-                    <button onClick={this.popupHandler.bind(this)}><i className="material-icons">send</i>Send Offer</button>
+                <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>
+                    <Button flat primary onClick={this.popupHandler.bind(this)} iconChildren="send">Send Offer</Button></SimpleLink>
                 </TableColumn>
-                <OfferPopup stuOffer={this.state.stuOffer} onSubmit={(stuOffer) => this.updateStuOffer(stuOffer)} error={this.state.error} visibility={this.state.showPopup} description={details} requestTitle={requestTitle}><button  className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </OfferPopup>
+                
 
             </TableRow>
         );

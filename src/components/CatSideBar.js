@@ -3,6 +3,7 @@
 import React from 'react';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
+import { Divider } from '@material-ui/core';
 
 const CatSideBar = (props) => {
 
@@ -22,6 +23,7 @@ const CatSideBar = (props) => {
  
 
                 </div>
+                <Divider />
                 <div className="subscriptionAd">
                     <p>You have {props.ad} free offers remaining this month.<br/> Want to do more? Join our monthly subcription.</p>
 
