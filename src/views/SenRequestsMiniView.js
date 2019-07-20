@@ -2,22 +2,21 @@
 
 import React from 'react';
 
-import { SenMyRequestsList } from '../components/Senior/SenMyRequestsList';
+import { SenRequestsMiniList } from '../components/Senior/SenRequestsMiniList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
 import {Redirect, withRouter} from "react-router-dom";
 
 
-export class SenMyRequestsListView extends React.Component {
+export class SenRequestsMiniView extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             loading: false,
-            data: [],
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+            data: []
         };
     }
 
@@ -57,7 +56,7 @@ export class SenMyRequestsListView extends React.Component {
     render() {
         if (UserService.isAuthenticated()) {
             return (
-                <SenMyRequestsList user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+                <SenRequestsMiniList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
             );
         }
         else
@@ -67,4 +66,4 @@ export class SenMyRequestsListView extends React.Component {
         }
 }
 
-export default withRouter(SenMyRequestsListView);
+export default withRouter(SenRequestsMiniView);

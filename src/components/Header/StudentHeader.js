@@ -11,7 +11,7 @@ import {IoIosLogIn, IoIosLogOut, IoMdHome} from "react-icons/io";
 import {makeStyles} from "@material-ui/core";
 import AccountMenu from "../AccountMenu";
 
-const style = {"margin-bottom": 0};
+const style = {"marginBottom": 0};
 
 const classes = makeStyles(theme => ({
     gap: {
@@ -36,8 +36,16 @@ class StudentHeader extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            user: this.props.user,
+        };
+        this.handlePremiumChange = this.handlePremiumChange.bind(this);
     }
+
+    handlePremiumChange() {
+        this.props.onPremiumChange();
+    }
+
 
     render() {
 
@@ -104,9 +112,9 @@ class StudentHeader extends React.Component {
 
         if (UserService.isAuthenticated()) {
             if (UserService.isSenior()) {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.props.user} onPremiumChange={this.handlePremiumChange}/>;
             } else {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.props.user} onPremiumChange={this.handlePremiumChange}/>;
             }
         } else {
             if (!(this.props.location.pathname === "/login"))
@@ -172,15 +180,12 @@ class StudentHeader extends React.Component {
 
                         <div style={{flexGrow: "1"}}/>
 
-                        <button className="SHButton" onClick={() => this.props.history.push('/stu/WelcomePage')}><i
-                            className="material-icons">home</i>Home
-                        </button>
-                        <button className="SHButton" onClick={() => this.props.history.push('/stu/TaskListView')}><i
-                            className="material-icons">view_list</i>All Requests
-                        </button>
-                        <button className="SHButton" onClick={() => this.props.history.push('/stu/myOffers')}><i
-                            className="material-icons">view_list</i>My offers
-                        </button>
+                        <Button flat primary iconChildren="home" onClick={() => this.props.history.push('/stu/WelcomePage')}>Home
+                        </Button>
+                        <Button flat primary iconChildren="list" onClick={() => this.props.history.push('/stu/TaskListView')}>All Requests
+                        </Button>
+                        <Button flat primary iconChildren="assignment" onClick={() => this.props.history.push('/stu/myOffers')}>My offers
+                        </Button>
                         <div style={{flexGrow: "0.05"}}/>
                         {homeButton}
                         {homeButtonDiv}

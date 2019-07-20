@@ -12,9 +12,16 @@ export default class Page extends React.Component {
         super(props);
 
         this.state = {
-            title: ''
-        }
+            title: '',
+            user: this.props.user
+        };
+        this.handlePremiumChange = this.handlePremiumChange.bind(this);
     }
+
+    handlePremiumChange() {
+        this.props.onPremiumChange();
+    }
+
 
     componentDidMount(){
         this.setState({
@@ -26,7 +33,7 @@ export default class Page extends React.Component {
         return (
             <div className="main-container">
             <section>
-                <StudentHeader title={this.state.title} />
+                <StudentHeader title={this.state.title} user={this.props.user} onPremiumChange={this.handlePremiumChange}/>
                 {this.props.children}
                 {<Footer />}
             </section>

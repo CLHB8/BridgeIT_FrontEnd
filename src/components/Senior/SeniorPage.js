@@ -12,8 +12,10 @@ export default class Page extends React.Component {
         super(props);
 
         this.state = {
-            title: ''
+            title: '',
+            user: this.props.user
         }
+
     }
 
     componentDidMount() {
@@ -26,7 +28,7 @@ export default class Page extends React.Component {
         return (
             <div className="main-container">
                 <section>
-                    <Header title={this.state.title}/>
+                    <Header title={this.state.title} user={this.state.user}/>
                     {this.props.children}
                     {<Footer/>}
                 </section>

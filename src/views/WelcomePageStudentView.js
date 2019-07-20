@@ -16,9 +16,21 @@ export class WelcomePageStudentView extends React.Component {
         super(props);
 
         this.state = {
-            loading: false,
-            data: []
+            loading: true,
+            data: [],
+            isHandled: false,
         };
+        this.handlePremiumChange = this.handlePremiumChange.bind(this);
+    }
+
+    handlePremiumChange() {
+        if(!(this.state.loading)){
+            this.setState({user:{
+                    isPremium: true,
+                    username: this.state.user.username,
+                    id: this.state.user.id,
+                }});
+        }
     }
 
     componentWillMount(){
@@ -28,15 +40,28 @@ export class WelcomePageStudentView extends React.Component {
 
         MovieService.getMovies().then((data) => {
             this.setState({
-                data: [...data],
-                loading: false
+                data: [...data]
             });
         }).catch((e) => {
             console.error(e);
         });
         RequestService.getRequests().then((data) => {
             this.setState({
-                data: [...data],
+                data: [...data]
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
+        UserService.isPremium().then((isPremium) => {
+            let tmpUser = UserService.getCurrentUser();
+            let user = {
+                isPremium: isPremium,
+                id: tmpUser.id,
+                username: tmpUser.username
+            };
+            console.log(user);
+            this.setState({
+                user: user,
                 loading: false
             });
         }).catch((e) => {
@@ -44,17 +69,20 @@ export class WelcomePageStudentView extends React.Component {
         });
     }
 
+
     render() {
         if (this.state.loading) {
             return (<h2>Loading...</h2>);
         }
+
+        console.log("WELCOMEPAGESTUDENT", this.state.user)
 
         if (UserService.isAuthenticated()) {
             if(UserService.isSenior()){
                 return (<Redirect to={'/sen/WelcomePage'}/>)
             }else{
                 return (
-                    <WelcomePageStudent data={this.state.data}/>
+                    <WelcomePageStudent data={this.state.data} user={this.state.user} onPremiumChange={this.handlePremiumChange}/>
                 );
             }
         }

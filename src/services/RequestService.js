@@ -32,6 +32,16 @@ export default class RequestService {
         });
     }
 
+    static getMyTaskHistory() {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${RequestService.baseURL()}/done/${UserService.getCurrentUser().id}`, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static getRequest(id) {
         return new Promise((resolve, reject) => {
             HttpService.get(`${RequestService.baseURL()}/${id}`, function(data) {
@@ -69,6 +79,19 @@ export default class RequestService {
             }, function(textStatus) {
                 reject(textStatus);
             });
+        });
+    }
+
+    static updateRequestAssigned(requestId, requestUpdate) {
+        return new Promise((resolve, reject) => {
+            console.log(requestId);
+            console.log(requestUpdate);
+            HttpService.put(`${this.baseURL()}/${requestId}`, requestUpdate
+                , function(data) {
+                    resolve(data);
+                }, function(textStatus) {
+                    reject(textStatus);
+                });
         });
     }
 

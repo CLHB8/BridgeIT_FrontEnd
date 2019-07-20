@@ -12,12 +12,20 @@ import CardActions from "react-md/lib/Cards/CardActions";
 import {IoMdArrowRoundForward} from "react-icons/io";
 import {IoMdCash, IoMdHammer, IoMdLock, IoLogoEuro, IoIosTimer} from "react-icons/io";
 import {GoThumbsup,  GoRocket, GoVerified } from "react-icons/go";
+import ImageCarousel from "../components/ImageCarousel";
 
 
 
 const style = {
     maxWidth: 750,
     "margin-top": 20,
+};
+const style2 = {
+    
+    "margin-top": 20,
+    // "margin-left":40,
+    // "margin-right": 40,
+    maxWidth: 1580,
 };
 
 
@@ -125,6 +133,17 @@ class SplitScreen extends React.Component {
                                     </button>
                                 </Link>
                             </div>
+                        </Card>
+                    </Grid>
+                    <Grid container>
+                        <Card style={style2} className="md-cell--12 md-paper md-paper--1"> 
+                            <CardTitle
+                                title={<div><h2>Here's what our customers have to say about us:</h2></div>}>
+                            </CardTitle>
+                            <CardText>
+                                <ImageCarousel></ImageCarousel>
+
+                            </CardText>
                         </Card>
                     </Grid>
                 </div>

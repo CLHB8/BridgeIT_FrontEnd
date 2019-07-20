@@ -1,7 +1,6 @@
 /*TODO: Add styles here */
 
 * {margin: 0; padding: 0;}
-
 #splitscreenList {
     margin: 20px;
     text-align: justify;
@@ -51,6 +50,21 @@ li:hover {
     width: 100%;
     height: 8rem;
 
+}
+
+button:focus {outline:0 !important;}
+
+#Popup{
+    background: darkblue;
+    font-size: large;
+    color: white;
+    margin-bottom: 15px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    min-width: 80px;
+    justify-items: center;
+    align-items: center;
 }
 
 /*Neil: Remove underline when mouse moves over link */
@@ -281,6 +295,7 @@ div.secondLine span {
     bottom: 0;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1400;
 }
 
 .popuplayer form textarea {
@@ -378,11 +393,13 @@ li:hover {
 
 .catSideBar {
     grid-area: catSideBar;
+    border-right: 2px solid black;
 }
 
 .taskList {
     grid-area: takList;
-    border-left: 2px solid black;
+
+    margin-left: 5px;
 }
 
 .categories button {
@@ -517,4 +534,25 @@ footer {
 }
 .ongoingTasks{
     margin-top: 10px;
+}
+
+.genericCard{
+
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.cardMedia{
+
+    height: 200px;
+}
+.formButton{
+    float: right;
+    margin-top: 5px;
+}
+.formButton button {
+
+    margin: 4px;
 }

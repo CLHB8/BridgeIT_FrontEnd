@@ -7,11 +7,16 @@ import SenRequestForm from "../components/Senior/SenRequestForm";
 
 
 import RequestService from "../services/RequestService";
+import {withRouter} from 'react-router-dom';
+import UserService from "../services/UserService";
 
 export class SenRequestFormView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+        };
     }
 
     componentWillMount(){
@@ -19,15 +24,24 @@ export class SenRequestFormView extends React.Component {
             this.setState({
                 loading: false,
                 request: undefined,
-                error: undefined
+                error: undefined,
             });
             console.log('1');
+        }
+
+        else if (this.props.history.location.pathname == '/sen/WelcomePage') {
+            this.setState({
+                loading: false,
+                request: undefined,
+                error: undefined,
+            });
+            console.log('4');
         }
         else if(this.props.location.state != undefined && this.props.location.state.request != undefined) {
             this.setState({
                 loading: false,
                 request: this.props.location.state.request,
-                error: undefined
+                error: undefined,
             });
             console.log('2');
         }
@@ -44,7 +58,7 @@ export class SenRequestFormView extends React.Component {
                 this.setState({
                     request: data,
                     loading: false,
-                    error: undefined
+                    error: undefined,
                 });
             }).catch((e) => {
                 console.error(e);
@@ -55,7 +69,7 @@ export class SenRequestFormView extends React.Component {
     updateRequest(request) {
         if(this.state.request == undefined) {
             RequestService.createRequest(request).then((data) => {
-                this.props.history.push('/');
+                this.props.history.push('/sen/WelcomePage');
             }).catch((e) => {
                 console.error(e);
                 this.setState(Object.assign({}, this.state, {error: 'Error while creating request'}));
@@ -75,6 +89,8 @@ export class SenRequestFormView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return (<SenRequestForm request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
+        return (<SenRequestForm user={this.state.user} request={this.state.request} onSubmit={(request) => this.updateRequest(request)} error={this.state.error} />);
     }
 }
+
+export default withRouter(SenRequestFormView);
