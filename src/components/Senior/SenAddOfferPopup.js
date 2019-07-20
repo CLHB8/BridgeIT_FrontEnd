@@ -5,7 +5,7 @@ import { Toolbar, Button, TextField } from 'react-md';
 import { withRouter } from 'react-router-dom'
 //import StuOfferService from "../services/StuOfferService";
 //import {AlertMessage} from "./AlertMessage";
-import RequestFormView from "../../views/RequestFormView";
+import RequestFormView from "../../views/SenRequestFormView";
 
 
 const SenAddOfferPopup = (props) => {

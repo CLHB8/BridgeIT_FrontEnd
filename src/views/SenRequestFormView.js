@@ -89,4 +89,4 @@ export class SenRequestFormView extends React.Component {
     }
 }
 
-export default withRouter(RequestFormView);
+export default withRouter(SenRequestFormView);
