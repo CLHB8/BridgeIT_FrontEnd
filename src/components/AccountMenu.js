@@ -7,11 +7,14 @@ import {
     FontIcon,
     AccessibleFakeButton,
     IconSeparator,
-    DropdownMenu, ListItem, MenuButton,
+    DropdownMenu, ListItem, MenuButton, Button
 } from 'react-md';
 import {IoIosLogOut} from "react-icons/io";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
 import UserService from '../services/UserService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Snackbar from './Snackbar';
 
 
 class AccountMenu extends React.Component {
@@ -47,7 +50,8 @@ class AccountMenu extends React.Component {
     }
 
     goPremium(){
-        UserService.goPremium(this.props.user.id).then((response) => {
+        toast("Wow so easy !");
+        UserService.goPremium(UserService.getCurrentUser().id).then((response) => {
             this.setState({
                 user: {
                     username: response.username,
@@ -127,13 +131,9 @@ render()
 
                     this.state.user.isPremium ? {display: "none"} : {divider: true},
 
-                    <ListItem id="AccountMenu" key={4} style={
+                   <Snackbar goPremium={this.goPremium}><ListItem id="AccountMenu" key={4} style={
                         this.state.user.isPremium ? {display: "none"} : {display: "list-item"}
-                    } leftAvatar={<Avatar icon={<FontIcon>star</FontIcon>}/>}
-                              primaryText="Go Premium" onClick={
-                                  ()=>
-                        this.goPremium()
-                    }/>,
+                   } leftAvatar={<Avatar icon={<FontIcon>star</FontIcon>}/>} primaryText="Go Premium"/></Snackbar>
                 ]}
                 anchor={{
                     x: DropdownMenu.HorizontalAnchors.CENTER,
