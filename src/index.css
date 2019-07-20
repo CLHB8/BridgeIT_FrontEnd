@@ -52,6 +52,17 @@ li:hover {
 
 }
 
+#Popup{
+    background: darkblue;
+    font-size: large;
+    color: white;
+    margin-bottom: 15px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
 /*Neil: Remove underline when mouse moves over link */
 a:hover {
     text-decoration: none;
