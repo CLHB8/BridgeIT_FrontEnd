@@ -75,6 +75,7 @@ export class WelcomePageStudentView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
+        console.log("WELCOMEPAGESTUDENT", this.state.user)
 
         if (UserService.isAuthenticated()) {
             if(UserService.isSenior()){
