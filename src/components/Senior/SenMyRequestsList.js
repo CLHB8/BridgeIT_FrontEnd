@@ -21,6 +21,7 @@ export const SenMyRequestsList = ({data, onDelete}) => (
                     <TableColumn></TableColumn>
                     <TableColumn>Category</TableColumn>
                     <TableColumn>Specifications</TableColumn>
+                    <TableColumn>Created at</TableColumn>
                     <TableColumn>Edit</TableColumn>
                     <TableColumn>Remove</TableColumn>
                 </TableRow>

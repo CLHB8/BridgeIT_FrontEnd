@@ -8,11 +8,32 @@ import { SimpleLink } from '../SimpleLink';
 
 import UserService from '../../services/UserService';
 
-
 export class SenMyRequestsListRow extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            daysSince: '',
+        }
+        this.timedifference(this.props.request.createdAt);
+    }
+
+     timedifference(value) {
+        let createdDate = value.slice(8,10);
+        let todayDate = new Date().toString().slice(8,10);
+        console.log(createdDate);
+        console.log(todayDate);
+
+        let differenceDate = createdDate - todayDate;
+        if(differenceDate == 0){
+            this.state.daysSince = 'today';
+        } if(differenceDate == 1){
+            this.state.daysSince = 'yesterday';
+        } else {
+            this.state.daysSince = '2 days ago';
+        }
+        console.log(differenceDate);
+
     }
 
     render() {
@@ -38,10 +59,9 @@ export class SenMyRequestsListRow extends React.Component {
                         )
                     )
                 }
-
-
                 <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
                 <TableColumn><SimpleLink to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
+                <TableColumn>{this.state.daysSince}</TableColumn>
                 {UserService.isAuthenticated() ?
                     <TableColumn><Link to={`/edit/${this.props.request._id}`}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>

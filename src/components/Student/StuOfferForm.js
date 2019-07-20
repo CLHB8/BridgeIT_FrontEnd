@@ -59,7 +59,7 @@ export class StuOfferForm extends React.Component {
         }
 
         stuOffer.requestId = this.props.request._id;
-        stuOffer.requestTitle = this.props.request.title;
+        stuOffer.requestCategory = this.props.request.category;
         stuOffer.seniorId = this.props.request.userId;
         stuOffer.studentId = this.state.user.id;
         stuOffer.seniorUsername = this.props.request.senUserName;
@@ -67,6 +67,7 @@ export class StuOfferForm extends React.Component {
         stuOffer.introMsg = this.state.introMsg;
 
         this.props.onSubmit(stuOffer);
+        console.log(this.state);
     }
 
 
@@ -82,8 +83,8 @@ export class StuOfferForm extends React.Component {
                         <Cell size={12}>
                             <Card style={{maxWidth: 800}} className="md-block-centered">
                                 <CardTitle
-                                    title={this.props.request.title}
-                                    subtitle={this.props.request.category}
+                                    title={this.props.request.category}
+                                    subtitle={this.props.request.specification}
                                     avatar={<Avatar src={"https://s3.euronics.ee/UserFiles/Products/Images/147086-iphone7-plus-gold-1.png"} role="presentation" />}
                                 />
                             </Card>

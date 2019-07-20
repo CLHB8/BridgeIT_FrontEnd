@@ -7,6 +7,7 @@ import UserService from "../../services/UserService";
 import {makeStyles, Drawer, Container, Divider, Tab, Tabs, Paper, Fab} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import {Avatar, FontIcon, List, ListItem, Subheader, Button,} from 'react-md';
+import {SenTaskHistoryListView} from "../../views/SenTaskHistoryListView";
 
 const style = { maxWidth: 900 };
 const StarIcon = () => <FontIcon>star</FontIcon>;
@@ -111,32 +112,7 @@ export class WelcomePageSenior extends React.Component {
 
                         <div className="previousTasks">
                         <h4 >Here is your task history. Don't forget to rate the students!</h4>
-
-                            <List className="md-cell--6 md-paper md-paper--1">
-                                        <Subheader primaryText="Task History" primary />
-                                        <ListItem
-                                            leftAvatar={<Avatar suffix="deep-purple">AC</Avatar>}
-                                            rightIcon={<StarIcon />}
-                                            primaryText="PC/Laptop Coaching"
-                                            secondaryText={'Ali Connors\n3 days ago'}
-                                            threeLines
-                                        />
-                                        <ListItem
-                                            leftAvatar={<Avatar suffix="green">AS</Avatar>}
-                                            rightIcon={<StarIcon />}
-                                            primaryText="Smartphone coaching"
-                                            secondaryText={'Alex Scott\n1 week ago'}
-                                            threeLines
-                                        />
-                                        <ListItem
-                                            leftAvatar={<Avatar suffix="orange">SA</Avatar>}
-                                            rightIcon={<StarIcon />}
-                                            primaryText="Printer Coaching"
-                                            secondaryText={'Sandra Adams \n 2 months ago'}
-                                            threeLines
-                                        />
-                                        </List>
-
+                            <SenTaskHistoryListView></SenTaskHistoryListView>
                         </div>
 
                             {/* <Paper className={classes.tabs}>
