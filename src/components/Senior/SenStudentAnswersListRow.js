@@ -18,13 +18,19 @@ export class SenStudentAnswersListRow extends React.Component {
     }
 
     updateRequest() {
-        console.log(this.props.stuOffer.studentId)
+        console.log("UPDATE REQUEST", this.props.stuOffer.studentId);
         let updateRquest = {
             assignedStudent: this.props.stuOffer.studentId,
             isAssigned: true,
         }
         RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRquest).then((data) => {
-            console.log(data);
+            console.log("ASSIGNING STUDENT", data);
+            let rating = {
+                requestId: data._id,
+                seniorId: data.userId,
+                studentId: data.assignedStudent,
+            };
+            RatingsService.createRating(rating)
         }).catch((e) => {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while assigning student to request'}));

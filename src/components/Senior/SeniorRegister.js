@@ -185,7 +185,7 @@ class UserSignup extends React.Component {
                 cityname: this.state.cityname,
                 postalcode: this.state.postalcode,
                 isSenior: true,
-                isPremium: false,
+                isPremium: true,
 
             };
 

@@ -27,11 +27,9 @@ export default class Page extends React.Component {
     render() {
         return (
             <div className="main-container">
-                <section>
-                    <Header title={this.state.title} user={this.state.user}/>
-                    {this.props.children}
-                    {<Footer/>}
-                </section>
+                <Header title={this.state.title} user={this.state.user}/>
+                {this.props.children}
+                {<Footer/>}
             </div>
         );
     }

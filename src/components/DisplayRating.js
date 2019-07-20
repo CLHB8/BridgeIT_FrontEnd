@@ -14,6 +14,7 @@ class DisplayRating extends React.Component {
         this.state={
             loading: true,
             studentRating: 0,
+            user: this.props.user,
         }
     }
 
@@ -32,16 +33,15 @@ class DisplayRating extends React.Component {
                 }
             }
         }
-        console.log(sumOfRatings/countOfValidRatings);
         return sumOfRatings/countOfValidRatings;
     }
 
     componentWillMount(){
         this.setState({
-            loading: true
+            loading: true,
         });
 
-        let id = this.props.studentId;
+        let id = this.state.user.id;
 
         RatingsService.getStuRatings(id).then((ratingsData) => {
             this.setState({
