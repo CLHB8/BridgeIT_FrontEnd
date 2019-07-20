@@ -25,9 +25,9 @@ export class SenMyRequestsListRow extends React.Component {
         console.log(todayDate);
 
         let differenceDate = createdDate - todayDate;
-        if(differenceDate == 0){
+        if(differenceDate == '0'){
             this.state.daysSince = 'today';
-        } if(differenceDate == 1){
+        } if(differenceDate == '-1'){
             this.state.daysSince = 'yesterday';
         } else {
             this.state.daysSince = '2 days ago';

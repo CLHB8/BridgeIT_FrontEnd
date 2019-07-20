@@ -51,25 +51,6 @@ export class WelcomePageSenior extends React.Component {
     render() {
         return (
             <SeniorPage>
-                {/* <Drawer
-                        className={classes.drawer}
-                        variant="permanent"
-                        
-                        classes={{
-                            paper: classes.drawerPaper,
-                          }}
-                    >
-                        <div className={classes.toolbar} />
-                        <div >
-                            <button className="SHButton" onClick={() => this.props.history.goBack()}><i className="material-icons">keyboard_backspace</i>Back</button><br/>
-                            <button className="SHButton" onClick={() => this.props.history.push('/sen/WelcomePage')}><i className="material-icons">home</i>Start Page</button><br/>
-                            <button className="SHButton" onClick={() => this.props.history.push('/sen/add')}><i className="material-icons">library_add</i>Add a new Request</button><br/>
-                            <button className="SHButton" onClick={() => this.props.history.push('/sen/myRequests')}><i className="material-icons">view_list</i>View my Requests</button><br/>
-                            <button className="SHButton"><i className="material-icons">view_list</i>Help</button>
-                        </div>
-
-                    </Drawer>    */}
-
                     <div className="gridContainer">
 
                         <div className="catSideBar" border="none">
