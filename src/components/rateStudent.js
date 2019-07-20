@@ -16,7 +16,7 @@ class RatingStudent extends React.Component {
         this.state={
             loading: false,
             rating: 0,
-            premium: UserService.isPremium(),
+            user: this.props.user,
             isSenior: UserService.isSenior()
         }
     }
@@ -94,10 +94,11 @@ class RatingStudent extends React.Component {
 
 
         return (
+            //Neil: Negate (this.state.isPremium) in order to activate, deactivated for testing purposes
             <Rating
                 value={this.state.rating}
                 max={5}
-                disabled={(this.state.premium)}
+                disabled={(this.state.user.isPremium)}
                 onChange={(value) => this.updateRating(value)}
             />
         );

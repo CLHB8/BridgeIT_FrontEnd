@@ -72,6 +72,19 @@ export default class RequestService {
         });
     }
 
+    static updateRequestAssigned(requestId, requestUpdate) {
+        return new Promise((resolve, reject) => {
+            console.log(requestId);
+            console.log(requestUpdate);
+            HttpService.put(`${this.baseURL()}/${requestId}`, requestUpdate
+                , function(data) {
+                    resolve(data);
+                }, function(textStatus) {
+                    reject(textStatus);
+                });
+        });
+    }
+
     static createRequest(request) {
         request.id = Math.floor((Math.random() * 100000000) + 1).toString();
         request.userId = UserService.getCurrentUser().id;

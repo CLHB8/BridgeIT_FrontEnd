@@ -10,7 +10,6 @@ export default class HttpService {
         let token = window.localStorage['jwtToken'];
         let header = new Headers();
         if(token) {
-            console.log("HEADER TOKEN: ",`JWT ${token}`);
             header.append('Authorization', `JWT ${token}`);
         }
 
@@ -102,7 +101,6 @@ export default class HttpService {
                 if(resp.hasOwnProperty('token')) {
                     window.localStorage['jwtToken'] = resp.token;
                     window.localStorage['isSenior'] = resp.isSenior;
-                    window.localStorage['isPremium'] = resp.isPremium;
                 }
 
                 onSuccess(resp);
@@ -148,5 +146,4 @@ export default class HttpService {
         }
         return false;
     }
-
 }

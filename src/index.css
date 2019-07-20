@@ -281,6 +281,7 @@ div.secondLine span {
     bottom: 0;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1400;
 }
 
 .popuplayer form textarea {
@@ -492,8 +493,29 @@ footer {
     grid-row: 1 / 2;
 }
 
+.senDrawer{
+    width: 20%;
 
-.slick-slide:focus { outline: none; }
-input:focus {
-    outline:none !important;
+
+}
+
+
+.seniorProfile{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+.seniorProfile img{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.seniorProfile h3{
+    display: block;
+
+}
+.ongoingTasks{
+    margin-top: 10px;
 }

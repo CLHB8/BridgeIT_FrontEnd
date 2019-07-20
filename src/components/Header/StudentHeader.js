@@ -36,8 +36,16 @@ class StudentHeader extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            user: this.props.user,
+        };
+        this.handlePremiumChange = this.handlePremiumChange.bind(this);
     }
+
+    handlePremiumChange() {
+        this.props.onPremiumChange();
+    }
+
 
     render() {
 
@@ -104,9 +112,9 @@ class StudentHeader extends React.Component {
 
         if (UserService.isAuthenticated()) {
             if (UserService.isSenior()) {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.props.user} onPremiumChange={this.handlePremiumChange}/>;
             } else {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.props.user} onPremiumChange={this.handlePremiumChange}/>;
             }
         } else {
             if (!(this.props.location.pathname === "/login"))

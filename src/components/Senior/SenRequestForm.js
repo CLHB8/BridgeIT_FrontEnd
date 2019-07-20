@@ -74,7 +74,7 @@ class RequestForm extends React.Component {
 
     render() {
         return (
-            <SeniorPage>
+            
                 <Card style={style} className="md-block-right">
                     <CardTitle title="PC/Laptop Coaching"/>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
@@ -113,7 +113,7 @@ class RequestForm extends React.Component {
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
-            </SeniorPage>
+            
         );
     }
 }
