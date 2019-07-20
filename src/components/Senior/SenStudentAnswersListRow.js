@@ -14,14 +14,14 @@ export class SenStudentAnswersListRow extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.stuOffer)
+        console.log(this.props.stuOffer);
     }
 
     updateRequest() {
-        console.log(this.props.stuOffer.studentId)
+        console.log(this.props.stuOffer.studentId);
         let updateRequest = {
             assignedStudent: this.props.stuOffer.studentId,
-            isAssigned: true,
+            isAssigned: true
         }
         RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRequest).then((data) => {
             console.log(data);

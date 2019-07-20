@@ -6,9 +6,11 @@ import {Card, CardActions, Icon, CardActionArea, CardContent, CardMedia, Typogra
 
 import SeniorPage from './SeniorPage';
 import { SenStudentAnswersList } from './SenStudentAnswersList';
+import ContactDataPopup from './ContactDataPopup';
 
 import RequestService from '../../services/RequestService';
 import StuOfferService from "../../services/StuOfferService";
+import SenAddOfferPopup from "./SenAddOfferPopup";
 
 const style = { maxWidth: 900 };
 
@@ -16,6 +18,12 @@ export class SenRequestDetail extends React.Component {
 
     constructor(props) {
         super(props);
+            console.log(this.props.request.isAssigned);
+            if(this.props.request.isAssigned == true){
+                this.state = {showPopup: true};
+            } else {
+                this.state = {showPopup: false};
+            }
     }
 /*
     deleteStuOffer(id) {
@@ -41,7 +49,7 @@ export class SenRequestDetail extends React.Component {
     render() {
         return (
             <SeniorPage user={this.props.user}>
-
+                <ContactDataPopup visibility={this.state.showPopup}></ContactDataPopup>
 
                 <Card className="genericCard">
                     <CardActionArea>

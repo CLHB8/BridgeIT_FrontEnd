@@ -56,7 +56,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail user={this.state.user}stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }
