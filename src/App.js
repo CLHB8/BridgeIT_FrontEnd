@@ -7,11 +7,13 @@ import { SenRequestFormView } from "./views/SenRequestFormView";
 import { WelcomePageStudentView } from "./views/WelcomePageStudentView";
 import { WelcomePageSeniorView } from "./views/WelcomePageSeniorView";
 import { SenMyRequestsListView } from "./views/SenMyRequestsListView";
+import { SenRequestsMiniView } from "./views/SenRequestsMiniView";
 import { SenRequestDetailView } from "./views/SenRequestDetailView";
 import { StuOfferFormView } from "./views/StuOfferFormView";
 import { StuMyOffersView } from "./views/StuMyOffersView";
 
 import { TaskListView} from "./views/TaskListView"
+import TaskListMiniView from "./views/TaskListMiniView"
 
 import UserService from "./services/UserService";
 import {StartPageView} from "./views/StartPageView";
@@ -49,10 +51,12 @@ export default class App extends React.Component {
                 { component: FAQView, path: '/faq'},
 
                 { component: SenMyRequestsListView, path: '/sen/myRequests'},
+                { component: SenRequestsMiniView, path: '/sen/myRequestsMini'},
                 { component: SenRequestDetailView, path: '/show/:id'},
 
 
                 { component: TaskListView, path: '/stu/TaskListView'},
+                { component: TaskListMiniView, path: '/stu/TaskListMiniView'},
                 { component: StuOfferFormView, path: '/stu/addOffer/:id'},
                 { component: StuMyOffersView, path: '/stu/myOffers'},
 

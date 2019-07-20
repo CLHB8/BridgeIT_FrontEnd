@@ -16,7 +16,8 @@ export class StuMyOffersView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
         };
     }
 
@@ -56,7 +57,7 @@ export class StuMyOffersView extends React.Component {
     render() {
         if (UserService.isAuthenticated()) {
             return (
-                <StuMyOffers data={this.state.data} onDelete={(id) => this.deleteStuOffer(id)}/>
+                <StuMyOffers user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteStuOffer(id)}/>
             );
         }
         else

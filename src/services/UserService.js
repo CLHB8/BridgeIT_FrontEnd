@@ -46,6 +46,22 @@ export default class UserService {
         });
     }
 
+    static editProfile() {
+        let id = this.getCurrentUser().id;
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static login(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/login`, {

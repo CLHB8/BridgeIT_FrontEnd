@@ -4,13 +4,16 @@ import React from 'react';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
 
 import { SenStudentAnswersListRow } from './SenStudentAnswersListRow';
+import UserService from "../../services/UserService";
 
 const dataTableStyle = {
-    'margin-bottom': '36px'
+    'margin-bottom': '36px',
+    'border-left': '4px solid #0D47A1',
+    'background-color': '#F5F5F5',
 };
 
 export const SenStudentAnswersList = ({stuOffers}) => (
-        <DataTable plain style={dataTableStyle}>
+        <DataTable plain style={dataTableStyle} className="md-cell md-cell--12">
             <TableHeader>
                 <TableRow>
                     <TableColumn></TableColumn>
@@ -21,7 +24,7 @@ export const SenStudentAnswersList = ({stuOffers}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {stuOffers.map((stuOffer, i) => <SenStudentAnswersListRow key={i} stuOffer={stuOffer} />)}
+                {stuOffers.map((stuOffer, i) => <SenStudentAnswersListRow user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} stuOffer={stuOffer} />)}
             </TableBody>
         </DataTable>
 );

@@ -6,7 +6,7 @@ import { TaskList } from '../components/Student/TaskList';
 
 import RequestService from '../services/RequestService';
 import UserService from "../services/UserService";
-import {Redirect} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 
 
 export class TaskListView extends React.Component {
@@ -16,7 +16,8 @@ export class TaskListView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
         };
     }
 
@@ -60,8 +61,10 @@ export class TaskListView extends React.Component {
         }
 
         return (
-            <TaskList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+            <TaskList user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }
 }
+
+export default withRouter(TaskListView);
