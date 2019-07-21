@@ -41,7 +41,7 @@ class ContactData extends React.Component {
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Here is the student you choose:
+                                    Here is the student you choose: {this.props.theChoosenOne}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
                                     You need help with your mobile phone or have general questions about it?

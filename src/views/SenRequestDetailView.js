@@ -28,7 +28,8 @@ export class SenRequestDetailView extends React.Component {
 
         RequestService.getRequest(id).then((reqData) => {
             this.setState({
-                request: reqData
+                request: reqData,
+                theChoosenOne: reqData.assignedStudent,
             });
         }).catch((e) => {
             console.error(e);
@@ -44,6 +45,10 @@ export class SenRequestDetailView extends React.Component {
             console.error(e);
         })
         console.log("getStuOffersToRequest success");
+
+        this.setState({
+            theChoosenOne: 'me again',
+        });
     }
 
     handleChoosenOneChange(anakin){
@@ -60,11 +65,11 @@ export class SenRequestDetailView extends React.Component {
 
     render() {
         if (this.state.loading) {
-            return (<h2>Loading...</h2>);
+            return (<h2>Getting the right student for you...</h2>);
         }
 
         return (
-            <SenRequestDetail onChoosenOneChange={(anakin) => this.handleChoosenOneChange(anakin)} user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail theChoosenOne={this.state.theChoosenOne} onChoosenOneChange={(anakin) => this.handleChoosenOneChange(anakin)} user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }

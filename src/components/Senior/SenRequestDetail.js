@@ -54,7 +54,7 @@ export class SenRequestDetail extends React.Component {
     render() {
         return (
             <SeniorPage user={this.props.user}>
-                <ContactDataPopup visibility={this.state.showPopup} request={this.props.request}></ContactDataPopup>
+                <ContactDataPopup visibility={this.state.showPopup} theChoosenOne={this.props.theChoosenOne} request={this.props.request}></ContactDataPopup>
 
                 <Card className="genericCard">
                     <CardActionArea>
