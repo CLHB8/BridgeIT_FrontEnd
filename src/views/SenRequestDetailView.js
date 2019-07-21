@@ -12,6 +12,10 @@ export class SenRequestDetailView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state={
+          theChoosenOne: '',
+        };
+        this.handleChoosenOneChange = this.handleChoosenOneChange.bind(this);
     }
 
     componentWillMount(props){
@@ -42,6 +46,10 @@ export class SenRequestDetailView extends React.Component {
         console.log("getStuOffersToRequest success");
     }
 
+    handleChoosenOneChange(anakin){
+        this.setState({theChoosenOne: anakin});
+    }
+
     deleteRequest(id) {
         RequestService.deleteRequest(id).then((message) => {
             this.props.history.push('/');
@@ -56,7 +64,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail onChoosenOneChange={(anakin) => this.handleChoosenOneChange(anakin)} user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }

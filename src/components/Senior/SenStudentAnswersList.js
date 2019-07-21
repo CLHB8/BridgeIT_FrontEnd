@@ -12,7 +12,7 @@ const dataTableStyle = {
     'background-color': '#F5F5F5',
 };
 
-export const SenStudentAnswersList = ({stuOffers}) => (
+export const SenStudentAnswersList = ({stuOffers, onChoosenOneChange}) => (
         <DataTable plain style={dataTableStyle} className="md-cell md-cell--12">
             <TableHeader>
                 <TableRow>
@@ -24,7 +24,7 @@ export const SenStudentAnswersList = ({stuOffers}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {stuOffers.map((stuOffer, i) => <SenStudentAnswersListRow user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} stuOffer={stuOffer} />)}
+                {stuOffers.map((stuOffer, i) => <SenStudentAnswersListRow onChoosenOneChange={(anakin) => onChoosenOneChange(anakin)} user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} stuOffer={stuOffer} />)}
             </TableBody>
         </DataTable>
 );

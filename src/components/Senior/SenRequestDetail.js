@@ -24,6 +24,11 @@ export class SenRequestDetail extends React.Component {
             } else {
                 this.state = {showPopup: false};
             }
+            this.handleChoosenOneChange = this.handleChoosenOneChange.bind(this);
+    }
+
+    handleChoosenOneChange(anakin){
+        this.props.onChoosenOneChange(anakin);
     }
 /*
     deleteStuOffer(id) {
@@ -49,7 +54,7 @@ export class SenRequestDetail extends React.Component {
     render() {
         return (
             <SeniorPage user={this.props.user}>
-                <ContactDataPopup visibility={this.state.showPopup}></ContactDataPopup>
+                <ContactDataPopup visibility={this.state.showPopup} request={this.props.request}></ContactDataPopup>
 
                 <Card className="genericCard">
                     <CardActionArea>
@@ -60,7 +65,7 @@ export class SenRequestDetail extends React.Component {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {this.props.request.title}
+                                {this.props.request.category}
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h3">
                                 Category: {this.props.request.category}
@@ -97,7 +102,7 @@ export class SenRequestDetail extends React.Component {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
 
-                                <SenStudentAnswersList user={this.props.user} stuOffers={this.props.stuOffers} />
+                                <SenStudentAnswersList onChoosenOneChange={this.handleChoosenOneChange} user={this.props.user} stuOffers={this.props.stuOffers} />
 
                             </ExpansionPanelDetails>
 

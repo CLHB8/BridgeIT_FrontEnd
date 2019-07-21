@@ -20,7 +20,7 @@ export class SenStudentAnswersListRow extends React.Component {
     updateRequest() {
         console.log(this.props.stuOffer.studentId);
         let updateRequest = {
-            assignedStudent: this.props.stuOffer.studentId,
+            assignedStudent: (this.props.stuOffer.studentId),
             isAssigned: true
         }
         RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRequest).then((data) => {
@@ -29,6 +29,7 @@ export class SenStudentAnswersListRow extends React.Component {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while assigning student to request'}));
         });
+        this.props.onChoosenOneChange(this.props.stuOffer.studentId)
     }
 
     render() {
