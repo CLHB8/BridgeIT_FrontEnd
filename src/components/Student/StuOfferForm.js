@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AlertMessage } from '../AlertMessage';
 import StudentPage from './StudentPage';
 import UserService from "../../services/UserService";
+import StuOfferService from "../../services/StuOfferService";
 import { IoIosReturnRight } from 'react-icons/io';
 
 const style = {
@@ -30,7 +31,6 @@ export class StuOfferForm extends React.Component {
 
     constructor(props) {
         super(props);
-
         if (this.props.stuOffer != undefined) {
             this.state = {
                 requestId: props.stuOffer.requestId,
@@ -91,7 +91,6 @@ export class StuOfferForm extends React.Component {
         stuOffer.wage = this.state.wage;
 
         this.props.onSubmit(stuOffer);
-        console.log(this.state);
     }
 
 
@@ -149,8 +148,9 @@ export class StuOfferForm extends React.Component {
                                 onChange={this.handleChangeIntroMsg}
                                 errorText="Please write a short message introducing yourself."/>
                             <div className="formButton">
+                                {}
                                 <Button type="submit"
-                                        disabled={this.state.introMsg == undefined || this.state.introMsg == ''}
+                                        disabled={this.state.introMsg == undefined || this.state.introMsg == '' || this.state.wage == undefined || this.state.wage ==''}
                                         raised primary className="md-cell md-cell--3">Send</Button>
                                 <Button type="reset" raised secondary className="md-cell md-cell--3">Dismiss</Button></div>
                             <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>

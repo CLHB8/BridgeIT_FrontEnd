@@ -41,7 +41,7 @@ export default class App extends React.Component {
                         }} , path: '/edit/:id'},
                 { component: SenRequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
-                { component: UserEditProfileView, path: '/edit'},
+                { component: UserEditProfileView, path: '/sen/edit'},
 
                 { component: SeniorSignupView, path: '/sen/register'},
                 { component: StudentSignupView, path: '/stu/register'},
