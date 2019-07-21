@@ -13,6 +13,10 @@ export class StuMyOffersRow extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state={
+            showPopup:false,
+            user:this.props.user
+        };
     }
 
     render() {

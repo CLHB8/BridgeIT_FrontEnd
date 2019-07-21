@@ -11,8 +11,8 @@ const dataTableStyle = {
     'margin-top': '20px',
 };
 
-export const StuMyOffers = ({data, onDelete}) => (
-    <StudentPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
+export const StuMyOffers = ({data, user,  onDelete}) => (
+    <StudentPage user={user}>
         <DataTable plain style={dataTableStyle}>
             <TableHeader>
                 <TableRow>
@@ -23,7 +23,7 @@ export const StuMyOffers = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((stuOffer, i) => <StuMyOffersRow user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} stuOffer={stuOffer} onDelete={(id) => onDelete(id)} />)}
+                {data.map((stuOffer, i) => <StuMyOffersRow user={user} key={i} stuOffer={stuOffer} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
         </DataTable>
     </StudentPage>

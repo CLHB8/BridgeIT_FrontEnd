@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { StuMyOffers } from '../components/Student/StuMyOffers';
+import {StuMyOffers} from '../components/Student/StuMyOffers';
 
 import StuOfferService from '../services/StuOfferService';
 import UserService from "../services/UserService";
@@ -16,9 +16,20 @@ export class StuMyOffersView extends React.Component {
 
         this.state = {
             loading: false,
-            data: [],
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
+            data: []
         };
+    }
+
+    handlePremiumChange() {
+        console.log("HANDLECHANGE STATE BEFOR", this.props.user);
+        if(!(this.state.loading)){
+            this.setState({user:{
+                    isPremium: true,
+                    username: this.state.user.username,
+                    id: this.state.user.id,
+                }});
+        }
+        console.log("HANDLECHANGE STATE AFTER", this.state.user);
     }
 
     componentWillMount() {
@@ -27,8 +38,24 @@ export class StuMyOffersView extends React.Component {
         });
         StuOfferService.getMyStuOffers().then((data) => {
             this.setState({
-                data: [...data],
-                loading: false
+                data: [...data]
+            });
+            UserService.getUserInfo().then((userInfo) => {
+                console.log("USERINFO", userInfo);
+                let user = {
+                    isPremium: userInfo.isPremium,
+                    firstname: userInfo.firstname,
+                    lastname: userInfo.lastname,
+                    id: userInfo.id,
+                    username: userInfo.username
+                };
+                console.log(user);
+                this.setState({
+                    user: user,
+                    loading: false
+                });
+            }).catch((e) => {
+                console.error(e);
             });
         }).catch((e) => {
             console.error(e);
@@ -55,13 +82,15 @@ export class StuMyOffersView extends React.Component {
     }
 
     render() {
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>);
+        }
+
         if (UserService.isAuthenticated()) {
             return (
                 <StuMyOffers user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteStuOffer(id)}/>
             );
-        }
-        else
-        {
+        } else {
             return (<Redirect to={'../login'}/>)
         }
     }
