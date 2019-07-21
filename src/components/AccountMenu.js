@@ -19,7 +19,7 @@ class AccountMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user
+            user: UserService.getCurrentUser()
         }
     }
 
@@ -47,7 +47,7 @@ class AccountMenu extends React.Component {
     }
 
     goPremium(){
-        UserService.goPremium(this.props.user.id).then((response) => {
+        UserService.goPremium(this.state.user.id).then((response) => {
             this.setState({
                 user: {
                     username: response.username,
@@ -55,18 +55,19 @@ class AccountMenu extends React.Component {
                     isPremium: response.isPremium,
                 }
             })
-            this.props.onPremiumChange();
+            this.state.onPremiumChange();
         }).catch((e) => {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while going Premium'}));
         });
     }
 
-
 render()
 {
+
     console.log("ISSENIOR", UserService.isSenior());
     console.log("ISPREMIUM", this.state.user.isPremium);
+    console.log("USERNAME", this.state.user.username);
     if (UserService.isSenior() || this.state.user.isPremium) {
         return (
             <DropdownMenu
@@ -74,12 +75,12 @@ render()
                 menuItems={[
                     <ListItem id="AccountMenu" key={1}
                               leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
-                              primaryText={this.props.user.username} onClick={() => {
+                              primaryText={this.state.user.username} onClick={() => {
                         UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
                     }}/>,
                     // TODO: needs to be implemented --> Edit View
                     <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
-                              primaryText="Edit Profile" onClick={() => {this.editProfile}}/>,
+                              primaryText="Edit Profile" onClick={() => {this.props.history.push('/edit')}}/>,
                     , {divider: true},
                     <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
                               primaryText="Logout"
@@ -97,12 +98,12 @@ render()
                     component={IconSeparator}
                     iconBefore
                     label={
-                        <IconSeparator label={this.props.user.username} style={{color: "black"}}>
+                        <IconSeparator label={this.state.user.username} style={{color: "black"}}>
                             <FontIcon>arrow_drop_down</FontIcon>
                         </IconSeparator>
                     }
                 >
-                    <Avatar style={{background: "darkblue"}}>{this.props.user.username.charAt(0)}</Avatar>
+                    <Avatar style={{background: "darkblue"}}>{this.state.user.username.charAt(0)}</Avatar>
                 </AccessibleFakeButton>
             </DropdownMenu>
         );
@@ -113,17 +114,15 @@ render()
                 menuItems={[
                     <ListItem id="AccountMenu" key={1}
                               leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
-                              primaryText={this.props.user.username} onClick={() => {
+                              primaryText={this.state.user.username} onClick={() => {
                         UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
                     }}/>,
 
-                    /*
+
                     // TODO: needs to be implemented --> Edit View
                     <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
-                              primaryText="Edit Profile" onClick={() => {
-                        UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
-                    }}/>,
-                     */
+                              primaryText="Edit Profile" onClick={() => this.props.history.push('/edit')
+                    }/>,
 
 
                     <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
@@ -153,12 +152,12 @@ render()
                     component={IconSeparator}
                     iconBefore
                     label={
-                        <IconSeparator label={this.props.user.username} style={{color: "black"}}>
+                        <IconSeparator label={this.state.user.username} style={{color: "black"}}>
                             <FontIcon>arrow_drop_down</FontIcon>
                         </IconSeparator>
                     }
                 >
-                    <Avatar style={{background: "darkblue"}}>{this.props.user.username.charAt(0)}</Avatar>
+                    <Avatar style={{background: "darkblue"}}>{this.state.user.username.charAt(0)}</Avatar>
                 </AccessibleFakeButton >
             </DropdownMenu>
         );

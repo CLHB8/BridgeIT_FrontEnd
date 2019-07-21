@@ -41,6 +41,7 @@ export default class HttpService {
     static put(url, data, onSuccess, onError) {
         let token = window.localStorage['jwtToken'];
         let header = new Headers();
+        console.log("TOKEN", token);
         if(token) {
             header.append('Authorization', `JWT ${token}`);
         }
