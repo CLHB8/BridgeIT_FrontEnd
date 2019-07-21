@@ -73,12 +73,11 @@ export class SenStudentAnswersListRow extends React.Component {
                 <TableColumn>{this.props.stuOffer.wage} €</TableColumn>
                 <TableColumn>{this.state.studentFullname}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
-                <TableColumn><DisplayRating studentId={this.props.stuOffer.studentId}/></TableColumn>
                 {this.state.studentIsPremium ?
                     <TableColumn className="md-cell md-cell--3"><DisplayRating studentId={this.props.stuOffer.studentId} displayStudentRating={true}/></TableColumn>
                     :<TableColumn/>}
                 {UserService.isAuthenticated() ?
-                    <TableColumn><SelectPopup updateRequest={this.updateRequest}></SelectPopup></TableColumn>
+                    <TableColumn><SelectPopup updateRequest={() => this.updateRequest()}></SelectPopup></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
 

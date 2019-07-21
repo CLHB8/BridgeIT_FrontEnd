@@ -79,32 +79,7 @@ export class SenRequestDetail extends React.Component {
 
                     <CardContent>
                         <Divider/>
-
-                        <Typography gutterBottom variant="h6" component="h3">
-                            Our recommended Student is: {/* Enter Best Student Name and option to choose him*/}
-                        </Typography>
-
-
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary
-                                expandIcon={<Icon>arrow_drop_down_circle</Icon>}
-                            >
-                                Don't like it?<br/>
-                                View offers from other students below:
-
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-
                                 <SenStudentAnswersList onChoosenOneChange={this.handleChoosenOneChange} user={this.props.user} stuOffers={this.props.stuOffers} />
-
-                            </ExpansionPanelDetails>
-
-
-
-                        </ExpansionPanel>
-
-
-
                     </CardContent>
 
 

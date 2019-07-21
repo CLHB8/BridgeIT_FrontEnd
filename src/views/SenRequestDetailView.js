@@ -89,7 +89,7 @@ export class SenRequestDetailView extends React.Component {
 
     render() {
         if (this.state.loading) {
-            return (<h2>Getting the right student for you...</h2>);
+            return (<h2>Getting the right students for you...</h2>);
         }
 
         return (
