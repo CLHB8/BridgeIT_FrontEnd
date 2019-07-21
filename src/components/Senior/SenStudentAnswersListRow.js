@@ -1,15 +1,14 @@
 "use strict";
 
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button } from 'react-md';
-import { Link } from 'react-router-dom';
+import {TableRow, TableColumn, FontIcon, Button} from 'react-md';
+import {Link} from 'react-router-dom';
 import DisplayRating from '../DisplayRating';
 
 import UserService from '../../services/UserService';
 import RatingsService from "../../services/RatingsService";
-import RequestService from  "../../services/RequestService";
+import RequestService from "../../services/RequestService";
 import SelectPopup from "../SelectPopup";
-
 
 
 export class SenStudentAnswersListRow extends React.Component {
@@ -18,6 +17,7 @@ export class SenStudentAnswersListRow extends React.Component {
         super(props);
         console.log(this.props.stuOffer);
     }
+
     componentWillMount() {
         this.setState({
             loading: true,
@@ -42,39 +42,47 @@ export class SenStudentAnswersListRow extends React.Component {
     }
 
     updateRequest() {
-        console.log(this.props.stuOffer.studentId);
+        console.log("STUDENT ID", this.props.stuOffer.studentId);
         let updateRequest = {
             assignedStudent: (this.props.stuOffer.studentId),
             isAssigned: true
-        }
+        };
+
         RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRequest).then((data) => {
-            console.log(data);
+            console.log("RESPONSE FOR UPDATE",data);
             let rating = {
                 requestId: data._id,
                 seniorId: data.userId,
                 studentId: data.assignedStudent,
             };
-            RatingsService.createRating(rating)
+            RatingsService.createRating(rating).then((ratingData) => {
+                console.log("RATING Creation", ratingData);
+                this.props.onChoosenOneChange(this.props.stuOffer.studentId);
+                window.location.reload();
+            }).catch((e) => {
+                console.error(e);
+                this.setState(Object.assign({}, this.state, {error: 'Error while creating Rating'}));
+            });
         }).catch((e) => {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while assigning student to request'}));
         });
-        this.props.onChoosenOneChange(this.props.stuOffer.studentId);
-        window.location.reload();
     }
 
     render() {
         return (
             <TableRow key={this.props.key}>
                 {this.state.studentIsPremium ?
-                <TableColumn><FontIcon style={{"font-size": "x-large", "color": "orange"}}>star</FontIcon></TableColumn>
-                :<TableColumn></TableColumn>}
+                    <TableColumn><FontIcon
+                        style={{"font-size": "x-large", "color": "orange"}}>star</FontIcon></TableColumn>
+                    : <TableColumn></TableColumn>}
                 <TableColumn>{this.props.stuOffer.wage} €</TableColumn>
                 <TableColumn>{this.state.studentFullname}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
                 {this.state.studentIsPremium ?
-                <TableColumn className="md-cell md-cell--3"><DisplayRating studentId={this.props.stuOffer.studentId} displayStudentRating={true}/></TableColumn>
-                    :<TableColumn/>}
+                    <TableColumn className="md-cell md-cell--3"><DisplayRating studentId={this.props.stuOffer.studentId}
+                                                                               displayStudentRating={true}/></TableColumn>
+                    : <TableColumn/>}
                 {UserService.isAuthenticated() ?
                     <TableColumn><SelectPopup updateRequest={() => this.updateRequest()}></SelectPopup></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>

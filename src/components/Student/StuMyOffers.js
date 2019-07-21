@@ -23,7 +23,7 @@ export const StuMyOffers = ({data, user, onDelete}) => (
 
         <CardMedia
                             className="cardMedia"
-                            image="https://i.imgur.com/RfYzrXE.jpg"
+                            image="https://www.progrss.com/wp-content/uploads/2016/11/senior-student-housing-nyu-1280x600.jpg"
                             title="Smartphones"
                         />
         <CardContent>

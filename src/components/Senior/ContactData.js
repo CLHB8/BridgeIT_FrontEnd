@@ -36,7 +36,7 @@ class ContactData extends React.Component {
                                 component="img"
                                 alt="Your choosen student"
                                 height="140"
-                                image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                image="https://cdn.pixabay.com/photo/2018/05/04/10/30/team-3373638_960_720.jpg"
                                 title="Your choosen student"
                             />
                             <CardContent>
