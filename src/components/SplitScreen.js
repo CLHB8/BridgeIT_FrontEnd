@@ -18,7 +18,7 @@ import ImageCarousel from "../components/ImageCarousel";
 
 
 const style = {
-    maxWidth: 750,
+    maxWidth: 650,
     marginTop: 20,
     
     

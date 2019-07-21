@@ -22,7 +22,7 @@ class DisplayRating extends React.Component {
         }
     }
 
-    static calculateRating(ratingsData) {
+    static calculateRatingSen(ratingsData) {
         let ratingsArray = ratingsData;
         let arrayLength = ratingsArray.length;
         let sumOfRatings = 0;
@@ -32,23 +32,39 @@ class DisplayRating extends React.Component {
         console.log("SUM1", sumOfRatings);
         console.log("SUM1", countOfValidRatings);
         if (arrayLength !== 0) {
-            if (UserService.isSenior()) {
-                for (let i = 0; i < arrayLength; i++) {
-                    let rating = ratingsArray[i]['RatingByStudent'];
-                    if (ratingRange.includes(rating)) {
-                        sumOfRatings += rating;
-                        countOfValidRatings += 1;
-                    }
-                }
-            } else {
-                for (let i = 0; i < arrayLength; i++) {
-                    let rating = ratingsArray[i]['RatingBySenior'];
-                    if (ratingRange.includes(rating)) {
-                        sumOfRatings += rating;
-                        countOfValidRatings += 1;
-                    }
+            for (let i = 0; i < arrayLength; i++) {
+                let rating = ratingsArray[i]['RatingByStudent'];
+                if (ratingRange.includes(rating)) {
+                    sumOfRatings += rating;
+                    countOfValidRatings += 1;
                 }
             }
+
+            console.log("SUM", sumOfRatings);
+            console.log("SUM", countOfValidRatings);
+            return [sumOfRatings / countOfValidRatings, countOfValidRatings];
+        }
+        return 0;
+    }
+
+    static calculateRatingStu(ratingsData) {
+        let ratingsArray = ratingsData;
+        let arrayLength = ratingsArray.length;
+        let sumOfRatings = 0;
+        let countOfValidRatings = 0;
+        let ratingRange = [1, 2, 3, 4, 5];
+        console.log("SUM1", ratingsData);
+        console.log("SUM1", sumOfRatings);
+        console.log("SUM1", countOfValidRatings);
+        if (arrayLength !== 0) {
+            for (let i = 0; i < arrayLength; i++) {
+                let rating = ratingsArray[i]['RatingBySenior'];
+                if (ratingRange.includes(rating)) {
+                    sumOfRatings += rating;
+                    countOfValidRatings += 1;
+                }
+            }
+
             console.log("SUM", sumOfRatings);
             console.log("SUM", countOfValidRatings);
             return [sumOfRatings / countOfValidRatings, countOfValidRatings];
@@ -61,27 +77,49 @@ class DisplayRating extends React.Component {
             loading: true,
         });
 
-        let id = UserService.getCurrentUser().id;
 
-        RatingsService.getSenRatings(id).then((ratingsData) => {
-            this.setState({
-                seniorsRating: DisplayRating.calculateRating(ratingsData)[0],
-                countOfValidRatingsSenior: DisplayRating.calculateRating(ratingsData)[1],
-            });
-            RatingsService.getStuRatings(id).then((ratingsData) => {
+
+
+        if (UserService.isSenior() && this.props.displayStudentRating) {
+            console.log("SENIOR BUT DISPLAY STUDENT");
+            RatingsService.getStuRatings(this.props.studentId).then((ratingsDataStu) => {
                 this.setState({
-                    studentsRating: DisplayRating.calculateRating(ratingsData)[0],
-                    countOfValidRatingsStudent: DisplayRating.calculateRating(ratingsData)[1],
+                    studentsRating: DisplayRating.calculateRatingStu(ratingsDataStu)[0],
+                    countOfValidRatingsStudent: DisplayRating.calculateRatingStu(ratingsDataStu)[1],
                     loading: false
                 });
 
             }).catch((e) => {
                 console.error(e);
             })
+        } else {
+            let id = UserService.getCurrentUser().id;
+            if (this.props.displayStudentRating) {
+                RatingsService.getStuRatings(id).then((ratingsDataStu) => {
+                    this.setState({
+                        studentsRating: DisplayRating.calculateRatingStu(ratingsDataStu)[0],
+                        countOfValidRatingsStudent: DisplayRating.calculateRatingStu(ratingsDataStu)[1],
+                        loading: false
+                    });
 
-        }).catch((e) => {
-            console.error(e);
-        })
+                }).catch((e) => {
+                    console.error(e);
+                })
+            } else {
+                RatingsService.getSenRatings(id).then((ratingsDataSen) => {
+                    this.setState({
+                        seniorsRating: DisplayRating.calculateRatingSen(ratingsDataSen)[0],
+                        countOfValidRatingsSenior: DisplayRating.calculateRatingSen(ratingsDataSen)[1],
+                        loading: false
+                    });
+
+
+                }).catch((e) => {
+                    console.error(e);
+                })
+            }
+        }
+
     }
 
     render() {
@@ -89,7 +127,8 @@ class DisplayRating extends React.Component {
             return (<h5>Loading Rating...</h5>);
         }
 
-        console.log
+        console.log("RATINGRATINGSTU", this.state.studentsRating, "RATINGRATINGSEN", this.state.seniorsRating);
+        console.log("RATINGRATINGSTU", this.state.countOfValidRatingsStudent, "RATINGRATINGSEN", this.state.countOfValidRatingsSenior);
 
         return (
             <div>

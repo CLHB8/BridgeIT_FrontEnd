@@ -145,4 +145,21 @@ export default class UserService {
             });
         });
     }
+
+    static getUserInfo() {
+        let user = this.getCurrentUser();
+
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/user/${user.id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
 }

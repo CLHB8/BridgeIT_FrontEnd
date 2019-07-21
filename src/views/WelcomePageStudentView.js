@@ -24,6 +24,7 @@ export class WelcomePageStudentView extends React.Component {
     }
 
     handlePremiumChange() {
+        console.log("HANDLECHANGE STATE BEFOR", this.state.user);
         if(!(this.state.loading)){
             this.setState({user:{
                     isPremium: true,
@@ -31,6 +32,7 @@ export class WelcomePageStudentView extends React.Component {
                     id: this.state.user.id,
                 }});
         }
+        console.log("HANDLECHANGE STATE AFTER", this.state.user);
     }
 
     componentWillMount(){
@@ -38,13 +40,6 @@ export class WelcomePageStudentView extends React.Component {
             loading: true
         });
 
-        MovieService.getMovies().then((data) => {
-            this.setState({
-                data: [...data]
-            });
-        }).catch((e) => {
-            console.error(e);
-        });
         RequestService.getRequests().then((data) => {
             this.setState({
                 data: [...data]
@@ -52,12 +47,14 @@ export class WelcomePageStudentView extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
-        UserService.isPremium().then((isPremium) => {
-            let tmpUser = UserService.getCurrentUser();
+        UserService.getUserInfo().then((userInfo) => {
+            console.log("USERINFO", userInfo);
             let user = {
-                isPremium: isPremium,
-                id: tmpUser.id,
-                username: tmpUser.username
+                isPremium: userInfo.isPremium,
+                firstname: userInfo.firstname,
+                lastname: userInfo.lastname,
+                id: userInfo.id,
+                username: userInfo.username
             };
             console.log(user);
             this.setState({

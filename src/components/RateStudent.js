@@ -130,7 +130,7 @@ class RatingStudent extends React.Component {
             <Rating
                 value={this.state.rating}
                 max={5}
-                disabled={!(this.state.user.isPremium)}
+                disabled={!(this.props.user.isPremium)}
                 onChange={(value) => this.updateRating(value)}
             />
         );
