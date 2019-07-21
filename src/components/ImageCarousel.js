@@ -9,12 +9,13 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import {Link, withRouter} from "react-router-dom";
+import {Card, CardContent, CardMedia} from '@material-ui/core';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: 'BridgeIT has completely changed our lives. We can now talk to our grandchildren without needing to worry about how to use smartphones. - Mr. and Mrs. Mueller.',
+    label: 'BridgeIT has completely changed our lives. We can now talk to our grandchildren without needing to worry about how to use smartphones. \n- Mr. and Mrs. Mueller.',
     imgPath:
       'https://imgur.com/s85WOvn.jpg',
   },
@@ -33,7 +34,7 @@ const tutorialSteps = [
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 720,
+    // maxWidth: 1500,
     flexGrow: 1,
   },
   header: {
@@ -45,12 +46,49 @@ const useStyles = makeStyles(theme => ({
     fontSize:20,
   },
   img: {
-    height: 380,
+    height: 400,
     display: 'block',
-    maxWidth: 1580,
+    maxWidth: 850,
     overflow: 'hidden',
     width: '100%',
   },
+  mediastyle:{
+    
+
+    maxWidth: 850,
+    minWidth: 400,
+
+
+  },
+
+  card: {
+    display: 'flex',
+    maxWidth: 1600,
+  },
+  // details: {
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  // },
+  content: {
+    flex: '1 0 auto',
+   flexDirection: 'column',
+    maxWidth: 600,
+  },
+  // cover: {
+  //   width: 151,
+  // },
+  // controls: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   paddingLeft: theme.spacing(1),
+  //   paddingBottom: theme.spacing(1),
+  // },
+  // playIcon: {
+  //   height: 38,
+  //   width: 38,
+  // },
+
+
 }));
 
 function ImageCarousel() {
@@ -73,9 +111,14 @@ function ImageCarousel() {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
+
+      <Card className={classes.card}>
+      {/* <Paper square elevation={0} className={classes.header}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
-      </Paper>
+      </Paper> */}
+
+      <CardMedia className={classes.mediastyle}>
+
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -91,6 +134,7 @@ function ImageCarousel() {
           </div>
         ))}
       </AutoPlaySwipeableViews>
+      
       <MobileStepper
         steps={maxSteps}
         position="static"
@@ -109,6 +153,14 @@ function ImageCarousel() {
           </Button>
         }
       />
+      </CardMedia>
+
+      <CardContent className={classes.content}>
+      <Typography variant="h4">{tutorialSteps[activeStep].label}</Typography>
+
+      </CardContent>
+
+</Card>
     </div>
   );
 }

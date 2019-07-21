@@ -3,7 +3,12 @@
 import React from 'react';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
-import { Divider } from '@material-ui/core';
+import { Divider, Card } from '@material-ui/core';
+
+const cardstyle = {
+    marginTop: 20,
+    marginLeft: 15,
+};
 
 const CatSideBar = (props) => {
 
@@ -11,8 +16,11 @@ const CatSideBar = (props) => {
 
             <div>
 
+                <Card style={cardstyle}>
+
                 <div className="categories">
                     <h2>Categories: </h2>
+                    <Divider/>
                     <ul>
                     <li><button>All Categories</button></li>
                     <li><button>Smartphone Coaching</button></li>
@@ -35,7 +43,7 @@ const CatSideBar = (props) => {
 
 
 
-
+                </Card>
                 </div>
         )
 

@@ -12,15 +12,13 @@ import StudentPage from './StudentPage';
 import UserService from "../../services/UserService";
 import { IoIosReturnRight } from 'react-icons/io';
 
-const style = {
-    maxWidth: 900,
-    marginTop: 20,
-
-
-
+const namestyle = {
+    float: screenLeft,
 };
 const chipStyle = {
     margin: 5,
+    'float': 'right',
+    fontSize: 18,
 
 };
 const Wage_ITEMS = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
@@ -102,25 +100,27 @@ export class StuOfferForm extends React.Component {
                     <CardActionArea>
                         <CardMedia
                             className="cardMedia"
-                            image="https://i.imgur.com/dv1LM2R.jpg"
+                            image="https://i.imgur.com/RfYzrXE.jpg"
                             title="Smartphones"
                         />
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                <span>{this.props.request.title}</span>
-                                <Chip
+                            {/* <Typography gutterBottom variant="h5" component="h2">
+                                <span>{this.props.request.title}</span> */}
+                                
+
+                            {/* </Typography> */}
+                            <Typography style={namestyle} gutterBottom variant="h4" component="h3">
+                                By {this.props.request.senUserName}
+                            </Typography>
+                            <Chip
                                     label={this.props.request.category}
-                                    icon={<Icon>category</Icon> }
+                                    icon={<Icon>local_offer</Icon> }
                                     color="primary"
                                     style={chipStyle}
                                     className="md-cell md-cell--2"
+                                    variant="outlined"
                                 />
-
-                            </Typography>
-                            <Typography gutterBottom variant="h6" component="h3">
-                                By {this.props.request.senUserName}
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
+                            <Typography variant="h5" color="textSecondary" component="p">
                                 {this.props.request.specification}
                             </Typography>
                         </CardContent>

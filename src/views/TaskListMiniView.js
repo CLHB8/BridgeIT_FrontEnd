@@ -60,7 +60,7 @@ export class TaskListMiniView extends React.Component {
 
     topFive(){
 
-        a=this.state.data.reverse().slice(0,5); //changes every two times
+        a=this.state.data.slice(0,5); //changes every two times
     }
 
     render() {

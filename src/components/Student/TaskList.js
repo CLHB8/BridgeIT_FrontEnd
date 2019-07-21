@@ -7,6 +7,7 @@ import {TaskListRow} from './TaskListRow';
 import StudentPage from './StudentPage'
 import CatSideBar from '../CatSideBar';
 import UserService from "../../services/UserService";
+import { Card, CardContent, Typography } from '@material-ui/core';
 
 
 const dataTableStyle = {
@@ -19,6 +20,12 @@ export const TaskList = ({data, user, onPremiumChange, onDelete}) => (
         <div className="gridContainer">
             <CatSideBar ad="3" className="catSideBar" user={user}/>
             <div className="taskList">
+                <Card>
+                    <CardContent>
+                        <Typography gutterBottom variant="h4">
+                            Here are all the recent task requests posted by the seniors.
+                        </Typography>
+                    </CardContent>
                 <DataTable plain responsive style={dataTableStyle} className="md-cell--12 md-paper md-paper--1">
                     <TableHeader>
 
@@ -36,6 +43,7 @@ export const TaskList = ({data, user, onPremiumChange, onDelete}) => (
                     </TableBody>
                     {/* <TablePagination rowsPerPageLabel ="Items Per Page" /> */}
                 </DataTable>
+            </Card>
             </div>
         </div>
     </StudentPage>
