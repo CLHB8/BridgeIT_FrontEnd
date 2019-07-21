@@ -97,10 +97,20 @@ export default class RatingsService {
         });
     }
 
-    static createStuOffer(stuOffer) {
-        stuOffer.id = Math.floor((Math.random() * 100000000) + 1).toString();
+    static getRatingById(requestId) {
         return new Promise((resolve, reject) => {
-            HttpService.post(StuOfferService.baseURL(), stuOffer, function(data) {
+            HttpService.get(`${this.baseURL()}/req/${requestId}`
+                , function(data) {
+                    resolve(data);
+                }, function(textStatus) {
+                    reject(textStatus);
+                });
+        });
+    }
+
+    static createRating(rating) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${this.baseURL()}/create`, rating, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
