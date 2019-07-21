@@ -17,13 +17,10 @@ class PopupDelete extends React.Component{
     handleClick(){
         this.props.delete(this.props.id);
     }
-    handleClickRep(){
-        this.props.delete(this.props.id)
-    }
 
     render(){
     return(
-        <Popup trigger={<FontIcon>delete</FontIcon>} position="right center">
+        <Popup trigger={<FontIcon>delete</FontIcon>} position="left center">
             <Grid >
                 <Card style={style}><h5>Do you really want to delete this request?</h5></Card>
                 <Card style={style}>

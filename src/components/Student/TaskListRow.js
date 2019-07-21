@@ -5,6 +5,7 @@ import { TableRow, TableColumn, FontIcon, Button, SVGIcon } from 'react-md';
 import { Link } from 'react-router-dom';
 
 import { SimpleLink } from '../SimpleLink';
+import UserService from "../../services/UserService";
 
 
 var details = "";
@@ -20,7 +21,26 @@ export class TaskListRow extends React.Component {
         };
         
     }
-    
+
+    componentWillMount() {
+        this.setState({
+            loading: true,
+        });
+
+        let id = this.props.request.userId;
+
+        UserService.getUserById(id).then((seniorData) => {
+            this.setState({
+                senior: seniorData,
+                seniorFirstname: seniorData.firstname,
+                seniorLastname: seniorData.lastname,
+                seniorFullname: seniorData.firstname + " " + seniorData.lastname,
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        })
+    }
 
     popupHandler() {
         this.setState({
@@ -59,7 +79,7 @@ export class TaskListRow extends React.Component {
                 <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>{this.props.request.category}</SimpleLink>
                 
                 </TableColumn>
-                <TableColumn>{this.props.request.senUserName}
+                <TableColumn>{this.state.seniorFullname}
 
                 </TableColumn>
 

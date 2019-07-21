@@ -8,6 +8,8 @@ import DisplayRating from '../DisplayRating';
 import UserService from '../../services/UserService';
 import RatingsService from "../../services/RatingsService";
 import RequestService from  "../../services/RequestService";
+import SelectPopup from "../SelectPopup";
+
 
 
 export class SenStudentAnswersListRow extends React.Component {
@@ -16,9 +18,30 @@ export class SenStudentAnswersListRow extends React.Component {
         super(props);
         console.log(this.props.stuOffer)
     }
+    componentWillMount() {
+        this.setState({
+            loading: true,
+        });
+
+        let id = this.props.stuOffer.studentId;
+
+        UserService.getUserById(id).then((studentData) => {
+            console.log(studentData);
+            this.setState({
+                student: studentData,
+                studentFirstname: studentData.firstname,
+                studentLastname: studentData.lastname,
+                studentFullname: studentData.firstname + " " + studentData.lastname,
+                studentIsPremium: studentData.isPremium,
+                loading: false
+            });
+
+        }).catch((e) => {
+            console.error(e);
+        })
+    }
 
     updateRequest() {
-        console.log("UPDATE REQUEST", this.props.stuOffer.studentId);
         let updateRquest = {
             assignedStudent: this.props.stuOffer.studentId,
             isAssigned: true,
@@ -40,13 +63,17 @@ export class SenStudentAnswersListRow extends React.Component {
     render() {
         return (
             <TableRow key={this.props.key}>
-                <TableColumn><FontIcon>user</FontIcon></TableColumn>
-                <TableColumn icon>star</TableColumn>
-                <TableColumn>{this.props.stuOffer.studentUsername}</TableColumn>
+                {this.state.studentIsPremium ?
+                <TableColumn><FontIcon>star</FontIcon></TableColumn>
+                :<TableColumn></TableColumn>}
+                <TableColumn>{this.props.stuOffer.wage} €</TableColumn>
+                <TableColumn>{this.state.studentFullname}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
+                {this.state.studentIsPremium ?
                 <TableColumn className="md-cell md-cell--3"><DisplayRating studentId={this.props.stuOffer.studentId} displayStudentRating={true}/></TableColumn>
+                    :<TableColumn/>}
                 {UserService.isAuthenticated() ?
-                    <TableColumn><Button onClick={() => this.updateRequest()} icon>check_circle</Button></TableColumn>
+                    <TableColumn><SelectPopup updateRequest={this.updateRequest}></SelectPopup></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
 
