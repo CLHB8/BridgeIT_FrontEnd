@@ -12,9 +12,7 @@ export class SenRequestDetailView extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state={
-          theChoosenOne: '',
-        };
+
         this.handleChoosenOneChange = this.handleChoosenOneChange.bind(this);
     }
 
@@ -31,6 +29,34 @@ export class SenRequestDetailView extends React.Component {
                 request: reqData,
                 theChoosenOne: reqData.assignedStudent,
             });
+            if(this.state.request.isAssigned == true){
+                this.setState( {showPopup: true});
+
+                UserService.getUserById(this.state.request.assignedStudent).then((userdata) => {
+                    this.setState({
+                        theChoosenOne: userdata.id,
+                        theChoosenMail: userdata.mail,
+                        theChoosenPhone: userdata.phone_number,
+                        theChoosenFirstName: userdata.firstname,
+                        theChoosenLastName: userdata.lastname
+                    });
+                    console.log("gotChoosenOne success");
+                    console.log(this.state.theChoosenOne);
+                }).catch((e) => {
+                    console.error(e);
+                });
+
+            } else {
+                this.setState( {
+                    showPopup: false,
+                    theChoosenOne: '',
+                    theChoosenMail: '',
+                    theChoosenPhone: '',
+                    theChoosenFirstName: '',
+                    theChoosenLastName: ''
+                });
+            }
+
         }).catch((e) => {
             console.error(e);
         });
@@ -46,10 +72,8 @@ export class SenRequestDetailView extends React.Component {
         })
         console.log("getStuOffersToRequest success");
 
-        this.setState({
-            theChoosenOne: 'me again',
-        });
     }
+
 
     handleChoosenOneChange(anakin){
         this.setState({theChoosenOne: anakin});
@@ -69,7 +93,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail theChoosenOne={this.state.theChoosenOne} onChoosenOneChange={(anakin) => this.handleChoosenOneChange(anakin)} user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail showPopup={this.state.showPopup} theChoosenLastName={this.state.theChoosenLastName} theChoosenFirstName={this.state.theChoosenFirstName} theChoosenPhone={this.state.theChoosenPhone} theChoosenMail={this.state.theChoosenMail} theChoosenOne={this.state.theChoosenOne} onChoosenOneChange={(anakin) => this.handleChoosenOneChange(anakin)} user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }

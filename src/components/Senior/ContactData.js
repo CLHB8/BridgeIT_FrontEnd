@@ -40,11 +40,21 @@ class ContactData extends React.Component {
                                 title="Your choosen student"
                             />
                             <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    Here is the student you choose: {this.props.theChoosenOne}
+                                <Typography variant="subtitle1" color="textSecondary" component="h5">
+                                    Reach out now by using the following contact information:
                                 </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    You need help with your mobile phone or have general questions about it?
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    Here is the student you choose:
+                                </Typography>
+
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {this.props.theChoosenFirstName} {this.props.theChoosenLastName}
+                                </Typography>
+                                <Typography variant="subtitle1" color="textSecondary" component="h5">
+                                    Phone Number: {this.props.theChoosenPhone}
+                                </Typography>
+                                <Typography variant="subtitle1" color="textSecondary" component="h5">
+                                    Mail: {this.props.theChoosenMail}
                                 </Typography>
                             </CardContent>
                         </CardActionArea>

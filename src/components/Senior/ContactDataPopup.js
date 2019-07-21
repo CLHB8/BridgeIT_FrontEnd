@@ -14,7 +14,7 @@ const ContactDataPopup = (props) => {
         return(
             <div className="popuplayer">
                 <div className="popup">
-                    <ContactData theChoosenOne={props.theChoosenOne} request={props.request}>{console.log('It works!')}</ContactData>
+                    <ContactData theChoosenFirstName={props.theChoosenFirstName} theChoosenLastName={props.theChoosenLastName} theChoosenPhone={props.theChoosenPhone} theChoosenMail={props.theChoosenMail} theChoosenOne={props.theChoosenOne} request={props.request}>{console.log('It works!')}</ContactData>
                 </div>
             </div>
 

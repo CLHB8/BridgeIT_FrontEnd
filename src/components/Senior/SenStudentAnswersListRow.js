@@ -29,7 +29,8 @@ export class SenStudentAnswersListRow extends React.Component {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while assigning student to request'}));
         });
-        this.props.onChoosenOneChange(this.props.stuOffer.studentId)
+        this.props.onChoosenOneChange(this.props.stuOffer.studentId);
+        window.location.reload();
     }
 
     render() {

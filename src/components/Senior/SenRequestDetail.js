@@ -18,12 +18,6 @@ export class SenRequestDetail extends React.Component {
 
     constructor(props) {
         super(props);
-            console.log(this.props.request.isAssigned);
-            if(this.props.request.isAssigned == true){
-                this.state = {showPopup: true};
-            } else {
-                this.state = {showPopup: false};
-            }
             this.handleChoosenOneChange = this.handleChoosenOneChange.bind(this);
     }
 
@@ -54,7 +48,7 @@ export class SenRequestDetail extends React.Component {
     render() {
         return (
             <SeniorPage user={this.props.user}>
-                <ContactDataPopup visibility={this.state.showPopup} theChoosenOne={this.props.theChoosenOne} request={this.props.request}></ContactDataPopup>
+                <ContactDataPopup visibility={this.props.showPopup} theChoosenOne={this.props.theChoosenOne} request={this.props.request} theChoosenLastName={this.props.theChoosenLastName} theChoosenFirstName={this.props.theChoosenFirstName} theChoosenPhone={this.props.theChoosenPhone} theChoosenMail={this.props.theChoosenMail}></ContactDataPopup>
 
                 <Card className="genericCard">
                     <CardActionArea>
@@ -79,7 +73,6 @@ export class SenRequestDetail extends React.Component {
                         <div className="md-cell md-cell--12">
 
                             <div className="formButton">
-                                <Link to={`/edit/${this.props.request._id}`}><Button className="md-cell md-cell--3" color="primary" variant="contained">Edit</Button></Link>
                                 <Button className="md-cell md-cell--3" color="secondary" variant="contained">Delete</Button>
                             </div></div>
                     </CardActions>
