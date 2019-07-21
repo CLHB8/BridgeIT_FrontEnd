@@ -65,6 +65,8 @@ class AccountMenu extends React.Component {
 
 render()
 {
+    console.log("ISSENIOR", UserService.isSenior());
+    console.log("ISPREMIUM", this.state.user.isPremium);
     if (UserService.isSenior() || this.state.user.isPremium) {
         return (
             <DropdownMenu
@@ -123,7 +125,6 @@ render()
                     }}/>,
                      */
 
-                    {divider: true},
 
                     <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
                               primaryText="Logout"

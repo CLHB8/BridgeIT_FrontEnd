@@ -6,11 +6,11 @@ import SenReq from '../../views/SenRequestsMiniView'
 import {makeStyles, Container, Divider, Fab} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 
-import {FontIcon, Button}
-    from 'react-md';
-import SenAddOfferPopup from "../Senior/SenAddOfferPopup";
+import {FontIcon, Button} from 'react-md';
 import {SenMyAssignedRequests} from "./SenMyAssignedRequests";
 import DisplayRating from "../DisplayRating";
+import {SimpleLink} from '../SimpleLink';
+import UserService from "../../services/UserService";
 
 const style = {maxWidth: 900};
 const StarIcon = () => <FontIcon>star</FontIcon>;
@@ -58,13 +58,6 @@ export class WelcomePageSenior extends React.Component {
         });
     }
 
-    popupHandler() {
-        this.setState({
-                showPopup: !this.state.showPopup
-            },
-        );
-    }
-
     render() {
 
         return (
@@ -83,20 +76,15 @@ export class WelcomePageSenior extends React.Component {
                             <h5>Your rating:</h5><DisplayRating user={this.state.user}/>
                             <Divider/>
                             <br/>
-                            <Fab variant="extended" color="primary" aria-label="Add"
-                                 onClick={this.popupHandler.bind(this)} className={classes.fab}>
+                            <SimpleLink to={'add'}><Fab variant="extended" color="primary" aria-label="Add"
+                                                        className={classes.fab}>
                                 <AddIcon className={classes.extendedIcon}/> Add Request
-                            </Fab>
+                            </Fab></SimpleLink>
                             <br/>
                             <br/>
-                            <h4 align="center"><Button raised primary swapTheming
-                                                       onClick={() => this.props.history.push('/sen/add')}>Log
-                                out</Button></h4>
-
-                            <SenAddOfferPopup visibility={this.state.showPopup}>
-                                <button className="closeButton" onClick={this.popupHandler.bind(this)}><i
-                                    class="material-icons">close</i></button>
-                            </SenAddOfferPopup>
+                            <h4 align="center"><SimpleLink to={'WelcomePage'}><Button raised primary swapTheming
+                                                                                      onClick={() => UserService.logout()}>Log
+                                out</Button></SimpleLink></h4>
 
                         </div>
 

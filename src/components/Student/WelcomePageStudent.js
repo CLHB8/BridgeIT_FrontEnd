@@ -36,10 +36,13 @@ export class WelcomePageStudent extends React.Component {
 
         );
     }
+    onClickHandler(){
+        UserService.logout();
+    }
 
     render() {
         return (
-            <StudentPage user = {this.props.user} onPremiumChange={this.handlePremiumChange}>
+            <StudentPage user = {this.state.user} onPremiumChange={this.handlePremiumChange}>
                 <div className="gridContainer">
 
                     <div className="catSideBar" border="none">
@@ -65,7 +68,7 @@ export class WelcomePageStudent extends React.Component {
                             </div>
                             <br/>
                             <Divider />
-                            <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
+                            <h4 align="center"><SimpleLink to={'/'}><Button raised primary swapTheming onClick={() => this.onClickHandler()}>Log out</Button></SimpleLink></h4>
 
                             {/* <StuSendOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </StuSendOfferPopup> */}
 
