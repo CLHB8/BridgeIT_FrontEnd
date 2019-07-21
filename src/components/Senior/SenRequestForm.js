@@ -182,18 +182,19 @@ class SenRequestForm extends React.Component {
                     <Cell size={12}>
                         
                         <Card className="md-cell md-cell--12" style={cardstyle}>
-                                <CardContent>
+                                
                                     
                                 <CardMedia
                                                 className="cardMedia"
                                                 image="https://i.imgur.com/uhknjwu.jpg"
                                                 title="Smartphones"
                                             />
+                                <CardContent>
                                 <Typography variant="h2" gutterBottom component="h4">
                                 On this page you can add a new request based on your needs.
                                 </Typography>
                                 <Typography variant="h5">
-                                You can either choose one of our predefined categories or and define your own below.
+                                You can either choose one of our predefined categories or define your own below.
 
                                 </Typography>
 

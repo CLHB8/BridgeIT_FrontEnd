@@ -3,7 +3,7 @@
 import React from 'react';
 import SeniorPage from './SeniorPage';
 import SenReq from '../../views/SenRequestsMiniView'
-import {makeStyles, Container, Divider, Fab} from "@material-ui/core";
+import {makeStyles, Container, Divider, Fab, Card, CardContent, CardActionArea, CardMedia, Typography} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 
 import {FontIcon, Button} from 'react-md';
@@ -13,7 +13,15 @@ import {SimpleLink} from '../SimpleLink';
 import UserService from "../../services/UserService";
 
 const style = {maxWidth: 900};
-const StarIcon = () => <FontIcon>star</FontIcon>;
+
+const cardstyle = {
+    marginTop: 25,
+    marginLeft: 15,
+};
+const card2 = {
+    marginTop: 10,
+      
+};
 
 // const drawerWidth = 240;
 
@@ -35,11 +43,6 @@ const classes = makeStyles(theme => ({
     },
 
 }));
-
-const dataTableStyle = {
-    'margin-bottom': '40px',
-    'margin-top': '40px',
-};
 
 
 export class WelcomePageSenior extends React.Component {
@@ -68,6 +71,8 @@ export class WelcomePageSenior extends React.Component {
 
                     <div className="catSideBar" border="none">
 
+                    <Card style={cardstyle}>
+
                         <div className="seniorProfile">
                             <h4>Welcome to the dashboard</h4>
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
@@ -82,20 +87,60 @@ export class WelcomePageSenior extends React.Component {
                             </Fab></SimpleLink>
                             <br/>
                             <br/>
-                            <h4 align="center"><SimpleLink to={'WelcomePage'}><Button raised primary swapTheming
-                                                                                      onClick={() => UserService.logout()}>Log
-                                out</Button></SimpleLink></h4>
+                            <br/>
+                            <br/>
+
+
+                            <SimpleLink to={'WelcomePage'}>
+                                <Button 
+                            raised 
+                            secondary
+                            
+                            onClick={() => UserService.logout()}>
+                                Logout</Button></SimpleLink>
+                                
                         </div>
+                        <br/>
+
+                        </Card>
                     </div>
 
                     <div className="taskList">
 
-                        <h4>If you already posted one or more requests and want to check on their
-                            status, see below:</h4>
-                        <SenReq user={this.state.user}></SenReq>
+                        <Card className="md-cell md-cell--12">
+                            <CardContent>
+                            <Typography gutterBottom variant="h4">
+                                Here is the list of your assigned students.
+                            </Typography>
+                            <Typography variant="h5"> Please contact them via phone and arrange a meeting.</Typography>
+                            </CardContent>
+
+                            <SenMyAssignedRequests user={this.state.user}></SenMyAssignedRequests>
+
+                        </Card>
+                        <br/>
+
+                        <Divider light/>
+                        <br/>
+
+                        <Card style={card2} className="md-cell md-cell--12">
+                            <CardContent>
+                            <Typography gutterBottom variant="h4">
+                            If you already posted one or more requests and want to check on their
+                            status, see below:
+                            </Typography>
+                            {/* <Typography variant="h5"> Please contact them via phone and arrange a meeting.</Typography> */}
+                            </CardContent>
+
+                            <SenReq user={this.state.user}></SenReq>
+
+                        </Card>
+
+                        {/* <h4></h4>
+                        
                         <Divider style={dataTableStyle}/>
                         <h4>Here is your task history. Don't forget to rate the students!</h4>
-                        <SenMyAssignedRequests user={this.state.user}></SenMyAssignedRequests>
+                         */}
 
 
                     </div>

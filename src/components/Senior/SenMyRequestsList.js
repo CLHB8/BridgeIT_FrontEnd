@@ -29,13 +29,14 @@ const cardstyle = {
 export const SenMyRequestsList = ({data, onDelete}) => (
     <SeniorPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
         <Card className="md-cell md-cell--9" style={cardstyle}>
-            <CardContent>
+            
                 
             <CardMedia
                             className="cardMedia"
                             image="https://i.imgur.com/uhknjwu.jpg"
                             title="Smartphones"
                         />
+                        <CardContent>
             <Typography variant="h2" component="h4">
             Here you can see all the requests you have posted.
             </Typography>

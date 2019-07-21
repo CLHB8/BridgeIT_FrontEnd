@@ -8,13 +8,13 @@ import {StuMyAssignedRequestsListRow} from './StuMyAssignedRequestsListRow';
 import {border} from '@material-ui/system';
 
 const dataTableStyle = {
-    'margin-bottom': '36px',
+    // 'margin-bottom': '36px',
     // 'box-shadow': '2px 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19)'
 };
 
 export const StuMyAssignedRequestsList = ({data, user, onDelete}) => (
 
-    <DataTable plain className="md-cell--12 md-paper md-paper--1" style={dataTableStyle}>
+    <DataTable plain className="md-cell--12" style={dataTableStyle}>
         <TableHeader>
             <TableRow>
                 <TableColumn></TableColumn>

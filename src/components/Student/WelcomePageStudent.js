@@ -5,7 +5,7 @@ import StudentPage from './StudentPage';
 import OfferPopup from '../c_SendOfferPopup';
 import {
     Button,
-    Divider,
+    
     Cell,
     DataTable,
     FontIcon,
@@ -25,8 +25,14 @@ import StuSendOfferPopup from './StuSendOfferPopup';
 import DisplayRating from "../DisplayRating";
 import StuMyAssignedRequest from "../Student/StuMyAssignedRequests";
 import BlurredRating from 'material-ui-rating'
+import {makeStyles, Container, Divider, Fab, Card, CardContent, CardActionArea, CardMedia, Typography} from "@material-ui/core";
 
-const style = {maxWidth: 500};
+
+const cardstyle = {
+    marginTop: 25,
+    marginLeft: 15,
+    
+};
 
 export class WelcomePageStudent extends React.Component {
 
@@ -63,6 +69,8 @@ export class WelcomePageStudent extends React.Component {
                 <div className="gridContainer">
 
                     <div className="catSideBar" border="none">
+
+                        <Card style={cardstyle}>
 
                         <div className="seniorProfile">
                             <h4>Welcome to the dashboard</h4>
@@ -108,7 +116,8 @@ export class WelcomePageStudent extends React.Component {
 
                             <br/>
                             <Divider/>
-                            <h4 align="center"><SimpleLink to={'/'}><Button raised primary swapTheming
+                            <br/>
+                            <h4 align="center"><SimpleLink to={'/'}><Button raised secondary swapTheming
                                                                             onClick={() => this.onClickHandler()}>Log
                                 out</Button></SimpleLink></h4>
 
@@ -117,33 +126,48 @@ export class WelcomePageStudent extends React.Component {
                         </div>
 
 
+                        </Card>
+
+
                     </div>
 
                     <div className="taskList">
                         {/* main area  */}
 
-                        <div className="ongoingTasks">
-                            <h4>You have 6 Tasks ongoing:</h4>
+                      
 
+                            <Card className="md-cell md-cell--12">
+                            <CardContent>
+                            <Typography gutterBottom variant="h4">
+                                Here is your current task list.
+                            </Typography>
+                            <Typography variant="h5"> Please contact the seniors via phone to arrange a meeting.</Typography>
+                            </CardContent>
 
-                        </div>
-                        <Divider/>
-                        <div className="requestsSummary">
-                            <h4>Here are the top 5 recent requests posted by seniors:</h4>
-
-                            <TaskListMiniView></TaskListMiniView>
-                            <h6>You can also view all of the requests {<SimpleLink
-                                to={'/stu/TaskListView'}>here.</SimpleLink>}</h6>
-
-                        </div>
-                        <Divider/>
-                        <div className="ratingSummary">
-
-                            <h4>Don't forget to rate your recent experience with the seniors:</h4>
                             <StuMyAssignedRequest user={this.props.user}></StuMyAssignedRequest>
 
+                            
 
-                        </div>
+                        </Card>
+
+
+                        <br/>
+
+                        <Divider/>
+                        <br/>
+
+                        <Card className="md-cell md-cell--12">
+                            <CardContent>
+                            <Typography gutterBottom variant="h4">
+                                Here are some of the most recent Task requests posted by the seniors.
+                            </Typography>
+                            <Typography variant="h5"> You can also view all of the requests {<SimpleLink
+                                to={'/stu/TaskListView'}>here.</SimpleLink>}</Typography>
+                            </CardContent>
+
+                            <TaskListMiniView></TaskListMiniView>
+                            
+                        </Card>
 
 
                     </div>

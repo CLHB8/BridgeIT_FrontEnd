@@ -124,8 +124,8 @@ class Header extends React.Component {
         if (homeButtonShow) {
             homeButton =
                 <Link to={'/'} class="link">
-                    <IconButton
-                        edge="middle"
+                    <Button
+                        // edge="middle"
                         className={classes.playButton}
                         color="inherit"
                         aria-label="Open drawer"
@@ -134,7 +134,7 @@ class Header extends React.Component {
                         <Typography className={classes.title} variant="h6" noWrap>
                             Home
                         </Typography>
-                    </IconButton>
+                    </Button>
                 </Link>
         }
 
@@ -165,9 +165,9 @@ class Header extends React.Component {
                                 color="inherit"
                                 aria-label="Open drawer"
                             >
-                                <button className="SHButton">
+                                <Button >
                                     <i className="material-icons">play_circle_filled</i>
-                                </button>
+                                </Button>
                                 <Typography variant="h6" noWrap>
                                     Have this read aloud.
                                 </Typography>

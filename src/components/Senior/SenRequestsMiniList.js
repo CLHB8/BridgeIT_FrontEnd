@@ -19,7 +19,7 @@ const dataTableStyle = {
 
 export const SenRequestsMiniList = ({data, user, onDelete}) => (
 
-    <DataTable plain className="md-cell--12 md-paper md-paper--1" style={dataTableStyle}>
+    <DataTable plain className="md-cell--12" style={dataTableStyle}>
         <TableHeader>
             <TableRow>
                 <TableColumn></TableColumn>

@@ -8,6 +8,7 @@ import {AlertMessage} from './AlertMessage';
 import Page from './Page';
 import StartPage from "./Page";
 import {IoIosLogIn, IoMdArrowRoundBack} from "react-icons/io";
+import { CardContent, Typography } from '@material-ui/core';
 
 
 const style = {maxWidth: 500};
@@ -53,17 +54,25 @@ class UserLogin extends React.Component {
             <Page>
                 <Grid container spacing={1}>
                     <Card style={style} className="md-block-centered">
+                        <CardContent>
+                            <Typography variant="h5">
+                                Please enter your email address and password to login.
+                            </Typography>
+                        </CardContent>
+
+                        <CardContent>
                         <form className="md-grid" onSubmit={this.handleSubmit}
                               onReset={() => this.props.history.goBack()}>
                             <TextField
-                                label="Login"
+                                label="Email Address"
                                 id="LoginField"
                                 type="text"
                                 className="md-row"
+                                
                                 required={true}
                                 value={this.state.username}
                                 onChange={this.handleChangeUsername}
-                                errorText="Login is required"/>
+                                errorText="Email is required"/>
                             <TextField
                                 label="Password"
                                 id="PasswordField"
@@ -88,6 +97,7 @@ class UserLogin extends React.Component {
                             <AlertMessage
                                 className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                         </form>
+                        </CardContent>
                     </Card>
                 </Grid>
             </Page>

@@ -8,9 +8,6 @@ import { SimpleLink } from '../SimpleLink';
 import UserService from "../../services/UserService";
 
 
-var details = "";
-var requestTitle = "";
-
 export class TaskListRow extends React.Component {
 
     constructor(props) {

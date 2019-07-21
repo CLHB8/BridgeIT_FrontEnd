@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 // Neil: Code from https://mdbootstrap.com/docs/react/navigation/footer/
 const FooterPage = () => {
     return (
-        <MDBFooter color="white" className="font-small" style={{background: "white"}}>
+        <MDBFooter color="white" className="font-small" style={{background: "#F5F5F5"}}>
             <div className="footer-copyright text-center py-3">
                 <MDBContainer fluid>
                     <MDBRow>
@@ -14,10 +14,10 @@ const FooterPage = () => {
                             <Link to={'/help'}>Help</Link>
                         </MDBCol>
                         <MDBCol md="4">
-                            &copy; {new Date().getFullYear()} Copyright: <a href="https://www.google.com"> BridgeIT.com </a>
+                            &copy; {new Date().getFullYear()} BridgeIT GmbH
                         </MDBCol>
                         <MDBCol md="4">
-                            <a href="https://www.google.com"> About Us</a>
+                        <Link to={'/help'}>About Us</Link>
                         </MDBCol>
                     </MDBRow>
 
