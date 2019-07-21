@@ -89,25 +89,24 @@ export class WelcomePageStudent extends React.Component {
 
 
                             <Divider/>
-                            <br/>
-                            {/* <Fab variant="extended" color="primary" aria-label="Add" onClick={this.popupHandler.bind(this)} className={classes.fab}>
-                                    <AddIcon className={classes.extendedIcon}/> Add Request
-                                </Fab> */}
-                            <br/>
+
                             {!this.props.user.isPremium ?
                                 <div>
                                     <div className="subscriptionAd">
                                         <p>You have 1 free offers remaining this month.<br/> Want to do more? Join our
                                             monthly subcription.</p>
                                     </div>
-                                    <div><img width="200px" height="" src="https://i.imgur.com/bGmZS0T.jpg"/></div>
+                                    <div><img width="200px" height="" src="https://cdna.artstation.com/p/assets/images/images/012/644/826/large/brandon-moore-redbullnorm.jpg?1535804427"/>
+                                    <p style={{"font-style": "italic"}}>Advertising</p>
+                                    </div>
 
                                 </div> : <div className="premiumShow">
                                     <p>Thank you for being a Premium Member on our Platform.</p>
                                 </div>}
 
-                            <br/>
+
                             <Divider/>
+                            <br/>
                             <h4 align="center"><SimpleLink to={'/'}><Button raised primary swapTheming
                                                                             onClick={() => this.onClickHandler()}>Log
                                 out</Button></SimpleLink></h4>
@@ -131,7 +130,7 @@ export class WelcomePageStudent extends React.Component {
                         <div className="requestsSummary">
                             <h4>Here are the top 5 recent requests posted by seniors:</h4>
 
-                            <TaskListMiniView></TaskListMiniView>
+                            <TaskListMiniView user={this.props.user}></TaskListMiniView>
                             <h6>You can also view all of the requests {<SimpleLink
                                 to={'/stu/TaskListView'}>here.</SimpleLink>}</h6>
 

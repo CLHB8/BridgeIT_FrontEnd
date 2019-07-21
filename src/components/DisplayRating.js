@@ -81,14 +81,23 @@ class DisplayRating extends React.Component {
 
 
         if (UserService.isSenior() && this.props.displayStudentRating) {
-            console.log("SENIOR BUT DISPLAY STUDENT");
             RatingsService.getStuRatings(this.props.studentId).then((ratingsDataStu) => {
                 this.setState({
                     studentsRating: DisplayRating.calculateRatingStu(ratingsDataStu)[0],
                     countOfValidRatingsStudent: DisplayRating.calculateRatingStu(ratingsDataStu)[1],
                     loading: false
                 });
-
+            }).catch((e) => {
+                console.error(e);
+            })
+        } else if(!UserService.isSenior() && !this.props.displayStudentRating){
+            console.log("Student BUT DISPLAY SENIOR:", this.props.request);
+            RatingsService.getSenRatings(this.props.request.userId).then((ratingsDataSen) => {
+                this.setState({
+                    seniorsRating: DisplayRating.calculateRatingSen(ratingsDataSen)[0],
+                    countOfValidRatingsSenior: DisplayRating.calculateRatingSen(ratingsDataSen)[1],
+                    loading: false
+                });
             }).catch((e) => {
                 console.error(e);
             })
