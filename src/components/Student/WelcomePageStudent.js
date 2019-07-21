@@ -6,10 +6,12 @@ import OfferPopup from '../c_SendOfferPopup';
 import {Button, Divider, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, TableHeader, TableRow} from "react-md";
 import UserService from "../../services/UserService";
 import {Link} from "react-router-dom";
-import Rating from "../rateStudent"
+import Rating from "../RateStudent"
 import TaskListMiniView from "../../views/TaskListMiniView";
 import { SimpleLink } from '../SimpleLink';
 import StuSendOfferPopup from './StuSendOfferPopup';
+import DisplayRating from "../DisplayRating";
+import StuMyAssignedRequest from "../Student/StuMyAssignedRequests";
 
 const style = { maxWidth: 500 };
 
@@ -34,10 +36,13 @@ export class WelcomePageStudent extends React.Component {
 
         );
     }
+    onClickHandler(){
+        UserService.logout();
+    }
 
     render() {
         return (
-            <StudentPage user = {this.props.user} onPremiumChange={this.handlePremiumChange}>
+            <StudentPage user = {this.state.user} onPremiumChange={this.handlePremiumChange}>
                 <div className="gridContainer">
 
                     <div className="catSideBar" border="none">
@@ -47,7 +52,7 @@ export class WelcomePageStudent extends React.Component {
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
                             <h4>{this.state.user.username}</h4>
                             {/* <Rating value={3.5} precision={0.5} readOnly /> */}
-                            <h5>Your rating: 4.5/5 stars</h5>
+                            <h5>Your rating:</h5><DisplayRating user={this.state.user} displayStudentRating={true}/>
                             <Divider />
                             <br/>
                             {/* <Fab variant="extended" color="primary" aria-label="Add" onClick={this.popupHandler.bind(this)} className={classes.fab}>
@@ -63,7 +68,7 @@ export class WelcomePageStudent extends React.Component {
                             </div>
                             <br/>
                             <Divider />
-                            <h4 align="center"><Button raised primary swapTheming onClick={() => this.props.history.push('/sen/add')}>Log out</Button></h4>
+                            <h4 align="center"><SimpleLink to={'/'}><Button raised primary swapTheming onClick={() => this.onClickHandler()}>Log out</Button></SimpleLink></h4>
 
                             {/* <StuSendOfferPopup visibility={this.state.showPopup}><button className="closeButton" onClick={this.popupHandler.bind(this)}><i class="material-icons">close</i></button> </StuSendOfferPopup> */}
 
@@ -94,6 +99,7 @@ export class WelcomePageStudent extends React.Component {
                         <div className="ratingSummary">
 
                             <h4>Don't forget to rate your recent experience with the seniors:</h4>
+                            <StuMyAssignedRequest user={this.state.user}></StuMyAssignedRequest>
 
 
                         </div>

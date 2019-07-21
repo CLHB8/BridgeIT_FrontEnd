@@ -65,6 +65,8 @@ class AccountMenu extends React.Component {
 
 render()
 {
+    console.log("ISSENIOR", UserService.isSenior());
+    console.log("ISPREMIUM", this.state.user.isPremium);
     if (UserService.isSenior() || this.state.user.isPremium) {
         return (
             <DropdownMenu
@@ -114,12 +116,16 @@ render()
                               primaryText={this.props.user.username} onClick={() => {
                         UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
                     }}/>,
+
+                    /*
                     // TODO: needs to be implemented --> Edit View
                     <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
                               primaryText="Edit Profile" onClick={() => {
                         UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
                     }}/>,
-                    {divider: true},
+                     */
+
+
                     <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
                               primaryText="Logout"
                               onClick={() => this.logout()}/>,

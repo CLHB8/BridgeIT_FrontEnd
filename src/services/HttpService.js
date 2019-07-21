@@ -87,6 +87,7 @@ export default class HttpService {
             headers: header,
             body: JSON.stringify(data)
         }).then((resp) => {
+            console.log("POST FETCH", resp);
             if(this.checkIfUnauthorized(resp)) {
                 window.location = "/#login";
                 return;
@@ -95,8 +96,8 @@ export default class HttpService {
                 return resp.json();
             }
         }).then((resp) => {
-            console.log(resp)
             if(resp.error) {
+                console.log("POST FETCH", resp);
                 onError(resp.error);
             }
             else {

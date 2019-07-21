@@ -47,7 +47,7 @@ class SplitScreen extends React.Component {
                                 title={<div><h1>Seniors</h1><h5>You need an easy and inexpensive solution for your
                                     technical problems?</h5></div>}
                                 avatar={<img className="StartPageImage"
-                                             src="https://www.actiontec.com/wp-content/uploads/2017/06/Senior-Internet-1024x683.jpg"
+                                             src="https://www.spanishgurus.com/wp-content/uploads/2018/07/senior-student.jpg"
                                              alt="Image of Senior"/>}/>
                             <CardText>
                                 <div id="splitscreenList">

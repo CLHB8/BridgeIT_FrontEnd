@@ -49,7 +49,22 @@ export default class UserService {
     static editProfile() {
         let id = this.getCurrentUser().id;
         return new Promise((resolve, reject) => {
-            HttpService.get(`${UserService.baseURL()}/${id}`, function(data) {
+            HttpService.put(`${UserService.baseURL()}/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getUserById(userId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/user/${userId}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
@@ -70,13 +85,13 @@ export default class UserService {
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
-                console.log(textStatus);
-                reject(textStatus);
+                if(!console.log(textStatus)){
+                    reject("Password or username not correct");
+                }else{
+                    reject(textStatus);
+                }
             });
         });
-    }
-    static isSenior(){
-        return window.localStorage['isSenior'];
     }
 
     static logout(){
@@ -112,6 +127,7 @@ export default class UserService {
             });
         });
     }
+
 
     static isPremium() {
         let user = this.getCurrentUser();
