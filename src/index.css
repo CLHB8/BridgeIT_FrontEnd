@@ -4,6 +4,7 @@
 #splitscreenList {
     margin: 20px;
     text-align: justify;
+    min-height: 385px;
 }
 
 ul {
@@ -104,13 +105,13 @@ a:hover {
 }
 
 .RegisterButton {
-    background: darkblue;
+    
     font-size: x-large;
     color: white;
     margin-bottom: 20px;
     border: none;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 280px;
 }
 
@@ -123,12 +124,12 @@ a:hover {
 }
 
 .BackAndLoginButtonLoginView{
-    background: darkblue;
+    
     font-size: x-large;
     color: white;
     border: none;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 110px;
     height: 35px;
 }
@@ -145,6 +146,9 @@ a:hover {
 .wrapper_continue {
     text-align: center;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
 }
 
 .HeaderReadOut {
@@ -426,17 +430,35 @@ li:hover {
 .subscriptionAd {
 
 
-    border: 2px solid #F44336;
-    background-color: #FFF9C4;
-    padding: 10px;
-    margin: 10px;
-}
+     border: 2px solid #F44336;
+     background-color: #FFF9C4;
+     padding: 10px;
+     margin: 10px;
+ }
 
 .subscriptionAd p {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
 }
+
+.premiumShow {
+    border: black;
+    background: darkblue;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.premiumShow p {
+    color: white;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
 
 html,
 body {

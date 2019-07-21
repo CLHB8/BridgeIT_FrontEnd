@@ -1,11 +1,12 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import {Icon, Button} from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {Link, withRouter} from "react-router-dom";
 import UserService from "../../services/UserService";
-import {Button, Cell, FontIcon, TableColumn, TableRow, SVGIcon} from "react-md";
+import {Cell, FontIcon, TableColumn, TableRow, SVGIcon} from "react-md";
 import KebabMenu from "../KebabMenu";
 import {IoIosLogIn, IoIosLogOut, IoMdHome} from "react-icons/io";
 import {makeStyles} from "@material-ui/core";
@@ -113,9 +114,10 @@ class Header extends React.Component {
             if (!(this.props.location.pathname === "/login"))
                 loginOrKebabMenue =
                     <Link to={`/login`} style={{height: 35}}>
-                        <button type="button" className="signButtonGreen">
-                            <b>Login</b><IoIosLogIn id="middleXLargeIcons"/>
-                        </button>
+                        <Button variant="contained" color="primary">
+                                    Login
+                                       <Icon>arrow_forward</Icon>
+                                    </Button>
                     </Link>
         }
 

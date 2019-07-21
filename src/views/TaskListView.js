@@ -17,8 +17,19 @@ export class TaskListView extends React.Component {
         this.state = {
             loading: false,
             data: [],
-            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
         };
+    }
+
+    handlePremiumChange() {
+        console.log("HANDLECHANGE STATE BEFOR", this.props.user);
+        if(!(this.state.loading)){
+            this.setState({user:{
+                    isPremium: true,
+                    username: this.state.user.username,
+                    id: this.state.user.id,
+                }});
+        }
+        console.log("HANDLECHANGE STATE AFTER", this.state.user);
     }
 
     componentWillMount(){
@@ -28,8 +39,24 @@ export class TaskListView extends React.Component {
 
         RequestService.getRequests().then((data) => {
             this.setState({
-                data: [...data],
-                loading: false
+                data: [...data]
+            });
+            UserService.getUserInfo().then((userInfo) => {
+                console.log("USERINFO", userInfo);
+                let user = {
+                    isPremium: userInfo.isPremium,
+                    firstname: userInfo.firstname,
+                    lastname: userInfo.lastname,
+                    id: userInfo.id,
+                    username: userInfo.username
+                };
+                console.log(user);
+                this.setState({
+                    user: user,
+                    loading: false
+                });
+            }).catch((e) => {
+                console.error(e);
             });
         }).catch((e) => {
             console.error(e);
@@ -61,7 +88,7 @@ export class TaskListView extends React.Component {
         }
 
         return (
-            <TaskList user={this.state.user} data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+            <TaskList user={this.state.user} data={this.state.data} onPremiumChange={this.handlePremiumChange} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }
