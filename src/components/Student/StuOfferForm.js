@@ -91,7 +91,6 @@ export class StuOfferForm extends React.Component {
         stuOffer.wage = this.state.wage;
 
         this.props.onSubmit(stuOffer);
-        console.log(this.state);
     }
 
 
