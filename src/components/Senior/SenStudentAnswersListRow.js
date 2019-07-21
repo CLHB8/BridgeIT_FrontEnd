@@ -37,7 +37,7 @@ export class SenStudentAnswersListRow extends React.Component {
                 <TableColumn><FontIcon>user</FontIcon></TableColumn>
                 <TableColumn>{this.props.stuOffer.studentUsername}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
-                <TableColumn><DisplayRating studentId={this.props.stuOffer.studentId}/></TableColumn>
+                <TableColumn className="md-cell md-cell--3"><DisplayRating studentId={this.props.stuOffer.studentId}/></TableColumn>
                 {UserService.isAuthenticated() ?
                     <TableColumn><Button onClick={() => this.updateRequest()} icon>check_circle</Button></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>

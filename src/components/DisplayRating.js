@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import Rating from 'material-ui-rating'
+import Rating from 'material-ui-rating';
 
 import RatingsService from '../services/RatingsService'
 
@@ -60,11 +60,12 @@ class DisplayRating extends React.Component {
         }
 
         return (
-            <Rating
+            <Rating 
                 value={this.state.studentRating}
                 max={5}
                 readOnly={true}
                 /*onChange={(value) => console.log(`Rated with value ${value}`)}*/
+                
             />
         );
     }

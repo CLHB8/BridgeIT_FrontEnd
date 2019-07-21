@@ -13,13 +13,13 @@ const dataTableStyle = {
 };
 
 export const SenStudentAnswersList = ({stuOffers}) => (
-        <DataTable plain style={dataTableStyle} className="md-cell md-cell--12">
+        <DataTable plain style={dataTableStyle} >
             <TableHeader>
                 <TableRow>
                     <TableColumn></TableColumn>
                     <TableColumn>Student Name</TableColumn>
                     <TableColumn>Message</TableColumn>
-                    <TableColumn>Rating</TableColumn>
+                    <TableColumn >Rating</TableColumn>
                     <TableColumn>Choose Student</TableColumn>
                 </TableRow>
             </TableHeader>

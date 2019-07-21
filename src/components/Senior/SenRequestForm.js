@@ -183,7 +183,7 @@ class SenRequestForm extends React.Component {
                                         component="img"
                                         alt="Mobile Phone Coaching"
                                         height="140"
-                                        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                        image="https://i.imgur.com/dv1LM2R.jpg"
                                         title="Mobile Phone Coaching"
                                     />
                                     <CardContent>
@@ -213,7 +213,7 @@ class SenRequestForm extends React.Component {
                                         component="img"
                                         alt="PC_Computer Coaching"
                                         height="140"
-                                        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                        image="https://i.imgur.com/ART1geZ.jpg"
                                         title="PC_Computer Coaching"
                                     />
                                     <CardContent>
@@ -242,7 +242,7 @@ class SenRequestForm extends React.Component {
                                         component="img"
                                         alt="TV Coaching"
                                         height="140"
-                                        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                        image="https://i.imgur.com/DfFIucI.jpg"
                                         title="TV Coaching"
                                     />
                                     <CardContent>
@@ -271,7 +271,7 @@ class SenRequestForm extends React.Component {
                                         component="img"
                                         alt="Printer Coaching"
                                         height="140"
-                                        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                        image="https://i.imgur.com/NCuV4n3.jpg"
                                         title="Printer Coaching"
                                     />
                                     <CardContent>
@@ -299,7 +299,7 @@ class SenRequestForm extends React.Component {
                                         component="img"
                                         alt="General purchase advice"
                                         height="140"
-                                        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                        image="https://i.imgur.com/4LHmqH2.jpg"
                                         title="General purchase advice"
                                     />
                                     <CardContent>
@@ -327,7 +327,7 @@ class SenRequestForm extends React.Component {
                                         component="img"
                                         alt="Custom Request"
                                         height="80"
-                                        image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                                        image="https://i.imgur.com/rblPT8Q.jpg"
                                         title="Custom Request"
                                     />
                                     <CardContent>

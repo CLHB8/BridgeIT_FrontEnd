@@ -18,12 +18,24 @@ const dataTableStyle = {
     'boxShadow': '2px 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19)'
 
 };
+const cardstyle = {
+    'margin-left': 'auto',
+    'margin-right': 'auto',
+    'margin-top':'20px',
+
+
+};
 
 export const SenMyRequestsList = ({data, onDelete}) => (
     <SeniorPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
-        <Card>
+        <Card className="md-cell md-cell--9" style={cardstyle}>
             <CardContent>
-            <Typography>
+            <CardMedia
+                            className="cardMedia"
+                            image="https://i.imgur.com/dv1LM2R.jpg"
+                            title="Smartphones"
+                        />
+            <Typography variant="h2" component="h4">
             Here you can see all the requests you have posted.
             </Typography>
 
@@ -37,7 +49,7 @@ export const SenMyRequestsList = ({data, onDelete}) => (
                     <TableColumn>Category</TableColumn>
                     <TableColumn>Specifications</TableColumn>
                     <TableColumn>Created at</TableColumn>
-                    <TableColumn>Edit</TableColumn>
+                    
                     <TableColumn>Remove</TableColumn>
                 </TableRow>
             </TableHeader>

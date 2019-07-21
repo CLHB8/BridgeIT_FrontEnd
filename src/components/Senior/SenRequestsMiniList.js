@@ -20,8 +20,9 @@ export const SenRequestsMiniList = ({data, onDelete}) => (
             <TableHeader >
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn>Name</TableColumn>
-                    <TableColumn>Edit</TableColumn>
+                    <TableColumn>Category</TableColumn>
+                    <TableColumn>Specification</TableColumn>
+                    <TableColumn>Created at</TableColumn>
                     <TableColumn>Remove</TableColumn>
                 </TableRow>
             </TableHeader>
