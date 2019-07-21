@@ -26,19 +26,19 @@ export class SenRequestDetailView extends React.Component {
             this.setState({
                 request: reqData
             });
+            StuOfferService.getStuOffersToRequest(id).then((offersData) => {
+                this.setState({
+                    stuOffers: [...offersData],
+                    loading: false
+                });
+            }).catch((e) => {
+                console.error(e);
+            })
         }).catch((e) => {
             console.error(e);
         });
-        console.log("gotRequest success");
 
-        StuOfferService.getStuOffersToRequest(id).then((offersData) => {
-            this.setState({
-                stuOffers: [...offersData],
-                loading: false
-            });
-        }).catch((e) => {
-            console.error(e);
-        })
+        console.log("gotRequest success");
         console.log("getStuOffersToRequest success");
     }
 
@@ -56,7 +56,7 @@ export class SenRequestDetailView extends React.Component {
         }
 
         return (
-            <SenRequestDetail user={this.state.user}stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
+            <SenRequestDetail user={this.state.user} stuOffers={this.state.stuOffers} request={this.state.request} onDelete={(id) => this.deleteRequest(id)}/>
         );
     }
 }

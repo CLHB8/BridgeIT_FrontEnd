@@ -52,7 +52,7 @@ export class SenRequestDetail extends React.Component {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {this.props.request.title}
+                                {}
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h3">
                                 Category: {this.props.request.category}
@@ -66,7 +66,7 @@ export class SenRequestDetail extends React.Component {
                         <div className="md-cell md-cell--12">
 
                             <div className="formButton">
-                                <Link to={`/edit/${this.props.request._id}`}><Button className="md-cell md-cell--3" color="primary" variant="contained">Edit</Button></Link>
+                                {/* <Link to={`/edit/${this.props.request._id}`}><Button className="md-cell md-cell--3" color="primary" variant="contained">Edit</Button></Link> */}
                                 <Button className="md-cell md-cell--3" color="secondary" variant="contained">Delete</Button>
                             </div></div>
                     </CardActions>

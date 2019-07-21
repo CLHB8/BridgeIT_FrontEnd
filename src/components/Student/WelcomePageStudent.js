@@ -2,15 +2,16 @@
 
 import React from 'react';
 import StudentPage from './StudentPage';
+import OfferPopup from '../c_SendOfferPopup';
 import {Button, Divider, Cell, DataTable, FontIcon, Grid, Media, TableBody, TableColumn, TableHeader, TableRow} from "react-md";
 import UserService from "../../services/UserService";
 import {Link} from "react-router-dom";
 import Rating from "../RateStudent"
 import TaskListMiniView from "../../views/TaskListMiniView";
 import { SimpleLink } from '../SimpleLink';
-
 import StuSendOfferPopup from './StuSendOfferPopup';
 import DisplayRating from "../DisplayRating";
+import StuMyAssignedRequest from "../Student/StuMyAssignedRequests";
 
 const style = { maxWidth: 500 };
 
@@ -41,7 +42,7 @@ export class WelcomePageStudent extends React.Component {
 
     render() {
         return (
-            <StudentPage user = {this.props.user} onPremiumChange={this.handlePremiumChange}>
+            <StudentPage user = {this.state.user} onPremiumChange={this.handlePremiumChange}>
                 <div className="gridContainer">
 
                     <div className="catSideBar" border="none">
@@ -51,7 +52,7 @@ export class WelcomePageStudent extends React.Component {
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
                             <h4>{this.state.user.username}</h4>
                             {/* <Rating value={3.5} precision={0.5} readOnly /> */}
-                            <h5>Your rating:</h5><DisplayRating user={this.state.user}/>
+                            <h5>Your rating:</h5><DisplayRating user={this.state.user} displayStudentRating={true}/>
                             <Divider />
                             <br/>
                             {/* <Fab variant="extended" color="primary" aria-label="Add" onClick={this.popupHandler.bind(this)} className={classes.fab}>
@@ -98,6 +99,7 @@ export class WelcomePageStudent extends React.Component {
                         <div className="ratingSummary">
 
                             <h4>Don't forget to rate your recent experience with the seniors:</h4>
+                            <StuMyAssignedRequest user={this.state.user}></StuMyAssignedRequest>
 
 
                         </div>

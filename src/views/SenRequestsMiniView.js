@@ -16,7 +16,8 @@ export class SenRequestsMiniView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: this.props.user
         };
     }
 
@@ -56,7 +57,7 @@ export class SenRequestsMiniView extends React.Component {
     render() {
         if (UserService.isAuthenticated()) {
             return (
-                <SenRequestsMiniList data={this.state.data} onDelete={(id) => this.deleteRequest(id)}/>
+                <SenRequestsMiniList data={this.state.data} user={this.state.user} onDelete={(id) => this.deleteRequest(id)}/>
             );
         }
         else
