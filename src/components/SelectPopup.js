@@ -20,11 +20,11 @@ class PopupDelete extends React.Component{
 
     render(){
         return(
-            <Popup trigger={<FontIcon className='material-icons'>check_circle</FontIcon>} position="left center">
+            <Popup trigger={<FontIcon className='material-icons' style={{"font-size":"xx-large", "color":"darkgreen"}}>check_circle</FontIcon>} position="left center">
                 <Grid >
                     <Card style={style}><h5>Do you really want to select this student?</h5></Card>
                     <Card style={style}>
-                        <Button id="Popup" onClick={() => this.handleClick()}><FontIcon style={{color: 'white'}} className='material-icons'>check_circle</FontIcon>Choose</Button>
+                        <Button style={{background:"darkgreen"}} id="Popup" onClick={() => this.handleClick()}><FontIcon style={{color: 'white'}} className='material-icons'>check_circle</FontIcon>Choose</Button>
                     </Card>
                 </Grid>
             </Popup>

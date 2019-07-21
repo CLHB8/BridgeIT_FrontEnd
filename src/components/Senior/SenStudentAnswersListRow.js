@@ -64,7 +64,7 @@ export class SenStudentAnswersListRow extends React.Component {
         return (
             <TableRow key={this.props.key}>
                 {this.state.studentIsPremium ?
-                <TableColumn><FontIcon>star</FontIcon></TableColumn>
+                <TableColumn><FontIcon style={{"font-size": "x-large", "color": "orange"}}>star</FontIcon></TableColumn>
                 :<TableColumn></TableColumn>}
                 <TableColumn>{this.props.stuOffer.wage} €</TableColumn>
                 <TableColumn>{this.state.studentFullname}</TableColumn>
