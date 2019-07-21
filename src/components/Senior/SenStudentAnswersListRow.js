@@ -16,7 +16,7 @@ export class SenStudentAnswersListRow extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.stuOffer)
+        console.log(this.props.stuOffer);
     }
     componentWillMount() {
         this.setState({
@@ -42,12 +42,13 @@ export class SenStudentAnswersListRow extends React.Component {
     }
 
     updateRequest() {
-        let updateRquest = {
-            assignedStudent: this.props.stuOffer.studentId,
-            isAssigned: true,
+        console.log(this.props.stuOffer.studentId);
+        let updateRequest = {
+            assignedStudent: (this.props.stuOffer.studentId),
+            isAssigned: true
         }
-        RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRquest).then((data) => {
-            console.log("ASSIGNING STUDENT", data);
+        RequestService.updateRequestAssigned(this.props.stuOffer.requestId, updateRequest).then((data) => {
+            console.log(data);
             let rating = {
                 requestId: data._id,
                 seniorId: data.userId,
@@ -58,6 +59,8 @@ export class SenStudentAnswersListRow extends React.Component {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while assigning student to request'}));
         });
+        this.props.onChoosenOneChange(this.props.stuOffer.studentId);
+        window.location.reload();
     }
 
     render() {
@@ -73,7 +76,7 @@ export class SenStudentAnswersListRow extends React.Component {
                 <TableColumn className="md-cell md-cell--3"><DisplayRating studentId={this.props.stuOffer.studentId} displayStudentRating={true}/></TableColumn>
                     :<TableColumn/>}
                 {UserService.isAuthenticated() ?
-                    <TableColumn><SelectPopup updateRequest={this.updateRequest}></SelectPopup></TableColumn>
+                    <TableColumn><SelectPopup updateRequest={() => this.updateRequest()}></SelectPopup></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
 

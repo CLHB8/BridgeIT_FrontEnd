@@ -38,8 +38,9 @@ export const StuMyOffers = ({data, user, onDelete}) => (
         <DataTable plain style={dataTableStyle} >
             <TableHeader>
                 <TableRow>
-                    <TableColumn>Request category</TableColumn>
-                    <TableColumn>Requester's Name</TableColumn>
+                    <TableColumn></TableColumn>
+                    <TableColumn>Category</TableColumn>
+                    <TableColumn>Senior's Username</TableColumn>
                     <TableColumn>Your Message</TableColumn>
                     <TableColumn>Wage per hour</TableColumn>
                     <TableColumn>Created on</TableColumn>

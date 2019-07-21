@@ -105,7 +105,7 @@ a:hover {
 }
 
 .RegisterButton {
-    
+
     font-size: x-large;
     color: white;
     margin-bottom: 20px;
@@ -124,7 +124,7 @@ a:hover {
 }
 
 .BackAndLoginButtonLoginView{
-    
+
     font-size: x-large;
     color: white;
     border: none;
@@ -148,7 +148,7 @@ a:hover {
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    
+
 }
 
 .HeaderReadOut {

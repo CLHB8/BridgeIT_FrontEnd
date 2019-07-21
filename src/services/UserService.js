@@ -131,6 +131,23 @@ export default class UserService {
         return window.localStorage['isSenior'] === "true";
     }
 
+
+
+    static getUser(userId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${userId}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static goPremium(id) {
         return new Promise((resolve, reject) => {
             HttpService.put(`${this.baseURL()}/${id}`, {isPremium: true}, function(data) {

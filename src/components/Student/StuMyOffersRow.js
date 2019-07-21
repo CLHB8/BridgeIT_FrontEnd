@@ -22,13 +22,26 @@ export class StuMyOffersRow extends React.Component {
     render() {
         return (
             <TableRow key={this.props.key}>
+                {(this.props.stuOffer.requestCategory === "Mobile Phone Coaching") ?
+                    ( <TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>phone_iphone</FontIcon></Link></TableColumn>)
+                    : ((this.props.stuOffer.requestCategory === "Computer Coaching") ? (<TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>computer</FontIcon></Link></TableColumn>)
+                            : ((this.props.stuOffer.requestCategory === "TV Coaching") ?
+                                    (<TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>tv</FontIcon></Link></TableColumn>)
+                                    : ((this.props.stuOffer.requestCategory === "Printer Coaching") ?
+                                            (<TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>print</FontIcon></Link></TableColumn>)
+                                            : ((this.props.stuOffer.requestCategory === "Purchase Advice") ?
+                                                    (<TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                                    : ((this.props.stuOffer.requestCategory === "Purchase Advice") ?
+                                                            (<TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>shopping_cart</FontIcon></Link></TableColumn>)
+                                                            : (<TableColumn><Link to={`/stu/addOffer/${this.props.stuOffer.requestId}`}><FontIcon>person_add</FontIcon></Link></TableColumn>)
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+                }
                 <TableColumn>{this.props.stuOffer.requestCategory}</TableColumn>
-                <TableColumn>
-                    {/* <SimpleLink to={`/stu/addOffer/${this.props.stuOffer.requestId}`}> */}
-                    {this.props.stuOffer.seniorUsername}
-                    {/* </SimpleLink> */}
-                    
-                    </TableColumn>
+                <TableColumn>{this.props.stuOffer.seniorUsername}</TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
                 <TableColumn>{this.props.stuOffer.wage}</TableColumn>
                 <TableColumn>{this.props.stuOffer.createdAt.slice(0,10)}</TableColumn>
