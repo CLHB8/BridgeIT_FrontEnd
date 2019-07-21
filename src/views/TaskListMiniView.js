@@ -9,6 +9,9 @@ import UserService from "../services/UserService";
 import {Redirect, withRouter} from "react-router-dom";
 
 
+let a = [];
+
+
 export class TaskListMiniView extends React.Component {
 
     constructor(props) {
@@ -54,7 +57,13 @@ export class TaskListMiniView extends React.Component {
         });
     }
 
+    topFive(){
+
+        a=this.state.data.reverse().slice(0,5); //changes every two times
+    }
+
     render() {
+        this.topFive();
         if (this.state.loading) {
             return (<h2>Loading...</h2>
                 
@@ -62,7 +71,7 @@ export class TaskListMiniView extends React.Component {
             
         }
 return(                 
-            <TaskListMini data={this.state.data.reverse().slice(0,5)} onDelete={(id) => this.deleteRequest(id)}/>
+            <TaskListMini data={a} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }

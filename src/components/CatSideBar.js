@@ -24,9 +24,10 @@ const CatSideBar = (props) => {
 
                 </div>
                 <Divider />
+
+
                 <div className="subscriptionAd">
                     <p>You have {props.ad} free offers remaining this month.<br/> Want to do more? Join our monthly subcription.</p>
-
                 </div>
 
 

@@ -33,7 +33,7 @@ export default class Page extends React.Component {
         return (
             <div className="main-container">
             <section>
-                <StudentHeader title={this.state.title} user={this.props.user} onPremiumChange={this.handlePremiumChange}/>
+                <StudentHeader title={this.state.title} user={this.state.user} onPremiumChange={this.handlePremiumChange}/>
                 {this.props.children}
                 {<Footer />}
             </section>

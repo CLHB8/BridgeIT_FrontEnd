@@ -17,23 +17,14 @@ export const TaskListMini = ({data, onDelete}) => (
 
         
     
-        <DataTable plain resposive style={dataTableStyle} className="md-cell--9 md-paper md-paper--1">
+        <DataTable plain resposive style={dataTableStyle} className="md-cell--12 md-paper md-paper--1">
             <TableHeader >
                 
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn >Request Name</TableColumn>
-                    <TableColumn>Senior's Name 
-                    
-                    </TableColumn>
-                    <TableColumn>Sort By: 
-                        <select>
-                            <option value="Date">Date</option>
-                            <option value="Location">Location</option>
-                            </select>   
-                    </TableColumn>
-                    <TableColumn></TableColumn>
-                    <TableColumn></TableColumn>
+                    <TableColumn >Category</TableColumn>
+                    <TableColumn>Senior's Name</TableColumn>
+                    <TableColumn>Send Offer</TableColumn>
 
 
                 </TableRow>

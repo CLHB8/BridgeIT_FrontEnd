@@ -69,51 +69,73 @@ class UserSignup extends React.Component {
         this.setState(Object.assign({}, this.state, {mail: value}));
     }
 
-    checkIfValueIsEmpty(){
 
-    }
-
-    validateEmail(){
+    validateEmail() {
         // Neil: Gets the current state (current mail text) and checks if it fullfills the requirements (regex) if not false is returned and error text is shown
         let currentMailValue = this.state.mail;
         var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-        if (currentMailValue == undefined || currentMailValue == ""){
+        if (currentMailValue == undefined || currentMailValue == "") {
             return true;
         }
-        if (reg.test(currentMailValue) == false)
-        {
+        if (reg.test(currentMailValue) == false) {
             return false;
         }
         return true;
     }
 
-    passwordsMatch(){
+    validateCityName() {
+        // Neil: Gets the current state (current cityname text) and checks if it fullfills the requirements (regex) if not false is returned and error text is shown
+        let currentCitynameValue = this.state.cityname;
+        var reg = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+
+        if (currentCitynameValue == undefined || currentCitynameValue == "") {
+            return true;
+        }
+        if (reg.test(currentCitynameValue) == false) {
+            return false;
+        }
+        return true;
+    }
+
+    validatePostalcode() {
+        // Neil: Gets the current state (current postalcode text) and checks if it fullfills the requirements (regex) if not false is returned and error text is shown
+        let currentPostalcodeValue = this.state.postalcode;
+        var reg = /^\d{5}$/;
+
+        if (currentPostalcodeValue == undefined || currentPostalcodeValue == "") {
+            return true;
+        }
+        if (reg.test(currentPostalcodeValue) == false) {
+
+            return false;
+        }
+        return true;
+    }
+
+    passwordsMatch() {
         // Neil: Gets the current state (current mail text) and checks if it fullfills the requirements (regex) if not false is returned and error text is shown
         let currentPassword = this.state.password;
         let currentReenteredPassword = this.state.reentered_password;
 
 
-
-        if (currentReenteredPassword == undefined || currentReenteredPassword == "" || currentPassword == undefined || currentPassword == ""){
+        if (currentReenteredPassword == undefined || currentReenteredPassword == "" || currentPassword == undefined || currentPassword == "") {
             return true;
         }
 
         // TODO: Neil: I uncommented regex due to testing purposes, no password requirements
-        if(currentPassword === currentReenteredPassword)/*&& /(?=^.{6,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])/.test(currentPassword))*/{
+        if (currentPassword === currentReenteredPassword)/*&& /(?=^.{6,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])/.test(currentPassword))*/{
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    passwordErrorText(){
-        if(!(this.passwordsMatch())){
-            console.log("Passwords dont Match")
-            return("Passwords don't match")
-        }else{
-            console.log("Password is required")
-            return("Passwords is required")
+    passwordErrorText() {
+        if (!(this.passwordsMatch())) {
+            return ("Passwords don't match")
+        } else {
+            return ("Passwords is required")
         }
     }
 
@@ -134,11 +156,12 @@ class UserSignup extends React.Component {
     }
 
     handleChangeCityname(value) {
-        this.setState(Object.assign({}, this.state, {cityname: value}));
+            this.setState(Object.assign({}, this.state, {cityname: value}));
     }
 
     handleChangePostalCode(value) {
         this.setState(Object.assign({}, this.state, {postalcode: value}));
+
     }
 
     handleSubmit(event) {
@@ -162,7 +185,7 @@ class UserSignup extends React.Component {
                 cityname: this.state.cityname,
                 postalcode: this.state.postalcode,
                 isSenior: true,
-                isPremium: false,
+                isPremium: true,
 
             };
 
@@ -177,10 +200,10 @@ class UserSignup extends React.Component {
                 <Grid container spacing={1}>
                     <Card style={style} className="md-block-centered">
                         <CardTitle
-                            title={<div><h1>Create a New Account</h1><h5>Place two requests a month for free.</h5>
+                            title={<div><h1>Create a New Account</h1>
                             </div>}
                             avatar={<img className="SignupPageImage"
-                                         src="https://www.actiontec.com/wp-content/uploads/2017/06/Senior-Internet-1024x683.jpg"
+                                         src="https://www.spanishgurus.com/wp-content/uploads/2018/07/senior-student.jpg"
                                          alt="Image of Senior"/>}/>
                         <form className="md-grid" onSubmit={this.handleSubmit}
                               onReset={() => this.props.history.goBack()}>
@@ -212,12 +235,12 @@ class UserSignup extends React.Component {
                                 className="md-cell md-cell--6"
                                 label="Email"
                                 id="EmailField"
-                                type="email"
+                                type="text"
                                 required={true}
                                 value={this.state.mail}
                                 onChange={this.handleChangeEmail}
                                 error={!(this.validateEmail())}
-                                errorText="Not a proper mail address format (field is required)!"
+                                errorText="Not a valid mail address (required)"
                                 placeholder="jane.doe@example.com"/>
 
                             <TextField
@@ -264,7 +287,7 @@ class UserSignup extends React.Component {
                                 required={true}
                                 value={this.state.streetname}
                                 onChange={this.handleChangeStreetname}
-                                errorText="Street Name is required"
+                                errorText="Not a valid Streetname (required)"
                                 placeholder="Jump Street"/>
 
                             <TextField
@@ -275,7 +298,7 @@ class UserSignup extends React.Component {
                                 required={true}
                                 value={this.state.streetnumber}
                                 onChange={this.handleChangeStreetnumber}
-                                errorText="Street Number is required and should contain only integers"
+                                errorText="Not a valid Street number (required)"
                                 placeholder="21"/>
 
                             <TextField
@@ -285,8 +308,9 @@ class UserSignup extends React.Component {
                                 type="text"
                                 required={true}
                                 value={this.state.cityname}
+                                error={!(this.validateCityName())}
                                 onChange={this.handleChangeCityname}
-                                errorText="City Name is required"
+                                errorText="Not a valid City Name (required)"
                                 placeholder="Osgiliath"/>
 
                             <TextField
@@ -296,8 +320,9 @@ class UserSignup extends React.Component {
                                 type="text"
                                 required={true}
                                 value={this.state.postalcode}
+                                error={!(this.validatePostalcode())}
                                 onChange={this.handleChangePostalCode}
-                                errorText="Postal code is required"
+                                errorText="Not a valid Postal code (required)"
                                 placeholder="66981"/>
 
 
@@ -305,8 +330,8 @@ class UserSignup extends React.Component {
                                 "text-align": "center",
                                 "align-items": "center"
                             }}>
-                                <Button id="submit" type="submit" style={{background: "darkblue", margin: 0}}
-                                        disabled={!(this.passwordsMatch()) || !(this.validateEmail()) || this.state.firstname == undefined || this.state.firstname == ''
+                                <Button id="submit" type="submit" style={{background: "#3F51B5", margin: 0}}
+                                        disabled={!(this.validateCityName()) ||!(this.validatePostalcode()) ||!(this.passwordsMatch()) || !(this.validateEmail()) || this.state.firstname == undefined || this.state.firstname == ''
                                         || this.state.password == undefined || this.state.password == ''
                                         || this.state.reentered_password == undefined || this.state.reentered_password == ''
                                         || this.state.lastname == undefined || this.state.lastname == ''
@@ -324,7 +349,7 @@ class UserSignup extends React.Component {
                                 "text-align": "center",
                                 "align-items": "center"
                             }}>
-                                <Button id="reset" type="reset" style={{background: "darkred", margin: 0}}
+                                <Button id="reset" type="reset" style={{background: "#D32F2F", margin: 0}}
                                         className="RegisterButton"><b>Back</b></Button>
                             </div>
 

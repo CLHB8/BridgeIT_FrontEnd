@@ -7,14 +7,11 @@ import {
     FontIcon,
     AccessibleFakeButton,
     IconSeparator,
-    DropdownMenu, ListItem, MenuButton, Button
+    DropdownMenu, ListItem, MenuButton,
 } from 'react-md';
 import {IoIosLogOut} from "react-icons/io";
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom'
 import UserService from '../services/UserService';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Snackbar from './Snackbar';
 
 
 class AccountMenu extends React.Component {
@@ -50,8 +47,7 @@ class AccountMenu extends React.Component {
     }
 
     goPremium(){
-        toast("Wow so easy !");
-        UserService.goPremium(UserService.getCurrentUser().id).then((response) => {
+        UserService.goPremium(this.props.user.id).then((response) => {
             this.setState({
                 user: {
                     username: response.username,
@@ -69,6 +65,8 @@ class AccountMenu extends React.Component {
 
 render()
 {
+    console.log("ISSENIOR", UserService.isSenior());
+    console.log("ISPREMIUM", this.state.user.isPremium);
     if (UserService.isSenior() || this.state.user.isPremium) {
         return (
             <DropdownMenu
@@ -118,12 +116,16 @@ render()
                               primaryText={this.props.user.username} onClick={() => {
                         UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
                     }}/>,
+
+                    /*
                     // TODO: needs to be implemented --> Edit View
                     <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
                               primaryText="Edit Profile" onClick={() => {
                         UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
                     }}/>,
-                    {divider: true},
+                     */
+
+
                     <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
                               primaryText="Logout"
                               onClick={() => this.logout()}/>,
@@ -131,9 +133,13 @@ render()
 
                     this.state.user.isPremium ? {display: "none"} : {divider: true},
 
-                   <Snackbar goPremium={this.goPremium}><ListItem id="AccountMenu" key={4} style={
+                    <ListItem id="AccountMenu" key={4} style={
                         this.state.user.isPremium ? {display: "none"} : {display: "list-item"}
-                   } leftAvatar={<Avatar icon={<FontIcon>star</FontIcon>}/>} primaryText="Go Premium"/></Snackbar>
+                    } leftAvatar={<Avatar icon={<FontIcon>star</FontIcon>}/>}
+                              primaryText="Go Premium" onClick={
+                                  ()=>
+                        this.goPremium()
+                    }/>,
                 ]}
                 anchor={{
                     x: DropdownMenu.HorizontalAnchors.CENTER,

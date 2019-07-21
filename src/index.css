@@ -4,6 +4,7 @@
 #splitscreenList {
     margin: 20px;
     text-align: justify;
+    min-height: 385px;
 }
 
 ul {
@@ -61,10 +62,8 @@ button:focus {outline:0 !important;}
     margin-bottom: 15px;
     border: none;
     height: 30px;
-    border-radius: 5px;
     min-width: 80px;
-    justify-items: center;
-    align-items: center;
+
 }
 
 /*Neil: Remove underline when mouse moves over link */
@@ -106,13 +105,13 @@ a:hover {
 }
 
 .RegisterButton {
-    background: darkblue;
+
     font-size: x-large;
     color: white;
     margin-bottom: 20px;
     border: none;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 280px;
 }
 
@@ -125,12 +124,12 @@ a:hover {
 }
 
 .BackAndLoginButtonLoginView{
-    background: darkblue;
+
     font-size: x-large;
     color: white;
     border: none;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 110px;
     height: 35px;
 }
@@ -147,6 +146,9 @@ a:hover {
 .wrapper_continue {
     text-align: center;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 
 .HeaderReadOut {
@@ -376,11 +378,10 @@ div.secondLine span {
 .gridContainer {
     display: grid;
     width: 100%;
-    height: 90%;
-    grid-template-columns: 20% 1fr 1fr;
-    grid-template-rows: 100% 1fr 1fr 100px;
+    height: 100%;
+    grid-template-columns: 20% 1fr;
     grid-gap: 1rem;
-    grid-template-areas: "catSideBar takList takList" "catSideBar takList takList" "catSideBar takList takList" "catSideBar takList takList" "catSideBar takList takList";
+    grid-template-areas: "catSideBar takList";
 }
 
 ul {
@@ -399,7 +400,9 @@ li:hover {
 .taskList {
     grid-area: takList;
 
-    margin-left: 5px;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 40px;
 }
 
 .categories button {
@@ -427,17 +430,35 @@ li:hover {
 .subscriptionAd {
 
 
-    border: 2px solid #F44336;
-    background-color: #FFF9C4;
-    padding: 10px;
-    margin: 10px;
-}
+     border: 2px solid #F44336;
+     background-color: #FFF9C4;
+     padding: 10px;
+     margin: 10px;
+ }
 
 .subscriptionAd p {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
 }
+
+.premiumShow {
+    border: black;
+    background: darkblue;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.premiumShow p {
+    color: white;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
 
 html,
 body {
@@ -538,7 +559,7 @@ footer {
 
 .genericCard{
 
-    max-width: 1000px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;

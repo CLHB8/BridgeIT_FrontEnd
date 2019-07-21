@@ -16,7 +16,8 @@ export const SenStudentAnswersList = ({stuOffers, onChoosenOneChange}) => (
         <DataTable plain style={dataTableStyle} className="md-cell md-cell--12">
             <TableHeader>
                 <TableRow>
-                    <TableColumn></TableColumn>
+                    <TableColumn>Recommended</TableColumn>
+                    <TableColumn>Wage</TableColumn>
                     <TableColumn>Student Name</TableColumn>
                     <TableColumn>Message</TableColumn>
                     <TableColumn>Rating</TableColumn>

@@ -46,6 +46,22 @@ export default class UserService {
         });
     }
 
+    static editProfile() {
+        let id = this.getCurrentUser().id;
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static login(user, pass) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/login`, {
@@ -54,8 +70,11 @@ export default class UserService {
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
-                console.log(textStatus);
-                reject(textStatus);
+                if(!console.log(textStatus)){
+                    reject("Password or username not correct");
+                }else{
+                    reject(textStatus);
+                }
             });
         });
     }
@@ -124,6 +143,7 @@ export default class UserService {
         });
     }
 
+
     static isPremium() {
         let user = this.getCurrentUser();
 
@@ -134,6 +154,23 @@ export default class UserService {
                 }
                 else {
                     reject('Error while retrieving information if user is Premium');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getUserInfo() {
+        let user = this.getCurrentUser();
+
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/user/${user.id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
                 }
             }, function(textStatus) {
                 reject(textStatus);
