@@ -38,7 +38,7 @@ export default class StuMyAssignedRequests extends React.Component {
     render() {
         if (UserService.isAuthenticated()) {
             return (
-                <StuMyAssignedRequestsList data={this.state.data} user={this.state.user}/>
+                <StuMyAssignedRequestsList data={this.state.data} user={this.props.user}/>
             );
         }
         else

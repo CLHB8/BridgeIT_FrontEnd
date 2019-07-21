@@ -85,11 +85,9 @@ export class WelcomePageSenior extends React.Component {
                             <h4 align="center"><SimpleLink to={'WelcomePage'}><Button raised primary swapTheming
                                                                                       onClick={() => UserService.logout()}>Log
                                 out</Button></SimpleLink></h4>
-
                         </div>
-
-
                     </div>
+
                     <div className="taskList">
 
                         <h4>If you already posted one or more requests and want to check on their

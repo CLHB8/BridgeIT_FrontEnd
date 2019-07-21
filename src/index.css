@@ -426,17 +426,35 @@ li:hover {
 .subscriptionAd {
 
 
-    border: 2px solid #F44336;
-    background-color: #FFF9C4;
-    padding: 10px;
-    margin: 10px;
-}
+     border: 2px solid #F44336;
+     background-color: #FFF9C4;
+     padding: 10px;
+     margin: 10px;
+ }
 
 .subscriptionAd p {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
 }
+
+.premiumShow {
+    border: black;
+    background: darkblue;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.premiumShow p {
+    color: white;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
 
 html,
 body {
