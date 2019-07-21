@@ -4,6 +4,7 @@
 #splitscreenList {
     margin: 20px;
     text-align: justify;
+    min-height: 385px;
 }
 
 ul {
