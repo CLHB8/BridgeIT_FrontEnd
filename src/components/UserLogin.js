@@ -75,12 +75,12 @@ class UserLogin extends React.Component {
                                 errorText="Password is required"/>
 
 
-                                <Button id="submit" type="submit" style={{background: "darkblue"}}
+                                <Button id="submit" type="submit" style={{background: "#3F51B5"}}
                                         disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
                                         className="BackAndLoginButtonLoginView"><b>Login</b><IoIosLogIn id="middleXLargeIcons"/></Button>
 
 
-                            <Button id="reset" type="reset" style={{background: "darkred"}}
+                            <Button id="reset" type="reset" style={{background: "#D32F2F"}}
                                     className="BackAndLoginButtonLoginView"><b>Back</b></Button>
 
 

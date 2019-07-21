@@ -200,7 +200,7 @@ class UserSignup extends React.Component {
                 <Grid container spacing={1}>
                     <Card style={style} className="md-block-centered">
                         <CardTitle
-                            title={<div><h1>Create a New Account</h1><h5>Place two requests a month for free.</h5>
+                            title={<div><h1>Create a New Account</h1>
                             </div>}
                             avatar={<img className="SignupPageImage"
                                          src="https://www.spanishgurus.com/wp-content/uploads/2018/07/senior-student.jpg"
@@ -330,7 +330,7 @@ class UserSignup extends React.Component {
                                 "text-align": "center",
                                 "align-items": "center"
                             }}>
-                                <Button id="submit" type="submit" style={{background: "darkblue", margin: 0}}
+                                <Button id="submit" type="submit" style={{background: "#3F51B5", margin: 0}}
                                         disabled={!(this.validateCityName()) ||!(this.validatePostalcode()) ||!(this.passwordsMatch()) || !(this.validateEmail()) || this.state.firstname == undefined || this.state.firstname == ''
                                         || this.state.password == undefined || this.state.password == ''
                                         || this.state.reentered_password == undefined || this.state.reentered_password == ''
@@ -349,7 +349,7 @@ class UserSignup extends React.Component {
                                 "text-align": "center",
                                 "align-items": "center"
                             }}>
-                                <Button id="reset" type="reset" style={{background: "darkred", margin: 0}}
+                                <Button id="reset" type="reset" style={{background: "#D32F2F", margin: 0}}
                                         className="RegisterButton"><b>Back</b></Button>
                             </div>
 

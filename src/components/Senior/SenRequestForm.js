@@ -13,6 +13,14 @@ import {CardTitle, Cell, Grid, TextField} from "react-md";
 import {AlertMessage} from "../AlertMessage";
 import {withRouter} from "react-router-dom";
 
+const cardstyle = {
+    'margin-left': 'auto',
+    'margin-right': 'auto',
+    
+
+
+};
+
 class SenRequestForm extends React.Component {
 
     constructor(props) {
@@ -172,8 +180,25 @@ class SenRequestForm extends React.Component {
             <SeniorPage user={this.state.user}>
                 <Grid className="md-block-centered">
                     <Cell size={12}>
-                        <h3>On this page you can add a new request based on your needs.</h3>
-                        <h3>You can either choose one of our predefined categories or and define your own below.</h3>
+                        
+                        <Card className="md-cell md-cell--12" style={cardstyle}>
+                                <CardContent>
+                                    
+                                <CardMedia
+                                                className="cardMedia"
+                                                image="https://i.imgur.com/uhknjwu.jpg"
+                                                title="Smartphones"
+                                            />
+                                <Typography variant="h2" gutterBottom component="h4">
+                                On this page you can add a new request based on your needs.
+                                </Typography>
+                                <Typography variant="h5">
+                                You can either choose one of our predefined categories or and define your own below.
+
+                                </Typography>
+
+                                </CardContent>
+                        </Card>
                     </Cell>
                     <Cell size={4}>
                         <form className="md-grid" onSubmit={this.handleSubmitMobilePhone}>
