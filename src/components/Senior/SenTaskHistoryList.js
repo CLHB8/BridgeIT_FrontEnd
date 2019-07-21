@@ -13,7 +13,7 @@ const dataTableStyle = {
 
 export const SenTaskHistoryList = ({data}) => (
 
-    <List plain style={dataTableStyle}>
+    <List plain style={dataTableStyle} className="md-cell md-cell--9">
             {data.map((request, i) => <SenTaskHistoryListItem key={i} request={request} />)}
     </List>
 

@@ -52,7 +52,7 @@ export class WelcomePageStudent extends React.Component {
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
                             <h4>{this.state.user.username}</h4>
                             {/* <Rating value={3.5} precision={0.5} readOnly /> */}
-                            <h5>Your rating:</h5><DisplayRating user={this.state.user}/>
+                            <h5>Your rating:</h5><DisplayRating user={this.state.user} displayStudentRating={true}/>
                             <Divider />
                             <br/>
                             {/* <Fab variant="extended" color="primary" aria-label="Add" onClick={this.popupHandler.bind(this)} className={classes.fab}>

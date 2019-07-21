@@ -90,10 +90,10 @@ export class SenMyRequestsListRow extends React.Component {
                     <TableColumn><SimpleLink
                         to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
                     <TableColumn>{this.state.daysSince}</TableColumn>
-                    {UserService.isAuthenticated() ?
+                    {/* {UserService.isAuthenticated() ?
                         <TableColumn><Link to={`/edit/${this.props.request._id}`}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                         : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
-                    }
+                    } */}
                     {UserService.isAuthenticated() ?
                         <TableColumn><PopupDelete delete={this.delete} id={this.props.request._id}></PopupDelete></TableColumn>
                         : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>

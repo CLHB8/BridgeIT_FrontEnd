@@ -10,7 +10,7 @@ import {SenMyAssignedRequestsListRow} from "./SenMyAssignedRequestsListRow";
 import {SimpleLink} from "../SimpleLink";
 
 const dataTableStyle = {
-    'margin-bottom': '0px',
+    'margin-bottom': '0px'
 
     // 'box-shadow': '2px 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19)'
 
@@ -26,7 +26,6 @@ export const SenRequestsMiniList = ({data, user, onDelete}) => (
                 <TableColumn>Category</TableColumn>
                 <TableColumn>Description</TableColumn>
                 <TableColumn>Created</TableColumn>
-                <TableColumn>Edit</TableColumn>
                 <TableColumn>Remove</TableColumn>
             </TableRow>
         </TableHeader>

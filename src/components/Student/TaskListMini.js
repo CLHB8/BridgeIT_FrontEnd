@@ -22,15 +22,16 @@ export const TaskListMini = ({data, onDelete}) => (
                 
                 <TableRow>
                     <TableColumn></TableColumn>
-                    <TableColumn >Request Name</TableColumn>
+                    <TableColumn >Category</TableColumn>
                     <TableColumn>Senior's Name 
                     
                     </TableColumn>
-                    <TableColumn>Sort By: 
+                    <TableColumn>
+                        {/* Sort By: 
                         <select>
                             <option value="Date">Date</option>
                             <option value="Location">Location</option>
-                            </select>   
+                            </select>    */}
                     </TableColumn>
                     <TableColumn></TableColumn>
                     <TableColumn></TableColumn>

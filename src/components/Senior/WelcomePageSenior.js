@@ -73,7 +73,7 @@ export class WelcomePageSenior extends React.Component {
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
                             <h4>{this.state.user.username}</h4>
                             {/* <Rating value={3.5} precision={0.5} readOnly /> */}
-                            <h5>Your rating:</h5><DisplayRating user={this.state.user}/>
+                            <h5>Your rating:</h5><DisplayRating user={this.state.user} displayStudentRating={false}/>
                             <Divider/>
                             <br/>
                             <SimpleLink to={'add'}><Fab variant="extended" color="primary" aria-label="Add"
