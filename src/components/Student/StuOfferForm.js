@@ -1,10 +1,11 @@
 "use strict";
 
 import React from 'react';
-import {Button, TextField} from 'react-md';
+import {Button, TextField, SelectField} from 'react-md';
 import {Card, CardActions, CardActionArea, CardContent, CardMedia, Typography, Divider, Icon, Chip } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+
 
 import { AlertMessage } from '../AlertMessage';
 import StudentPage from './StudentPage';
@@ -22,7 +23,7 @@ const chipStyle = {
     margin: 5,
 
 };
-
+const Wage_ITEMS = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
 
 
 export class StuOfferForm extends React.Component {
@@ -37,6 +38,7 @@ export class StuOfferForm extends React.Component {
                 seniorId: props.stuOffer.seniorId,
                 studentId: props.stuOffer.studentId,
                 introMsg: props.stuOffer.introMsg,
+                wage: props.stuOffer.wage,
                 seniorUsername: props.stuOffer.seniorUsername,
                 studentUsername: props.stuOffer.studentUsername,
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
@@ -49,6 +51,7 @@ export class StuOfferForm extends React.Component {
                 seniorId: '',
                 studentId: '',
                 introMsg: '',
+                wage: '',
                 seniorUsername: '',
                 studentUsername: '',
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
@@ -57,12 +60,16 @@ export class StuOfferForm extends React.Component {
         }
 
         this.handleChangeIntroMsg = this.handleChangeIntroMsg.bind(this);
+        this.handleChangeWage = this.handleChangeWage.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChangeIntroMsg(value) {
         this.setState(Object.assign({}, this.state, {introMsg: value}));
+    }
+    handleChangeWage(value) {
+        this.setState(Object.assign({}, this.state, {wage: value}));
     }
 
 
@@ -81,6 +88,7 @@ export class StuOfferForm extends React.Component {
         stuOffer.seniorUsername = this.props.request.senUserName;
         stuOffer.studentUsername = this.state.user.username;
         stuOffer.introMsg = this.state.introMsg;
+        stuOffer.wage = this.state.wage;
 
         this.props.onSubmit(stuOffer);
         console.log(this.state);
@@ -120,6 +128,16 @@ export class StuOfferForm extends React.Component {
                     <CardActions>
                         <form className="md-cell md-cell--12" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                             <Divider/>
+                            <SelectField
+                                id="select-field-1"
+                                label="Wage per Hour"
+                                required={true}
+                                value={this.state.wage}
+                                onChange={this.handleChangeWage}
+                                placeholder="Placeholder"
+                                className="md-cell"
+                                menuItems={Wage_ITEMS}
+                            />
                             <TextField
                                 label="Your Message"
                                 id="introMsgField"

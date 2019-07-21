@@ -104,13 +104,13 @@ a:hover {
 }
 
 .RegisterButton {
-    background: darkblue;
+    
     font-size: x-large;
     color: white;
     margin-bottom: 20px;
     border: none;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 280px;
 }
 
@@ -123,12 +123,12 @@ a:hover {
 }
 
 .BackAndLoginButtonLoginView{
-    background: darkblue;
+    
     font-size: x-large;
     color: white;
     border: none;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 110px;
     height: 35px;
 }
@@ -145,6 +145,9 @@ a:hover {
 .wrapper_continue {
     text-align: center;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
 }
 
 .HeaderReadOut {
@@ -555,7 +558,7 @@ footer {
 
 .genericCard{
 
-    max-width: 700px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;

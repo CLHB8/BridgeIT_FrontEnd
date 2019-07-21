@@ -2,6 +2,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+//import {IconButton} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {Link, withRouter} from "react-router-dom";
 import UserService from "../../services/UserService";
@@ -171,26 +172,34 @@ class Header extends React.Component {
                             </IconButton> : <h1 style={style}>{landingPageWelcomeText}</h1>}
 
                         <div style={{flexGrow: "1"}}/>
+                        <div className="secondLine">
+                            <span><Button flat primary iconChildren="arrow_back" onClick={() => this.props.history.goBack()}>Back</Button></span>
+                            <span><Button flat primary iconChildren="home" onClick={() => this.props.history.push('/sen/WelcomePage')}>Start Page</Button></span>
+                            <span><Button flat primary iconChildren="library_add" onClick={() => this.props.history.push('/sen/add')}>Add a new Request</Button></span>
+                            <span><Button flat primary iconChildren="view_list" onClick={() => this.props.history.push('/sen/myRequests')}>View my Requests</Button></span>
+                            <span><Button flat primary iconChildren="help_outline" onClick={() => this.props.history.push('/help')}>Help</Button></span>
+                        </div>
 
                         {homeButton}
                         {homeButtonDiv}
                         {loginOrKebabMenue}
+                        
 
 
                     </Toolbar>
                 </AppBar>
-                <AppBar position="static" style={{background: "white", boxShadow: "none", borderBottom: "2px solid black"}}>
+                {/* <AppBar position="static" style={{background: "white", boxShadow: "none", borderBottom: "2px solid black"}}>
                     <Toolbar>
                         <div className="secondLine">
-                            <span><button className="SHButton" onClick={() => this.props.history.goBack()}><i className="material-icons">keyboard_backspace</i>Back</button></span>
-                            <span><button className="SHButton" onClick={() => this.props.history.push('/sen/WelcomePage')}><i className="material-icons">home</i>Start Page</button></span>
-                            <span><button className="SHButton" onClick={() => this.props.history.push('/sen/add')}><i className="material-icons">library_add</i>Add a new Request</button></span>
-                            <span><button className="SHButton" onClick={() => this.props.history.push('/sen/myRequests')}><i className="material-icons">view_list</i>View my Requests</button></span>
-                            <span><button className="SHButton"><i className="material-icons">view_list</i>Help</button></span>
+                            <span><Button flat primary iconChildren="arrow_back" onClick={() => this.props.history.goBack()}>Back</Button></span>
+                            <span><Button flat primary iconChildren="home" onClick={() => this.props.history.push('/sen/WelcomePage')}>Start Page</Button></span>
+                            <span><Button flat primary iconChildren="library_add" onClick={() => this.props.history.push('/sen/add')}>Add a new Request</Button></span>
+                            <span><Button flat primary iconChildren="view_list" onClick={() => this.props.history.push('/sen/myRequests')}>View my Requests</Button></span>
+                            <span><Button flat primary iconChildren="help_outline" onClick={() => this.props.history.push('/help')}>Help</Button></span>
                         </div>
 
                     </Toolbar>
-                </AppBar>
+                </AppBar> */}
             </div>
 
         );

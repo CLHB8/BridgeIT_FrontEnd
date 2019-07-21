@@ -19,7 +19,7 @@ export const StuMyAssignedRequestsList = ({data, user, onDelete}) => (
             <TableRow>
                 <TableColumn></TableColumn>
                 <TableColumn>Name</TableColumn>
-                <TableColumn>Student Information</TableColumn>
+                <TableColumn>Senior's Name</TableColumn>
                 <TableColumn>Created</TableColumn>
                 <TableColumn>Rating</TableColumn>
             </TableRow>

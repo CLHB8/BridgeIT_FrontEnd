@@ -19,7 +19,7 @@ export class StuMyOffersRow extends React.Component {
         return (
             <TableRow key={this.props.key}>
                 <TableColumn><FontIcon>image</FontIcon></TableColumn>
-                <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.stuOffer.requestId}`}>{this.props.stuOffer.requestTitle}</SimpleLink></TableColumn>
+                <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.stuOffer.requestId}`}>{this.props.stuOffer.seniorUsername}</SimpleLink></TableColumn>
                 <TableColumn>{this.props.stuOffer.introMsg}</TableColumn>
                 {UserService.isAuthenticated() ?
                     <TableColumn><Button onClick={() => this.props.onDelete(this.props.stuOffer._id)} icon>delete</Button></TableColumn>

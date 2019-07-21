@@ -21,6 +21,25 @@ export class StuMyAssignedRequestsListRow extends React.Component {
         this.delete = this.delete.bind(this);
         this.timedifference(this.props.request.createdAt);
     }
+    componentWillMount() {
+        this.setState({
+            loading: true,
+        });
+
+        let id = this.props.request.userId;
+
+        UserService.getUserById(id).then((seniorData) => {
+            this.setState({
+                senior: seniorData,
+                seniorFirstname: seniorData.firstname,
+                seniorLastname: seniorData.lastname,
+                seniorFullname: seniorData.firstname + " " + seniorData.lastname,
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        })
+    }
 
     delete(value) {
         this.props.onDelete(value);
@@ -77,7 +96,7 @@ export class StuMyAssignedRequestsListRow extends React.Component {
                         )
                     }
                     <TableColumn>{this.props.request.category}</TableColumn>
-                    <TableColumn>{this.props.request.senUserName}</TableColumn>
+                    <TableColumn>{this.state.seniorFullname}</TableColumn>
                     <TableColumn>{this.state.daysSince}</TableColumn>
                     <TableColumn><RateStudent user={this.props.user} request={this.props.request}/></TableColumn>
                 </TableRow>
