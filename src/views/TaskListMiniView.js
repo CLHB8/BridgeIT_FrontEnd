@@ -19,7 +19,8 @@ export class TaskListMiniView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: this.props.user
         };
     }
 
@@ -71,7 +72,7 @@ export class TaskListMiniView extends React.Component {
             
         }
 return(                 
-            <TaskListMini data={a} onDelete={(id) => this.deleteRequest(id)}/>
+            <TaskListMini data={a} user={this.props.user} onDelete={(id) => this.deleteRequest(id)}/>
             
         );
     }

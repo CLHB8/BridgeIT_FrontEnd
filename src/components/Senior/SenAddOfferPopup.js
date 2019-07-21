@@ -12,7 +12,7 @@ const SenAddOfferPopup = (props) => {
     if(props.visibility==true){
         return(
             <div className="popuplayer">
-            <div className="popup">
+            <div className="popup" >
                 <SenRequestFormView >{console.log('It works!')}</SenRequestFormView>
             </div>
             </div>

@@ -13,7 +13,7 @@ const dataTableStyle = {
 
 
 
-export const TaskListMini = ({data, onDelete}) => (
+export const TaskListMini = ({data, user, onDelete}) => (
 
         
     
@@ -24,13 +24,14 @@ export const TaskListMini = ({data, onDelete}) => (
                     <TableColumn></TableColumn>
                     <TableColumn >Category</TableColumn>
                     <TableColumn>Senior's Name</TableColumn>
+                    <TableColumn>Senior's Rating</TableColumn>
                     <TableColumn>Send Offer</TableColumn>
 
 
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((request, i) => <TaskListRow key={i} request={request} onDelete={(id) => onDelete(id)} />)}
+                {data.map((request, i) => <TaskListRow key={i} request={request} user={user} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
             {/* <TablePagination rowsPerPageLabel ="Items Per Page" /> */}
         </DataTable>

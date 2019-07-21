@@ -28,15 +28,18 @@ const CatSideBar = (props) => {
                     <li><button>TV Coaching</button></li>
                     <li><button>Others</button></li>
                     </ul>
- 
-
                 </div>
                 <Divider />
 
 
-                <div className="subscriptionAd">
-                    <p>You have {props.ad} free offers remaining this month.<br/> Want to do more? Join our monthly subcription.</p>
-                </div>
+                {props.user.isPremium ?
+                    <div className="premiumShow">
+                        <p>Thank you for being a Premium Member on our Platform.</p>
+                    </div> :                 <div className="subscriptionAd">
+                        <p>You have {props.ad} free offers remaining this month.<br/> Want to do more? Join our monthly subcription.</p>
+                    </div>}
+
+
 
 
 

@@ -6,14 +6,21 @@ import { Link } from 'react-router-dom';
 
 import { SimpleLink } from '../SimpleLink';
 import UserService from "../../services/UserService";
+import RateStudent from "../RateStudent";
+import DisplayRating from "../DisplayRating";
+import BlurredRating from "material-ui-rating";
 
+
+var details = "";
+var requestTitle = "";
 
 export class TaskListRow extends React.Component {
 
     constructor(props) {
         super(props);
         this.state={
-            showPopup:false
+            showPopup:false,
+            user:this.props.user
             
         };
         
@@ -76,9 +83,23 @@ export class TaskListRow extends React.Component {
                 <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>{this.props.request.category}</SimpleLink>
                 
                 </TableColumn>
-                <TableColumn>{this.state.seniorFullname}
+                <TableColumn>{this.state.seniorFullname}</TableColumn>
 
-                </TableColumn>
+
+
+
+                {this.props.user.isPremium ?
+                    <TableColumn><DisplayRating user={this.state.user} request={this.props.request} displayStudentRating={false}/></TableColumn>
+                   :
+                    <div>
+                        <BlurredRating
+                            value={0}
+                            max={5}
+                            disabled={true}
+                        />
+                        <h6>Visible only for Preemium User</h6>
+                    </div>}
+
 
                 <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>
                     <Button flat primary onClick={this.popupHandler.bind(this)} iconChildren="send">Send Offer</Button></SimpleLink>

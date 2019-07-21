@@ -6,9 +6,11 @@ import {Card, CardActions, Icon, CardActionArea, CardContent, CardMedia, Typogra
 
 import SeniorPage from './SeniorPage';
 import { SenStudentAnswersList } from './SenStudentAnswersList';
+import ContactDataPopup from './ContactDataPopup';
 
 import RequestService from '../../services/RequestService';
 import StuOfferService from "../../services/StuOfferService";
+import SenAddOfferPopup from "./SenAddOfferPopup";
 
 const style = { maxWidth: 900 };
 
@@ -16,6 +18,11 @@ export class SenRequestDetail extends React.Component {
 
     constructor(props) {
         super(props);
+            this.handleChoosenOneChange = this.handleChoosenOneChange.bind(this);
+    }
+
+    handleChoosenOneChange(anakin){
+        this.props.onChoosenOneChange(anakin);
     }
 /*
     deleteStuOffer(id) {
@@ -41,7 +48,7 @@ export class SenRequestDetail extends React.Component {
     render() {
         return (
             <SeniorPage user={this.props.user}>
-
+                <ContactDataPopup visibility={this.props.showPopup} theChoosenOne={this.props.theChoosenOne} request={this.props.request} theChoosenLastName={this.props.theChoosenLastName} theChoosenFirstName={this.props.theChoosenFirstName} theChoosenPhone={this.props.theChoosenPhone} theChoosenMail={this.props.theChoosenMail}></ContactDataPopup>
 
                 <Card className="genericCard">
                     <CardActionArea>
@@ -52,7 +59,7 @@ export class SenRequestDetail extends React.Component {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {}
+                                {this.props.request.category}
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h3">
                                 Category: {this.props.request.category}
@@ -66,20 +73,13 @@ export class SenRequestDetail extends React.Component {
                         <div className="md-cell md-cell--12">
 
                             <div className="formButton">
-                                {/* <Link to={`/edit/${this.props.request._id}`}><Button className="md-cell md-cell--3" color="primary" variant="contained">Edit</Button></Link> */}
                                 <Button className="md-cell md-cell--3" color="secondary" variant="contained">Delete</Button>
                             </div></div>
                     </CardActions>
 
                     <CardContent>
                         <Divider/>
-
-                        <Typography gutterBottom variant="h6" component="h3">
-                            Our recommended Student is: {/* Enter Best Student Name and option to choose him*/}
-                        </Typography>
-
-                                <SenStudentAnswersList user={this.props.user} stuOffers={this.props.stuOffers} />
-
+                                <SenStudentAnswersList onChoosenOneChange={this.handleChoosenOneChange} user={this.props.user} stuOffers={this.props.stuOffers} />
                     </CardContent>
 
 

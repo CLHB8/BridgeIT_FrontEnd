@@ -20,6 +20,7 @@ import {StartPageView} from "./views/StartPageView";
 import {SeniorSignupView} from "./views/SeniorSignupView";
 import {StudentSignupView} from "./views/StudentSignupView";
 import {FAQView} from "./views/FAQView";
+import {UserEditProfileView} from "./views/UserEditProfileView";
 
 
 export default class App extends React.Component {
@@ -40,6 +41,7 @@ export default class App extends React.Component {
                         }} , path: '/edit/:id'},
                 { component: SenRequestFormView, path: '/sen/add'},
                 { component: UserLoginView, path: '/login'},
+                { component: UserEditProfileView, path: '/edit'},
 
                 { component: SeniorSignupView, path: '/sen/register'},
                 { component: StudentSignupView, path: '/stu/register'},

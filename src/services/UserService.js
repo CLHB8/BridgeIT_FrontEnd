@@ -62,6 +62,19 @@ export default class UserService {
         });
     }
 
+    static updateEdit(userUpdate) {
+        console.log(this.getCurrentUser().id);
+        console.log(userUpdate);
+        let id = this.getCurrentUser().id;
+        return new Promise((resolve, reject) => {
+            HttpService.put(`${this.baseURL()}/${id}`, userUpdate, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static getUserById(userId) {
         return new Promise((resolve, reject) => {
             HttpService.get(`${UserService.baseURL()}/user/${userId}`, function(data) {
@@ -116,6 +129,23 @@ export default class UserService {
 
     static isSenior() {
         return window.localStorage['isSenior'] === "true";
+    }
+
+
+
+    static getUser(userId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/${userId}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
     }
 
     static goPremium(id) {

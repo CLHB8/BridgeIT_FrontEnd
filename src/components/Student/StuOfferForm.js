@@ -89,7 +89,6 @@ export class StuOfferForm extends React.Component {
         stuOffer.wage = this.state.wage;
 
         this.props.onSubmit(stuOffer);
-        console.log(this.state);
     }
 
 
@@ -100,7 +99,7 @@ export class StuOfferForm extends React.Component {
                     <CardActionArea>
                         <CardMedia
                             className="cardMedia"
-                            image="https://i.imgur.com/RfYzrXE.jpg"
+                            image="https://www.progrss.com/wp-content/uploads/2016/11/senior-student-housing-nyu-1280x600.jpg"
                             title="Smartphones"
                         />
                         <CardContent>

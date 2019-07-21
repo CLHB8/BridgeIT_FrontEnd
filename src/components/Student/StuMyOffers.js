@@ -17,13 +17,13 @@ const cardstyle = {
     marginTop: 15,
 };
 
-export const StuMyOffers = ({data, onDelete}) => (
-    <StudentPage user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined}>
+export const StuMyOffers = ({data, user, onDelete}) => (
+    <StudentPage user={user}>
         <Card className="md-cell--10" style={cardstyle}>
 
         <CardMedia
                             className="cardMedia"
-                            image="https://i.imgur.com/RfYzrXE.jpg"
+                            image="https://www.progrss.com/wp-content/uploads/2016/11/senior-student-housing-nyu-1280x600.jpg"
                             title="Smartphones"
                         />
         <CardContent>
@@ -38,8 +38,9 @@ export const StuMyOffers = ({data, onDelete}) => (
         <DataTable plain style={dataTableStyle} >
             <TableHeader>
                 <TableRow>
-                    <TableColumn>Request category</TableColumn>
-                    <TableColumn>Requester's Name</TableColumn>
+                    <TableColumn></TableColumn>
+                    <TableColumn>Category</TableColumn>
+                    <TableColumn>Senior's Username</TableColumn>
                     <TableColumn>Your Message</TableColumn>
                     <TableColumn>Wage per hour</TableColumn>
                     <TableColumn>Created on</TableColumn>
@@ -47,7 +48,7 @@ export const StuMyOffers = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((stuOffer, i) => <StuMyOffersRow user={UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined} key={i} stuOffer={stuOffer} onDelete={(id) => onDelete(id)} />)}
+                {data.map((stuOffer, i) => <StuMyOffersRow user={user} key={i} stuOffer={stuOffer} onDelete={(id) => onDelete(id)} />)}
             </TableBody>
         </DataTable>
         </CardContent>

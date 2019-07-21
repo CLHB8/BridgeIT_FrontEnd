@@ -267,7 +267,7 @@ class SenRequestForm extends React.Component {
                                     <CardMedia
                                         component="img"
                                         alt="TV Coaching"
-                                        height="140"
+                                        height="155"
                                         image="https://i.imgur.com/DfFIucI.jpg"
                                         title="TV Coaching"
                                     />
