@@ -15,6 +15,7 @@ export class SenMyRequestsListRow extends React.Component {
         super(props);
         this.state = {
             daysSince: '',
+            user: this.props.user
 
         }
         this.delete = this.delete.bind(this);

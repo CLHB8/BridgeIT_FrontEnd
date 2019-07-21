@@ -10,6 +10,7 @@ import {FontIcon, Button}
     from 'react-md';
 import SenAddOfferPopup from "../Senior/SenAddOfferPopup";
 import {SenMyAssignedRequests} from "./SenMyAssignedRequests";
+import DisplayRating from "../DisplayRating";
 
 const style = {maxWidth: 900};
 const StarIcon = () => <FontIcon>star</FontIcon>;
@@ -79,7 +80,7 @@ export class WelcomePageSenior extends React.Component {
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
                             <h4>{this.state.user.username}</h4>
                             {/* <Rating value={3.5} precision={0.5} readOnly /> */}
-                            <h5>Your rating: 4.5/5 stars</h5>
+                            <h5>Your rating:</h5><DisplayRating user={this.state.user}/>
                             <Divider/>
                             <br/>
                             <Fab variant="extended" color="primary" aria-label="Add"
@@ -105,7 +106,7 @@ export class WelcomePageSenior extends React.Component {
 
                         <h4>If you already posted one or more requests and want to check on their
                             status, see below:</h4>
-                        <SenReq></SenReq>
+                        <SenReq user={this.state.user}></SenReq>
                         <Divider style={dataTableStyle}/>
                         <h4>Here is your task history. Don't forget to rate the students!</h4>
                         <SenMyAssignedRequests user={this.state.user}></SenMyAssignedRequests>

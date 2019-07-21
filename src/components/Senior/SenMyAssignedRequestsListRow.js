@@ -9,14 +9,20 @@ import {SimpleLink} from '../SimpleLink';
 
 import UserService from '../../services/UserService';
 import RateStudent from '../RateStudent'
+import RatingsService from "../../services/RatingsService";
 
 export class SenMyAssignedRequestsListRow extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             daysSince: '',
+            studentFirstname: "loading...",
+            studentLastname: "loading...",
+            studentFullanem: "loading...",
             user: this.props.user
+
         };
         this.delete = this.delete.bind(this);
         this.timedifference(this.props.request.createdAt);
@@ -24,6 +30,27 @@ export class SenMyAssignedRequestsListRow extends React.Component {
 
     delete(value) {
         this.props.onDelete(value);
+    }
+
+    componentWillMount() {
+        this.setState({
+            loading: true,
+        });
+
+        let id = this.props.request.assignedStudent;
+
+        UserService.getUserById(id).then((studentData) => {
+            this.setState({
+                student: studentData,
+                studentFirstname: studentData.firstname,
+                studentLastname: studentData.lastname,
+                studentFullname: studentData.firstname + " " + studentData.lastname,
+                loading: false
+            });
+
+        }).catch((e) => {
+            console.error(e);
+        })
     }
 
     timedifference(value) {
@@ -46,7 +73,10 @@ export class SenMyAssignedRequestsListRow extends React.Component {
     }
 
     render() {
-        console.log("ISCALLED")
+        if (this.state.loading) {
+            return (<h5>Loading Student Name...</h5>);
+        }
+
         if (!((this.props.request == null || this.props.request == undefined || this.props.request == "undefined") || !this.props.request.isAssigned)) {
             return (
                 <TableRow key={this.props.key}>
@@ -79,14 +109,14 @@ export class SenMyAssignedRequestsListRow extends React.Component {
                     <TableColumn><SimpleLink
                         to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
                     <TableColumn><SimpleLink
-                        to={`/show/${this.props.request._id}`}>{this.props.request.assignedStudent}</SimpleLink></TableColumn>
+                        to={`/show/${this.props.request._id}`}>{this.state.studentFullname}</SimpleLink></TableColumn>
                     <TableColumn>{this.state.daysSince}</TableColumn>
                     <TableColumn><RateStudent user={this.state.user} request={this.props.request}/></TableColumn>
                 </TableRow>
             );
 
         } else {
-            return(console.log("TEST", this.props.request));
+            return (console.log("TEST", this.props.request));
         }
     }
 }
