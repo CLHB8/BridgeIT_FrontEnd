@@ -125,7 +125,7 @@ class StudentRegiser extends React.Component {
             return true;
         }
 
-        // TODO: Neil: I uncommented regex due to testing purposes, no password requirements
+        // Note Neil: I uncommented regex due to testing purposes, no password requirements
         if(currentPassword === currentReenteredPassword)/*&& /(?=^.{6,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])/.test(currentPassword))*/{
             return true;
         }else{
@@ -235,15 +235,15 @@ class StudentRegiser extends React.Component {
 
                             <TextField
                                 className="md-cell md-cell--6"
-                                label="Email"
+                                label="University Email"
                                 id="EmailField"
                                 type="text"
                                 required={true}
                                 value={this.state.mail}
                                 onChange={this.handleChangeEmail}
                                 error={!(this.validateEmail())}
-                                errorText="Not a valid mail address (required)"
-                                placeholder="jane.doe@example.com"/>
+                                errorText="Not a valid university mail address (required)"
+                                placeholder="jane.doe@tum.de"/>
 
                             <TextField
                                 className="md-cell md-cell--6"
