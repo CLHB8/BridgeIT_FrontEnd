@@ -89,7 +89,7 @@ class Faq extends React.Component {
                         </Grid>
                         <Grid item xs={4}> <Card style={style} className="md-block-centered">
                             <CardTitle
-                                title={<div><h1>Are my data safe?</h1></div>}/>
+                                title={<div><h1>Is my data safe?</h1></div>}/>
                             <CardText>
                                 <h4>BridgeIT complies with standard data compliance and privacy regulations. Your data
                                     stays in the system and not sold to third parties. The ads on the website are

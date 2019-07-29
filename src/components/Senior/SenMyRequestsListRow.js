@@ -89,7 +89,7 @@ export class SenMyRequestsListRow extends React.Component {
                         to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
                     <TableColumn><SimpleLink
                         to={`/show/${this.props.request._id}`}>{this.props.request.specification}</SimpleLink></TableColumn>
-                    <TableColumn>{this.state.daysSince}</TableColumn>
+                    <TableColumn>{this.props.request.createdAt.slice(0,10)}</TableColumn>
                     {/* {UserService.isAuthenticated() ?
                         <TableColumn><Link to={`/edit/${this.props.request._id}`}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                         : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>

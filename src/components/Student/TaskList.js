@@ -32,7 +32,7 @@ export const TaskList = ({data, user, onPremiumChange, onDelete}) => (
                         <TableRow>
                             <TableColumn></TableColumn>
                             <TableColumn>Category</TableColumn>
-                            <TableColumn>Senior's name:</TableColumn>
+                            <TableColumn>Senior's name</TableColumn>
                             <TableColumn>Senior's Rating</TableColumn>
                             <TableColumn>Send Offer</TableColumn>
                         </TableRow>

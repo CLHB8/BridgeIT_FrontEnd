@@ -110,7 +110,7 @@ export class SenMyAssignedRequestsListRow extends React.Component {
                         to={`/show/${this.props.request._id}`}>{this.props.request.category}</SimpleLink></TableColumn>
                     <TableColumn><SimpleLink
                         to={`/show/${this.props.request._id}`}>{this.state.studentFirstname.charAt(0).toUpperCase()+this.state.studentFirstname.slice(1)} {this.state.studentLastname.charAt(0).toUpperCase()+this.state.studentLastname.slice(1)}</SimpleLink></TableColumn>
-                    <TableColumn>{this.state.daysSince}</TableColumn>
+                    <TableColumn>{this.props.request.createdAt.slice(0,10)}</TableColumn>
                     <TableColumn><RateStudent user={this.state.user} request={this.props.request}/></TableColumn>
                 </TableRow>
             );

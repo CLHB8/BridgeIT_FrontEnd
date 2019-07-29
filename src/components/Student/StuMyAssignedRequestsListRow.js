@@ -97,7 +97,7 @@ export class StuMyAssignedRequestsListRow extends React.Component {
                     }
                     <TableColumn>{this.props.request.category}</TableColumn>
                     <TableColumn>{this.state.seniorFullname}</TableColumn>
-                    <TableColumn>{this.state.daysSince}</TableColumn>
+                    <TableColumn>{this.props.request.createdAt.slice(0,10)}</TableColumn>
                     <TableColumn><RateStudent user={this.props.user} request={this.props.request}/></TableColumn>
                 </TableRow>
             );
