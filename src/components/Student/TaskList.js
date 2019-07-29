@@ -38,8 +38,15 @@ export const TaskList = ({data, user, onPremiumChange, onDelete}) => (
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {data.map((request, i) => <TaskListRow
-                            key={i} request={request} user={user} onDelete={(id) => onDelete(id)}/>)}
+                        {data.map((request, i) => {
+                                if (!request.isAssigned) {
+                                    return (
+                                        <TaskListRow key={i} request={request} user={user} onDelete={(id) => onDelete(id)}/>
+                                    )
+                                }
+                            }
+                        )
+                        }
                     </TableBody>
                     {/* <TablePagination rowsPerPageLabel ="Items Per Page" /> */}
                 </DataTable>

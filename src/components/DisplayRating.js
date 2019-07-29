@@ -28,9 +28,6 @@ class DisplayRating extends React.Component {
         let sumOfRatings = 0;
         let countOfValidRatings = 0;
         let ratingRange = [1, 2, 3, 4, 5];
-        console.log("SUM1", ratingsData);
-        console.log("SUM1", sumOfRatings);
-        console.log("SUM1", countOfValidRatings);
         if (arrayLength !== 0) {
             for (let i = 0; i < arrayLength; i++) {
                 let rating = ratingsArray[i]['RatingByStudent'];
@@ -53,9 +50,6 @@ class DisplayRating extends React.Component {
         let sumOfRatings = 0;
         let countOfValidRatings = 0;
         let ratingRange = [1, 2, 3, 4, 5];
-        console.log("SUM1", ratingsData);
-        console.log("SUM1", sumOfRatings);
-        console.log("SUM1", countOfValidRatings);
         if (arrayLength !== 0) {
             for (let i = 0; i < arrayLength; i++) {
                 let rating = ratingsArray[i]['RatingBySenior'];

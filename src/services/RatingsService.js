@@ -35,7 +35,6 @@ export default class RatingsService {
 
     static getStuRatings(id) {
         return new Promise((resolve, reject) => {
-            console.log(`${RatingsService.baseURL()}/stu/${id}`);
             HttpService.get(`${RatingsService.baseURL()}/stu/${id}`, function (data) {
                 console.log(`${RatingsService.baseURL()}/stu/${id}`, data);
                 resolve(data);

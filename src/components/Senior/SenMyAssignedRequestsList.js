@@ -21,7 +21,7 @@ export const SenMyAssignedRequestsList = ({data, user, onDelete}) => (
                 <TableColumn>Name</TableColumn>
                 <TableColumn>Student's Name</TableColumn>
                 <TableColumn>Created</TableColumn>
-                <TableColumn>Rating</TableColumn>
+                <TableColumn>Rate the Student</TableColumn>
             </TableRow>
         </TableHeader>
         <TableBody>

@@ -40,8 +40,6 @@ export class SenRequestDetailView extends React.Component {
                         theChoosenFirstName: userdata.firstname,
                         theChoosenLastName: userdata.lastname
                     });
-                    console.log("gotChoosenOne success");
-                    console.log(this.state.theChoosenOne);
                 }).catch((e) => {
                     console.error(e);
                 });
@@ -60,8 +58,6 @@ export class SenRequestDetailView extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
-        console.log("gotRequest success");
-
         StuOfferService.getStuOffersToRequest(id).then((offersData) => {
             this.setState({
                 stuOffers: [...offersData],
@@ -70,8 +66,6 @@ export class SenRequestDetailView extends React.Component {
         }).catch((e) => {
             console.error(e);
         })
-        console.log("getStuOffersToRequest success");
-
     }
 
 

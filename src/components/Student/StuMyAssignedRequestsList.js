@@ -21,7 +21,7 @@ export const StuMyAssignedRequestsList = ({data, user, onDelete}) => (
                 <TableColumn>Name</TableColumn>
                 <TableColumn>Senior's Name</TableColumn>
                 <TableColumn>Created</TableColumn>
-                <TableColumn>Rating</TableColumn>
+                <TableColumn>Rate the Senior</TableColumn>
             </TableRow>
         </TableHeader>
         <TableBody>

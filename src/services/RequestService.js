@@ -84,8 +84,6 @@ export default class RequestService {
 
     static updateRequestAssigned(requestId, requestUpdate) {
         return new Promise((resolve, reject) => {
-            console.log(requestId);
-            console.log(requestUpdate);
             HttpService.put(`${this.baseURL()}/${requestId}`, requestUpdate
                 , function(data) {
                     resolve(data);

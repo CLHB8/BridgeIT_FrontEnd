@@ -24,7 +24,6 @@ export class StuOfferFormView extends React.Component {
                 error: undefined,
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined,
             });
-            console.log('setState');
 
             let id = this.props.match.params.id;
 
@@ -37,7 +36,6 @@ export class StuOfferFormView extends React.Component {
             }).catch((e) => {
                 console.error(e);
             });
-            console.log('gotRequest');
     }
 
     updateStuOffer(stuOffer) {

@@ -24,7 +24,6 @@ export class WelcomePageStudentView extends React.Component {
     }
 
     handlePremiumChange() {
-        console.log("HANDLECHANGE STATE BEFOR", this.state.user);
         if(!(this.state.loading)){
             this.setState({user:{
                     isPremium: true,
@@ -32,7 +31,6 @@ export class WelcomePageStudentView extends React.Component {
                     id: this.state.user.id,
                 }});
         }
-        console.log("HANDLECHANGE STATE AFTER", this.state.user);
     }
 
     componentWillMount(){
@@ -48,7 +46,6 @@ export class WelcomePageStudentView extends React.Component {
             console.error(e);
         });
         UserService.getUserInfo().then((userInfo) => {
-            console.log("USERINFO", userInfo);
             let user = {
                 isPremium: userInfo.isPremium,
                 firstname: userInfo.firstname,
@@ -71,8 +68,6 @@ export class WelcomePageStudentView extends React.Component {
         if (this.state.loading) {
             return (<h2>Loading...</h2>);
         }
-
-        console.log("WELCOMEPAGESTUDENT", this.state.user)
 
         if (UserService.isAuthenticated()) {
             if(UserService.isSenior()){

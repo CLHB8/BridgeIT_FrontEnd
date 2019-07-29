@@ -63,8 +63,6 @@ export default class UserService {
     }
 
     static updateEdit(userUpdate) {
-        console.log(this.getCurrentUser().id);
-        console.log(userUpdate);
         let id = this.getCurrentUser().id;
         return new Promise((resolve, reject) => {
             HttpService.put(`${this.baseURL()}/${id}`, userUpdate, function(data) {

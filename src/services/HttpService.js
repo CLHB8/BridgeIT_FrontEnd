@@ -41,7 +41,6 @@ export default class HttpService {
     static put(url, data, onSuccess, onError) {
         let token = window.localStorage['jwtToken'];
         let header = new Headers();
-        console.log("TOKEN", token);
         if(token) {
             header.append('Authorization', `JWT ${token}`);
         }
@@ -88,7 +87,6 @@ export default class HttpService {
             headers: header,
             body: JSON.stringify(data)
         }).then((resp) => {
-            console.log("POST FETCH", resp);
             if(this.checkIfUnauthorized(resp)) {
                 window.location = "/#login";
                 return;
@@ -98,7 +96,6 @@ export default class HttpService {
             }
         }).then((resp) => {
             if(resp.error) {
-                console.log("POST FETCH", resp);
                 onError(resp.error);
             }
             else {

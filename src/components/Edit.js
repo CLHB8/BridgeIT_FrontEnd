@@ -50,7 +50,7 @@ class EditProfile extends React.Component {
         let id = UserService.getCurrentUser().id;
 
         UserService.getUserById(id).then((studentData) => {
-            console.log(studentData);
+            console.log("USER", studentData);
             this.setState({
                 firstname: studentData.firstname,
                 lastname: studentData.lastname,
@@ -134,7 +134,6 @@ class EditProfile extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log("PROPS!!", this.props);
             this.setState(Object.assign({}, this.state, {error: ''}));
             let user = {
                 firstname: this.state.firstname,
@@ -148,6 +147,7 @@ class EditProfile extends React.Component {
             };
 
             this.props.onSubmit(user);
+            this.props.history.push("/sen/WelcomePage")
     }
 
 
@@ -160,7 +160,7 @@ class EditProfile extends React.Component {
                             title={<div><h1>Edit Profile</h1>
                             </div>}
                             avatar={<img className="SignupPageImage"
-                                         src="https://www.spanishgurus.com/wp-content/uploads/2018/07/senior-student.jpg"
+                                         src={UserService.isSenior() ? "https://www.spanishgurus.com/wp-content/uploads/2018/07/senior-student.jpg" : "https://fee.org/media/32732/econ.jpg?anchor=center&mode=crop&width=1920&rnd=131971368770000000"}
                                          alt="Image of Senior"/>}/>
                         <form className="md-grid" onSubmit={this.handleSubmit}
                               onReset={() => this.props.history.goBack()}>

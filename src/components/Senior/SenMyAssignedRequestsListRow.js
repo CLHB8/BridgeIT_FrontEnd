@@ -8,7 +8,7 @@ import PopupDelete from '../PopupDelete';
 import {SimpleLink} from '../SimpleLink';
 
 import UserService from '../../services/UserService';
-import RateStudent from '../RateStudent'
+import RateStudent from '../RateUser'
 import RatingsService from "../../services/RatingsService";
 
 export class SenMyAssignedRequestsListRow extends React.Component {

@@ -21,7 +21,6 @@ export class StuMyOffersView extends React.Component {
     }
 
     handlePremiumChange() {
-        console.log("HANDLECHANGE STATE BEFOR", this.props.user);
         if(!(this.state.loading)){
             this.setState({user:{
                     isPremium: true,
@@ -29,7 +28,6 @@ export class StuMyOffersView extends React.Component {
                     id: this.state.user.id,
                 }});
         }
-        console.log("HANDLECHANGE STATE AFTER", this.state.user);
     }
 
     componentWillMount() {
@@ -41,7 +39,6 @@ export class StuMyOffersView extends React.Component {
                 data: [...data]
             });
             UserService.getUserInfo().then((userInfo) => {
-                console.log("USERINFO", userInfo);
                 let user = {
                     isPremium: userInfo.isPremium,
                     firstname: userInfo.firstname,
@@ -49,7 +46,6 @@ export class StuMyOffersView extends React.Component {
                     id: userInfo.id,
                     username: userInfo.username
                 };
-                console.log(user);
                 this.setState({
                     user: user,
                     loading: false

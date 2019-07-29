@@ -34,6 +34,7 @@ class AccountMenu extends React.Component {
             window.location.reload();
         }
     }
+
     editProfile() {
         UserService.editProfile();
         this.state = {
@@ -46,7 +47,7 @@ class AccountMenu extends React.Component {
         }
     }
 
-    goPremium(){
+    goPremium() {
         UserService.goPremium(this.props.user.id).then((response) => {
             this.setState({
                 user: {
@@ -63,104 +64,106 @@ class AccountMenu extends React.Component {
     }
 
 
-render()
-{
-    if (UserService.isSenior() || this.state.user.isPremium) {
-        return (
-            <DropdownMenu
-                id="HeaderDropdownMenu"
-                menuItems={[
-                    <ListItem id="AccountMenu" key={1}
-                              leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
-                              primaryText={this.props.user.username} onClick={() => {
-                        UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
-                    }}/>,
+    render() {
+        if (UserService.isSenior() || this.state.user.isPremium) {
+            return (
+                <DropdownMenu
+                    id="HeaderDropdownMenu"
+                    menuItems={[
+                        <ListItem id="AccountMenu" key={1}
+                                  leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
+                                  primaryText={this.props.user.username} onClick={() => {
+                            UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
+                        }}/>,
 
-                    {divider: true},
-                    <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
-                              primaryText="Logout"
-                              onClick={() => this.logout()}/>,
-                ]}
-                anchor={{
-                    x: DropdownMenu.HorizontalAnchors.CENTER,
-                    y: DropdownMenu.VerticalAnchors.OVERLAP,
-                }}
-                position={DropdownMenu.Positions.TOP_LEFT}
-                animationPosition="below"
-                sameWidth
-            >
-                <AccessibleFakeButton
-                    component={IconSeparator}
-                    iconBefore
-                    label={
-                        <IconSeparator label={this.props.user.username} style={{color: "black"}}>
-                            <FontIcon>arrow_drop_down</FontIcon>
-                        </IconSeparator>
-                    }
+                        <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
+                                  primaryText="Edit Profile" onClick={() => {
+                            this.props.history.push('/edit')
+                        }}/>,
+
+                        {divider: true},
+                        <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
+                                  primaryText="Logout"
+                                  onClick={() => this.logout()}/>,
+                    ]}
+                    anchor={{
+                        x: DropdownMenu.HorizontalAnchors.CENTER,
+                        y: DropdownMenu.VerticalAnchors.OVERLAP,
+                    }}
+                    position={DropdownMenu.Positions.TOP_LEFT}
+                    animationPosition="below"
+                    sameWidth
                 >
-                    <Avatar style={{background: "darkblue"}}>{this.props.user.username.charAt(0)}</Avatar>
-                </AccessibleFakeButton>
-            </DropdownMenu>
-        );
-    } else {
-        return (
-            <DropdownMenu
-                id="HeaderDropdownMenu"
-                menuItems={[
-                    <ListItem id="AccountMenu" key={1}
-                              leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
-                              primaryText={this.props.user.username} onClick={() => {
-                        UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
-                    }}/>,
-
-                    /*
-                    // TODO: needs to be implemented --> Edit View
-                    <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
-                              primaryText="Edit Profile" onClick={() => {
-                        UserService.isSenior() ? this.props.history.push('/sen/WelcomePage') : this.props.history.push('/stu/WelcomePage')
-                    }}/>,
-                     */
-
-
-                    <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
-                              primaryText="Logout"
-                              onClick={() => this.logout()}/>,
+                    <AccessibleFakeButton
+                        component={IconSeparator}
+                        iconBefore
+                        label={
+                            <IconSeparator label={this.props.user.username} style={{color: "black"}}>
+                                <FontIcon>arrow_drop_down</FontIcon>
+                            </IconSeparator>
+                        }
+                    >
+                        <Avatar style={{background: "darkblue"}}>{this.props.user.username.charAt(0)}</Avatar>
+                    </AccessibleFakeButton>
+                </DropdownMenu>
+            );
+        } else {
+            return (
+                <DropdownMenu
+                    id="HeaderDropdownMenu"
+                    menuItems={[
+                        <ListItem id="AccountMenu" key={1}
+                                  leftAvatar={<Avatar icon={<FontIcon>account_circle</FontIcon>}/>}
+                                  primaryText={this.props.user.username} onClick={() => {
+                            this.props.history.push('/edit')
+                        }}/>,
 
 
-                    this.state.user.isPremium ? {display: "none"} : {divider: true},
+                        <ListItem id="AccountMenu" key={2} leftAvatar={<Avatar icon={<FontIcon>mode_edit</FontIcon>}/>}
+                                  primaryText="Edit Profile" onClick={() => {
+                            this.props.history.push('/edit')
+                        }}/>,
 
-                    <ListItem id="AccountMenu" key={4} style={
-                        this.state.user.isPremium ? {display: "none"} : {display: "list-item"}
-                    } leftAvatar={<Avatar icon={<FontIcon>star</FontIcon>}/>}
-                              primaryText="Go Premium" onClick={
-                                  ()=>
-                        this.goPremium()
-                    }/>,
-                ]}
-                anchor={{
-                    x: DropdownMenu.HorizontalAnchors.CENTER,
-                    y: DropdownMenu.VerticalAnchors.OVERLAP,
-                }}
-                position={DropdownMenu.Positions.TOP_LEFT}
-                animationPosition="below"
-                sameWidth
-            >
-                <AccessibleFakeButton
-                    component={IconSeparator}
-                    iconBefore
-                    label={
-                        <IconSeparator label={this.props.user.username} style={{color: "black"}}>
-                            <FontIcon>arrow_drop_down</FontIcon>
-                        </IconSeparator>
-                    }
+
+                        <ListItem id="AccountMenu" key={3} leftAvatar={<Avatar icon={<IoIosLogOut/>}/>}
+                                  primaryText="Logout"
+                                  onClick={() => this.logout()}/>,
+
+
+                        this.state.user.isPremium ? {display: "none"} : {divider: true},
+
+                        <ListItem id="AccountMenu" key={4} style={
+                            this.state.user.isPremium ? {display: "none"} : {display: "list-item"}
+                        } leftAvatar={<Avatar icon={<FontIcon>star</FontIcon>}/>}
+                                  primaryText="Go Premium" onClick={
+                            () =>
+                                this.goPremium()
+                        }/>,
+                    ]}
+                    anchor={{
+                        x: DropdownMenu.HorizontalAnchors.CENTER,
+                        y: DropdownMenu.VerticalAnchors.OVERLAP,
+                    }}
+                    position={DropdownMenu.Positions.TOP_LEFT}
+                    animationPosition="below"
+                    sameWidth
                 >
-                    <Avatar style={{background: "darkblue"}}>{this.props.user.username.charAt(0)}</Avatar>
-                </AccessibleFakeButton >
-            </DropdownMenu>
-        );
+                    <AccessibleFakeButton
+                        component={IconSeparator}
+                        iconBefore
+                        label={
+                            <IconSeparator label={this.props.user.username} style={{color: "black"}}>
+                                <FontIcon>arrow_drop_down</FontIcon>
+                            </IconSeparator>
+                        }
+                    >
+                        <Avatar style={{background: "darkblue"}}>{this.props.user.username.charAt(0)}</Avatar>
+                    </AccessibleFakeButton>
+                </DropdownMenu>
+            );
+        }
+
     }
-
-}
 }
 
 

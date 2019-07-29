@@ -21,7 +21,6 @@ export class TaskListView extends React.Component {
     }
 
     handlePremiumChange() {
-        console.log("HANDLECHANGE STATE BEFOR", this.props.user);
         if(!(this.state.loading)){
             this.setState({user:{
                     isPremium: true,
@@ -29,7 +28,6 @@ export class TaskListView extends React.Component {
                     id: this.state.user.id,
                 }});
         }
-        console.log("HANDLECHANGE STATE AFTER", this.state.user);
     }
 
     componentWillMount(){

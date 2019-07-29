@@ -13,7 +13,7 @@ class RatingStudent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state={
+        this.state = {
             loading: true,
             user: this.props.user,
             isSenior: UserService.isSenior()
@@ -22,7 +22,7 @@ class RatingStudent extends React.Component {
 
     componentWillMount() {
         let id = this.props.request._id;
-        if(this.state.isSenior){
+        if (this.state.isSenior) {
             RatingsService.getRatingById(id).then((ratingsData) => {
                 console.log("WILL MOUNT", ratingsData[0]);
                 this.setState({
@@ -33,10 +33,11 @@ class RatingStudent extends React.Component {
 
                 this.setState({
                     rating: 0,
-                    loading: false});
+                    loading: false
+                });
                 console.error(e);
             })
-        }else{
+        } else {
             RatingsService.getRatingById(id).then((ratingsData) => {
                 console.log("WILL MOUNT", ratingsData[0]);
                 this.setState({
@@ -46,7 +47,8 @@ class RatingStudent extends React.Component {
             }).catch((e) => {
                 this.setState({
                     rating: 0,
-                    loading: false});
+                    loading: false
+                });
                 console.error(e);
             })
         }
@@ -56,68 +58,28 @@ class RatingStudent extends React.Component {
     updateRating(value) {
         const requestId = this.props.request._id;
         let rating;
-        if(this.state.isSenior){
+        if (this.state.isSenior) {
             rating = {
                 RatingBySenior: value
             }
-        }else{
+        } else {
             rating = {
                 RatingByStudent: value
             }
         }
 
         RatingsService.updateRating(requestId, rating).then((data) => {
-            console.log(data);
-            console.log(data.RatingBySenior);
-            if(this.state.isSenior){
+            if (this.state.isSenior) {
                 this.setState({rating: data.RatingBySenior})
-            }else{
+            } else {
                 this.setState({rating: data.RatingByStudent})
             }
-            console.log(this.state.rating);
         }).catch((e) => {
             console.error(e);
             this.setState(Object.assign({}, this.state, {error: 'Error while updating rating'}));
         });
     }
 
-
-/*    static calculateRating(ratingsData){
-        let ratingsArray = ratingsData;
-        let arrayLength = ratingsArray.length;
-        let sumOfRatings = 0;
-        let countOfValidRatings = 0;
-        let ratingRange = [1, 2, 3, 4, 5];
-        if(arrayLength !== 0){
-            for (let i = 0; i < arrayLength; i++) {
-                let rating = ratingsArray[i]['RatingBySenior'];
-                if(ratingRange.includes(rating)){
-                    sumOfRatings += rating;
-                    countOfValidRatings += 1;
-                }
-            }
-        }
-        console.log(sumOfRatings/countOfValidRatings);
-        return sumOfRatings/countOfValidRatings;
-    }
-
-    componentWillMount(){
-        this.setState({
-            loading: true
-        });
-
-        let id = this.props.studentId;
-
-        RatingsService.getStuRatings(id).then((ratingsData) => {
-            this.setState({
-                studentRating: DisplayRating.calculateRating(ratingsData),
-                loading: false
-            });
-
-        }).catch((e) => {
-            console.error(e);
-        })
-    }*/
 
     render() {
         if (this.state.loading) {
@@ -130,7 +92,7 @@ class RatingStudent extends React.Component {
             <Rating
                 value={this.state.rating}
                 max={5}
-                disabled={!(this.props.user.isPremium)}
+                disabled={false}
                 onChange={(value) => this.updateRating(value)}
             />
         );

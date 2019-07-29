@@ -1,12 +1,11 @@
 "use strict";
 
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button, SVGIcon } from 'react-md';
+import { TableRow, TableColumn, FontIcon, Button} from 'react-md';
 import { Link } from 'react-router-dom';
 
 import { SimpleLink } from '../SimpleLink';
 import UserService from "../../services/UserService";
-import RateStudent from "../RateStudent";
 import DisplayRating from "../DisplayRating";
 import BlurredRating from "material-ui-rating";
 
@@ -21,9 +20,9 @@ export class TaskListRow extends React.Component {
         this.state={
             showPopup:false,
             user:this.props.user
-            
+
         };
-        
+
     }
 
     componentWillMount() {
@@ -54,7 +53,7 @@ export class TaskListRow extends React.Component {
             );
             details=this.props.request.specification;
             requestTitle=this.props.request.title;
-            
+
     }
 
 
@@ -81,7 +80,7 @@ export class TaskListRow extends React.Component {
                     )
                 }
                 <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>{this.props.request.category}</SimpleLink>
-                
+
                 </TableColumn>
                 <TableColumn>{this.state.seniorFullname}</TableColumn>
 
@@ -104,7 +103,7 @@ export class TaskListRow extends React.Component {
                 <TableColumn><SimpleLink to={`/stu/addOffer/${this.props.request._id}`}>
                     <Button flat primary onClick={this.popupHandler.bind(this)} iconChildren="send">Send Offer</Button></SimpleLink>
                 </TableColumn>
-                
+
 
             </TableRow>
         );
