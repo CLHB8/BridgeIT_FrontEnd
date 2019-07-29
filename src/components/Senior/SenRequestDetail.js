@@ -69,13 +69,6 @@ export class SenRequestDetail extends React.Component {
                             </Typography>
                         </CardContent>
                     </CardActionArea>
-                    <CardActions>
-                        <div className="md-cell md-cell--12">
-
-                            <div className="formButton">
-                                <Button className="md-cell md-cell--3" color="secondary" variant="contained">Delete</Button>
-                            </div></div>
-                    </CardActions>
 
                     <CardContent>
                         <Divider/>

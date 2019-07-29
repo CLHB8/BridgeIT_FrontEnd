@@ -76,7 +76,7 @@ export class WelcomePageSenior extends React.Component {
                         <div className="seniorProfile">
                             <h4>Welcome to the dashboard</h4>
                             <img src="https://imgur.com/4XCz8ij.png" width="100px" height="100px"/>
-                            <h4>{this.state.user.username}</h4>
+                            <h4>{this.state.user.firstname} {this.state.user.lastname}</h4>
                             {/* <Rating value={3.5} precision={0.5} readOnly /> */}
                             <h5>Your rating:</h5><DisplayRating user={this.state.user} displayStudentRating={false}/>
                             <Divider/>

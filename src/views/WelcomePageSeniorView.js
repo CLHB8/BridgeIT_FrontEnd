@@ -23,13 +23,17 @@ export class WelcomePageSeniorView extends React.Component {
         this.setState({
             loading: true
         });
-        UserService.isPremium().then((isPremium) => {
-            let tmpUser = UserService.getCurrentUser();
+
+
+        UserService.getUserInfo().then((userInfo) => {
+            console.log("USERINFO", userInfo);
             let user = {
-                isPremium: isPremium,
-                id: tmpUser.id,
-                username: tmpUser.username
-            }
+                isPremium: userInfo.isPremium,
+                firstname: userInfo.firstname,
+                lastname: userInfo.lastname,
+                id: userInfo.id,
+                username: userInfo.username
+            };
             console.log(user);
             this.setState({
                 user: user,

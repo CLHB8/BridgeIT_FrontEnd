@@ -40,22 +40,40 @@ class Header extends React.Component {
         this.state = {};
     }
 
+    componentWillMount(){
+        this.setState({
+            loading: true
+        });
+
+
+        if (UserService.isAuthenticated()) {
+            UserService.getUserInfo().then((userInfo) => {
+                let user = {
+                    isPremium: userInfo.isPremium,
+                    firstname: userInfo.firstname,
+                    lastname: userInfo.lastname,
+                    id: userInfo.id,
+                    username: userInfo.username
+                };
+                console.log(user);
+                this.setState({
+                    user: user,
+                    loading: false
+                });
+            }).catch((e) => {
+                console.error(e);
+            });
+        }else{
+            this.setState({
+                loading: false
+            });
+        }
+
+    }
     render() {
 
-        {/*Just for debugging, text shows whether you are logged off, or logged in as Student or Senior*/
-        }
-        {/*
-        let textLoggedInAs;
-        if (UserService.isAuthenticated()) {
-            if (UserService.isSenior()) {
-                textLoggedInAs = "Logged in as SENIOR";
-            } else {
-                textLoggedInAs = "Logged in as STUDENT";
-            }
-        } else {
-            textLoggedInAs = "not logged in";
-        }
-        */
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>);
         }
 
         let aboutUsButton =
@@ -106,9 +124,9 @@ class Header extends React.Component {
 
         if (UserService.isAuthenticated()) {
             if (UserService.isSenior()) {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.state.user}/>;
             } else {
-                loginOrKebabMenue = <AccountMenu/>;
+                loginOrKebabMenue = <AccountMenu user={this.state.user}/>;
             }
         } else {
             if (!(this.props.location.pathname === "/login"))

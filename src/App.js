@@ -50,7 +50,6 @@ export default class App extends React.Component {
                 { component: WelcomePageSeniorView, path: '/sen/WelcomePage'},
 
                 { component: FAQView, path: '/help'},
-                { component: FAQView, path: '/faq'},
 
                 { component: SenMyRequestsListView, path: '/sen/myRequests'},
                 { component: SenRequestsMiniView, path: '/sen/myRequestsMini'},
